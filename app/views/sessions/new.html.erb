@@ -1,0 +1,32 @@
+
+<section class="content_column">
+
+	<% provide(:title, "Log in") %>
+	<h1>Log in</h1>
+
+    <%= form_for :session, url: login_path, html: {class: "simple_form"} do |f| %>
+
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+      <% end %>
+    </p>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+
+
+</section>

@@ -1,0 +1,11 @@
+
+<section class="content_column">
+
+  <h1><%= t 'projects.all_projects' %> (<%= link_to '+', new_project_path %>)</h1>
+
+  <% @projects.each do |project| %>
+    <%= render project %>
+  <% end %>
+
+</section>
+

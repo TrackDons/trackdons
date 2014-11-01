@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang=en-us>
+<head>
+	<meta charset=utf-8>
+	<title>TrackDons</title>
+	<meta name=description content="">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+	
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+<style type="text/css">
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+
+/* colors */
+body { background: #F3E9D1; }
+#logo { background: #565631; }
+#container { background: #F8F2E3; border-color: #E4D6B3; }
+#header { background: #7C9200; color: #FFF; }
+#header a { color: #FFF; }
+button, .button, input[type='submit'] { background: #7C9200; color: #FFF; }
+a.button { text-decoration: none; }
+.content_full { background: #EBE8CC; }
+#track_donation header h2, h1 { border-color: #7C9200; color: #7C9200; }
+#project .meta { background: #EBE8CC; }
+.donation { border-top-color: #D9DAAA;}
+
+/* fonts */
+body { font-weight: 400; font-size: 1em; font-family: 'Raleway', Arial, sans-serif; overflow: hidden; overflow-y: scroll; min-height: 590px;color: #565631;}
+input[type='submit'] { font-family: 'Raleway', Arial, sans-serif; }
+
+/* structure */
+#container { margin: 2em auto; width: 800px; border-width: 30px; border-style: solid; }
+#header { position: relative; padding: 10px 0;}
+	#nav_site { }
+	#nav_personal { position: absolute; top: 10px; right: 10px; text-align: left; }
+
+#main_content { margin-top: 40px; margin-bottom: 80px; }
+.content_column, .alert { padding: 0 40px 0 120px; overflow: hidden; }
+.content_full {  }
+
+/* forms */
+button, .button, input[type='submit'] { margin: 10px 0 20px 0; border: 0; padding: 10px 16px; font-size: 14px; display: inline-block; }
+form.simple_form { width: 400px}
+form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px;}
+form.simple_form input[type='checkbox'] { width: auto; }
+form.simple_form textarea { height: 100px; }
+
+.alert {  }
+.success, .info, .warning, .danger {}
+
+/* rails */
+.field_with_errors { border: 1px solid red;}
+
+.pages_index #logo { display: none; }
+#logo { position: absolute; top: 0; width: 100px; height: 100%; text-align: center; vertical-align: middle; font-weight: 700}
+#logo a { display: block; padding: 12px 8px; font-size: 13px; text-decoration: none; text-transform: uppercase; }
+h1.logo { background: #565631; text-transform: uppercase; display: inline-block; padding: 8px 16px; color: #FFF; font-size: 24px; font-weight: normal; }
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+#header { font-size: 14px;}
+#header ul { margin: 0; padding: 0; }
+#header ul li { list-style-type: none; display: inline; }
+#header li:after { content: " · "; }
+
+#home { padding-top: 30px; padding-bottom: 30px;}
+#home ul, #home li { margin: 0; padding: 0; list-style-type: none; }
+#home li { font-size: 18px; margin: 0 0 22px 0;}
+#home ul { width: 410px; }
+
+#track_donation { border-top: 1px solid #FFF; padding-right: 100px; padding-top: 20px;}
+#track_donation header { margin: 20px 0; position: relative; }
+#track_donation header h2 { font-size: 16px; border-bottom-width: 4px; border-bottom-style: solid; padding-bottom: 3px;  }
+#login_if_you_already { position: absolute; top: 2px; right: 0; }
+#login_if_you_already a { text-decoration: none; color: #97A732; }
+
+.main_form input { padding: 4px 8px; font-size: 24px; height: 32px; border: 1px dashed #7C9200; margin-bottom: 4px; }
+.main_form { clear: both; margin: 0 0 20px 0;}
+.track_don_project, .track_don_quantity, .track_don_date { display: inline-block; }
+.track_don_project { width: 284px; margin-right: 10px; }
+.track_don_quantity { width: 90px; margin-right: 10px; }
+.track_don_date { width: 118px; }
+.track_don_project input { width: 268px; }
+.track_don_quantity input { width: 74px; }
+.track_don_date input { width: 102px; font-size: 12px;}
+.track_don_options { margin: 0 0 20px 0;}
+
+
+#project { margin-top: 30px; overflow: hidden; }
+#project .meta { width: 42%; float: left; padding: 2% 4%; }
+#project .actions { width: 42%; float: right; padding: 0 4%; }
+#project h1 { font: bold 36px Arial; margin: 10px 0;}
+#project .description { margin: 0 0 40px 0; }
+#project .meta ul { margin: 0; padding: 0;}
+#project .meta li { list-style-type: none; margin: 0 0 10px 0;}
+#project .actions div { margin: 0 0 10px 0;}
+#project .actions p { margin: 0;}
+#project .links { margin: 0 0 20px 0;}
+#project .links div { display: inline-block; padding: 0 10px 0 0;}
+.project_main { clear: both; overflow: auto; }
+
+.project a { width: 120px; margin: 0 10px 10px 0; float: left; padding: 5px; height: 60px; text-align: bottom; border: 1px solid #CDD195; }
+.project a { display: block;}
+
+.donation { border-top-width: 1px; border-top-style: solid; padding-top: 10px; margin-bottom: 35px; position: relative;}
+.donation h2 { font-size: 14px; color: #666; margin: 0 ;}
+.donation .tags a { display: inline-block; font-size: 11px; font-weight: normal; color: #666; text-decoration: none; background: #F3E9D1; padding: 2px; margin: 0 6px 0 0;}
+.donation_comment { margin: 5px 0;}
+#donation_do_widget { position: absolute; top: 10px; right: 0; width: 150px; text-align: right; }
+#donation_do_widget .donation_number { padding: 4px 10px; font-size: 12px; display: inline-block; background: #D9DAAA; }
+#donation_do_widget .donation_do { display: inline-block; }
+#donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
+
+
+.long_text { width: 500px; font-size: 14px; }
+.long_text p { line-height: 22px; }
+
+.user_page {}
+.user_page header { background: #EBE8CC; padding: 20px; position: relative;}
+.user_page header h1 { font-size: 28px; margin: 0 0 0 72px; }
+.user_page header img { vertical-align: middle; position: absolute; top: 0; left: 0; }
+#donations_last_month { position: absolute; top: 25px; left: 300px; }
+#donations_last_month small { display: block}
+#donations_overall { position: absolute; top: 25px; left: 450px; }
+#donations_last_month, #donations_overall { font-size: 14px; }
+#user_nav { margin: 20px 0;}
+#edit_your_profile { float: right; }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+	body { border: 2px solid red;}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+
+
+@media only screen  and (max-width : 880px) {
+	body { margin: 0; padding: 0; }
+	#container { width: auto; margin: 0; border-width: 15px}
+	#header { position: relative; padding: 10px 0;}
+		#nav_site { }
+		#nav_personal { position: absolute; top: 10px; right: 10px; text-align: left; }
+	#home { padding-top: 0;}
+	#main_content { margin-top: 0; margin-bottom: 10%; }
+	.content_column, .alert { padding-left: 5%; padding-right: 5%; }
+	.content_full {  }
+
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+
+
+</style>
+</head>
+<body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
+
+
+
+<div id="container">
+
+	<section id="header">
+		<div id="logo"><a href="/">TrackDons</a></div>
+		<section id="nav_site" class="content_column">
+			<ul>
+				<li><%= link_to t('Projects'), controller: 'projects' %></li>
+				<li><%= link_to t('Donations'), controller: 'donations' %></li>
+				<li><%= link_to t('Users'), users_path %></li>
+				<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
+			</ul>
+		</section>
+		<section id="nav_personal">
+			<ul>
+				<% if logged_in? %>
+					<li>Hello <%= link_to current_user.name, current_user %></li>
+					<li>Track Donation</li>
+					<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+				<% else %>
+				  	<li><%= link_to "Track your first donation", signup_path %></li>
+				  	<li><%= link_to "Login", login_path %></li>
+				<% end %>
+				
+			</ul>
+		</section>
+	</section>
+
+	<section id="main_content">
+
+		<% flash.each do |message_type, message| %>
+		  <div class="alert alert-<%= message_type %>"><%= message %></div>
+		<% end %>
+
+		<%= yield %>
+
+	</section>
+
+	<section id="footer">
+		
+
+
+	</section>
+
+</div> 
+
+<%= "Locale: #{I18n.locale}" %>
+<%= debug(params) if Rails.env.development? %>
+
+
+</body>
+</html>

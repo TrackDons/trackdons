@@ -1,0 +1,9 @@
+development: &non_production_settings
+  site_url: en.trackdons.local
+  english_website_url: en.trackdons.local
+  spanish_website_url: es.trackdons.local
+
+production: &production_settings
+  site_url: en.trackdons.org
+  english_website_url: en.trackdons.org
+  spanish_website_url: es.trackdons.org

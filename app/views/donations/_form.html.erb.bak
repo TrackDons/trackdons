@@ -1,0 +1,22 @@
+  
+  <%= form_for([@project, @project.donations.build]) do |f| %>
+
+    <p>
+      <%= f.label :quantity %><br>
+      <%= f.text_field :quantity %>
+    </p>
+    <p>
+      <%= f.label :currency %><br>
+      <%= f.text_field :currency %>
+    </p>
+    <p>
+      <%= f.label :date %><br>
+      <%= f.date_field :date %>
+    </p>
+    
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+   
