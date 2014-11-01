@@ -1,0 +1,55 @@
+
+<section class="content_column">
+
+  <h1><%= t 'projects.new_project' %></h1>
+
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+
+  <%= form_for :project, url: projects_path, html: {class: "simple_form"} do |f| %>
+
+    <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited
+        this article from being saved:</h2>
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <p>
+      <%= f.label(:name, t('project')) %><br>
+      <%= f.autocomplete_field :name, autocomplete_project_name_projects_path %>
+    </p>
+   
+    <p>
+      <%= f.label(:description, t('description')) %><br>
+      <%= f.text_area(:description ) %>
+    </p>
+
+    <p>
+      <%= f.label(:url, t('url')) %><br>
+      <%= f.text_field :url %>
+    </p>
+
+    <p>
+      <%= f.label(:donation_url, t('donation_url')) %><br>
+      <%= f.text_field :donation_url %>
+    </p>
+
+    <p>
+      <%= f.label :twitter %><br>
+      <%= f.text_field :twitter %>
+    </p>
+   
+    <p>
+      <%= f.submit(t('create')) %>
+    </p>
+  <% end %>
+
+</section>
+

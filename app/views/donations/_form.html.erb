@@ -1,0 +1,50 @@
+<%= @donation_project_name %>
+
+<%= form_for :donation, url: donations_path do |f| %>
+
+  <div class="main_form">
+
+    <div class="track_don_project">
+
+      <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project' %>
+      <%# text_field_tag nil, nil, :id => 'play_game_name', :class => "mlm mtm", data: {autocomplete_source: Game.order(:name).map { |t| { :label => t.name, :value => t.id } } %>
+
+      <div class="hint"><%= f.label(:project_name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+    </div>
+
+    <div class="track_don_quantity">
+      <%= f.text_field :quantity, placeholder: '125' %>
+      <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>
+    </div>
+
+    <%# f.label :currency %>
+    <%# f.text_field :currency %>
+
+    <div class="track_don_date">
+      <%= f.date_field :date %>
+      <div class="hint"><%= f.label(:date, t('when_question')) %></div>
+    </div>
+
+  </div>
+
+  <div class="track_don_options">
+
+    <div>
+      <label><input type="checkbox" name="i_want_to_explain"> <%= t('i_want_to_explain_why') %></label>
+    </div>
+
+    <div>
+      <label><input type="checkbox" name="i_want_to_keep_private"> <%= t 'i_want_to_keep_private' %></label>
+    </div>
+
+  </div>
+
+  <%= f.hidden_field :project_id %>
+
+  <% if logged_in? %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% end %>
+  <%= f.hidden_field :currency, :value => '€' %>
+  <%= f.submit('TrackDon', class: 'big' ) %>
+
+<% end %>

@@ -1,0 +1,37 @@
+	
+	<div class="donation">
+    
+    <h2>
+      <strong><%= donation_quantity_currency(donation) %></strong>
+      to
+      <strong><%= link_to donation.project.name, projects_url + '/' + donation.project.slug %></strong>
+      <span class="tags">
+        <a href="#">Main Tag</a>
+      </span>
+    </h2>
+    
+
+    <div id="donation_do_widget">
+      <% unless params[:controller] == 'projects' && params[:action] == 'show' %> 
+        <div class="donation_number">
+          <%= donation.project.donations.count %>
+        </div>
+      <% end %>
+      <div class="donation_do">
+        <%= link_to 'TrackDon', projects_url, class: 'button', title: 'Track a Donation for this project' %>
+      </div>
+    </div>
+
+    <div class="donation_comment">
+      <%= donation.comment %> Donation comment. Many times won't exist. 
+    </div>
+
+    <small style="color: #aaa">
+      <%= donation.date %> (created_at: <%= donation.created_at %>)
+      <%= donation.user.name %> 
+      (<%= link_to donation.project.name, projects_url + '/' + donation.project.slug %>)
+      <%= link_to '#', project_donation_path(donation.project, donation) %>
+    </small>
+
+  </div>
+    

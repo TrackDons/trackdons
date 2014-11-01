@@ -1,0 +1,65 @@
+
+<section id="project" class="content_column">
+
+  <div class="project_main">
+  
+    <section class="meta">
+      <h1><%= @project.name %></h1>
+      <div class="links">
+        <div class="url"><a href="<%= @project.url %>"><%= @project.url %></a></div>
+        <div class="twitter"><a href="http://www.twitter.com/<%= @project.twitter %>">@<%= @project.twitter %></a></div>
+      </div>
+      <div class="description">
+        <%= @project.description %>
+      </div>
+      <div class="facts">
+        <ul>
+          <li><%= @project.donations.where('date >= ?', 1.month.ago).count %> donations in the last week</li>
+          <li><%= @project.users.distinct.count %> people have donated in total</li>
+          <li><%= @project.donations.count %> donations in total</li>
+          <!-- <li>People who donate to Wikipedia repeat 1,3 times, in an average of 8,4 months</li> -->
+        </ul>
+      </div>
+    </section>
+
+    <section class="actions">
+      <div>
+        <p><%= t('projects.have_you_donated') %></p>
+        <button>TrackDon</button>
+      </div>
+      <div>
+        <p><%= t('projects.do_you_want_to_actually_donate') %></p>
+        <a href="<%= @project.donation_url %>" class="button"><%= t('projects.donate_in_project_site') %></a>
+      </div>
+      <div>
+        <p><%= t 'invite_your_friends_to_this_page' %></p>
+        <a href="mailto:&subject=Has hecho alguna donación?&body=Mira este site para llevar un registro de las donaciones que haces, y así motivar a los demás a que también donen. Por ejemplo, mira mi donación a <%= @project.name %> ToDo: URL_SITE/PROJECT" class="button"><%= t 'invite' %></a>
+      </div>
+      <!-- <div class="similar_projects">
+        <p>Similar projects</p>
+        <ul>
+          <li><a href="#">WadusWiki</a></li>
+          <li><a href="#">WikiWadus</a></li>
+          <li><a href="#">TheDefinitiveWiki</a></li>
+        </ul>
+      </div> -->
+    </section>
+
+  </div>
+
+  <h2><%= t 'Donations' %></h2>
+
+  <%= render @project.donations %>
+  
+
+
+  <h2><%= t 'did_you_track' %> </h2>
+  
+  <%= form_for([@project, @project.donations.build]) do |f| %>
+    <%= render 'donations/form' %>
+  <% end %>
+ 
+  <%= link_to 'Edit', edit_project_path(@project) %>
+
+</section>
+
