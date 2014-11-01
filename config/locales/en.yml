@@ -1,0 +1,59 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  # generics
+  project: 'Project'
+  projects: 'Projects'
+  description: 'Description'
+  url: 'URL'
+  donation_url: 'Donation URL'
+  create: 'Create'
+  donations: 'Donations'
+  users: 'Users'
+  about: 'About'
+  invite: 'Invite'
+  # home
+  tagline: 'A donation diary for projects that matter to you'
+  main_bullet_1: 'Recruit more supporters to projects you believe in by showing your donations'
+  main_bullet_2: "Keep track of the projects you have supported -- and don't forget to keep doing so"
+  main_bullet_3: 'Discover projects that you should be supporting'
+  read_more_about_this_project: 'Read more about this project'
+  track_a_donation: 'Track a donation'
+  track_your_first_donation: 'Track your first donation'
+  login_if_you_already: 'Login if you already have tracked'
+  # donations
+  donation_created: 'Donation created! You are amazing'
+  # donations form
+  how_much_question: 'How much?'
+  when_question: 'When?'
+  i_want_to_explain_why: 'I want to explain why I have donated to encouraged others to do so'
+  i_want_to_keep_private: 'I want to keep my donation private'
+  projects:
+    project: 'Project'
+    all_projects: 'All projects'
+    new_project: 'New project'
+    have_you_donated: 'Have you donated to the project?'
+    do_you_want_to_actually_donate: 'Do you want to actually donate to the project?'
+    donate_in_project_site: "Donate in project's site"
+    did_you_track: 'Did you donate to this projects? TrackDon!'
+    invite_your_friends_to_this_page: 'Invite your friends to this page'

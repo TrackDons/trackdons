@@ -1,0 +1,41 @@
+<section id="user" class="user_page content_column">
+
+	<%= render 'header' %>
+
+	<% provide(:title, "Edit user") %>
+  <h1>Update your profile</h1>
+
+  <div class="row">
+    <%= form_for(@user, html: {class: "simple_form"}) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <p>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </p>
+
+      <p>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </p>
+
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </p>
+
+      <p>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </p>
+
+      <%= f.submit "Save changes" %>
+    <% end %>
+
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails">change your avatar at gravatar.com</a>
+    </div>
+  </div>
+
+</section>
