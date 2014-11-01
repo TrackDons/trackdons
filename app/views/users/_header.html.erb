@@ -1,0 +1,17 @@
+
+  <header>
+    <h1>
+      <%= gravatar_for(@user, options = { :size => 72 }) %>
+      <%= @user.name %>
+    </h1>
+
+    <div id="donations_last_month">
+      <%= @user.donations.where('date >= ?', 1.month.ago).sum(:quantity) %> donated 
+      <small>in the last month</small>
+    </div>
+
+    <div id="donations_overall">
+      <%= @user.donations.sum(:quantity) %> in total 
+    </div>
+
+  </header>

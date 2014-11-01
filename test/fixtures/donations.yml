@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 9.99
+  currency: MyString
+  date: 2014-10-18
+  comment: MyText
+  tags: MyString
+  project_id: 
+
+two:
+  quantity: 9.99
+  currency: MyString
+  date: 2014-10-18
+  comment: MyText
+  tags: MyString
+  project_id: 
