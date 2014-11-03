@@ -12,7 +12,10 @@
 //
 //= require jquery
 //= require jquery-ui/autocomplete
+//= require jquery-ui/tooltip
 //= require jquery_ujs
+//= require tipsy
 //= require autocomplete-rails
+//= require slidebars
 //= require turbolinks
 //= require_tree .

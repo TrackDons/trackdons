@@ -43,10 +43,12 @@ en:
   login_if_you_already: 'Login if you already have tracked'
   # donations
   donation_created: 'Donation created! You are amazing'
+  donations:
+    keep_the_quantity_private: 'Keep the quantity private'
   # donations form
   how_much_question: 'How much?'
-  when_question: 'When?'
-  i_want_to_explain_why: 'I want to explain why I have donated to encouraged others to do so'
+  when_did_you_donate: 'When did you donate?'
+  i_want_to_explain_why: 'I want to explain why I have donated to encourage others to do so'
   i_want_to_keep_private: 'I want to keep my donation private'
   projects:
     project: 'Project'
@@ -55,5 +57,5 @@ en:
     have_you_donated: 'Have you donated to the project?'
     do_you_want_to_actually_donate: 'Do you want to actually donate to the project?'
     donate_in_project_site: "Donate in project's site"
-    did_you_track: 'Did you donate to this projects? TrackDon!'
+    did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
