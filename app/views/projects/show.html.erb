@@ -6,7 +6,7 @@
     <section class="meta">
       <h1><%= @project.name %></h1>
       <div class="links">
-        <div class="url"><a href="<%= @project.url %>"><%= @project.url %></a></div>
+        <div class="url"><a href="<%= @project.url %>"><%= prettify_url(@project.url) %></a></div>
         <div class="twitter"><a href="http://www.twitter.com/<%= @project.twitter %>">@<%= @project.twitter %></a></div>
       </div>
       <div class="description">
@@ -33,7 +33,7 @@
       </div>
       <div>
         <p><%= t 'invite_your_friends_to_this_page' %></p>
-        <a href="mailto:&subject=Has hecho alguna donación?&body=Mira este site para llevar un registro de las donaciones que haces, y así motivar a los demás a que también donen. Por ejemplo, mira mi donación a <%= @project.name %> ToDo: URL_SITE/PROJECT" class="button"><%= t 'invite' %></a>
+        <a target="_blank" href="mailto:?to=&subject=Has hecho alguna donación?&body=Mira este site para llevar un registro de las donaciones que haces, y así motivar a los demás a que también donen. Por ejemplo, mira mi donación a <%= @project.name %> ToDo: URL_SITE/PROJECT" class="button"><%= t 'invite' %></a>
       </div>
       <!-- <div class="similar_projects">
         <p>Similar projects</p>
@@ -52,14 +52,15 @@
   <%= render @project.donations %>
   
 
+  <section id="track_donation">
+    <h2><%= t 'projects.did_you_track' %> </h2>
+    
+    <%= form_for([@project, @project.donations.build]) do |f| %>
+      <%= render 'donations/form' %>
+    <% end %>
+  </section>
 
-  <h2><%= t 'projects.did_you_track' %> </h2>
-  
-  <%= form_for([@project, @project.donations.build]) do |f| %>
-    <%= render 'donations/form' %>
-  <% end %>
- 
-  <%= link_to 'Edit', edit_project_path(@project) %>
+  <%# link_to 'Edit', edit_project_path(@project) %>
 
 </section>
 

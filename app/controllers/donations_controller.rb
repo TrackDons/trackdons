@@ -21,6 +21,7 @@ class DonationsController < ApplicationController
   def create
     # ToDo: Check if user is logged in
     @donation = current_user.donations.build(donation_params)
+    donation_params
     if @donation.save
       flash[:success] = t(:donation_created)
       project = Project.friendly.find(donation_params[:project_id])
@@ -36,7 +37,7 @@ class DonationsController < ApplicationController
   
   private
     def donation_params
-      params.require(:donation).permit(:quantity, :currency, :date, :tag_list, :project_id)
+      params.require(:donation).permit(:quantity, :currency, :date, :tag_list, :project_id, :comment, :quantity_privacy)
     end
 
 end

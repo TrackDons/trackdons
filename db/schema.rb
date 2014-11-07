@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141021182450) do
     t.date     "date"
     t.text     "comment"
     t.string   "tags"
+    t.boolean  "quantity_privacy", default: false
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at"

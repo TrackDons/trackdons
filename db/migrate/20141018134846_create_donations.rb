@@ -6,6 +6,7 @@ class CreateDonations < ActiveRecord::Migration
       t.date :date
       t.text :comment
       t.string :tags
+      t.boolean :quantity_privacy, default: false
       t.references :project, index: true
       t.references :user, index: true
 

@@ -34,12 +34,12 @@ projects = Project.create([
 	{ id: 3, name: 'My fantastic organization', url: 'http://www.mysteryworld.es', twitter: 'FantasticOrg', description: 'Mi descripción no puede dejar de ser fantástica'  },
 	{ id: 4, name: 'My Wadus ONG', url: 'http://www.mywadus.es', twitter: 'WadusONG', description: 'ONG description ONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG description'  }
 ])
-Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 1, user_id: 1)
-Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 1, user_id: 2)
-Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 2, user_id: 3)
-Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 2, user_id: 4)
-Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 3, user_id: 5)
-Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 3, user_id: 6)
-Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 4, user_id: 7)
-Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 4, user_id: 8)
+Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 2, user_id: 3, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 2, user_id: 4, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 3, user_id: 5, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 3, user_id: 6, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 4, user_id: 7, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 4, user_id: 8, comment: 'Wadus comment', quantity_privacy: 1)
 

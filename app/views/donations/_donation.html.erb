@@ -5,9 +5,9 @@
       <strong><%= donation_quantity_currency(donation) %></strong>
       to
       <strong><%= link_to donation.project.name, projects_url + '/' + donation.project.slug %></strong>
-      <span class="tags">
+      <!-- <span class="tags">
         <a href="#">Main Tag</a>
-      </span>
+      </span> -->
     </h2>
     
 
@@ -23,15 +23,15 @@
     </div>
 
     <div class="donation_comment">
-      <%= donation.comment %> Donation comment. Many times won't exist. 
+      <%= donation.comment %>
     </div>
 
-    <small style="color: #aaa">
+    <!-- <small style="color: #aaa">
       <%= donation.date %> (created_at: <%= donation.created_at %>)
       <%= donation.user.name %> 
       (<%= link_to donation.project.name, projects_url + '/' + donation.project.slug %>)
       <%= link_to '#', project_donation_path(donation.project, donation) %>
-    </small>
+    </small> -->
 
   </div>
     
