@@ -1,6 +1,20 @@
-Libraries being used: 
+### To set up the project
+
+```
+git clone the repo
+bundle install
+rake db:setup
+rails serve
+```
+
+### To work on a feature
+
+Create a branch a pull request. 
+
+### Libraries being used: 
 
 * http://plugins.adchsm.me/slidebars
+
 
 ---- 
 == README
