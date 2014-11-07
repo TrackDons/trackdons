@@ -2,10 +2,23 @@
 
 ```
 git clone the repo
+cd trackdons
 bundle install
 rake db:setup
 rails serve
 ```
+
+i18n is being set up in place, and will be controlled (partially) through subdomains. So you can set up some development hosts:
+
+````
+127.0.0.1   en.trackdons.local
+127.0.0.1   es.trackdons.local
+127.0.0.1   fr.trackdons.local
+127.0.0.1   it.trackdons.local
+````
+
+Then navigate to: http://en.trackdons.local:3000
+
 
 ### To work on a new feature / bug / improvement
 
