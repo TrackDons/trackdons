@@ -7,41 +7,23 @@ rake db:setup
 rails serve
 ```
 
-### To work on a feature
+### To work on a new feature / bug / improvement
 
-Create a branch a pull request. 
+Create a branch and pull request. 
+
+* Have a local copy of the repo
+* Create a new branch for your work (git checkout -b new-feature)
+* Commit your changes (git commit -am 'Description of the commits')
+* Push to the branch (git push origin new-feature)
+* Create a new Pull Request
+
 
 ### Libraries being used: 
 
 * http://plugins.adchsm.me/slidebars
 
+### Software versions
 
----- 
-== README
+* Rails 4.1.6
+* ruby 2.0.0p247
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
