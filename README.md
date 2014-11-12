@@ -1,5 +1,10 @@
 ### To set up the project
 
+It assumes you have running
+
+* Rails 4.1.6
+* ruby 2.0.0p247
+
 ```
 git clone git@github.com:furilo/trackdons.git
 cd trackdons
@@ -35,8 +40,5 @@ Create a branch and pull request.
 
 * http://plugins.adchsm.me/slidebars
 
-### Software versions
 
-* Rails 4.1.6
-* ruby 2.0.0p247
 
