@@ -15,7 +15,6 @@ class DonationsController < ApplicationController
 
   def show
     @donation = Donation.find(params[:id])
-    donation_quantity_with_currency = 'wadus'
   end
 
   def create

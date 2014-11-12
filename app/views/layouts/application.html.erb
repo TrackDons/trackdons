@@ -32,7 +32,7 @@ a.button { text-decoration: none; }
 
 /* fonts */
 body { font-weight: 400; font-size: 1em; font-family: 'Raleway', Arial, sans-serif; overflow: hidden; overflow-y: scroll; min-height: 590px;color: #565631;}
-input[type='submit'], textarea, button { font-family: 'Raleway', Arial, sans-serif; }
+input[type='submit'], textarea, button, .ui-autocomplete { font-family: 'Raleway', Arial, sans-serif; }
 body .tipsy { font-size: 11px; }
 
 /* structure */
@@ -83,7 +83,9 @@ h2 { font-size: 24px; }
 #login_if_you_already { position: absolute; top: 2px; right: 0; }
 #login_if_you_already a { text-decoration: none; color: #97A732; }
 
-.main_form input, #i_want_to_explain_content textarea { padding: 4px 8px; font-size: 24px; height: 32px; border: 1px dashed #7C9200; margin-bottom: 4px; font-family: 'Raleway', Arial, sans-serif; font-weight: bold}
+.main_form input, #i_want_to_explain_content textarea, .track_don_project_name { padding: 4px 8px; font-size: 24px; height: 32px; border: 1px dashed #7C9200; margin-bottom: 4px; font-family: 'Raleway', Arial, sans-serif; font-weight: bold}
+
+
 .main_form sel
 .main_form { clear: both; margin: 0 0 20px 0;}
 .track_don_project, .track_don_quantity, .track_don_date { display: inline-block; }
@@ -143,6 +145,8 @@ h2 { font-size: 24px; }
 #donations_last_month, #donations_overall { font-size: 14px; }
 #user_nav { margin: 20px 0;}
 #edit_your_profile { float: right; }
+
+.ui-autocomplete { border: 1px solid red; font-family: }
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -227,6 +231,7 @@ iPad 3
 
 
 </style>
+
 </head>
 <body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
 
