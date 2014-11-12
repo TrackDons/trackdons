@@ -3,11 +3,16 @@
     
     <h2>
       <strong><%= donation_quantity_currency(donation) %></strong>
-      to
-      <strong><%= link_to donation.project.name, projects_url + '/' + donation.project.slug %></strong>
-      <!-- <span class="tags">
-        <a href="#">Main Tag</a>
-      </span> -->
+      <% unless params[:controller] == 'projects' && params[:action] == 'show' %> 
+        to
+        <strong><%= link_to donation.project.name, projects_url + '/' + donation.project.slug %></strong>
+        <!-- <span class="tags">
+          <a href="#">Main Tag</a>
+        </span> -->
+      <% end %>
+      <% unless params[:controller] == 'users' && params[:action] == 'show' %> 
+        by <%= link_to donation.user.name, donation.user %>
+      <% end %>
     </h2>
     
 

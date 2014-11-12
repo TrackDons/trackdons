@@ -5,10 +5,20 @@
 
     <div class="track_don_project">
 
-      <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project' %>
-      <%# text_field_tag nil, nil, :id => 'play_game_name', :class => "mlm mtm", data: {autocomplete_source: Game.order(:name).map { |t| { :label => t.name, :value => t.id } } %>
+      <% if params[:controller] == 'projects' %> 
+        <div class="track_don_project_name">
+          <%= @project.name %>
+        </div>
+        <%= f.hidden_field :project_id, :value => @project.id %>
+      <% else %>
+        <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project', :"data-autocomplete-label" => "Sorry, nothing found." %>
+      <% end %>
 
-      <div class="hint"><%= f.label(:project_name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+      <% if params[:controller] == 'projects' %> 
+        <div class="hint"><%= link_to t('need_to_trackdon_for_another_project'), "#{root_path}#track_donation" %></div>
+      <% else %>
+        <div class="hint"><%= f.label(:project_name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+      <% end %>
     </div>
 
     <div class="track_don_quantity" style="display: none">
