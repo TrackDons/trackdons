@@ -29,6 +29,7 @@ a.button { text-decoration: none; }
 #track_donation header h2, h1 { border-color: #7C9200; color: #7C9200; }
 #project .meta { background: #EBE8CC; }
 .donation { border-top-color: #D9DAAA;}
+.user_page header, #first_donation_pending { background: #EBE8CC; }
 
 /* fonts */
 body { font-weight: 400; font-size: 1em; font-family: 'Raleway', Arial, sans-serif; overflow: hidden; overflow-y: scroll; min-height: 590px;color: #565631;}
@@ -79,16 +80,17 @@ h2 { font-size: 24px; }
 
 #track_donation { border-top: 1px solid #FFF; padding-right: 100px; padding-top: 20px;}
 #track_donation header { margin: 20px 0; position: relative; }
+#track_donation h2 { font-size: 18px;}
 #track_donation header h2 { font-size: 16px; border-bottom-width: 4px; border-bottom-style: solid; padding-bottom: 3px;  }
 #login_if_you_already { position: absolute; top: 2px; right: 0; }
 #login_if_you_already a { text-decoration: none; color: #97A732; }
 
 .main_form input, #i_want_to_explain_content textarea, .track_don_project_name { padding: 4px 8px; font-size: 24px; height: 32px; border: 1px dashed #7C9200; margin-bottom: 4px; font-family: 'Raleway', Arial, sans-serif; font-weight: bold}
-.track_don_project_name { border: 1px dashed #7C9200 ;}
+.track_don_project_name { border: 1px dashed #7C9200; overflow: hidden;}
 
 .main_form { clear: both; margin: 0 0 20px 0;}
 .track_don_project, .track_don_quantity, .track_don_date { display: inline-block; }
-.track_don_project { width: 540px; margin-bottom: 20px;}
+.track_don_project { width: 540px; margin-bottom: 20px; overflow: hidden;}
 .track_don_quantity { width: 90px; margin-right: 10px; }
 .track_don_quantity_B { width: 375px; margin-bottom: 20px; float: right; }
 .main_form .track_don_quantity_B input { width: 90px; margin: 0;}
@@ -108,7 +110,7 @@ h2 { font-size: 24px; }
 #project { margin-top: 30px; overflow: hidden; }
 #project .meta { width: 42%; float: left; padding: 2% 4%; font-size: 12px; }
 #project .actions { width: 42%; float: right; padding: 0 4%; }
-#project h1 { font-size: 36px; margin: 10px 0;}
+#project h1 { font-size: 32px; margin: 10px 0;}
 #project .description { margin: 0 0 40px 0; font-size: 12px }
 #project .meta ul { margin: 0; padding: 0; ;}
 #project .meta li { list-style-type: none; margin: 0 0 10px 0;}
@@ -135,7 +137,7 @@ h2 { font-size: 24px; }
 .long_text p { line-height: 22px; }
 
 .user_page {}
-.user_page header { background: #EBE8CC; padding: 20px; position: relative;}
+.user_page header { padding: 20px; position: relative;}
 .user_page header h1 { font-size: 28px; margin: 0 0 0 72px; }
 .user_page header img { vertical-align: middle; position: absolute; top: 0; left: 0; }
 #donations_last_month { position: absolute; top: 25px; left: 300px; }
@@ -146,6 +148,10 @@ h2 { font-size: 24px; }
 #edit_your_profile { float: right; }
 
 .ui-autocomplete { border: 1px solid red; font-family: }
+
+#first_donation_pending { padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
+
+
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -234,7 +240,6 @@ iPad 3
 </head>
 <body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
 
-
 <div class="sb-site-container">
 <div id="container" >
 
@@ -272,6 +277,10 @@ iPad 3
 
 		<% flash.each do |message_type, message| %>
 		  <div class="alert alert-<%= message_type %>"><%= message %></div>
+		<% end %>
+
+		<% if temp_donations_exist %>
+			<%= render 'donations/temp_save' %>
 		<% end %>
 
 		<%= yield %>
@@ -313,6 +322,7 @@ iPad 3
 
 <%= "Locale: #{I18n.locale}" %>
 <%= debug(params) if Rails.env.development? %>
+<%= debug(cookies) if Rails.env.development? %>
 
 
 </body>

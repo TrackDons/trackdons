@@ -1,0 +1,8 @@
+  
+  <div class="content_column" id="first_donation_pending">
+    <h2>Woooa! Congratulations</h2>
+    <p>You have tracked your first donation. Wasn't that easy? But... you wouldn't want to loose it, right? Add your email and a password and you'll have your account created. </p>
+    <p><%= cookie_donation[:project_name] %></p>
+    <% @user = User.new # TODO solve this ñapa %>
+    <%= render 'users/new.html.erb' %>
+  </div>
