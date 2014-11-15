@@ -36,8 +36,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to TrackDons. Hope you track a lot of dons!"
-      redirect_to @user
+      if cookies[:donation]
+        donation_save(cookie_donation)
+        flash[:success] = "Hey, donation tracked, and you have your profile ready to keep tracking donations! Now this is a great day."
+        cookies.delete(:donation)
+      else
+        flash[:success] = "Welcome to TrackDons. Hope you track a lot of dons!"
+        redirect_to @user
+      end
     else
       render 'new'
     end

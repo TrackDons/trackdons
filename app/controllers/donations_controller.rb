@@ -18,25 +18,35 @@ class DonationsController < ApplicationController
   end
 
   def create
-    # ToDo: Check if user is logged in
-    @donation = current_user.donations.build(donation_params)
-    donation_params
-    if @donation.save
-      flash[:success] = t(:donation_created)
-      project = Project.friendly.find(donation_params[:project_id])
-      redirect_to project_donations_path(project.friendly_id) # hacer la vista para una donation
+    unless logged_in?
+      save_donation_to_cookie(donation_params)
+      cookie_donation
+      redirect_to root_url
     else
-      render 'new'
+      donation_save(donation_params)
+      if cookies[:donation]
+        cookies.delete(:donation)
+      end
     end
   end
 
-
-  # @user.tag_list.add("awesome", "slick")
-  
-  
   private
+
     def donation_params
-      params.require(:donation).permit(:quantity, :currency, :date, :tag_list, :project_id, :comment, :quantity_privacy)
+      params.require(:donation).permit(:quantity, :currency, :date, :project_id, :comment, :quantity_privacy)
+    end
+
+    def save_donation_to_cookie(donation_params)
+      cookies[:donation] = { 
+        :quantity => donation_params[:quantity],
+        :currency => donation_params[:currency],
+        :date => donation_params[:date],
+        #:tag_list => donation_params[:tag_list],
+        :project_id => donation_params[:project_id],
+        :comment => donation_params[:comment],
+        :quantity_privacy => donation_params[:quantity_privacy],
+        :user_id => donation_params[:user_id]
+      }.to_json
     end
 
 end
