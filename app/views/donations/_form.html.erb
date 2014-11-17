@@ -64,8 +64,6 @@
 
   </div>
 
-  <%= f.hidden_field :project_id %>
-
   <% if logged_in? %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
