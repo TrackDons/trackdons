@@ -9,7 +9,7 @@ class Donation < ActiveRecord::Base
   attr_accessor :project_name
   # acts_as_taggable_on :tags
 
-  validates :quantity, presence: true
+  validates :quantity_cents, presence: true
   validates :currency, presence: true
   validates :project_id, presence: true
   validates :user_id, presence: true

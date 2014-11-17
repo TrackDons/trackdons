@@ -29,6 +29,12 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </p>
 
+      <p>
+        <%= f.label :country, t('Country') %>
+        <%= country_code_select(:user, :country) %>
+      </p>
+
+
       <%= f.submit "Save changes" %>
     <% end %>
 

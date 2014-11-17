@@ -36,9 +36,11 @@ Create a branch and pull request.
 * Create a new Pull Request
 
 
-### Libraries being used: 
+### Libraries/gems being used (see Gemfile for complete reference): 
 
 * http://plugins.adchsm.me/slidebars
+* https://github.com/onomojo/i18n_country_select
+* https://github.com/onomojo/i18n-country-translations
 
 
 

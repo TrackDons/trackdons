@@ -35,6 +35,11 @@
     </p>
 
     <p>
+      <%= f.label :country, t('Country') %>
+      <%= country_code_select(:user, :country) %>
+    </p>
+
+    <p>
       <%= f.submit "Create my account"  %>
     </p>
 

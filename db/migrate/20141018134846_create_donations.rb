@@ -1,7 +1,7 @@
 class CreateDonations < ActiveRecord::Migration
   def change
     create_table :donations do |t|
-      t.decimal :quantity
+      t.integer :quantity_cents
       t.string :currency
       t.date :date
       t.text :comment

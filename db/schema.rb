@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20141021182450) do
 
   create_table "donations", force: true do |t|
-    t.decimal  "quantity"
+    t.integer  "quantity_cents"
     t.string   "currency"
     t.date     "date"
     t.text     "comment"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20141021182450) do
     t.string   "name"
     t.string   "username"
     t.string   "email"
+    t.string   "country"
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
