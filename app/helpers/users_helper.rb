@@ -12,7 +12,7 @@ module UsersHelper
   end
 
   def donation_quantity_currency(donation) # buscar gema para trabajar con monedas
-    donation_currency = "#{donation.quantity}#{donation.currency}"
+    donation_currency = "#{donation.quantity_cents}#{donation.currency}"
   end
 
 end

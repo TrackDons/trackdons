@@ -10,11 +10,13 @@ User.create!(name:  "Álvaro Ortiz",
              email: "alvaro@furilo.com",
              password:              "alvaro",
              password_confirmation: "alvaro",
+             country: 'ES',
              admin: true)
 User.create!(name:  "Pedro Ximenez",
              email: "pedro@furilo.com",
              password:              "alvaro",
              password_confirmation: "alvaro",
+             country: 'US',
              admin: true)
 
 
@@ -25,6 +27,7 @@ User.create!(name:  "Pedro Ximenez",
   User.create!(name:  name,
                email: email,
                password:              password,
+               country: 'GB',
                password_confirmation: password)
 end
 
@@ -37,14 +40,14 @@ projects = Project.create([
   { id: 6, name: 'CIC - Centro de Integración Ciudadana Monterrey', url: 'http://www.cic.mx', twitter: 'cicmty', description: 'El CIC es una red de confianza 100% ciudadana que enlaza e integra al ciudadano y las autoridades por medio de espacios claros, confiables y auténticos de participación en temas que impactan a la sociedad, buscando despertar las conciencias y activar a los ciudadanos a trabajar en suma para mejorar nuestra sociedad. Estos espacios se fundamentan en el aprovechamiento de nuevas tecnologías como las redes sociales y nuestra plataforma Tehuan.', donation_url: 'http://www.cic.mx/?p=2166'},
   { id: 7, name: 'Mozilla - Firefox', url: 'http://www.mozilla.org', twitter: 'mozilla', description: "We're a global community dedicated to making the web better and more open for all. Join us to imagine, build & teach the web's future.", donation_url: 'https://sendto.mozilla.org'}
 ])
-Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 2, user_id: 3, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 2, user_id: 4, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity: '10', currency: '€', date: '2014-10-14', project_id: 3, user_id: 5, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity: '20', currency: '€', date: '2014-08-08', project_id: 3, user_id: 6, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity: '100', currency: '€', date: '2014-10-14', project_id: 4, user_id: 7, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity: '220', currency: '€', date: '2014-08-08', project_id: 4, user_id: 8, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity: '25', currency: '$', date: '2014-10-14', project_id: 5, user_id: 1, comment: 'You should donate too!', quantity_privacy: 0)
-Donation.create(quantity: '25', currency: '€', date: '2014-08-08', project_id: 5, user_id: 2, comment: 'Fighting for privacy in the Internet', quantity_privacy: 1)
+Donation.create(quantity_cents: '10', currency: '€', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '20', currency: '€', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '100', currency: '€', date: '2014-10-14', project_id: 2, user_id: 3, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '220', currency: '€', date: '2014-08-08', project_id: 2, user_id: 4, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '10', currency: '€', date: '2014-10-14', project_id: 3, user_id: 5, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '20', currency: '€', date: '2014-08-08', project_id: 3, user_id: 6, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '100', currency: '€', date: '2014-10-14', project_id: 4, user_id: 7, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '220', currency: '€', date: '2014-08-08', project_id: 4, user_id: 8, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '25', currency: '$', date: '2014-10-14', project_id: 5, user_id: 1, comment: 'You should donate too!', quantity_privacy: 0)
+Donation.create(quantity_cents: '25', currency: '€', date: '2014-08-08', project_id: 5, user_id: 2, comment: 'Fighting for privacy in the Internet', quantity_privacy: 1)
 

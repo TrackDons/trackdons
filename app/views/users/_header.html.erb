@@ -6,12 +6,12 @@
     </h1>
 
     <div id="donations_last_month">
-      <%= @user.donations.where('date >= ?', 1.month.ago).sum(:quantity) %> donated 
+      <%= @user.donations.where('date >= ?', 1.month.ago).sum(:quantity_cents) %> donated 
       <small>in the last month</small>
     </div>
 
     <div id="donations_overall">
-      <%= @user.donations.sum(:quantity) %> in total 
+      <%= @user.donations.sum(:quantity_cents) %> in total 
     </div>
 
   </header>
