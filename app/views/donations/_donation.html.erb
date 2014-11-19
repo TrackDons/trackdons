@@ -13,6 +13,9 @@
       <% unless params[:controller] == 'users' && params[:action] == 'show' %> 
         by <%= link_to donation.user.name, donation.user %>
       <% end %>
+      <% unless params[:controller] == 'donations' && params[:action] == 'show' %> 
+        <%= link_to '#', donations_url + "/#{donation.id}" %>
+      <% end %>
     </h2>
     
 
