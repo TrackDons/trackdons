@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  language_name: 'Español'
   hello: "Hello world"
   home:
   tagline: 'Un diario de donaciones a projectos que te importan'

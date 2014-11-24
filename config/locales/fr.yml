@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  language_name: 'Français'
   hello: "Hello world"
   home:
   tagline: 'Wadus in fr'
