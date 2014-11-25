@@ -18,4 +18,14 @@ module Factories
     attrs[:password_confirmation] ||= attrs[:password]
     User.create!(attrs)
   end
+  
+  def create_donation(attrs = {})
+    attrs[:user]            ||= create_user
+    attrs[:project]         ||= create_project
+    attrs[:quantity_cents]  ||= 10
+    attrs[:currency]        ||= '€' 
+    attrs[:date]            ||= '2014-10-14'
+    attrs[:quantity_privacy]||= false
+    Donation.create!(attrs)
+  end
 end

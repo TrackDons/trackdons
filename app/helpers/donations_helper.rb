@@ -3,10 +3,7 @@ module DonationsHelper
   def donation_save(donation_params)
     @donation = current_user.donations.build(donation_params)
     if @donation.save
-      flash[:success] = t(:donation_created)
-      project = Project.friendly.find(donation_params[:project_id])
-      redirect_to project_donations_path(project.friendly_id) # TODO create the donation view with share buttons etc
-      return
+      redirect_to donation_path(@donation, :share_links => true)
     else
       render 'new'
     end

@@ -1,8 +1,42 @@
-
-	<section class="content_column">
-
-    <h1>Donation info</h1>
-
-    <%= render @donation %>
-
-  </section>
+<section class="content_column">
+<% if params[:share_links].present? %>
+  <div class="share_block">
+    <p>Hooray! Your donation is tracked. You can share it with your friends to encourage 
+      them to donate as well</p>
+    <ul class="buttons">
+      <li>
+        <a id='twitter' target='_blank' href="https://twitter.com/home?status=<%= u "Have you helped a great project today? Just tracked my latest donation with @trackdons #{ donation_url(@donation)}" %>">Share in Twitter</a>
+      </li>
+      <li>
+        <a id='facebook' target='_blank' href="http://www.facebook.com/sharer/sharer.php?u=<%= u donation_url(@donation) %>">Share in Facebook</a>
+      </li>
+      <li>
+        <a id='email' target='_blank' href='mailto:?subject=<%= u 'Have you donated lately?' %>&body=<%= u "Check out this website where you can keep track of all your donations and encourage others to donate. And checkout my latest donation to Wikiwadus here: #{ donation_url(@donation)}" %>'>Share by email</a>
+      </li>
+    </ul>
+  </div>
+<% end %>
+  <div class="tracked_donation">
+    <small>Your tracked donation:</small>
+    <%= gravatar_for(@donation.user, options = { :size => 72 }) %>
+    <h2>
+      <strong>
+        <%= link_to @donation.user.name, @donation.user %>
+        donated 
+        <%= donation_quantity_currency(@donation) %>
+        to
+        <%= link_to @donation.project.name, projects_url + '/' + @donation.project.slug %>
+      </strong>
+    </h2> 
+    <%= render :partial => 'donation_do_widget', :locals => {:donation => @donation} %> 
+    <p><%= @donation.comment %></p>
+    <p class="donation_date">Donation Date: <%= @donation.date %></p>
+  </div>
+<hr/>
+<small>Next:</small>
+<ul>
+  <li><%= link_to "#{@donation.project.name} project page", project_path(@donation.project) %></li>
+  <li><%= link_to "More donations by #{@donation.user.name}", user_path(@donation.user) %></li>
+  <li><%= link_to "Other projects", projects_path %></li>
+</ul>
+</section>
