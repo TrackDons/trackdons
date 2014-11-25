@@ -74,7 +74,7 @@
 			<% available_locales.each do |locale_link| %>
 	      <%= locale_link %> ·
 	    <% end %>
-	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>
+	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>	      
 		</div>
 
 	</section>
@@ -106,7 +106,6 @@
 	<!-- Your right Slidebar content. -->
 	<p>Just a line of text to demonstrate the overlay effect.</p>
 </div>
-
 
 <%= "Locale: #{I18n.locale}" if Rails.env.development? %>
 <%# debug(request) if Rails.env.development? %>
