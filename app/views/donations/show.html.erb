@@ -1,42 +1,43 @@
 <section class="content_column">
 <% if params[:share_links].present? %>
-  <div class="share_block">
-    <p>Hooray! Your donation is tracked. You can share it with your friends to encourage 
-      them to donate as well</p>
-    <ul class="buttons">
+  <div id="share_block" class="call_to_action">
+    <p><%= t 'donations.show.donation_created' %></p>
+    <ul id="share_buttons">
       <li>
-        <a id='twitter' target='_blank' href="https://twitter.com/home?status=<%= u "Have you helped a great project today? Just tracked my latest donation with @trackdons #{ donation_url(@donation)}" %>">Share in Twitter</a>
+        <%= link_to t('donations.show.share_in_twitter'), "https://twitter.com/home?status=#{u t('donations.show.share_tweet', :url => donation_url(@donation))}", {:target => '_blank'} %>
       </li>
       <li>
-        <a id='facebook' target='_blank' href="http://www.facebook.com/sharer/sharer.php?u=<%= u donation_url(@donation) %>">Share in Facebook</a>
+        <%= link_to t('donations.show.share_in_facebook'), "http://www.facebook.com/sharer/sharer.php?u=#{u donation_url(@donation)}", {:target => '_blank'} %>
       </li>
       <li>
-        <a id='email' target='_blank' href='mailto:?subject=<%= u 'Have you donated lately?' %>&body=<%= u "Check out this website where you can keep track of all your donations and encourage others to donate. And checkout my latest donation to Wikiwadus here: #{ donation_url(@donation)}" %>'>Share by email</a>
+        <%= link_to t('donations.show.share_by_email'), 
+        "mailto:?subject=#{u t('donations.show.share_email_subject')}&body=#{u t('donations.show.share_email_body', :project => @donation.project.name, :url => donation_url(@donation))}", {:target => '_blank'} %>
       </li>
     </ul>
   </div>
 <% end %>
   <div class="tracked_donation">
-    <small>Your tracked donation:</small>
-    <%= gravatar_for(@donation.user, options = { :size => 72 }) %>
+  <% if params[:share_links].present? %>
+    <small><%= t('donations.show.your_tracked_donation') %></small>
+  <% end %>
+    <%= gravatar_for(@donation.user, options = { :size => 45 }) %>
     <h2>
       <strong>
-        <%= link_to @donation.user.name, @donation.user %>
-        donated 
-        <%= donation_quantity_currency(@donation) %>
-        to
-        <%= link_to @donation.project.name, projects_url + '/' + @donation.project.slug %>
+        <%= t('donations.show.user_donated_quantity_to_project', 
+            :name => link_to(@donation.user.name, @donation.user),
+            :donation => donation_quantity_currency(@donation), 
+            :project => link_to(@donation.project.name, project_path(@donation.project))).html_safe %>
       </strong>
     </h2> 
     <%= render :partial => 'donation_do_widget', :locals => {:donation => @donation} %> 
     <p><%= @donation.comment %></p>
-    <p class="donation_date">Donation Date: <%= @donation.date %></p>
+    <p class="donation_date"><%= t('donations.show.donation_date', :date => @donation.date) %></p>
   </div>
 <hr/>
-<small>Next:</small>
-<ul>
-  <li><%= link_to "#{@donation.project.name} project page", project_path(@donation.project) %></li>
-  <li><%= link_to "More donations by #{@donation.user.name}", user_path(@donation.user) %></li>
-  <li><%= link_to "Other projects", projects_path %></li>
+<small><%= t('donations.show.next') %></small>
+<ul id="next">
+  <li class="call_to_action"><%= link_to t('donations.show.project_page', :project => @donation.project.name), project_path(@donation.project) %></li>
+  <li class="call_to_action"><%= link_to t('donations.show.more_donations_by', :user => @donation.user.name) , user_path(@donation.user) %></li>
+  <li class="call_to_action"><%= link_to t('donations.show.other_projects'), projects_path %></li>
 </ul>
 </section>

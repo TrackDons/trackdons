@@ -24,4 +24,22 @@ es:
   home:
   tagline: 'Un diario de donaciones a projectos que te importan'
   # donations
-  donation_created: 'Donation created! You are amazing'
+  donations:
+    show:
+      donation_created: 'Viva! Tu donación queda apuntada. Compártela con tus amigos y anímales a que donen también'
+      keep_the_quantity_private: 'Mantener la cantidad en privado'
+      share_in_twitter: 'Compartir en Twitter'
+      share_in_facebook: 'Compartir en Facebook'
+      share_by_email: 'Compartir por email'
+      your_tracked_donation: 'Tu donación:'
+      user_donated_quantity_to_project: '%{name} donó %{donation} a %{project}'
+      share_email_subject: 'Has donado últimamente?'
+      share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{project}: %{url}'
+      share_tweet: 'Has colaborado con algún proyecto flipante hoy? Mi última donación en @trackdons: %{url}'
+      donation_date: 'Fecha de donación: %{date}'
+      next: 'Más:'
+      project_page: 'La página de %{project}'
+      more_donations_by: 'Más donaciones de %{user}'
+      other_projects: 'Otros proyectos'
+    donation_do_widget:
+      link_title: 'Anota tus donaciones con TrackDons'

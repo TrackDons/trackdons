@@ -136,10 +136,42 @@ h2 { font-size: 24px; }
 .donation h2 { font-size: 18px; color: #666; margin: 0 ;}
 .donation .tags a { display: inline-block; font-size: 11px; font-weight: normal; color: #666; text-decoration: none; background: #F3E9D1; padding: 2px; margin: 0 6px 0 0;}
 .donation_comment { margin: 15px 0;}
-#donation_do_widget { position: absolute; top: 10px; right: 0; width: 150px; text-align: right; }
+//#donation_do_widget { position: absolute; top: 10px; right: 0; width: 150px; text-align: right; }
+#donation_do_widget { float:right; margin-top: 5px; width: 150px; text-align: right; }
 #donation_do_widget .donation_number { padding: 4px 10px; font-size: 12px; display: inline-block; background: #D9DAAA; }
 #donation_do_widget .donation_do { display: inline-block; }
 #donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
+
+.call_to_action { background-color:#D9DAAA; padding:20px; background-color: #D9DAAA; }
+#share_block { width:610px; float:left; margin-bottom:40px;
+  p { font-size: 18px; margin-top:0px;}
+}
+ul#share_buttons, ul#next { list-style-type: none; padding:0px; margin:15px 0px 0px; float:left;
+  li { display:block; float:left; }
+}
+
+.tracked_donation { float: left; width: 640px;
+  small { display: block; margin-bottom: 15px; }
+  .gravatar { float: left; margin-right: 9px; width:45px; }
+  h2 { float: left; margin:5px 0px 15px; color: $main-color; font-size:18px; 
+    a, a:visited { color: $main-color }
+  }
+  p { width: 432px; clear: both; margin-left: 54px; font-size: 14px;}
+  p.donation_date { color: #AFACA4; }
+}
+small { font-size: 11px; }
+hr { height:1px; border:0; background-color:#D9DAAA; margin:60px 0px 15px; float:left; width: 640px;}
+#next {  
+  li { height:80px; width:160px; margin-right: 20px; }
+  li:last-child { margin-right:0px; };
+  a, a:visited { color: $main-color; font-size: 18px; font-weight:bold; }
+}
+
+#share_buttons {
+  li { width:185px; margin-right: 26px; background-color: $main-color; text-align:center;}
+  li:last-child { margin-right:0px; };
+  a, a:visited { color: #fff; font-size: 14px; font-weight:500; line-height: 30px;}
+}
 
 .long_text { width: 500px; font-size: 14px; }
 .long_text p { line-height: 22px; }
