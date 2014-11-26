@@ -24,6 +24,7 @@ es:
   hello: "Hello world"
   home:
   tagline: 'Un diario de donaciones a projectos que te importan'
+  choose_your_language: 'Elige tu idioma'
   # donations
   donations:
     show:

@@ -193,6 +193,10 @@ hr { height:1px; border:0; background-color:#D9DAAA; margin:60px 0px 15px; float
 
 #footer { text-align: center; font-size: 12px }
 
+//Overwriting image for asset_pipeline -> there is probably a better way
+.tipsy .tipsy-arrow { background-image: url(image_path('tipsy.gif')) !important }
+
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 /* Styles */
