@@ -4,14 +4,14 @@
     <p><%= t 'donations.show.donation_created' %></p>
     <ul id="share_buttons">
       <li>
-        <%= link_to t('donations.show.share_in_twitter'), "https://twitter.com/home?status=#{u t('donations.show.share_tweet', :url => donation_url(@donation))}", {:target => '_blank'} %>
+        <%= link_to t('donations.show.share_in_twitter'), "https://twitter.com/home?status=#{u t('donations.show.share_tweet', :url => donation_url(@donation))}", { :class => 'popup' } %>
       </li>
       <li>
-        <%= link_to t('donations.show.share_in_facebook'), "http://www.facebook.com/sharer/sharer.php?u=#{u donation_url(@donation)}", {:target => '_blank'} %>
+        <%= link_to t('donations.show.share_in_facebook'), "http://www.facebook.com/sharer/sharer.php?u=#{u donation_url(@donation)}", {:class => 'popup' } %>
       </li>
       <li>
         <%= link_to t('donations.show.share_by_email'), 
-        "mailto:?subject=#{u t('donations.show.share_email_subject')}&body=#{u t('donations.show.share_email_body', :project => @donation.project.name, :url => donation_url(@donation))}", {:target => '_blank'} %>
+        "mailto:?subject=#{u t('donations.show.share_email_subject')}&body=#{u t('donations.show.share_email_body', :project => @donation.project.name, :url => donation_url(@donation))}", { :class => 'popup' } %>
       </li>
     </ul>
   </div>
