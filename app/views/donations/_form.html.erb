@@ -9,7 +9,6 @@
         <div class="track_don_project_name">
           <%= @project.name %>
         </div>
-        <%= f.hidden_field :project_id, :value => @project.id %>
       <% else %>
         <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project', :"data-autocomplete-label" => "Sorry, nothing found." %>
       <% end %>
@@ -64,6 +63,11 @@
 
   </div>
 
+  <% if params[:controller] == 'projects' %> 
+    <%= f.hidden_field :project_id, :value => @project.id %>
+  <% else %>
+    <%= f.hidden_field :project_id %>
+  <% end %>
   <% if logged_in? %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
   <% end %>
