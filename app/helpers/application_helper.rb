@@ -1,21 +1,19 @@
 module ApplicationHelper
 
   def available_locales
-    current_locale = request.subdomains.first.to_sym
-    @locales = I18n.available_locales
-    @locale_link = []
+    current_locale = I18n.locale
+    locale_links = []
     if request.standard_port != request.port
       port = ':' + request.port.to_s
     end
-    @locales.each do |locale_to_iterate|
-      if current_locale == locale_to_iterate
-        @locale_link << I18n.backend.send(:translations)[locale_to_iterate][:language_name]
-      else
-        @locale_link << link_to(I18n.backend.send(:translations)[locale_to_iterate][:language_name], "http://#{locale_to_iterate}.#{ENV['domain']}#{port}#{request.fullpath}")
-      end
+    I18n.available_locales.each do |locale_to_iterate|
+      locale_links << link_to_unless(current_locale == locale_to_iterate, language_name_for(locale_to_iterate), url_for(:host => "#{locale_to_iterate}.#{ENV['domain']}"))
     end
-    @locale_link
-  end 
-
-
+    locale_links
+  end
+  
+  private
+  def language_name_for(locale)
+    I18n.backend.send(:translations)[locale][:language_name]
+  end
 end
