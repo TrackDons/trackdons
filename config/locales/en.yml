@@ -45,9 +45,25 @@ en:
   track_your_first_donation: 'Track your first donation'
   login_if_you_already: 'Login if you already have tracked'
   # donations
-  donation_created: 'Donation created! You are amazing'
   donations:
-    keep_the_quantity_private: 'Keep the quantity private'
+    show:
+      donation_created: 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
+      keep_the_quantity_private: 'Keep the quantity private'
+      share_in_twitter: 'Share in Twitter'
+      share_in_facebook: 'Share in Facebook'
+      share_by_email: 'Share by email'
+      your_tracked_donation: 'Your tracked donation'
+      user_donated_quantity_to_project: '%{name} donated %{donation} to %{project}'
+      share_email_subject: 'Have you donated lately?'
+      share_email_body: 'With TrackDons you can keep track of all your donations and encourage others to donate. Checkout my latest donation to %{project} here: %{url}'
+      share_tweet: 'Have you helped a great project today? Just tracked my latest donation with @trackdons: %{url}'
+      donation_date: 'Donation Date: %{date}'
+      next: 'Next:'
+      project_page: '%{project} project page'
+      more_donations_by: 'More donations by %{user}'
+      other_projects: 'Other projects'
+    donation_do_widget:
+      link_title: 'Track a Donation for this project'    
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'

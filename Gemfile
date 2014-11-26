@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'sqlite3', group: [:development, :test]
+group :development, :test do
+  gem 'sqlite3'
+  gem 'spring'
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -45,7 +50,5 @@ gem 'bcrypt', '~> 3.1.7'
 #gem 'debugger', group: [:development, :test]
 #gem 'byebug', group: [:development, :test]
 #gem 'web-console', group: [:development, :test]
-gem 'spring', group: [:development, :test]
 
-
-
+ruby '2.1.1'
