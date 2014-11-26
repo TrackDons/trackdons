@@ -51,4 +51,3 @@ gem 'bcrypt', '~> 3.1.7'
 #gem 'byebug', group: [:development, :test]
 #gem 'web-console', group: [:development, :test]
 
-ruby '2.1.1'
