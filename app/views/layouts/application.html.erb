@@ -19,69 +19,70 @@
 <body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
 
 <div class="sb-site-container">
-<div id="container" >
+	<div id="container" >
 
-	<section id="header">
-		<div id="logo"><a href="/">TrackDons</a></div>
-		<section id="nav_site" class="content_column">
-			<ul>
-				<li><%= link_to t('Projects'), controller: 'projects' %></li>
-				<li><%= link_to t('Donations'), controller: 'donations' %></li>
-				<li><%= link_to t('Users'), users_path %></li>
-				<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
-			</ul>
+		<section id="header">
+			<div id="logo"><a href="/">TrackDons</a></div>
+			<section id="nav_site" class="content_column">
+				<ul>
+					<li><%= link_to t('Projects'), controller: 'projects' %></li>
+					<li><%= link_to t('Donations'), controller: 'donations' %></li>
+					<li><%= link_to t('Users'), users_path %></li>
+					<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
+				</ul>
+			</section>
+			<section id="nav_personal">
+				<ul>
+					<% if logged_in? %>
+						<li>Hello <%= link_to current_user.name, current_user %></li>
+						<li>Track Donation</li>
+						<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+					<% else %>
+					  	<li><%= link_to "Track your first donation", signup_path %></li>
+					  	<li><%= link_to "Login", login_path %></li>
+					<% end %>
+					
+				</ul>
+			</section>
+
+			<!-- ignoring until fix https://github.com/furilo/trackdons/issues/1
+			<section id="nav_mobile">
+				<div class="fa fa-bars sb-toggle-left"></div>
+			</section> -->
 		</section>
-		<section id="nav_personal">
-			<ul>
-				<% if logged_in? %>
-					<li>Hello <%= link_to current_user.name, current_user %></li>
-					<li>Track Donation</li>
-					<li><%= link_to "Log out", logout_path, method: "delete" %></li>
-				<% else %>
-				  	<li><%= link_to "Track your first donation", signup_path %></li>
-				  	<li><%= link_to "Login", login_path %></li>
-				<% end %>
-				
-			</ul>
+
+		<section id="main_content">
+
+			<% flash.each do |message_type, message| %>
+			  <div class="alert alert-<%= message_type %>"><%= message %></div>
+			<% end %>
+
+			<% if temp_donations_exist %>
+				<%= render 'donations/temp_save' %>
+			<% end %>
+
+			<%= yield %>
+
 		</section>
 
-		<!-- ignoring until fix https://github.com/furilo/trackdons/issues/1
-		<section id="nav_mobile">
-			<div class="fa fa-bars sb-toggle-left"></div>
-		</section> -->
-	</section>
-
-	<section id="main_content">
-
-		<% flash.each do |message_type, message| %>
-		  <div class="alert alert-<%= message_type %>"><%= message %></div>
-		<% end %>
-
-		<% if temp_donations_exist %>
-			<%= render 'donations/temp_save' %>
-		<% end %>
-
-		<%= yield %>
-
-	</section>
+	</div> 
 
 	<section id="footer">
 		
-
+		<div class="language_selector">
+			<%= t('choose_your_language') %>:
+			<% available_locales.each do |locale_link| %>
+	      <%= locale_link %> ·
+	    <% end %>
+	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>	      
+		</div>
 
 	</section>
 
-</div> 
 </div>
 
 
-<ul>
-	<li class="sb-toggle-left">Toggle left Slidebar</li>
-	<li class="sb-toggle-right">Toggle right Slidebar</li>
-	<li class="sb-open-left">Open left Slidebar</li>
-	<li class="sb-open-right">Open right Slidebar</li>
-	<li class="sb-close">Close either Slidebar</li>
-</ul>
+
 
 <div class="sb-slidebar sb-left sb-style-push">
 	<!-- Your left Slidebar content. -->
@@ -98,7 +99,8 @@
 	<p>Just a line of text to demonstrate the overlay effect.</p>
 </div>
 
-<%= "Locale: #{I18n.locale}" %>
+<%= "Locale: #{I18n.locale}" if Rails.env.development? %>
+<%# debug(request) if Rails.env.development? %>
 <%= debug(params) if Rails.env.development? %>
 <%= debug(cookies) if Rails.env.development? %>
 

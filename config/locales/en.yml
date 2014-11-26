@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  language_name: "English"
   hello: "Hello world"
   # generics
   project: 'Project'
@@ -32,6 +33,8 @@ en:
   users: 'Users'
   about: 'About'
   invite: 'Invite'
+  choose_your_language: 'Choose your language'
+  want_to_contribute_your_own_language: 'Want to contribute your language?'
   # home
   tagline: 'A donation diary for projects that matter to you'
   main_bullet_1: 'Recruit more supporters to projects you believe in by showing your donations'
