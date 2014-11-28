@@ -6,9 +6,8 @@ $(document).on "page:change", ->
     event.preventDefault()
     window.open $(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes"
     return
-
   $('.tipsit').tipsy({fade: true; gravity: 's'})
-  $.slidebars()
+  my_slidebars = new $.slidebars();
   return
 
 
