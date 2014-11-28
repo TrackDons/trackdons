@@ -4,7 +4,7 @@
 	<meta charset=utf-8>
 	<title>TrackDons</title>
 	<meta name=description content="">
-	<meta name=viewport content="width=device-width,initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	
@@ -25,6 +25,7 @@
 			<div id="logo"><a href="/">TrackDons</a></div>
 			<section id="nav_site" class="content_column">
 				<ul>
+					<li><div class="menu_icon fa fa-align-justify sb-toggle-left"><span>Menu</span></div></li>
 					<li><%= link_to t('Projects'), controller: 'projects' %></li>
 					<li><%= link_to t('Donations'), controller: 'donations' %></li>
 					<li><%= link_to t('Users'), users_path %></li>
@@ -45,10 +46,7 @@
 				</ul>
 			</section>
 
-      <!-- ignoring until fix https://github.com/furilo/trackdons/issues/1 -->
-      <section id="nav_mobile">
-        <div class="fa fa-bars sb-toggle-left"></div>
-      </section>
+      
 		</section>
 
 		<section id="main_content">
@@ -84,7 +82,7 @@
 
 
 
-<div class="sb-slidebar sb-left sb-style-push">
+<div class="sb-slidebar sb-left sb-style-overlay sb-width-custom" data-sb-width="300px">
 	<!-- Your left Slidebar content. -->
 	<ul>
 		<li><%= link_to t('Projects'), controller: 'projects' %></li>
@@ -92,11 +90,6 @@
 		<li><%= link_to t('Users'), users_path %></li>
 		<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
 	</ul>
-</div>
-
-<div class="sb-slidebar sb-right sb-style-overlay">
-	<!-- Your right Slidebar content. -->
-	<p>Just a line of text to demonstrate the overlay effect.</p>
 </div>
 
 <%= "Locale: #{I18n.locale}" if Rails.env.development? %>
