@@ -55,9 +55,40 @@ body .tipsy { font-size: 11px; }
   /*#nav_mobile { display: none; }*/
   // #nav_mobile .hamburger { position: absolute; border: 1px solid red; top: 0; left: -50px; width: 31px; height: 31px; margin: 4px; background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHdpZHRoPSIzMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNCwxMGgyNGMxLjEwNCwwLDItMC44OTYsMi0ycy0wLjg5Ni0yLTItMkg0QzIuODk2LDYsMiw2Ljg5NiwyLDhTMi44OTYsMTAsNCwxMHogTTI4LDE0SDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDIgIHMwLjg5NiwyLDIsMmgyNGMxLjEwNCwwLDItMC44OTYsMi0yUzI5LjEwNCwxNCwyOCwxNHogTTI4LDIySDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDJzMC44OTYsMiwyLDJoMjRjMS4xMDQsMCwyLTAuODk2LDItMiAgUzI5LjEwNCwyMiwyOCwyMnoiLz48L3N2Zz4='); }
   // .sb-slidebar.sb-active { width: 300px; }
-  .menu_icon { position: relative; width: 18px; display: inline-block; font-size: 16px; padding-top: 1px;  }
-  .menu_icon:hover { cursor: auto; }
-  .menu_icon span { text-indent: -9999px; display: inline-block; }
+  #menu_icon { position: absolute; padding: 10px; top: 2px; left: 2px; width: 18px; display: inline-block; font-size: 16px; }
+  #menu_icon:hover { cursor: pointer; }
+  #menu_icon span { text-indent: -9999px; display: inline-block; }
+
+.sb-slidebar {
+  padding: 5%;
+  position: relative;
+
+  ul {
+    margin: 0; 
+    padding: 0; 
+  }
+  ul.bottom {
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
+  }
+  li { 
+    margin: 5%; 
+    list-style-type: none; 
+    display: block;
+    background: $main_color;
+    
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      padding: 10px; 
+      color: #FFF;  
+    }
+  }
+
+}
 
 #main_content { margin-top: 40px; margin-bottom: 80px; }
 .content_column, .alert { padding: 0 40px 0 120px; overflow: hidden; }
@@ -138,11 +169,11 @@ h2 { font-size: 24px; }
 .project a { display: block;}
 
 .donation { border-top-width: 1px; border-top-style: solid; padding-top: 10px; margin-bottom: 35px; position: relative;}
-.donation h2 { font-size: 18px; color: #666; margin: 0 ;}
+.donation h2 { font-size: 18px; color: #666; margin: 0 110px 0 0;}
 .donation .tags a { display: inline-block; font-size: 11px; font-weight: normal; color: #666; text-decoration: none; background: #F3E9D1; padding: 2px; margin: 0 6px 0 0;}
 .donation_comment { margin: 15px 0;}
 //#donation_do_widget { position: absolute; top: 10px; right: 0; width: 150px; text-align: right; }
-#donation_do_widget { float:right; margin-top: 5px; width: 150px; text-align: right; }
+#donation_do_widget { position: absolute; top: 8px; right: 0; text-align: right; }
 #donation_do_widget .donation_number { padding: 4px 10px; font-size: 12px; display: inline-block; background: #D9DAAA; }
 #donation_do_widget .donation_do { display: inline-block; }
 #donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
@@ -155,7 +186,7 @@ ul#share_buttons, ul#next { list-style-type: none; padding:0px; margin:15px 0px 
   li { display:block; float:left; }
 }
 
-.tracked_donation { float: left; width: 640px;
+.tracked_donation { 
   small { display: block; margin-bottom: 15px; }
   .gravatar { float: left; margin-right: 9px; width:45px; }
   h2 { float: left; margin:5px 0px 15px; color: $main-color; font-size:18px; 
@@ -165,7 +196,7 @@ ul#share_buttons, ul#next { list-style-type: none; padding:0px; margin:15px 0px 
   p.donation_date { color: #AFACA4; }
 }
 small { font-size: 11px; }
-hr { height:1px; border:0; background-color:#D9DAAA; margin:60px 0px 15px; float:left; width: 640px;}
+hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; width: 100%; }
 #next {  
   li { height:80px; width:160px; margin-right: 20px; }
   li:last-child { margin-right:0px; };
@@ -247,7 +278,7 @@ iPad 3
 
 @media only screen  and (max-width : 880px) {
   body { margin: 0; padding: 0; }
-  #container { width: auto; margin: 0; border-width: 15px}
+  #container { width: auto; margin: 0 0 2em 0; border-width: 15px}
   #header { position: relative; padding: 10px 0;}
     #nav_site { }
     #nav_personal { position: absolute; top: 10px; right: 10px; text-align: left; }
@@ -256,10 +287,14 @@ iPad 3
     #logo { left: 39px; }
     #nav_mobile .hamburger { left: 0; }
   #home { padding-top: 0;}
-  #main_content { margin-top: 0; margin-bottom: 10%; }
+  #main_content { margin-top: 0; margin-bottom: 1%; padding: 5% 0; }
   .content_column, .alert { padding-left: 5%; padding-right: 5%; }
   .content_full {  }
   .long_text { width: auto;}
+  #project .meta { margin-bottom: 5%; }
+  #project .actions { padding: 0; }
+  #project .meta, #project .actions { float: none; width: auto; }
+  .donation h2 { font-size: 16px; }
   
 }
 

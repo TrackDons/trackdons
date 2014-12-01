@@ -22,10 +22,10 @@
 	<div id="container" >
 
 		<section id="header">
+			<div id="menu_icon" class="fa fa-align-justify sb-toggle-left"><span>Menu</span></div>
 			<div id="logo"><a href="/">TrackDons</a></div>
 			<section id="nav_site" class="content_column">
 				<ul>
-					<li><div class="menu_icon fa fa-align-justify sb-toggle-left"><span>Menu</span></div></li>
 					<li><%= link_to t('Projects'), controller: 'projects' %></li>
 					<li><%= link_to t('Donations'), controller: 'donations' %></li>
 					<li><%= link_to t('Users'), users_path %></li>
@@ -82,13 +82,24 @@
 
 
 
-<div class="sb-slidebar sb-left sb-style-overlay sb-width-custom" data-sb-width="300px">
+<div class="sb-slidebar sb-left sb-style-push sb-style-overlay sb-width-custom" data-sb-width="300px">
 	<!-- Your left Slidebar content. -->
 	<ul>
 		<li><%= link_to t('Projects'), controller: 'projects' %></li>
 		<li><%= link_to t('Donations'), controller: 'donations' %></li>
 		<li><%= link_to t('Users'), users_path %></li>
 		<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
+	</ul>
+
+	<ul class="bottom">
+		<% if logged_in? %>
+			<li>Hello <%= link_to current_user.name, current_user %></li>
+			<li>Track Donation</li>
+			<li><%= link_to "Log out", logout_path, method: "delete" %></li>
+		<% else %>
+		  	<li><%= link_to "Track your first donation", signup_path %></li>
+		  	<li><%= link_to "Login", login_path %></li>
+		<% end %>
 	</ul>
 </div>
 
