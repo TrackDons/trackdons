@@ -93,8 +93,8 @@
 
 	<ul class="bottom">
 		<% if logged_in? %>
-			<li>Hello <%= link_to current_user.name, current_user %></li>
-			<li>Track Donation</li>
+			<li><%= link_to 'Hello ' + current_user.name, current_user %></li>
+			<li><%= link_to t('track_donation'), track_donation_link %></li>
 			<li><%= link_to "Log out", logout_path, method: "delete" %></li>
 		<% else %>
 		  	<li><%= link_to "Track your first donation", signup_path %></li>

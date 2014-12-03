@@ -14,7 +14,7 @@
       <% end %>
 
       <% if params[:controller] == 'projects' %> 
-        <div class="hint"><%= link_to t('need_to_trackdon_for_another_project'), "#{root_path}#track_donation" %></div>
+        <div class="hint"><%= link_to t('need_to_trackdon_for_another_project'), track_donation_link %></div>
       <% else %>
         <div class="hint"><%= f.label(:project_name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
       <% end %>

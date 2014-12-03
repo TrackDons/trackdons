@@ -11,6 +11,10 @@ module ApplicationHelper
     end
     locale_links
   end
+
+  def track_donation_link
+    return "#{root_path}#track_donation"
+  end
   
   private
   def language_name_for(locale)

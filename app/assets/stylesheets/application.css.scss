@@ -77,7 +77,6 @@ body .tipsy { font-size: 11px; }
     list-style-type: none; 
     display: block;
     background: $main_color;
-    
 
     a {
       font-weight: bold;
@@ -287,6 +286,7 @@ iPad 3
     #logo { left: 39px; }
     #nav_mobile .hamburger { left: 0; }
   #home { padding-top: 0;}
+  #home ul { width: auto; }
   #main_content { margin-top: 0; margin-bottom: 1%; padding: 5% 0; }
   .content_column, .alert { padding-left: 5%; padding-right: 5%; }
   .content_full {  }
@@ -295,6 +295,7 @@ iPad 3
   #project .actions { padding: 0; }
   #project .meta, #project .actions { float: none; width: auto; }
   .donation h2 { font-size: 16px; }
+  #track_donation { padding: 0; }
   
 }
 
