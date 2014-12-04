@@ -12,6 +12,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 
 set :domain, 'trackdons.org'
 set :deploy_to, '/var/www/trackdons.org'
+set :app_path, '#{deploy_to}/#{current_path}'
 set :repository, 'git@github.com:furilo/trackdons.git'
 set :branch, 'mina-deploy'
 
