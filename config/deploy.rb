@@ -3,8 +3,8 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
-require 'mina_sidekiq/tasks'
-require 'mina/unicorn'
+# require 'mina_sidekiq/tasks'
+# require 'mina/unicorn'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -18,9 +18,9 @@ set :repository, 'git@github.com:furilo/trackdons.git'
 set :branch, 'mina-deploy'
 set :user, 'deploy'
 set :forward_agent, true
-set :ssh_options, '-A'
+# set :ssh_options, '-A'
 set :port, '5005'
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+# set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 
 # For system-wide RVM install.
