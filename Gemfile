@@ -7,6 +7,9 @@ group :development, :test do
   gem 'capybara'
 end
 
+group :production do
+  gem 'pg'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -31,12 +34,14 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails4-autocomplete'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
+
+# deploy 
+gem 'mina'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
