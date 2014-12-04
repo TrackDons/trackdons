@@ -12,8 +12,8 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'trackdons.org'
-set :deploy_to, '/var/www/trackdons.org'
+set :domain, '178.62.214.22'
+set :deploy_to, '/home/deploy/trackdons.org'
 set :repository, 'git@github.com:furilo/trackdons.git'
 set :branch, 'mina-deploy'
 set :user, 'deploy'
@@ -56,13 +56,6 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
   queue %[echo "-----> Be sure to edit 'shared/config/secrets.yml'."]
-
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
- 
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets"]
 end
  
 
@@ -79,27 +72,18 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      invoke :'puma:restart'
+      invoke :'passenger:restart'
     end
   end
 end
 
-namespace :puma do
-  desc "Start the application"
-  task :start do
-    queue 'echo "-----> Start Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh start", :pty => false
-  end
-
-  desc "Stop the application"
-  task :stop do
-    queue 'echo "-----> Stop Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh stop"
-  end
-
-  desc "Restart the application"
-  task :restart do
-    queue 'echo "-----> Restart Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh restart"
-  end
+desc "Restarts the nginx server."  
+task :restart do  
+  invoke :'passenger:restart'
 end
+
+namespace :passenger do  
+  task :restart do
+    queue "mkdir #{deploy_to}/current/tmp; touch #{deploy_to}/current/tmp/restart.txt"
+  end
+end  
