@@ -71,16 +71,12 @@ GEM
     jquery-ui-rails (5.0.2)
       railties (>= 3.2.16)
     json (1.8.1)
-    kgio (2.9.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.2)
     mina (0.3.1)
       open4 (~> 1.3.4)
       rake
-    mina-sidekiq (0.3.0)
-      mina
-    mina-unicorn (0.0.3)
     mini_portile (0.6.1)
     minitest (5.4.2)
     multi_json (1.10.1)
@@ -88,6 +84,8 @@ GEM
       mini_portile (~> 0.6.0)
     open4 (1.3.4)
     pg (0.17.1)
+    puma (2.10.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -108,7 +106,6 @@ GEM
       activesupport (= 4.1.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.13.0)
     rake (10.4.0)
     rdoc (4.1.2)
       json (~> 1.4)
@@ -159,10 +156,6 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicode_utils (1.4.0)
-    unicorn (4.8.3)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -182,9 +175,8 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   mina
-  mina-sidekiq
-  mina-unicorn
   pg
+  puma
   rails (= 4.1.6)
   rails4-autocomplete
   rspec-rails
@@ -194,4 +186,3 @@ DEPENDENCIES
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
-  unicorn
