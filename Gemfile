@@ -10,6 +10,8 @@ end
 group :production do
   gem 'pg'
   gem 'unicorn'
+  gem 'mina-unicorn', :require => false
+  gem 'mina-sidekiq', :require => false
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -3,6 +3,8 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina_sidekiq/tasks'
+require 'mina/unicorn'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -12,22 +14,21 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 
 set :domain, 'trackdons.org'
 set :deploy_to, '/var/www/trackdons.org'
-set :app_path, '#{deploy_to}/#{current_path}'
 set :repository, 'git@github.com:furilo/trackdons.git'
 set :branch, 'mina-deploy'
+set :user, 'deploy'
+set :forward_agent, true
+set :ssh_options, '-A'
+set :port, '5005'
+set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
+
 
 # For system-wide RVM install.
 # set :rvm_path, '/usr/local/rvm/bin/rvm'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log']
-
-# Optional settings:
-   set :user, 'deploy'    # Username in the server to SSH to.
-   set :port, '5005'     # SSH port number.
-   set :ssh_options, '-A'
-#   set :forward_agent, true     # SSH forward_agent.
+set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml']
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -44,72 +45,39 @@ end
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
+  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+
+  queue! %[touch "#{deploy_to}/shared/config/secrets.yml"]
+  queue %[echo "-----> Be sure to edit 'shared/config/secrets.yml'."]
+
+  # sidekiq needs a place to store its pid file and log file
+  queue! %[mkdir -p "#{deploy_to}/shared/pids/"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/pids"]
 end
 
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
+
+    # stop accepting new workers
+    invoke :'sidekiq:quiet'
+
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'deploy:cleanup'
 
-    # to :launch do
-    #   queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-    #   queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-    # end
     to :launch do
+      invoke :'sidekiq:restart'
       invoke :'unicorn:restart'
     end
   end
-end
-
-namespace :unicorn do
-  set :unicorn_pid, "#{app_path}/tmp/pids/unicorn.pid"
-  set :start_unicorn, %{
-    cd #{app_path}
-    bundle exec unicorn -c #{app_path}/config/unicorn.rb -E #{rails_env} -D
-  }
- 
-  desc "Start unicorn"
-  task :start => :environment do
-    queue 'echo "-----> Start Unicorn"'
-    queue! start_unicorn
-  end
-
-  desc "Stop unicorn"
-  task :stop do
-    queue 'echo "-----> Stop Unicorn"'
-    queue! %{
-      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
-      echo >&2 "Not running"
-    }
-  end
- 
-  desc "Restart unicorn using 'upgrade'"
-  task :restart => :environment do
-    invoke 'unicorn:stop'
-    invoke 'unicorn:start'
-  end
-end
-
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
+en
