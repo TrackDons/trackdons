@@ -65,12 +65,45 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
+    # to :launch do
+    #   queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+    #   queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+    # end
     to :launch do
-      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+      invoke :'unicorn:restart'
     end
   end
 end
+
+namespace :unicorn do
+  set :unicorn_pid, "#{app_path}/tmp/pids/unicorn.pid"
+  set :start_unicorn, %{
+    cd #{app_path}
+    bundle exec unicorn -c #{app_path}/config/unicorn.rb -E #{rails_env} -D
+  }
+ 
+  desc "Start unicorn"
+  task :start => :environment do
+    queue 'echo "-----> Start Unicorn"'
+    queue! start_unicorn
+  end
+
+  desc "Stop unicorn"
+  task :stop do
+    queue 'echo "-----> Stop Unicorn"'
+    queue! %{
+      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+ 
+  desc "Restart unicorn using 'upgrade'"
+  task :restart => :environment do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+  end
+end
+
 
 # For help in making your deploy script, see the Mina documentation:
 #
