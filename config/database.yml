@@ -20,10 +20,3 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: trackdons
-  pool: 5
-  username: trackdons
-  password: nlkfas7KIH#

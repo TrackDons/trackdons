@@ -9,7 +9,7 @@ end
 
 group :production do
   gem 'pg'
-  gem "puma"
+  # gem "puma"
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
