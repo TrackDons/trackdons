@@ -8,8 +8,9 @@ set :deploy_to, '/home/deploy/trackdons.org'
 set :repository, 'git@github.com:furilo/trackdons.git'
 set :branch, 'master'
 
+# Avoid mina gets frozen when asking for the password
+set :term_mode, :nil
 set :user, 'deploy'
-set :forward_agent, true
 set :port, '5005'
 
 set :shared_paths, ['config/database.yml', 'log', 'config/secrets.yml']
