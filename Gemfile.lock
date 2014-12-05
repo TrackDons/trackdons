@@ -84,8 +84,6 @@ GEM
       mini_portile (~> 0.6.0)
     open4 (1.3.4)
     pg (0.17.1)
-    puma (2.10.2)
-      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -176,7 +174,6 @@ DEPENDENCIES
   jquery-ui-rails
   mina
   pg
-  puma
   rails (= 4.1.6)
   rails4-autocomplete
   rspec-rails
