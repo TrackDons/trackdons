@@ -24,5 +24,10 @@ module Trackdons
     config.i18n.available_locales = [:en, :es, :fr]
     config.i18n.default_locale = :es
 
+    config.generators do |g|
+      g.orm             :active_record
+      g.template_engine :erb
+      g.test_framework  :rspec, fixture: false
+    end
   end
 end

@@ -5,6 +5,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'quiet_assets'
 end
 
 group :production do

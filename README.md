@@ -10,7 +10,7 @@ git clone git@github.com:furilo/trackdons.git
 cd trackdons
 bundle install
 rake db:setup
-rails serve
+rails server
 ```
 
 i18n is being set up in place, and will be controlled (partially) through subdomains. So you can set up some development hosts:
@@ -27,7 +27,7 @@ Then navigate to: http://en.trackdons.local:3000
 
 ### To work on a new feature / bug / improvement
 
-Create a branch and pull request. 
+Create a branch and pull request.
 
 * Have a local copy of the repo
 * Create a new branch for your work (git checkout -b new-feature)
@@ -36,7 +36,7 @@ Create a branch and pull request.
 * Create a new Pull Request
 
 
-### Libraries/gems being used (see Gemfile for complete reference): 
+### Libraries/gems being used (see Gemfile for complete reference):
 
 * http://plugins.adchsm.me/slidebars
 * https://github.com/onomojo/i18n_country_select
