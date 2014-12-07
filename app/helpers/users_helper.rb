@@ -11,8 +11,4 @@ module UsersHelper
     logged_in? && current_user.donations.count > 0
   end
 
-  def donation_quantity_currency(donation)
-    humanized_money_with_symbol(donation.quantity)
-  end
-
 end

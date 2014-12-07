@@ -34,6 +34,7 @@ group :development, :test do
   gem 'capybara'
   gem 'quiet_assets'
   gem 'byebug'
+  gem 'launchy'
 end
 
 group :development do

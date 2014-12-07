@@ -2,10 +2,20 @@ module DonationsCalculations
   extend ActiveSupport::Concern
 
   def total_donations_last_month
-    donations.last_month.map(&:quantity).inject(&:+) || 0
+    sum(donations.last_month)
   end
 
   def total_donations
-    donations.map(&:quantity).inject(&:+) || 0
+    sum(donations)
+  end
+
+  private
+
+  def sum(amounts)
+    if amounts.any?
+      amounts.map(&:quantity).inject(&:+)
+    else
+      Money.new(0, 'USD')
+    end
   end
 end

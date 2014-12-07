@@ -19,11 +19,11 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     click_link('Wikiwadus')
         
     fill_in 'donation_date', :with => "2014-10-10"
-    fill_in 'donation_quantity_cents', :with => "200"
+    fill_in 'donation_quantity', :with => "200.99"
     click_button 'TrackDon'
     
     expect(page).to have_content 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
-    expect(page).to have_content 'Yorch donated 200€ to Wikiwadus'
+    expect(page).to have_content '200.99€ to Wikiwadus by Yorch'
   end
   
   scenario 'I can share a link to my donation via email, twitter or facebook' do
@@ -39,7 +39,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     click_link('Wikiwadus')
     
     fill_in 'donation_date', :with => "2014-10-10"
-    fill_in 'donation_quantity_cents', :with => "200"
+    fill_in 'donation_quantity', :with => "200"
     click_button 'TrackDon'
     
     tracked_don = Donation.last
@@ -50,16 +50,16 @@ RSpec.feature 'Sharing donations. When I create a donation' do
   end
   
   scenario 'Anonymous users can access a donation page, but does not see share links' do
-    donation = create_donation(:user => @user, :project => @project, :quantity_cents => 200)
+    donation = create_donation(:user => @user, :project => @project, :quantity => 200)
     
     visit donation_page(donation)
     
     expect(page).not_to have_content('Hooray!')
-    expect(page).to have_content 'Yorch donated 200€ to Wikiwadus'
+    expect(page).to have_content '200€ to Wikiwadus by Yorch'
   end
   
   scenario 'Users can see related links' do
-    donation = create_donation(:user => @user, :project => @project, :quantity_cents => 200)
+    donation = create_donation(:user => @user, :project => @project, :quantity => 200)
     
     visit donation_page(donation)
     expect(page).to have_link 'Wikiwadus project page', :href => project_path(@project)
