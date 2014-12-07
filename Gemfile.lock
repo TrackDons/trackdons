@@ -109,6 +109,7 @@ GEM
     rake (10.4.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    redcarpet (3.2.0)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -179,6 +180,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.6)
   rails4-autocomplete
+  redcarpet
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -41,6 +41,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails4-autocomplete'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
+gem 'redcarpet'
 
 # deploy 
 gem 'mina'
