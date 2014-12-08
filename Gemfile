@@ -35,6 +35,7 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'byebug'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 group :development do

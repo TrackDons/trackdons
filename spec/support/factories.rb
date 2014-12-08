@@ -24,7 +24,7 @@ module Factories
     attrs[:project]         ||= create_project
     attrs[:quantity]        ||= 10
     attrs[:currency]        ||= 'EUR'
-    attrs[:date]            ||= '2014-10-14'
+    attrs[:date]            ||= Date.today - 7.days
     attrs[:quantity_privacy]||= false
     Donation.create!(attrs)
   end

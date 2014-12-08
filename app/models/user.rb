@@ -13,7 +13,9 @@ class User < ActiveRecord::Base
 
 	validates :name, presence: true, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :country, presence: true
 
+  before_validation :set_currency
   before_save { self.email = email.downcase.strip }
 
   # Returns the hash digest of the given string.
@@ -40,6 +42,14 @@ class User < ActiveRecord::Base
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  private
+
+  def set_currency
+    if new_record? && self.country.present?
+      self.currency = CurrencyFromCountry.new(self.country).currency
+    end
   end
 
 end

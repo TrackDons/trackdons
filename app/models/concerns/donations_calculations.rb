@@ -13,9 +13,9 @@ module DonationsCalculations
 
   def sum(amounts)
     if amounts.any?
-      amounts.map(&:quantity).inject(&:+)
+      amounts.map(&:quantity).inject(&:+).exchange_to(self.currency)
     else
-      Money.new(0, 'USD')
+      Money.new(0, self.currency)
     end
   end
 end

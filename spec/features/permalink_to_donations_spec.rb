@@ -2,18 +2,13 @@ require 'rails_helper'
 
 RSpec.feature 'Sharing donations. When I create a donation' do
   background do
-    @project = create_project(:name => 'Wikiwadus')
-    @user = create_user(name: 'Yorch', password: 'wadusm4n', :email => "yorch@example.com")
+    @project = create_project(name: 'Wikiwadus')
+    @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
   end
   
   scenario 'I see a success page and message' do
-    visit '/login'
-    
-    fill_in 'Email', :with => "yorch@example.com"
-    fill_in 'Password', :with => "wadusm4n"
-    
-    click_button 'Log in'
-    
+    login_as "yorch@example.com", "wadusm4n"
+
     visit '/projects'
     
     click_link('Wikiwadus')
@@ -27,12 +22,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
   end
   
   scenario 'I can share a link to my donation via email, twitter or facebook' do
-    visit '/login'
-    
-    fill_in 'Email', :with => "yorch@example.com"
-    fill_in 'Password', :with => "wadusm4n"
-    
-    click_button 'Log in'
+    login_as "yorch@example.com", "wadusm4n"
     
     visit '/projects'
     
