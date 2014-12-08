@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :set_new_donation, only: :new
   
   def index
     if params.has_key?(:project_id)
@@ -10,7 +11,6 @@ class DonationsController < ApplicationController
   end
 
   def new
-    @donation = Donation.new
   end
 
   def show
@@ -33,12 +33,12 @@ class DonationsController < ApplicationController
   private
 
     def donation_params
-      params.require(:donation).permit(:quantity_cents, :currency, :date, :project_id, :comment, :quantity_privacy)
+      params.require(:donation).permit(:quantity, :currency, :date, :project_id, :comment, :quantity_privacy)
     end
 
     def save_donation_to_cookie(donation_params)
       cookies[:donation] = { 
-        :quantity_cents => donation_params[:quantity_cents],
+        :quantity => donation_params[:quantity],
         :currency => donation_params[:currency],
         :date => donation_params[:date],
         #:tag_list => donation_params[:tag_list],

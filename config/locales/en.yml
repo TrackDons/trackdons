@@ -79,3 +79,8 @@ en:
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
+  users:
+    header:
+      donated: donated
+      in_the_last_month: in the last month
+      in_total: in total

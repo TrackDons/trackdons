@@ -45,3 +45,8 @@ es:
       other_projects: 'Otros proyectos'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
+  users:
+    header:
+      donated: donado
+      in_the_last_month: en el último mes
+      in_total: en total
