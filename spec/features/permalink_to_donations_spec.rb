@@ -15,10 +15,11 @@ RSpec.feature 'Sharing donations. When I create a donation' do
         
     fill_in 'donation_date', :with => "2014-10-10"
     fill_in 'donation_quantity', :with => "200.99"
+    select '$', from: :donation_currency
     click_button 'TrackDon'
     
     expect(page).to have_content 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
-    expect(page).to have_content '200.99€ to Wikiwadus by Yorch'
+    expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
   end
   
   scenario 'I can share a link to my donation via email, twitter or facebook' do

@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :set_new_donation, only: :new
   
   def index
     if params.has_key?(:project_id)
@@ -10,7 +11,6 @@ class DonationsController < ApplicationController
   end
 
   def new
-    @donation = Donation.new
   end
 
   def show

@@ -1,10 +1,9 @@
-<%= form_for :donation, url: donations_path do |f| %>
+<%= form_for @donation do |f| %>
 
   <div class="main_form">
 
     <div class="track_don_project">
-
-      <% if params[:controller] == 'projects' %> 
+      <% if controller_name == 'projects' %>
         <div class="track_don_project_name">
           <%= @project.name %>
         </div>
@@ -23,22 +22,18 @@
       <%= f.text_field :quantity, placeholder: '125' %>
       <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>
     </div>
-
-    <%# f.label :currency %>
-    <%# f.text_field :currency %>
-
     <div class="track_don_date">
       <%= f.date_field :date %>
       <div class="hint"><%= f.label(:date, t('when_did_you_donate')) %></div>
     </div>
 
-    <div class="track_don_quantity_B" >
+    <div class="track_don_quantity_B">
       <div class="track_don_quantity_B_option">
         <%= f.text_field :quantity, placeholder: '125' %>
+        <%= f.select :currency, [['€', 'EUR'],['$', 'USD']] %>
         <div class="track_don_quantity_B_option_hint">
           <%= f.check_box :quantity_privacy %>
           <%= f.label(:quantity_privacy, t('donations.keep_the_quantity_private'), title: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!", class: 'tipsit') %>
-
         </div>
       </div>
       <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>
@@ -53,12 +48,7 @@
       <div id="i_want_to_explain_content">
         <%= f.text_area(:comment) %>
       </div>
-      
     </div>
-
-    <!-- <div>
-      <label><input type="checkbox" name="i_want_to_keep_private"> <%= t 'i_want_to_keep_private' %></label>
-    </div> -->
 
   </div>
 
@@ -67,10 +57,6 @@
   <% else %>
     <%= f.hidden_field :project_id %>
   <% end %>
-  <% if logged_in? %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-  <% end %>
-  <%= f.hidden_field :currency, :value => 'EUR' %>
   <%= f.submit('TrackDon', class: 'big' ) %>
 
 <% end %>
