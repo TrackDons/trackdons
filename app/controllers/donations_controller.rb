@@ -47,7 +47,7 @@ class DonationsController < ApplicationController
 
     def save_donation_to_cookie(donation_params)
       cookies[:donation] = { 
-        :quantity_cents       => donation_params[:quantity_cents],
+        :quantity             => donation_params[:quantity],
         :currency             => donation_params[:currency],
         :date                 => donation_params[:date],
         :project_id           => donation_params[:project_id],
