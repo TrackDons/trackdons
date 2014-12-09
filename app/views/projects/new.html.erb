@@ -23,7 +23,7 @@
 
     <p>
       <%= f.label(:name, t('project')) %><br>
-      <%= f.autocomplete_field :name, autocomplete_project_name_projects_path %>
+      <%= f.autocomplete_field :name, autocomplete_project_name_projects_path, :value => params[:name] %>
     </p>
    
     <p>

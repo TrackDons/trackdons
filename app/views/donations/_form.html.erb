@@ -8,7 +8,7 @@
           <%= @project.name %>
         </div>
       <% else %>
-        <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project', :"data-autocomplete-label" => "Sorry, nothing found." %>
+        <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project', :'data-autocomplete-label' => 'Add this project...' %>
       <% end %>
 
       <% if params[:controller] == 'projects' %> 
