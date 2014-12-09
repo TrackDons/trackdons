@@ -15,7 +15,7 @@
 //= require jquery-ui/tooltip
 //= require jquery_ujs
 //= require tipsy
-//= require autocomplete-rails
 //= require slidebars
+//= require select2  
 //= require turbolinks
 //= require_tree .

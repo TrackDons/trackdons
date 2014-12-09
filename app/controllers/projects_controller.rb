@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
   before_filter :set_new_donation, only: :show
 
-  autocomplete :project, :name
-
   def index
-    @projects = Project.all
+    @projects = Project.search(params[:q])
+    respond_to do |format|
+      format.html
+      format.json { render json: @projects}
+    end
   end
 
   def show
@@ -16,7 +18,6 @@ class ProjectsController < ApplicationController
   end
  
   def create
-    # render plain: params[:project].inspect
     @project = Project.new(project_params)
     if @project.save
       flash[:success] = "Project created. Share the word and start donation-saving!"
@@ -27,7 +28,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
   def project_params
     params.require(:project).permit(:name, :description, :url, :twitter)
   end

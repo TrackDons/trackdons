@@ -9,5 +9,10 @@ class Project < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 5 }
   validates :description, presence: true, length: { minimum: 25 }
   validates :url, presence: true, length: { minimum: 5 }
+  
+  def self.search(query)
+    return Project.where(["name like ?", "%#{query}%"]) if query.present?
+    Project.all
+  end
 
 end

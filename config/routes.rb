@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :donations
   resources :projects do
     resources :donations
-    get :autocomplete_project_name, :on => :collection
   end
   
   

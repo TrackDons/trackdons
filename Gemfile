@@ -19,9 +19,9 @@ gem 'turbolinks'
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'acts-as-taggable-on', '~> 3.4'
-gem 'rails4-autocomplete'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
+gem 'select2-rails'
 
 gem 'bcrypt', '~> 3.1.7'
 

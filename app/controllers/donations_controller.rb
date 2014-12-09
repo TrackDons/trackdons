@@ -33,7 +33,16 @@ class DonationsController < ApplicationController
   private
 
     def donation_params
-      params.require(:donation).permit(:quantity, :currency, :date, :project_id, :comment, :quantity_privacy)
+      params.require(:donation).permit(
+        :quantity, 
+        :currency, 
+        :date, 
+        :comment, 
+        :quantity_privacy,
+        :project_id,
+        :project_name, 
+        :project_description, 
+        :project_url)
     end
 
     def save_donation_to_cookie(donation_params)

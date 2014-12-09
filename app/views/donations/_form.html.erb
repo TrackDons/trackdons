@@ -7,15 +7,20 @@
         <div class="track_don_project_name">
           <%= @project.name %>
         </div>
+        <div class="hint">
+          <%= link_to t('need_to_trackdon_for_another_project'), "#{root_path}#track_donation" %>
+        </div>
       <% else %>
-        <%= f.autocomplete_field :project_name, autocomplete_project_name_projects_path, :id_element => '#donation_project_id',  placeholder: 'Project', :"data-autocomplete-label" => "Sorry, nothing found." %>
-      <% end %>
-
-      <% if params[:controller] == 'projects' %> 
-        <div class="hint"><%= link_to t('need_to_trackdon_for_another_project'), track_donation_link %></div>
-      <% else %>
+        <%= f.hidden_field :project_name %>
         <div class="hint"><%= f.label(:project_name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+        <div id="project_attributes">
+          <%= f.text_area :project_description %>
+          <div class="hint"><%= f.label(:project_description, 'Project Description') %></div>
+          <%= f.text_field :project_url %>
+          <div class="hint"><%= f.label(:project_url, 'Project URL') %></div>
+        </div>        
       <% end %>
+        
     </div>
 
     <div class="track_don_quantity" style="display: none">
@@ -60,8 +65,6 @@
 
   <% if params[:controller] == 'projects' %> 
     <%= f.hidden_field :project_id, :value => @project.id %>
-  <% else %>
-    <%= f.hidden_field :project_id %>
   <% end %>
   <%= f.submit('TrackDon', class: 'big' ) %>
 
