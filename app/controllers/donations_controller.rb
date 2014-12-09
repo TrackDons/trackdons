@@ -21,7 +21,7 @@ class DonationsController < ApplicationController
     unless logged_in?
       save_donation_to_cookie(donation_params)
       cookie_donation
-      redirect_to root_url
+      redirect_to signup_path
     else
       donation_save(donation_params)
       if cookies[:donation]
@@ -47,14 +47,16 @@ class DonationsController < ApplicationController
 
     def save_donation_to_cookie(donation_params)
       cookies[:donation] = { 
-        :quantity => donation_params[:quantity],
-        :currency => donation_params[:currency],
-        :date => donation_params[:date],
-        #:tag_list => donation_params[:tag_list],
-        :project_id => donation_params[:project_id],
-        :comment => donation_params[:comment],
-        :quantity_privacy => donation_params[:quantity_privacy],
-        :user_id => donation_params[:user_id]
+        :quantity_cents       => donation_params[:quantity_cents],
+        :currency             => donation_params[:currency],
+        :date                 => donation_params[:date],
+        :project_id           => donation_params[:project_id],
+        :project_name         => donation_params[:project_name],
+        :project_description  => donation_params[:project_description],
+        :project_url          => donation_params[:project_url],
+        :comment              => donation_params[:comment],
+        :quantity_privacy     => donation_params[:quantity_privacy],
+        :user_id              => donation_params[:user_id]
       }.to_json
     end
 
