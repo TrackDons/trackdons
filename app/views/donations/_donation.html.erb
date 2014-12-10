@@ -23,7 +23,7 @@
     <%= render :partial => 'donations/donation_do_widget', :locals => {:donation => donation} %>
 
     <div class="donation_comment">
-      <%= donation.comment %>
+      <%= markdown(donation.comment) %>
     </div>
 
     <!-- <small style="color: #aaa">

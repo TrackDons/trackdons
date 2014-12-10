@@ -22,6 +22,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
 gem 'select2-rails'
+gem 'redcarpet'
 
 gem 'bcrypt', '~> 3.1.7'
 
