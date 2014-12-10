@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  
+  before_filter :set_new_donation, only: :show
+
   autocomplete :project, :name
 
   def index
@@ -25,13 +26,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-  
-
-
   private
-    def project_params
-      params.require(:project).permit(:name, :description, :url, :twitter)
-    end
 
+  def project_params
+    params.require(:project).permit(:name, :description, :url, :twitter)
+  end
 
 end

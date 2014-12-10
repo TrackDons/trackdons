@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
     I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
   end
 
+  protected
+
+  def set_new_donation
+    new_donation_currency = logged_in? ? current_user.currency : 'EUR'
+    @donation = Donation.new currency: new_donation_currency
+  end
+
 end

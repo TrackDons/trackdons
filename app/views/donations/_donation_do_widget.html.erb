@@ -1,9 +1,10 @@
 <div id="donation_do_widget">
-  <% unless params[:controller] == 'projects' && params[:action] == 'show' %> 
+  <% unless in_projects_page? %>
     <div class="donation_number">
-      <%= donation.project.donations.count %>
+      <%= donation.project.donations.length %>
     </div>
   <% end %>
+
   <div class="donation_do">
     <%= link_to 'TrackDon', projects_url, class: 'button', title: t('donations.donation_do_widget.link_title') %>
   </div>

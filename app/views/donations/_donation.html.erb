@@ -1,7 +1,7 @@
 	
 	<div class="donation">
-    <%= gravatar_for(donation.user, options = { :size => 45 }) %>
-    
+    <%= gravatar_for(donation.user, size: 45) %>
+
     <h2>
       <strong><%= donation_quantity_currency(donation) %></strong>
       <% unless params[:controller] == 'projects' && params[:action] == 'show' %> 

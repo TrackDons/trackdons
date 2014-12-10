@@ -40,19 +40,18 @@ projects = Project.create([
   { id: 6, name: 'CIC - Centro de Integración Ciudadana Monterrey', url: 'http://www.cic.mx', twitter: 'cicmty', description: 'El CIC es una red de confianza 100% ciudadana que enlaza e integra al ciudadano y las autoridades por medio de espacios claros, confiables y auténticos de participación en temas que impactan a la sociedad, buscando despertar las conciencias y activar a los ciudadanos a trabajar en suma para mejorar nuestra sociedad. Estos espacios se fundamentan en el aprovechamiento de nuevas tecnologías como las redes sociales y nuestra plataforma Tehuan.', donation_url: 'http://www.cic.mx/?p=2166'},
   { id: 7, name: 'Mozilla - Firefox', url: 'http://www.mozilla.org', twitter: 'mozilla', description: "We're a global community dedicated to making the web better and more open for all. Join us to imagine, build & teach the web's future.", donation_url: 'https://sendto.mozilla.org'}
 ])
-Donation.create(quantity_cents: '10', currency: '€', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity_cents: '20', currency: '€', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity_cents: '100', currency: '€', date: '2014-10-14', project_id: 2, user_id: 3, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity_cents: '220', currency: '€', date: '2014-08-08', project_id: 2, user_id: 4, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity_cents: '10', currency: '€', date: '2014-10-14', project_id: 3, user_id: 5, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity_cents: '20', currency: '€', date: '2014-08-08', project_id: 3, user_id: 6, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity_cents: '100', currency: '€', date: '2014-10-14', project_id: 4, user_id: 7, comment: 'Wadus comment', quantity_privacy: 0)
-Donation.create(quantity_cents: '220', currency: '€', date: '2014-08-08', project_id: 4, user_id: 8, comment: 'Wadus comment', quantity_privacy: 1)
-Donation.create(quantity_cents: '25', currency: '$', date: '2014-10-14', project_id: 5, user_id: 1, comment: 'You should donate too!', quantity_privacy: 0)
-Donation.create(quantity_cents: '25', currency: '€', date: '2014-08-08', project_id: 5, user_id: 2, comment: 'Fighting for privacy in the Internet', quantity_privacy: 1)
-Donation.create(quantity_cents: '5000', currency: '€', date: '2004-10-10', project_id: '7', user_id: 1, comment: "Rewind to early 2000's. Chrome didn't exist. Internet Explorer had +90% of browser market share. A free software project to create an alternative browser emerged: Firefox. It slowly started to get supporters while developing a great product. An advocacy campaign was created at spreadfirefox.com. And a crazy idea was proposed: a full page ad in the New York Times crowdfunded with donations to promote the 1.0 version of Firefox. It just happened. A double page ad with more than 10.000 names of the donors in it. 
+Donation.create(quantity_cents: '1000', currency: 'EUR', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '2000', currency: 'EUR', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '10000', currency: 'EUR', date: '2014-10-14', project_id: 2, user_id: 3, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '22000', currency: 'EUR', date: '2014-08-08', project_id: 2, user_id: 4, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '1000', currency: 'EUR', date: '2014-10-14', project_id: 3, user_id: 5, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '2000', currency: 'EUR', date: '2014-08-08', project_id: 3, user_id: 6, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '10000', currency: 'EUR', date: '2014-10-14', project_id: 4, user_id: 7, comment: 'Wadus comment', quantity_privacy: 0)
+Donation.create(quantity_cents: '22000', currency: 'EUR', date: '2014-08-08', project_id: 4, user_id: 8, comment: 'Wadus comment', quantity_privacy: 1)
+Donation.create(quantity_cents: '2500', currency: 'USD', date: '2014-10-14', project_id: 5, user_id: 1, comment: 'You should donate too!', quantity_privacy: 0)
+Donation.create(quantity_cents: '2500', currency: 'EUR', date: '2014-08-08', project_id: 5, user_id: 2, comment: 'Fighting for privacy in the Internet', quantity_privacy: 1)
+Donation.create(quantity_cents: '5000', currency: 'EUR', date: '2004-10-10', project_id: 7, user_id: 1, comment: "Rewind to early 2000's. Chrome didn't exist. Internet Explorer had +90% of browser market share. A free software project to create an alternative browser emerged: Firefox. It slowly started to get supporters while developing a great product. An advocacy campaign was created at spreadfirefox.com. And a crazy idea was proposed: a full page ad in the New York Times crowdfunded with donations to promote the 1.0 version of Firefox. It just happened. A double page ad with more than 10.000 names of the donors in it. 
 
   Read more at: https://blog.mozilla.org/press/2004/12/mozilla-foundation-places-two-page-advocacy-ad-in-the-new-york-times/ 
 
   http://tech.slashdot.org/story/04/10/19/1338254/firefox-seeks-full-page-ad-in-new-york-times")
-

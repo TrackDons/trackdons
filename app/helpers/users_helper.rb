@@ -8,11 +8,7 @@ module UsersHelper
   end
 
   def has_donations?
-  	logged_in? && current_user.donations.count > 0
-  end
-
-  def donation_quantity_currency(donation) # buscar gema para trabajar con monedas
-    donation_currency = "#{donation.quantity_cents}#{donation.currency}"
+    logged_in? && current_user.donations.count > 0
   end
 
 end
