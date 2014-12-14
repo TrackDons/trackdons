@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Donations' do
+RSpec.feature 'User donations' do
   background do
     @project = create_project(:name => 'Wikiwadus')
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
