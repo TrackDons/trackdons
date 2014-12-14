@@ -1,8 +1,9 @@
 class Donation < ActiveRecord::Base
 
   belongs_to :project
+  accepts_nested_attributes_for :project
+
   belongs_to :user
-  attr_accessor :project_name, :project_description, :project_url
   before_validation :set_project
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
@@ -11,17 +12,15 @@ class Donation < ActiveRecord::Base
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
   # acts_as_taggable_on :tags
 
-  #validates :quantity_cents, presence: true
-  #validates :currency, presence: true
   validates :project_id, presence: true
   validates :user_id, presence: true
   validates :date, presence: true
-  
+
   def set_project
-    unless self.project.present?
-      self.project = Project.create_with( 
-      :description => @project_description,
-      :url => @project_url).find_or_create_by(:name => @project_name)
+    if self.project && self.project.new_record?
+      self.project = Project.create_with({
+        description: self.project.description,
+        url: self.project.url}).find_or_create_by(name: self.project.name)
     end
   end
 

@@ -38,9 +38,14 @@ module ApplicationHelper
 
     markdown.render(text).html_safe
   end
-  
+
   private
+
   def language_name_for(locale)
     I18n.backend.send(:translations)[locale][:language_name]
+  end
+
+  def current_user_profile?
+    @user == current_user
   end
 end

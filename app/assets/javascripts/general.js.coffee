@@ -3,7 +3,7 @@ $(document).on "page:change", ->
     event.preventDefault()
     window.open $(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes"
     return
-  $('#donation_project_name').select2
+  $('#donation_project_attributes_name').select2
     placeholder: 'Project'
     ajax:
       url: '/projects'
@@ -21,7 +21,7 @@ $(document).on "page:change", ->
     createSearchChoice: (term, data) ->
       return {id:term, text: term + ' (Add project)'}
     createSearchChoicePosition: 'bottom'
-  $('#donation_project_name').on "select2-selecting", (e) -> 
+  $('#donation_project_attributes_name').on "select2-selecting", (e) ->
     if e.choice.text.indexOf('(Add project)') > 0
       $('#project_attributes').slideDown()
     else

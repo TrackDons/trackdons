@@ -10,8 +10,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @donations = @user.donations
-    @projects = @user.projects
   end
 
   def new
@@ -36,14 +34,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      if cookies[:donation]
-        donation_save(cookie_donation)
-        flash[:success] = "Hey, donation tracked, and you have your profile ready to keep tracking donations! Now this is a great day."
-        cookies.delete(:donation)
-      else
-        flash[:success] = "Welcome to TrackDons. Hope you track a lot of dons!"
-        redirect_to @user
-      end
+      save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
     else
       render 'new'
     end
@@ -75,6 +66,14 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def save_pending_donations
+      if cookies[:donation]
+        donation_save(cookie_donation)
+        flash[:success] = "Hey, donation tracked, and you have your profile ready to keep tracking donations! Now this is a great day."
+        cookies.delete(:donation)
+      end
     end
 
 end

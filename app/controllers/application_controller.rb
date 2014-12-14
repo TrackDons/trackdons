@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
   include ProjectsHelper
-  include DonationsHelper
 
   before_action :set_locale
 
@@ -27,7 +26,25 @@ class ApplicationController < ActionController::Base
 
   def set_new_donation
     new_donation_currency = logged_in? ? current_user.currency : 'EUR'
-    @donation = Donation.new currency: new_donation_currency
+    @donation = Donation.new currency: new_donation_currency,
+                             project: (@project.nil? ? Project.new : @project)
   end
+
+  def donation_save(donation_params)
+    @donation = current_user.donations.build(donation_params)
+    if donation_params[:project_id] and project = Project.find_by(id: donation_params[:project_id])
+      @donation.project = project
+    end
+    if @donation.save
+      redirect_to donation_path(@donation, :share_links => true)
+    else
+      render 'new'
+    end
+  end
+
+  def cookie_donation
+    JSON.parse(cookies[:donation]).with_indifferent_access
+  end
+  helper_method :cookie_donation
 
 end

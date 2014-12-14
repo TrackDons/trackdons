@@ -1,30 +1,26 @@
-
 <section id="user" class="user_page content_column">
 
-	<%# provide(:title, @user.name) %>
-
   <%= render 'header' %>
-	
+
   <div id="user_nav">
-    <% if @user == current_user %>
-      <div id="edit_your_profile"><%= link_to "Edit your profile", edit_user_path(current_user) %></div>
+    <% if current_user_profile? %>
+      <div id="edit_your_profile"><%= link_to t('.edit_your_profile'), edit_user_path(current_user) %></div>
     <% end %>
-    <a href="">Donations (<%= @user.donations.count %>)</a>
-    <a href="">Projects (<%= @user.projects.distinct.count %>)</a>
+
+    <a href="">Donations (<%= @user.donations.length %>)</a>
+    <a href="">Projects (<%= @user.projects.distinct.length %>)</a>
   </div>
 
   <div id="user_donations">
     <% if @user.donations.any? %>
-      <%= render @donations %>    
+      <%= render @user.donations %>
     <% end %>
   </div>
 
   <div id="user_projects" style="display: none">
     <% if @user.projects.any? %>
-      <%= render @projects %>    
+      <%= render @user.projects %>
     <% end %>
   </div>
-
-
 
 </section>

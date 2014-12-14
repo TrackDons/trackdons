@@ -1,24 +1,19 @@
-
 <section class="content_column">
 
   <h1>New Donation</h1>	
 
   <% if @donation.errors.any? %>
-  	
-  <%= @donation.inspect %>
-
-  <div id="error_explanation">
-    <h2><%= pluralize(@donation.errors.count, "error") %> prohibited
-      this article from being saved:</h2>
-    <ul>
-    <% @donation.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
+    <div id="error_explanation">
+      <h2><%= pluralize(@donation.errors.count, "error") %> prohibited
+        this article from being saved:</h2>
+      <ul>
+      <% @donation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
 
   <%= render 'donations/form' %>
-  
-</section>
 
+</section>

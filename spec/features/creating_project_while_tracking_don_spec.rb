@@ -16,8 +16,7 @@ RSpec.feature 'Adding projects while tracking donations. When I create a donatio
     
     visit '/'
     
-    # fill_in 'donation_project_name', :with => 'Ngrok' # (this doesn't work cos it is a hidden field for select2)
-    find('#donation_project_name').set 'Ngrok'
+    find('#donation_project_attributes_name').set 'Ngrok'
     
     fill_in 'Project Description', :with => 'Introspected tunnels to localhost'
     fill_in 'URL', :with => 'https://ngrok.com/'
@@ -35,7 +34,7 @@ RSpec.feature 'Adding projects while tracking donations. When I create a donatio
   scenario 'As an anonymous user, I should be able to create a new project on the fly' do
     visit '/'
     
-    find('#donation_project_name').set 'Ngrok'
+    find('#donation_project_attributes_name').set 'Ngrok'
     
     fill_in 'Project Description', :with => 'Introspected tunnels to localhost'
     fill_in 'URL', :with => 'https://ngrok.com/'

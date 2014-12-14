@@ -1,6 +1,6 @@
 <% provide(:title, 'Sign up') %>
 
-<%= content_tag :section, :class => 'content_column', :id => (temp_donations_exist ? "first_donation_pending" : "user") do -%>
+<%= content_tag :section, :class => 'content_column', :id => (temp_donations_exist? ? "first_donation_pending" : "user") do -%>
 	<%= render 'new' %>
 <% end -%>
 </section>
