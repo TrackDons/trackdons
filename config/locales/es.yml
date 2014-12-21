@@ -45,6 +45,9 @@ es:
       other_projects: 'Otros proyectos'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
+  projects:
+    new:
+      existing_project_error: A project with this name already exists
   users:
     header:
       donated: donado

@@ -79,6 +79,8 @@ en:
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
+    new:
+      existing_project_error: A project with this name already exists
   users:
     header:
       donated: donated

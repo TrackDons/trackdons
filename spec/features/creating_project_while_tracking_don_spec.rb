@@ -7,12 +7,7 @@ RSpec.feature 'Adding projects while tracking donations. When I create a donatio
   end
   
   scenario 'As a logged in user, I should be able to create a new project on the fly' do
-    visit '/login'
-    
-    fill_in 'Email', :with => "yorch@example.com"
-    fill_in 'Password', :with => "wadusm4n"
-    
-    click_button 'Log in'
+    login_as "yorch@example.com", "wadusm4n"
     
     visit '/'
     
