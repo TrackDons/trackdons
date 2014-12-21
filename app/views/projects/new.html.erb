@@ -3,10 +3,6 @@
 
   <h1><%= t 'projects.new_project' %></h1>
 
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-
   <%= form_for :project, url: projects_path, html: {class: "simple_form"} do |f| %>
 
     <% if @project.errors.any? %>

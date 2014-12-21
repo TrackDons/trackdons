@@ -48,32 +48,24 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :country)
+  end
 
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
-
-    def save_pending_donations
-      if cookies[:donation]
-        donation_save(cookie_donation)
-        flash[:success] = "Hey, donation tracked, and you have your profile ready to keep tracking donations! Now this is a great day."
-        cookies.delete(:donation)
-      end
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
 end
