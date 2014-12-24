@@ -14,7 +14,8 @@ $(document).on "page:change", ->
             $('form *').attr('disabled', 'disabled')
             $('#project_name').attr('disabled', null)
             p = $('p[data-existing-project-error]')
-            p.html(p.attr('data-existing-project-error'))
+            a = $('<a href="'+data[0].project_url+'">' + p.attr('data-existing-project-error') + '</a>')
+            p.html(a)
           else
             $('form *').attr('disabled', null)
             $('p[data-existing-project-error]').html('')

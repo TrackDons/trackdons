@@ -1,4 +1,3 @@
-
 <section id="project" class="content_column">
 
   <div class="project_main">
@@ -6,12 +5,21 @@
     <section class="meta">
       <h1><%= @project.name %></h1>
       <div class="links">
-        <div class="url"><a href="<%= @project.url %>"><%= prettify_url(@project.url) %></a></div>
-        <div class="twitter"><a href="http://www.twitter.com/<%= @project.twitter %>">@<%= @project.twitter %></a></div>
+        <div class="url">
+          <a href="<%= @project.url %>" target="blank"><%= prettify_url(@project.url) %></a>
+        </div>
+
+        <% if @project.twitter.present? %>
+          <div class="twitter">
+            <a href="http://www.twitter.com/<%= @project.twitter %>" target="blank">@<%= @project.twitter %></a>
+          </div>
+        <% end %>
       </div>
+
       <div class="description">
-        <%= @project.description %>
+        <%= markdown @project.description %>
       </div>
+
       <div class="facts">
         <ul>
           <li><%= @project.donations.where('date >= ?', 1.month.ago).count %> donations in the last week</li>
@@ -47,14 +55,13 @@
 
   </div>
 
-  <h2><%= t 'Donations' %></h2>
+  <h2><%= t('Donations') %></h2>
 
   <%= render @project.donations %>
-  
 
   <section id="track_donation">
-    <h2><%= t 'projects.did_you_track' %> </h2>
-    
+    <h2><%= t('projects.did_you_track') %> </h2>
+
     <%= form_for([@project, @project.donations.build]) do |f| %>
       <%= render 'donations/form' %>
     <% end %>
@@ -63,4 +70,3 @@
   <%# link_to 'Edit', edit_project_path(@project) %>
 
 </section>
-

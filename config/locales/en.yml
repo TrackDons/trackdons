@@ -81,6 +81,8 @@ en:
     invite_your_friends_to_this_page: 'Invite your friends to this page'
     new:
       existing_project_error: A project with this name already exists
+    create:
+      project_created: Project created. Share the word and start donation-saving!
   users:
     header:
       donated: donated

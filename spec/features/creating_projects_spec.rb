@@ -21,5 +21,12 @@ RSpec.feature 'Creating projects' do
     expect(page).to have_content('Project created')
     expect(page).to have_content('Rubular')
     expect(page).to have_content('rubular.com')
+
+    fill_in 'donation_date', :with => "2014-10-10"
+    fill_in 'donation_quantity', :with => "200"
+    click_button 'TrackDon'
+
+    expect(page).to have_content 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
+    expect(page).to have_content '200€ to Rubular by Yorch'
   end
 end

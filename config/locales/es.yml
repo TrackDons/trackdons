@@ -48,6 +48,8 @@ es:
   projects:
     new:
       existing_project_error: A project with this name already exists
+    create:
+      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
   users:
     header:
       donated: donado
