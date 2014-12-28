@@ -18,4 +18,15 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def total_people_donated
+    users.distinct.length
+  end
+
+  def total_donations
+    donations.length
+  end
+
+  def last_month_donations
+    donations.where('date >= ?', 1.month.ago).length
+  end
 end
