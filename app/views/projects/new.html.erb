@@ -2,7 +2,7 @@
 
   <h1><%= t 'projects.new_project' %></h1>
 
-  <%= form_for @project, html: {class: "simple_form"} do |f| %>
+  <%= form_for :project, url: projects_path, html: {class: "simple_form"} do |f| %>
 
     <% if @project.errors.any? %>
       <div id="error_explanation">

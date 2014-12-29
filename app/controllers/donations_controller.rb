@@ -18,26 +18,23 @@ class DonationsController < ApplicationController
   end
 
   def create
-    unless logged_in?
+    if logged_in?
+      save_donation(donation_params)
+    else
       save_donation_to_cookie(donation_params)
       redirect_to signup_path
-    else
-      donation_save(donation_params)
-      if cookies[:donation]
-        cookies.delete(:donation)
-      end
     end
   end
 
   private
 
-    def donation_params
-      params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy,
-                                       :project_id, project_attributes: [:name, :description, :url, :id])
-    end
+  def donation_params
+    params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy,
+                                     :project_id, project_attributes: [:name, :description, :url, :id])
+  end
 
-    def save_donation_to_cookie(donation_params)
-      cookies[:donation] = donation_params.to_json
-    end
+  def save_donation_to_cookie(donation_params)
+    cookies[:donation] = donation_params.to_json
+  end
 
 end
