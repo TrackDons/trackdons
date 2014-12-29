@@ -79,3 +79,9 @@ en:
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
+  users:
+    invite: 'Invite a friend'
+  invitations:
+    dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
+    pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."
+    already_exists: Mmm... it seems that the email you are trying to invite is already registered. Try another!

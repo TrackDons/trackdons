@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get 'signup' => 'users#new'
+  get 'invite'   => 'invitations#new'
+  post 'invite'   => 'invitations#create'
 
   get 'pages/index'
   get 'about' => 'pages#about'
