@@ -45,3 +45,34 @@ es:
       other_projects: 'Otros proyectos'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
+  projects:
+    new:
+      existing_project_error: A project with this name already exists
+    create:
+      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
+    show:
+      have_you_donated: ¿Has donado al proyecto?
+      do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
+      invite_your_friends_to_this_page: Invita a tus amigos a esta página
+      donations_last_week:
+        one: "%{count} donación la semana pasada"
+        other: "%{count} donaciones la semana pasada"
+      people_donated:
+        one: "%{count} persona ha donado en total"
+        other: "%{count} personas ha donado en total"
+      donations_in_total:
+        one: "%{count} donacion en total"
+        other: "%{count} donaciones en total"
+  users:
+    header:
+      donated: donado
+      in_the_last_month: en el último mes
+      in_total: en total
+    show:
+      edit_your_profile: Edita tu perfil
+  shared:
+    user_links:
+      hello: "Hola %{name}"
+      log_out: Salir
+      login: Identificarse
+      track_your_first_donation: Registra tu primera donación

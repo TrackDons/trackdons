@@ -9,8 +9,6 @@
 				<li><%= t 'main_bullet_3' %></li>
 			</ul>
       <%= link_to t('read_more_about_this_project'), {controller: 'pages', action: 'about'}, class: 'button' %>
-      <%# link_to t('read_more_about_this_project'), class: 'button' %>
-
 		</section>
 
 		<section id="track_donation" class="content_full">
@@ -31,10 +29,7 @@
 					<% end %>
 				</header>
 
-				<%# form_for :donation, url: donations_path, html: {class: "simple_form"} do |f| %>
-        <%# form_for :donation, url: donations_path do |f| %>
-          <%= render 'donations/form' %>
-        <%# end %>
+        <%= render 'donations/form' %>
 
 			</div>
 

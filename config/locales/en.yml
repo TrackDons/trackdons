@@ -74,11 +74,39 @@ en:
     project: 'Project'
     all_projects: 'All projects'
     new_project: 'New project'
-    have_you_donated: 'Have you donated to the project?'
-    do_you_want_to_actually_donate: 'Do you want to actually donate to the project?'
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
+    new:
+      existing_project_error: A project with this name already exists
+    create:
+      project_created: Project created. Share the word and start donation-saving!
+    show:
+      have_you_donated: Have you donated to the project?
+      do_you_want_to_actually_donate: Do you want to actually donate to the project?
+      invite_your_friends_to_this_page: Invite your friends to this page
+      donations_last_week:
+        one: "%{count} donation in the last week"
+        other: "%{count} donations in the last week"
+      people_donated:
+        one: "%{count} person have donated in total"
+        other: "%{count} people have donated in total"
+      donations_in_total:
+        one: "%{count} donation in total"
+        other: "%{count} donations in total"
+  users:
+    header:
+      donated: donated
+      in_the_last_month: in the last month
+      in_total: in total
+    show:
+      edit_your_profile: Edit your profile
+  shared:
+    user_links:
+      hello: "Hello %{name}"
+      log_out: Log out
+      login: Login
+      track_your_first_donation: Track your first donation
   users:
     invite: 'Invite a friend'
   invitations:

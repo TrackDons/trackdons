@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   get 'pages/index'
   get 'about' => 'pages#about'
-  # get 'donations' => 'donations#index'
-  post 'donations' => 'donations#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,7 +18,6 @@ Rails.application.routes.draw do
   resources :donations
   resources :projects do
     resources :donations
-    get :autocomplete_project_name, :on => :collection
   end
   
   

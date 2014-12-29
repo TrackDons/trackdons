@@ -15,6 +15,7 @@
  *= require jquery-ui/autocomplete
  *= require tipsy
  *= require slidebars
+ *= require select2
  *= 
  */
 
@@ -23,6 +24,7 @@
 
 $main_color: #7C9200;
 $secondary_color: #565631;
+$tertiary_color: #E4D6B3;
 
 /* colors */
 body { background: #F3E9D1; }
@@ -33,7 +35,7 @@ body #sb-site, body .sb-site-container { background-color: transparent; }
 #header { background: $main-color; color: #FFF; }
 #header a { color: #FFF; }
 button, .button, input[type='submit'] { background: $main-color; color: #FFF; }
-a.button { text-decoration: none; }
+a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
 .content_full { background: #EBE8CC; }
 #track_donation header h2, h1 { border-color: $main-color; color: $main-color; }
 #project .meta { background: #EBE8CC; }
@@ -55,9 +57,39 @@ body .tipsy { font-size: 11px; }
   /*#nav_mobile { display: none; }*/
   // #nav_mobile .hamburger { position: absolute; border: 1px solid red; top: 0; left: -50px; width: 31px; height: 31px; margin: 4px; background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHdpZHRoPSIzMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNCwxMGgyNGMxLjEwNCwwLDItMC44OTYsMi0ycy0wLjg5Ni0yLTItMkg0QzIuODk2LDYsMiw2Ljg5NiwyLDhTMi44OTYsMTAsNCwxMHogTTI4LDE0SDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDIgIHMwLjg5NiwyLDIsMmgyNGMxLjEwNCwwLDItMC44OTYsMi0yUzI5LjEwNCwxNCwyOCwxNHogTTI4LDIySDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDJzMC44OTYsMiwyLDJoMjRjMS4xMDQsMCwyLTAuODk2LDItMiAgUzI5LjEwNCwyMiwyOCwyMnoiLz48L3N2Zz4='); }
   // .sb-slidebar.sb-active { width: 300px; }
-  .menu_icon { position: relative; width: 18px; display: inline-block; font-size: 16px; padding-top: 1px;  }
-  .menu_icon:hover { cursor: auto; }
-  .menu_icon span { text-indent: -9999px; display: inline-block; }
+  #menu_icon { position: absolute; padding: 10px; top: 2px; left: 2px; width: 18px; display: inline-block; font-size: 16px; }
+  #menu_icon:hover { cursor: pointer; }
+  #menu_icon span { text-indent: -9999px; display: inline-block; }
+
+.sb-slidebar {
+  padding: 5%;
+  position: relative;
+
+  ul {
+    margin: 0; 
+    padding: 0; 
+  }
+  ul.bottom {
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
+  }
+  li { 
+    margin: 5%; 
+    list-style-type: none; 
+    display: block;
+    background: $main_color;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      display: block;
+      padding: 10px; 
+      color: #FFF;  
+    }
+  }
+
+}
 
 #main_content { margin-top: 40px; margin-bottom: 80px; }
 .content_column, .alert { padding: 0 40px 0 120px; overflow: hidden; }
@@ -104,9 +136,9 @@ h2 { font-size: 24px; }
 
 .main_form { clear: both; margin: 0 0 20px 0;}
 .track_don_project, .track_don_quantity, .track_don_date { display: inline-block; }
-.track_don_project { width: 540px; margin-bottom: 20px; overflow: hidden;}
+.track_don_project { width: 540px; overflow: hidden;}
 .track_don_quantity { width: 90px; margin-right: 10px; }
-.track_don_quantity_B { width: 375px; margin-bottom: 20px; float: right; }
+.track_don_quantity_B { width: 375px; float: right; }
 .main_form .track_don_quantity_B input { width: 90px; margin: 0;}
 .track_don_quantity_B_option { background: #D5D7A3; margin-bottom: 4px; }
 .track_don_quantity_B_option .hint { display: inline-block; }
@@ -117,11 +149,46 @@ h2 { font-size: 24px; }
 .track_don_quantity input { width: 74px; }
 .track_don_date input { width: 100%; font-size: 12px;}
 .track_don_options { margin: 0 0 20px 0; clear: both;}
-.hint { font-size: 12px}
+.hint { font-size: 12px; margin-bottom: 20px; }
 #i_want_to_explain_content { display: none; }
 #i_want_to_explain_content textarea { width: 97%; height: 100px; font-size: 13px; padding-top: 10px; margin: 10px 0;}
+#project_attributes { display:none; 
+  input, textarea { width: 96.5%; font-size: 13px; border: 1px dashed $main-color; font-weight:bold;}
+  textarea { width:99%; padding-top: 10px; height: 100px; }
+}
 
-#project { margin-top: 30px; overflow: hidden; }
+.track_don_quantity_B {
+  
+  input { 
+    width: 65px; 
+    margin: 0;
+  }
+
+  .track_don_currency_selector {
+    background: $main_color; 
+    display: inline-block;
+    vertical-align: top; 
+    margin: 0; 
+
+    select {
+      background: none; 
+      vertical-align: top; 
+      height: 38px; 
+      margin: 4px 0 0 0; 
+      border: none;
+      font-size: 18px;
+      font-family: 'Raleway';
+      color: #FFF;
+      
+      option {
+        white-space: pre;
+      }
+    }
+  }
+
+}
+
+#project { overflow: hidden; }
 #project .meta { width: 42%; float: left; padding: 2% 4%; font-size: 12px; }
 #project .actions { width: 42%; float: right; padding: 0 4%; }
 #project h1 { font-size: 32px; margin: 10px 0;}
@@ -137,46 +204,111 @@ h2 { font-size: 24px; }
 .project a { width: 120px; margin: 0 10px 10px 0; float: left; padding: 5px; height: 60px; text-align: bottom; border: 1px solid #CDD195; }
 .project a { display: block;}
 
-.donation { border-top-width: 1px; border-top-style: solid; padding-top: 10px; margin-bottom: 35px; position: relative;}
-.donation h2 { font-size: 18px; color: #666; margin: 0 ;}
 .donation .tags a { display: inline-block; font-size: 11px; font-weight: normal; color: #666; text-decoration: none; background: #F3E9D1; padding: 2px; margin: 0 6px 0 0;}
-.donation_comment { margin: 15px 0;}
 //#donation_do_widget { position: absolute; top: 10px; right: 0; width: 150px; text-align: right; }
-#donation_do_widget { float:right; margin-top: 5px; width: 150px; text-align: right; }
+#donation_do_widget { position: absolute; top: 8px; right: 0; text-align: right; }
 #donation_do_widget .donation_number { padding: 4px 10px; font-size: 12px; display: inline-block; background: #D9DAAA; }
 #donation_do_widget .donation_do { display: inline-block; }
 #donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
 
-.call_to_action { background-color:#D9DAAA; padding:20px; background-color: #D9DAAA; }
-#share_block { width:610px; float:left; margin-bottom:40px;
-  p { font-size: 18px; margin-top:0px;}
-}
-ul#share_buttons, ul#next { list-style-type: none; padding:0px; margin:15px 0px 0px; float:left;
-  li { display:block; float:left; }
-}
+.donation { 
+  border-top-width: 1px; 
+  border-top-style: solid; 
+  padding-top: 10px; 
+  margin-bottom: 35px; 
+  position: relative; 
+  clear: both;
 
-.tracked_donation { float: left; width: 640px;
-  small { display: block; margin-bottom: 15px; }
-  .gravatar { float: left; margin-right: 9px; width:45px; }
-  h2 { float: left; margin:5px 0px 15px; color: $main-color; font-size:18px; 
-    a, a:visited { color: $main-color }
+  small { 
+    display: block; 
+    margin-bottom: 15px; 
   }
-  p { width: 432px; clear: both; margin-left: 54px; font-size: 14px;}
+  .gravatar { 
+    float: left; 
+    margin-right: 9px; 
+    width: 45px; 
+  }
+  a, a:visited { 
+    color: $main-color 
+  }
+  h2 { 
+    font-size: 18px; 
+    color: #666; 
+    margin: 0 110px 10px 0;
+  }
+  .donation_comment {
+    font-size: 14px; 
+    margin: 0 120px 0 54px; 
+
+    p {
+      margin-top: 0; 
+    }
+  }
   p.donation_date { color: #AFACA4; }
 }
 small { font-size: 11px; }
-hr { height:1px; border:0; background-color:#D9DAAA; margin:60px 0px 15px; float:left; width: 640px;}
-#next {  
-  li { height:80px; width:160px; margin-right: 20px; }
-  li:last-child { margin-right:0px; };
-  a, a:visited { color: $main-color; font-size: 18px; font-weight:bold; }
+hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; width: 100%; }
+
+#share_block { 
+  background-color: #D9DAAA; 
+  padding: 20px;
+  margin-bottom: 40px;
+  p { 
+    font-size: 18px; 
+    margin-top: 0px;
+  }
+}
+#share_buttons {
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
+
+  li { 
+    width: 29%; 
+    margin-right: 26px; 
+    background-color: $main-color; 
+    text-align: center;
+    display: inline-block;
+
+    a, a:visited { 
+      display: block; 
+      color: #fff; 
+      font-size: 14px; 
+      font-weight: 500; 
+      line-height: 30px;
+    }
+  }
+  li:last-child { 
+    margin-right: 0px; 
+  };
+  
+}
+#next { 
+  list-style-type: none; 
+  padding: 0px; 
+  margin: 15px 0px 0px; 
+  
+  li { 
+    display: inline-block; 
+    vertical-align: top;
+    width: 30%; 
+    margin-right: 26px; 
+
+    a {
+      padding: 10px;
+      height: 65px; 
+      display: block;
+      background-color: #D9DAAA;
+      color: $main-color; 
+      font-size: 18px; 
+      font-weight: bold; 
+    }
+  }
+  li:last-child { 
+    margin-right: 0px; 
+  };
 }
 
-#share_buttons {
-  li { width:185px; margin-right: 26px; background-color: $main-color; text-align:center;}
-  li:last-child { margin-right:0px; };
-  a, a:visited { color: #fff; font-size: 14px; font-weight:500; line-height: 30px;}
-}
 
 .long_text { width: 500px; font-size: 14px; }
 .long_text p { line-height: 22px; }
@@ -194,6 +326,14 @@ hr { height:1px; border:0; background-color:#D9DAAA; margin:60px 0px 15px; float
 
 .ui-autocomplete { border: 1px solid red; }
 
+.select2-container { width: 540px; font-size: 22px; font-weight: bold; font-family: Raleway; height: 40px; margin-bottom: 8px !important; 
+  a.select2-choice { line-height: 32px; display: block; height: 35px; border: 1px dashed #7c9200; padding: 4px 6px 0px;
+    
+  }
+}
+.select2-results .select2-highlighted { background: #7c9200 !important; }
+.select2-drop-active { border: 1px dashed #7c9200 !important; border-top: none !important; }
+.select2-search input[type=text] { font-family: Raleway; font-size: 18px; }
 #first_donation_pending { padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
 
 #footer { text-align: center; font-size: 12px }
@@ -243,11 +383,9 @@ iPad 3
 /* Styles */
 }
 
-
-
 @media only screen  and (max-width : 880px) {
   body { margin: 0; padding: 0; }
-  #container { width: auto; margin: 0; border-width: 15px}
+  #container { width: auto; margin: 0 0 2em 0; border-width: 15px}
   #header { position: relative; padding: 10px 0;}
     #nav_site { }
     #nav_personal { position: absolute; top: 10px; right: 10px; text-align: left; }
@@ -256,11 +394,57 @@ iPad 3
     #logo { left: 39px; }
     #nav_mobile .hamburger { left: 0; }
   #home { padding-top: 0;}
-  #main_content { margin-top: 0; margin-bottom: 10%; }
+  #home ul { width: auto; }
+  #main_content { margin-top: 0; margin-bottom: 1%; padding: 5% 0; }
   .content_column, .alert { padding-left: 5%; padding-right: 5%; }
   .content_full {  }
   .long_text { width: auto;}
+  #project .meta { margin-bottom: 5%; }
+  #project .actions { padding: 0; }
+  #project .meta, #project .actions { float: none; width: auto; }
+  #track_donation {
+    width: 540px;
+    padding: 0; 
+  }
+  #track_donation.content_full {
+    width: 100%;
+     
+  }
+  .main_form {
+
+  }
+  .donation h2 { font-size: 16px; }
+  .track_don_project {
+    width: 100%;
+  }  
+  ul#share_buttons, ul#next {
+    li { 
+      width: auto; 
+      display: block; 
+      margin: 0 0 15px 0; 
+      height: auto; 
+      text-align: center;
+      a {
+        height: auto;
+      }
+    }
+  }
   
+}
+
+@media only screen  and (max-width : 540px) {
+
+  .track_don_date, #track_donation .track_don_quantity_B {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+  #track_donation {
+    width: auto;
+  }
+  .track_don_date input {
+    width: 96%;
+  }
+
 }
 
 /* Desktops and laptops ----------- */

@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+  before_filter :set_new_donation, only: :new
   
   def index
     if params.has_key?(:project_id)
@@ -10,7 +11,6 @@ class DonationsController < ApplicationController
   end
 
   def new
-    @donation = Donation.new
   end
 
   def show
@@ -18,35 +18,23 @@ class DonationsController < ApplicationController
   end
 
   def create
-    unless logged_in?
-      save_donation_to_cookie(donation_params)
-      cookie_donation
-      redirect_to root_url
+    if logged_in?
+      save_donation(donation_params)
     else
-      donation_save(donation_params)
-      if cookies[:donation]
-        cookies.delete(:donation)
-      end
+      save_donation_to_cookie(donation_params)
+      redirect_to signup_path
     end
   end
 
   private
 
-    def donation_params
-      params.require(:donation).permit(:quantity_cents, :currency, :date, :project_id, :comment, :quantity_privacy)
-    end
+  def donation_params
+    params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy,
+                                     :project_id, project_attributes: [:name, :description, :url, :id])
+  end
 
-    def save_donation_to_cookie(donation_params)
-      cookies[:donation] = { 
-        :quantity_cents => donation_params[:quantity_cents],
-        :currency => donation_params[:currency],
-        :date => donation_params[:date],
-        #:tag_list => donation_params[:tag_list],
-        :project_id => donation_params[:project_id],
-        :comment => donation_params[:comment],
-        :quantity_privacy => donation_params[:quantity_privacy],
-        :user_id => donation_params[:user_id]
-      }.to_json
-    end
+  def save_donation_to_cookie(donation_params)
+    cookies[:donation] = donation_params.to_json
+  end
 
 end
