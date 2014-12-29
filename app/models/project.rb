@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
 
-  validates :name, length: { minimum: 5 }, uniqueness: true
+  validates :name, length: { minimum: 3 }, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }
 
