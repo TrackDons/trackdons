@@ -1,0 +1,8 @@
+<% if logged_in? %>
+  <li><%= link_to t('.hello', name: current_user.name), current_user %></li>
+  <li><%= link_to t('track_donation'), track_donation_path %></li>
+  <li><%= link_to t('.log_out'), logout_path, method: "delete" %></li>
+<% else %>
+  <li><%= link_to t('.track_your_first_donation'), signup_path %></li>
+  <li><%= link_to t('.login'), login_path %></li>
+<% end %>

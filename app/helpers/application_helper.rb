@@ -12,10 +12,10 @@ module ApplicationHelper
     locale_links
   end
 
-  def track_donation_link
-    return "#{root_path}#track_donation"
+  def track_donation_path
+    "#{root_path}#track_donation"
   end
-  
+
   def markdown(text)
     return if text.blank?
 

@@ -6,13 +6,27 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
 
-  validates :name, presence: true, length: { minimum: 5 }, uniqueness: true
-  validates :description, presence: true, length: { minimum: 25 }
-  validates :url, presence: true, length: { minimum: 5 }
+  validates :name, length: { minimum: 3 }, uniqueness: true
+  validates :description, length: { minimum: 25 }
+  validates :url, length: { minimum: 5 }
 
   def self.search(query)
-    return Project.where(["name like ?", "%#{query}%"]) if query.present?
-    Project.all
+    if query.present?
+      where(["name like ?", "%#{query}%"])
+    else
+      order(name: :asc)
+    end
   end
 
+  def total_people_donated
+    users.distinct.length
+  end
+
+  def total_donations
+    donations.length
+  end
+
+  def last_month_donations
+    donations.where('date >= ?', 1.month.ago).length
+  end
 end

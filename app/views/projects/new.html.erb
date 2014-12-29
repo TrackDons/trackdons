@@ -1,4 +1,3 @@
-
 <section class="content_column">
 
   <h1><%= t 'projects.new_project' %></h1>
@@ -6,22 +5,24 @@
   <%= form_for :project, url: projects_path, html: {class: "simple_form"} do |f| %>
 
     <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited
-        this article from being saved:</h2>
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited
+          this project from being saved:</h2>
+        <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <p>
       <%= f.label(:name, t('project')) %><br>
-      <%= f.autocomplete_field :name, autocomplete_project_name_projects_path %>
+      <%= f.text_field :name %>
     </p>
-   
+
+    <p data-existing-project-error="<%= t('.existing_project_error') %>"></p>
+
     <p>
       <%= f.label(:description, t('description')) %><br>
       <%= f.text_area(:description ) %>
@@ -41,11 +42,10 @@
       <%= f.label :twitter %><br>
       <%= f.text_field :twitter %>
     </p>
-   
+
     <p>
       <%= f.submit(t('create')) %>
     </p>
   <% end %>
 
 </section>
-
