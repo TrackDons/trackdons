@@ -18,6 +18,17 @@ module SessionsManagement
     end
   end
 
+  def current_user?(user)
+    user == current_user
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = t('.please_log_in')
+      redirect_to login_path and return false
+    end
+  end
+
   private
 
   def log_in(user)
@@ -41,9 +52,5 @@ module SessionsManagement
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
-  end
-
-  def current_user?(user)
-    user == current_user
   end
 end

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
-  helper_method :current_user, :extract_locale_from_subdomain, :logged_in?
+  helper_method :current_user, :extract_locale_from_subdomain, :logged_in?, :current_user?
 
   def set_locale
     I18n.locale = extract_locale_from_subdomain || I18n.default_locale

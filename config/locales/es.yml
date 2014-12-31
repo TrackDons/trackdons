@@ -27,6 +27,8 @@ es:
   choose_your_language: 'Elige tu idioma'
   # donations
   donations:
+    destroy:
+      destroy_success: 'Donación eliminada correctamente'
     show:
       donation_created: 'Viva! Tu donación queda apuntada. Compártela con tus amigos y anímales a que donen también'
       keep_the_quantity_private: 'Mantener la cantidad en privado'
@@ -45,6 +47,14 @@ es:
       other_projects: 'Otros proyectos'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
+    donation:
+      to: 'a'
+      by: 'por'
+      edit: 'Editar'
+      edit_title: 'Editar donación'
+      delete: 'Borrar'
+      delete_title: 'Borrar donación'
+      sure: '¿Estás seguro?'
   projects:
     new:
       existing_project_error: A project with this name already exists

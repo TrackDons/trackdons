@@ -1,12 +1,12 @@
 class DonationsController < ApplicationController
   before_filter :set_new_donation, only: :new
-  
+  before_action :logged_in_user, only: :destroy
+
   def index
+    @donations = Donation
     if params.has_key?(:project_id)
       project = Project.friendly.find(params[:project_id])
-      @donations = Donation.where(project_id: project.id)
-    else
-      @donations = Donation.all
+      @donations = @donations.where(project_id: project.id)
     end
   end
 
@@ -24,6 +24,14 @@ class DonationsController < ApplicationController
       save_donation_to_cookie(donation_params)
       redirect_to signup_path
     end
+  end
+
+  def destroy
+    donation = current_user.donations.find(params[:id])
+    donation.destroy
+    flash[:success] = t('.destroy_success')
+
+    redirect_to :back
   end
 
   private
