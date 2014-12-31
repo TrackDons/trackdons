@@ -1,8 +1,9 @@
-<%= form_for @donation do |f| %>
+<%= form_for(donation_for_form, donation_form_options) do |f| %>
 
   <div class="main_form">
 
-    <div class="track_don_project">
+    <% if new_donation? %>
+      <div class="track_don_project">
       <% if @project %>
         <div class="track_don_project_name">
           <%= @project.name %>
@@ -24,11 +25,12 @@
         <% end %>
       <% end %>
     </div>
+    <% else %>
+      <div class="track_don_project">
+        Editando donación del proyecto <%= @project.name %>
+      </div>
+    <% end %>
 
-    <div class="track_don_quantity" style="display: none">
-      <%= f.text_field :quantity, placeholder: '125' %>
-      <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>
-    </div>
     <div class="track_don_date">
       <%= f.date_field :date %>
       <div class="hint"><%= f.label(:date, t('when_did_you_donate')) %></div>
@@ -36,7 +38,6 @@
 
     <div class="track_don_quantity_B">
       <div class="track_don_quantity_B_option">
-        
         <%= f.text_field :quantity, placeholder: '125' %>
 
         <div class="track_don_currency_selector">
@@ -57,7 +58,11 @@
   <div class="track_don_options">
 
     <div>
-      <label><input type="checkbox" name="i_want_to_explain" id="i_want_to_explain"> <%= t('i_want_to_explain_why') %></label>
+      <label>
+        <%= f.check_box :show_comment, id: 'i_want_to_explain' %>
+        <%= t('i_want_to_explain_why') %>
+      </label>
+
       <div id="i_want_to_explain_content">
         <%= f.text_area(:comment) %>
       </div>
@@ -65,6 +70,9 @@
 
   </div>
 
-  <%= f.submit('TrackDon', class: 'big' ) %>
+  <%= f.submit(donation_form_button_text, class: 'big' ) %>
+  <% if editing_donation? %>
+    <%= link_to(t('.cancel'), @donation, remote: true) %>
+  <% end %>
 
 <% end %>

@@ -62,9 +62,7 @@
   <section id="track_donation">
     <h2><%= t('projects.did_you_track') %> </h2>
 
-    <%= form_for([@project, @project.donations.build]) do |f| %>
-      <%= render 'donations/form' %>
-    <% end %>
+    <%= render 'donations/form' %>
   </section>
 
   <%# link_to 'Edit', edit_project_path(@project) %>

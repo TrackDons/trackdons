@@ -4,7 +4,7 @@ class Donation < ActiveRecord::Base
   accepts_nested_attributes_for :project
 
   belongs_to :user
-  before_validation :set_project
+  before_validation :set_project, :clear_comment
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
@@ -21,6 +21,22 @@ class Donation < ActiveRecord::Base
       self.project = Project.create_with({
         description: self.project.description,
         url: self.project.url}).find_or_create_by(name: self.project.name)
+    end
+  end
+
+  def show_comment
+    comment.present?
+  end
+
+  def show_comment=(value)
+    @show_comment = value
+  end
+
+  private
+
+  def clear_comment
+    if @show_comment == false
+      self.comment = nil
     end
   end
 
