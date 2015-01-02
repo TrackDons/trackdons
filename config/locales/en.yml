@@ -113,3 +113,4 @@ en:
     dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."
     already_exists: Mmm... it seems that the email you are trying to invite is already registered. Try another!
+    invitation_send_subject: 'Your friend %{friend} wants you to track and share your donations'

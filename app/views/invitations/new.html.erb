@@ -8,7 +8,7 @@
     
     <p><%= t('invitations.pending_invites', :count => current_user.available_invitations) %></p>
 
-    <%= form_for :invite, url: invite_path, html: {class: "simple_form"} do |f| %>
+    <%= form_for :invitation, url: invite_path, html: {class: "simple_form"} do |f| %>
 
       <p>
         <%= f.label :name %>
@@ -16,8 +16,8 @@
       </p>
 
       <p>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+        <%= f.label :invited_email %>
+        <%= f.text_field :invited_email %>
       </p>
 
       <%= f.submit "Invite", class: "btn btn-primary" %>
