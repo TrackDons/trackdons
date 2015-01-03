@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
-  helper_method :current_user, :extract_locale_from_subdomain, :logged_in?
+  helper_method :current_user, :extract_locale_from_subdomain, :logged_in?, :current_user?
 
   def set_locale
     I18n.locale = extract_locale_from_subdomain || I18n.default_locale

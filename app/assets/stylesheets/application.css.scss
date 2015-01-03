@@ -236,13 +236,16 @@ h2 { font-size: 24px; }
     color: #666; 
     margin: 0 110px 10px 0;
   }
-  .donation_comment {
+  .donation_comment, .donation_tools {
     font-size: 14px; 
     margin: 0 120px 0 54px; 
 
     p {
       margin-top: 0; 
     }
+  }
+  .donation_tools {
+    font-size: 11px;
   }
   p.donation_date { color: #AFACA4; }
 }

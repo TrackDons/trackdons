@@ -9,7 +9,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
   scenario 'I see a success page and message' do
     login_as "yorch@example.com", "wadusm4n"
 
-    visit '/projects'
+    visit projects_page
 
     click_link('Wikiwadus')
 
@@ -25,7 +25,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
   scenario 'I can share a link to my donation via email, twitter or facebook' do
     login_as "yorch@example.com", "wadusm4n"
 
-    visit '/projects'
+    visit projects_page
 
     click_link('Wikiwadus')
 

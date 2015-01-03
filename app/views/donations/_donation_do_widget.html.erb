@@ -1,11 +1,11 @@
 <div id="donation_do_widget">
   <% unless in_projects_page? %>
     <div class="donation_number">
-      <%= donation.project.donations.length %>
+      <%= donation.project.donations.size %>
     </div>
   <% end %>
 
   <div class="donation_do">
-    <%= link_to 'TrackDon', projects_url, class: 'button', title: t('donations.donation_do_widget.link_title') %>
+    <%= link_to 'TrackDon', projects_path, class: 'button', title: t('donations.donation_do_widget.link_title') %>
   </div>
 </div>

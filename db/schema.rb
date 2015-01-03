@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102092408) do
+ActiveRecord::Schema.define(version: 20150103100337) do
 
   create_table "donations", force: true do |t|
     t.integer  "quantity_cents"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150102092408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "donations_count", default: 0
   end
 
   add_index "projects", ["slug"], name: "index_projects_on_slug"
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 20150102092408) do
     t.datetime "updated_at"
     t.string   "currency"
     t.integer  "available_invitations", default: 5
+    t.integer  "donations_count",       default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

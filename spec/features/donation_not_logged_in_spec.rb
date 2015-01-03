@@ -7,7 +7,7 @@ RSpec.feature 'Donating projects without being logged in' do
   end
 
   scenario 'As an anonymous user, I should be able to donate to a project and see the donation after log in' do
-    visit '/'
+    visit home_page
 
     find('#donation_project_attributes_name').set 'Wikiwadus'
 
