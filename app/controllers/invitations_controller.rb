@@ -38,17 +38,7 @@ class InvitationsController < ApplicationController
   private
 
     def invitation_params
-      # t.string   "invitation_token"
-      # t.string   "invited_email"
-      # t.boolean  "used"
-      # t.integer  "user_id"
-      # t.datetime "created_at"
-      # t.datetime "updated_at"
       params.require(:invitation).permit(:invited_email)
-    end
-
-    def decrease_counter
-
     end
 
     def invitation_url(invitation)

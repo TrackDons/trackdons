@@ -129,7 +129,7 @@ en:
     you_already_have_an_account: 'You already have an account! Save that invitation for someone else...'
     dont_have_an_account_yet_html: Don't have an account yet? We are just getting started and letting people in bit by bit. You can ask a friend for an invitation, or answer these %{href} that will help us shape the product to get an invite soon. 
     dont_have_an_account_yet_href: 'quick questions'
-    label:
+    labels:
       your_friends_name: Your friend's name
       your_friends_email: Your friend's email
   invitations:

@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  include ApplicationController::SessionsManagement
+  #include ApplicationController::SessionsManagement
 
   belongs_to :user
 
