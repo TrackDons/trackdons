@@ -84,6 +84,8 @@ es:
       in_total: en total
     show:
       edit_your_profile: Edita tu perfil
+    index:
+      please_log_in: Por favor, inicia sesión
   shared:
     user_links:
       hello: "Hola %{name}"
