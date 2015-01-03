@@ -35,7 +35,7 @@ class Donation < ActiveRecord::Base
   private
 
   def clear_comment
-    if @show_comment == false
+    if @show_comment == '0'
       self.comment = nil
     end
   end

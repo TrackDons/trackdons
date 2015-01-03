@@ -5,7 +5,7 @@ RSpec.feature 'User donations' do
     @project = create_project(:name => 'Wikiwadus')
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
 
-    create_donation project: @project, quantity: 20.12, date: Date.today, user: @user
+    create_donation project: @project, quantity: 20.12, date: Date.today, user: @user, comment: 'This is my comment'
   end
 
   scenario 'I see the total amount of donations' do
@@ -41,9 +41,11 @@ RSpec.feature 'User donations' do
 
     fill_in 'How much?', :with => '25'
     fill_in 'When did you donate?', :with => '2013-10-10'
+    uncheck 'i_want_to_explain'
     click_button 'Update'
 
     expect(page).to have_css('h1', text: 'Wikiwadus')
+    expect(page).to_not have_content('This is my comment')
 
     visit user_page(@user)
 
