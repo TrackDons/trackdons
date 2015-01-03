@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20150103100337) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "invitations", force: true do |t|
+    t.string   "invitation_token"
+    t.string   "invited_email"
+    t.boolean  "used"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -83,11 +94,12 @@ ActiveRecord::Schema.define(version: 20150103100337) do
     t.string   "country"
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "currency"
-    t.integer  "donations_count", default: 0
+    t.integer  "available_invitations", default: 5
+    t.integer  "donations_count",       default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

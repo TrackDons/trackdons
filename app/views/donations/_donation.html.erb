@@ -21,16 +21,16 @@
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 
+  <% if donation.comment.present? %>
+    <div class="donation_comment">
+      <%= markdown(donation.comment) %>
+    </div>
+  <% end %>
+
   <% if logged_in? && current_user?(donation.user) %>
     <div class="donation_tools">
       <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('.sure')}) %>
-    </div>
-  <% end %>
-
-  <% if donation.comment.present? %>
-    <div class="donation_comment">
-      <%= markdown(donation.comment) %>
     </div>
   <% end %>
 </div>
