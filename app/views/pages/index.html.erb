@@ -15,21 +15,25 @@
 
 			<div class="content_column">
 
-				<header>
-          <h2>
-            <% if has_donations? %>
-              <%= t 'track_a_donation' %>
-            <% else %>
-              <%= t 'track_your_first_donation' %>
-            <% end %>
-          </h2>
-					<% unless logged_in? %>
-						<div id="login_if_you_already">
-              <%= link_to t('login_if_you_already'), login_path %></div>
-					<% end %>
-				</header>
+        <% if logged_in? %>
+  				<header>
+            <h2>
+              <% if has_donations? %>
+                <%= t 'track_a_donation' %>
+              <% else %>
+                <%= t 'track_your_first_donation' %>
+              <% end %>
+            </h2>
+  					<% unless logged_in? %>
+  						<div id="login_if_you_already">
+                <%= link_to t('login_if_you_already'), login_path %></div>
+  					<% end %>
+  				</header>
 
-        <%= render 'donations/form' %>
+          <%= render 'donations/form' %>
+        <% else %>
+          <%= render 'sessions/invitation_to_waitlist' %>
+        <% end %>
 
 			</div>
 
