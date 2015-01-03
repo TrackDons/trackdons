@@ -64,11 +64,11 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+      redirect_to(root_path) unless @user == current_user
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      redirect_to(root_path) unless current_user.admin?
     end
 
     def load_user
@@ -78,13 +78,13 @@ class UsersController < ApplicationController
     def validates_invitation_token
       if logged_in?
         flash[:error] = t('users.you_already_have_an_account')
-        redirect_to root_url
+        redirect_to root_path
       else
         if Invitation.find_by_invitation_token(params[:invitation_token]).present?
           flash[:notice] = t('invitations.welcomme_message')
         else
           flash[:error] = t('invitations.not_valid')
-          redirect_to root_url
+          redirect_to root_path
         end
       end
     end
