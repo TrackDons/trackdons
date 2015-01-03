@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 20150102092408) do
     t.boolean  "admin",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "available_invitations", default: 5
     t.string   "currency"
+    t.integer  "available_invitations", default: 5
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

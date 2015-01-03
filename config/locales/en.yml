@@ -109,8 +109,29 @@ en:
       track_your_first_donation: Track your first donation
   users:
     invite: 'Invite a friend'
+    you_already_have_an_account: 'You already have an account! Save that invitation for someone else...'
+    dont_have_an_account_yet_html: Don't have an account yet? We are just getting started and letting people in bit by bit. You can ask a friend for an invitation, or answer these %{href} that will help us shape the product to get an invite soon. 
+    dont_have_an_account_yet_href: 'quick questions'
+    label:
+      your_friends_name: Your friend's name
+      your_friends_email: Your friend's email
   invitations:
     dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."
-    already_exists: Mmm... it seems that the email you are trying to invite is already registered. Try another!
+    already_exists: Mmm... it seems that the email you are trying to invite is already registered or is not a correct email. Try another!
     invitation_send_subject: 'Your friend %{friend} wants you to track and share your donations'
+    invitation_sent: 'Great, your invitation has been sent. Lets see if your friend is such a great person as you are ;)'
+    not_valid: 'Mmm... your invitation does not seem to be valid.'
+    welcomme_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'
+  user_mailer:
+    send_invitation: 
+      send_invitation_mail: |
+        Hi, 
+
+        Your friend %{name} is using TrackDons.org to track her donations to projects (NGOs, software projects, crowdfundings). The idea is that if everyone share their donations, we'll give more vissibility to projects and we'll obtain more resources for them. 
+
+        Have you donated recently to any project? Track it and tell it to your friends:
+
+        %{url}
+
+        If you have any comment, just write us to lets@trackdons.org

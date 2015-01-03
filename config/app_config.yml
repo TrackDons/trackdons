@@ -1,11 +1,12 @@
 development: &non_production_settings
+  require_invitations_for_signup: true
   domain: trackdons.local
   site_url: en.trackdons.local
   english_website_url: en.trackdons.local
   spanish_website_url: es.trackdons.local
-
+  
 production: &production_settings
   domain: trackdons.org
-  site_url: en.trackdons.org
+  site_url: en.trackdons.orgssss
   english_website_url: en.trackdons.org
   spanish_website_url: es.trackdons.org
