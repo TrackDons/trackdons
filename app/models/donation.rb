@@ -8,7 +8,7 @@ class Donation < ActiveRecord::Base
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
-  default_scope -> { order('created_at DESC') }
+  scope :sorted, -> { order(created_at: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
   # acts_as_taggable_on :tags
 

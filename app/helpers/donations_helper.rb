@@ -16,12 +16,12 @@ module DonationsHelper
     controller_name == 'donations' && action_name == 'show'
   end
 
-  def editing_donation?
-    !@donation.new_record?
-  end
-
   def new_donation?
     @donation.new_record?
+  end
+
+  def editing_donation?
+    !new_donation?
   end
 
   def donation_for_form

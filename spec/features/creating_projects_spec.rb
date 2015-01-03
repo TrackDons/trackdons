@@ -8,7 +8,7 @@ RSpec.feature 'Creating projects' do
   scenario 'As a logged user I should be able to create new projects' do
     login_as "yorch@example.com", "wadusm4n"
 
-    visit '/projects'
+    visit projects_page
     click_link '+'
 
     fill_in 'Project', with: 'Rubular'

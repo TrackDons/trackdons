@@ -4,19 +4,15 @@ class DonationsController < ApplicationController
   before_action :load_donation, only: [:edit, :update, :destroy]
 
   def index
-    @donations = Donation
     if params.has_key?(:project_id)
-      project = Project.friendly.find(params[:project_id])
-      @donations = @donations.where(project_id: project.id)
+      @donations = Project.friendly.find(params[:project_id]).donations.includes(:project, :user)
+    else
+      @donations = Donation.sorted.includes(:project, :user)
     end
   end
 
   def show
     @donation = Donation.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   # TODO: can be removed?
@@ -33,18 +29,11 @@ class DonationsController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.html
-    end
   end
 
   def update
     @donation.update_attributes donation_params
-    respond_to do |format|
-      format.html do
-        redirect_to back_url(@donation)
-      end
-    end
+    redirect_to back_url(@donation)
   end
 
   def destroy

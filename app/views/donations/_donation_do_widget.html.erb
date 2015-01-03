@@ -1,7 +1,7 @@
 <div id="donation_do_widget">
   <% unless in_projects_page? %>
     <div class="donation_number">
-      <%= donation.project.donations.length %>
+      <%= donation.project.donations.count %>
     </div>
   <% end %>
 
