@@ -75,8 +75,9 @@ en:
       delete_title: 'Delete donation'
       sure: 'Are you sure?'
     form:
-      update_donation: 'Update'
-      cancel: 'Cancel'
+      update_donation: Update
+      cancel: Cancel
+      edit_your_donation: Edit your donation to the project %{name}
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'

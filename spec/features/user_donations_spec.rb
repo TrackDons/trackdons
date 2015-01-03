@@ -20,7 +20,7 @@ RSpec.feature 'User donations' do
     other_user = create_user(name: 'Bruce', email: "bruce@example.com")
     create_donation project: @project, quantity: 20.12, date: Date.today, user: other_user
 
-    visit '/projects/wikiwadus'
+    visit project_page(@project)
 
     expect(page).to_not have_content('Delete')
 
@@ -31,4 +31,24 @@ RSpec.feature 'User donations' do
     expect(page).to have_content('0€ donated in the last month')
     expect(page).to have_content('0€ in total')
   end
+
+  scenario 'I can edit a donation of mine' do
+    login_as "yorch@example.com", "wadusm4n"
+
+    visit project_page(@project)
+
+    click_link('Edit')
+
+    fill_in 'How much?', :with => '25'
+    fill_in 'When did you donate?', :with => '2013-10-10'
+    click_button 'Update'
+
+    expect(page).to have_css('h1', text: 'Wikiwadus')
+
+    visit user_page(@user)
+
+    expect(page).to have_content('0€ donated in the last month')
+    expect(page).to have_content('25€ in total')
+  end
+
 end

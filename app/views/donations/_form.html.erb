@@ -1,38 +1,39 @@
-<%= form_for(donation_for_form, donation_form_options) do |f| %>
+<%= form_for(donation_for_form) do |f| %>
 
   <div class="main_form">
 
     <% if new_donation? %>
       <div class="track_don_project">
-      <% if @project %>
-        <div class="track_don_project_name">
-          <%= @project.name %>
-        </div>
-        <div class="hint">
-          <%= link_to t('need_to_trackdon_for_another_project'), root_path(anchor: 'track_donation') %>
-        </div>
-        <%= f.hidden_field :project_id, value: @project.id %>
-      <% else %>
-        <%= f.fields_for(:project) do |project_form| %>
-          <%= project_form.hidden_field :name %>
-          <div class="hint"><%= project_form.label(:name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
-          <div id="project_attributes">
-            <%= project_form.text_area :description %>
-            <div class="hint"><%= project_form.label(:description, 'Project Description') %></div>
-            <%= project_form.text_field :url %>
-            <div class="hint"><%= project_form.label(:url, 'Project URL') %></div>
+        <% if @project %>
+          <div class="track_don_project_name">
+            <%= @project.name %>
           </div>
+          <div class="hint">
+            <%= link_to t('need_to_trackdon_for_another_project'), root_path(anchor: 'track_donation') %>
+          </div>
+          <%= f.hidden_field :project_id, value: @project.id %>
+        <% else %>
+          <%= f.fields_for(:project) do |project_form| %>
+            <%= project_form.hidden_field :name %>
+            <div class="hint"><%= project_form.label(:name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+            <div id="project_attributes">
+              <%= project_form.text_area :description %>
+              <div class="hint"><%= project_form.label(:description, 'Project Description') %></div>
+              <%= project_form.text_field :url %>
+              <div class="hint"><%= project_form.label(:url, 'Project URL') %></div>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
     <% else %>
       <div class="track_don_project">
-        Editando donación del proyecto <%= @project.name %>
+        <h2><%= t('.edit_your_donation', name: @project.name) %></h2>
       </div>
     <% end %>
 
     <div class="track_don_date">
       <%= f.date_field :date %>
+
       <div class="hint"><%= f.label(:date, t('when_did_you_donate')) %></div>
     </div>
 
@@ -48,7 +49,6 @@
           <%= f.check_box :quantity_privacy %>
           <%= f.label(:quantity_privacy, t('donations.keep_the_quantity_private'), title: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!", class: 'tipsit') %>
         </div>
-
       </div>
       <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>
     </div>
@@ -70,9 +70,13 @@
 
   </div>
 
+  <% unless new_donation? %>
+    <%= hidden_field_tag :back_url, project_path(@project) %>
+  <% end %>
+
   <%= f.submit(donation_form_button_text, class: 'big' ) %>
   <% if editing_donation? %>
-    <%= link_to(t('.cancel'), @donation, remote: true) %>
+    <%= link_to(t('.cancel'), @donation) %>
   <% end %>
 
 <% end %>

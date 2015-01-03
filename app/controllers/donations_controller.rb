@@ -1,6 +1,6 @@
 class DonationsController < ApplicationController
   before_filter :set_new_donation, only: :new
-  before_action :logged_in_user, only: :destroy
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :load_donation, only: [:edit, :update, :destroy]
 
   def index
@@ -11,10 +11,6 @@ class DonationsController < ApplicationController
     end
   end
 
-  # TODO: can be removed?
-  def new
-  end
-
   def show
     @donation = Donation.find(params[:id])
     respond_to do |format|
@@ -23,11 +19,8 @@ class DonationsController < ApplicationController
     end
   end
 
-  def update
-    @donation.update_attributes donation_params
-    respond_to do |format|
-      format.js { render 'show' }
-    end
+  # TODO: can be removed?
+  def new
   end
 
   def create
@@ -41,7 +34,16 @@ class DonationsController < ApplicationController
 
   def edit
     respond_to do |format|
-      format.js
+      format.html
+    end
+  end
+
+  def update
+    @donation.update_attributes donation_params
+    respond_to do |format|
+      format.html do
+        redirect_to back_url(@donation)
+      end
     end
   end
 
@@ -67,4 +69,11 @@ class DonationsController < ApplicationController
     @donation = current_user.donations.find(params[:id])
   end
 
+  def back_url(donation)
+    if params[:back_url]
+      "#{params[:back_url]}#donation-#{donation.id}"
+    else
+      donation_path(donation)
+    end
+  end
 end

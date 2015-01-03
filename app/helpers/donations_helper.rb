@@ -44,12 +44,4 @@ module DonationsHelper
       t('.update_donation')
     end
   end
-
-  def donation_form_options
-    if request.xhr?
-      {remote: true}
-    else
-      {}
-    end
-  end
 end

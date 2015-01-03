@@ -56,8 +56,9 @@ es:
       delete_title: 'Borrar donación'
       sure: '¿Estás seguro?'
     form:
-      update_donation: 'Actualizar'
-      cancel: 'Cancelar'
+      update_donation: Actualizar
+      cancel: Cancelar
+      edit_your_donation: Edita tu donación al proyecto %{name}
   projects:
     new:
       existing_project_error: A project with this name already exists

@@ -1,6 +1,0 @@
-$('#donation-<%= @donation.id %>').html('<%= escape_javascript(render(partial:'donations/form')) %>');
-
-if($('#i_want_to_explain').attr('checked') == 'checked'){
-  $('#i_want_to_explain_content').show();
-}
-

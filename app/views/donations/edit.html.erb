@@ -1,0 +1,10 @@
+<section class="content_column">
+
+  <div class="tracked_donation">
+    <% if params[:share_links].present? %>
+      <small><%= t('donations.show.your_tracked_donation') %></small>
+    <% end %>
+    <%= render 'form' %>
+  </div>
+
+</section>
