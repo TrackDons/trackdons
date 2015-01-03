@@ -78,6 +78,7 @@ en:
       update_donation: Update
       cancel: Cancel
       edit_your_donation: Edit your donation to the project %{name}
+      quantity_privacy_hint: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!"
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'

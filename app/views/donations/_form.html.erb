@@ -47,7 +47,7 @@
 
         <div class="track_don_quantity_B_option_hint">
           <%= f.check_box :quantity_privacy %>
-          <%= f.label(:quantity_privacy, t('donations.keep_the_quantity_private'), title: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!", class: 'tipsit') %>
+          <%= f.label(:quantity_privacy, t('donations.keep_the_quantity_private'), title: t('.quantity_privacy_hint'), class: 'tipsit') %>
         </div>
       </div>
       <div class="hint"><%= f.label(:quantity, t('how_much_question')) %></div>

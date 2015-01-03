@@ -59,6 +59,7 @@ es:
       update_donation: Actualizar
       cancel: Cancelar
       edit_your_donation: Edita tu donación al proyecto %{name}
+      quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
   projects:
     new:
       existing_project_error: A project with this name already exists
