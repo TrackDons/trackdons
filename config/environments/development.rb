@@ -35,15 +35,34 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.delivery_method = :sendmail
   # Defaults to:
   # config.action_mailer.sendmail_settings = {
   #   location: '/usr/sbin/sendmail',
   #   arguments: '-i -t'
   # }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_options = {from: 'no-reply@example.com'}
 
-  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address              => Rails.application.secrets.mandrill_smtp_address,
+      :port                 => Rails.application.secrets.mandrill_smtp_port,
+      :domain               => Rails.application.secrets.mandrill_smtp_domain,
+      :user_name            => Rails.application.secrets.mandrill_smtp_username,
+      :password             => Rails.application.secrets.mandrill_smtp_password,
+      :authentication       => :plain,
+      :enable_starttls_auto => true
+  }
+  # config.action_mailer.smtp_settings = {
+  #     :address              => ENV["MANDRILL_SMTP_ADDRESS"],
+  #     :port                 => ENV["MANDRILL_SMTP_PORT"],
+  #     :domain               => ENV["MANDRILL_SMTP_DOMAIN"],
+  #     :user_name            => ENV["MANDRILL_SMTP_USERNAME"],
+  #     :password             => ENV["MANDRILL_SMTP_PASSWORD"],
+  #     :authentication       => :plain,
+  #     :enable_starttls_auto => true
+  # }
+
 end
