@@ -7,13 +7,15 @@ class User < ActiveRecord::Base
   has_many :projects, through: :donations
   has_many :invitations
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :invitation_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	validates :name, presence: true, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, allow_blank: true
   validates :country, presence: true
+  validates :valid_token, presence: true
+
 
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }
@@ -62,6 +64,10 @@ class User < ActiveRecord::Base
       if new_record? && self.country.present?
         self.currency = CurrencyFromCountry.new(self.country).currency
       end
+    end
+
+    def valid_token
+      Invitation.where("invitation_token = ? AND used = 'false'", :invitation_token).present?
     end
 
 

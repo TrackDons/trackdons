@@ -46,6 +46,10 @@
       <%= country_code_select(:user, :country) %>
     </p>
 
+    <% if params[:invitation_token] %>
+      <%= f.hidden_field :invitation_token, :value => params[:invitation_token] %>
+    <% end %>
+
     <p>
       <%= f.submit "Create my account"  %>
     </p>
