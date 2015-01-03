@@ -6,7 +6,7 @@ RSpec.feature 'Home page' do
   end
 
   scenario 'As an anonymous user I should be able to see the name of the project and a form to donate' do
-    visit '/'
+    visit home_page
 
     expect(page).to have_css('h1', text: 'TrackDons')
     expect(page).to have_content('Track your first donation')
@@ -16,7 +16,7 @@ RSpec.feature 'Home page' do
   scenario 'As a logged user I should be able to see the name of the project and a form to donate' do
     login_as "yorch@example.com", "wadusm4n"
 
-    visit '/'
+    visit home_page
 
     expect(page).to have_content('Hello Yorch')
     expect(page).to have_css('h1', text: 'TrackDons')
@@ -24,4 +24,3 @@ RSpec.feature 'Home page' do
   end
 
 end
-

@@ -1,37 +1,36 @@
-	
-	<div class="donation">
-    <%= gravatar_for(donation.user, size: 45) %>
+<div class="donation" id="donation-<%= donation.id %>">
+  <%= gravatar_for(donation.user, size: 45) %>
 
-    <h2>
-      <strong><%= donation_quantity_currency(donation) %></strong>
-      <% unless params[:controller] == 'projects' && params[:action] == 'show' %> 
-        to
-        <strong><%= link_to donation.project.name, projects_url + '/' + donation.project.slug %></strong>
-        <!-- <span class="tags">
-          <a href="#">Main Tag</a>
-        </span> -->
-      <% end %>
-      <% unless params[:controller] == 'users' && params[:action] == 'show' %> 
-        by <%= link_to donation.user.name, donation.user %>
-      <% end %>
-      <% unless params[:controller] == 'donations' && params[:action] == 'show' %> 
-        <%= link_to '#', donations_url + "/#{donation.id}" %>
-      <% end %>
-    </h2>
-    
+  <h2>
+    <strong><%= donation_quantity_currency(donation) %></strong>
 
-    <%= render :partial => 'donations/donation_do_widget', :locals => {:donation => donation} %>
+    <% unless in_projects_page? %>
+      <%= t('.to') %>
+      <strong><%= link_to donation.project.name, project_path(donation.project) %></strong>
+    <% end %>
 
+    <% unless in_users_page? %> 
+      <%= t('.by') %>
+      <%= link_to donation.user.name, donation.user %>
+    <% end %>
+
+    <% unless in_donations_page? %> 
+      <%= link_to '#', donation_path(donation) %>
+    <% end %>
+  </h2>
+
+  <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
+
+  <% if donation.comment.present? %>
     <div class="donation_comment">
       <%= markdown(donation.comment) %>
     </div>
+  <% end %>
 
-    <!-- <small style="color: #aaa">
-      <%= donation.date %> (created_at: <%= donation.created_at %>)
-      <%= donation.user.name %> 
-      (<%= link_to donation.project.name, projects_url + '/' + donation.project.slug %>)
-      <%= link_to '#', project_donation_path(donation.project, donation) %>
-    </small> -->
-
-  </div>
-    
+  <% if logged_in? && current_user?(donation.user) %>
+    <div class="donation_tools">
+      <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
+      <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('.sure')}) %>
+    </div>
+  <% end %>
+</div>

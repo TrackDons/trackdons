@@ -46,6 +46,8 @@ en:
   login_if_you_already: 'Login if you already have tracked'
   # donations
   donations:
+    destroy:
+      destroy_success: 'Donation removed successfully'
     show:
       donation_created: 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
       keep_the_quantity_private: 'Keep the quantity private'
@@ -63,7 +65,20 @@ en:
       more_donations_by: 'More donations by %{user}'
       other_projects: 'Other projects'
     donation_do_widget:
-      link_title: 'Track a Donation for this project'    
+      link_title: 'Track a Donation for this project'
+    donation:
+      to: 'to'
+      by: 'by'
+      edit: 'Edit'
+      edit_title: 'Edit donation'
+      delete: 'Delete'
+      delete_title: 'Delete donation'
+      sure: 'Are you sure?'
+    form:
+      update_donation: Update
+      cancel: Cancel
+      edit_your_donation: Edit your donation to the project %{name}
+      quantity_privacy_hint: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!"
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'
@@ -100,6 +115,8 @@ en:
       in_total: in total
     show:
       edit_your_profile: Edit your profile
+    index:
+      please_log_in: Please log in
   shared:
     user_links:
       hello: "Hello %{name}"

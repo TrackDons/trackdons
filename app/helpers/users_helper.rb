@@ -8,7 +8,7 @@ module UsersHelper
   end
 
   def has_donations?
-    logged_in? && current_user.donations.count > 0
+    logged_in? && current_user.donations.size > 0
   end
 
 end

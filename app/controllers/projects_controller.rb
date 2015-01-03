@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.friendly.find(params[:id])
+    @project = Project.friendly.includes(donations: [:user]).find(params[:id])
   end
 
   def new

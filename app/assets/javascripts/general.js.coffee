@@ -27,7 +27,7 @@ $(document).on "page:change", ->
     else
       $('#project_attributes').slideUp()
   $('.tipsit').tipsy({fade: true; gravity: 's'})
-  my_slidebars = new $.slidebars();
+  my_slidebars = new $.slidebars()
   return
 
 

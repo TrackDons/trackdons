@@ -27,6 +27,8 @@ es:
   choose_your_language: 'Elige tu idioma'
   # donations
   donations:
+    destroy:
+      destroy_success: 'Donación eliminada correctamente'
     show:
       donation_created: 'Viva! Tu donación queda apuntada. Compártela con tus amigos y anímales a que donen también'
       keep_the_quantity_private: 'Mantener la cantidad en privado'
@@ -45,6 +47,19 @@ es:
       other_projects: 'Otros proyectos'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
+    donation:
+      to: 'a'
+      by: 'por'
+      edit: 'Editar'
+      edit_title: 'Editar donación'
+      delete: 'Borrar'
+      delete_title: 'Borrar donación'
+      sure: '¿Estás seguro?'
+    form:
+      update_donation: Actualizar
+      cancel: Cancelar
+      edit_your_donation: Edita tu donación al proyecto %{name}
+      quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
   projects:
     new:
       existing_project_error: A project with this name already exists
@@ -70,6 +85,8 @@ es:
       in_total: en total
     show:
       edit_your_profile: Edita tu perfil
+    index:
+      please_log_in: Por favor, inicia sesión
   shared:
     user_links:
       hello: "Hola %{name}"

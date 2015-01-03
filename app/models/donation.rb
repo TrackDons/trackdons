@@ -1,14 +1,14 @@
 class Donation < ActiveRecord::Base
 
-  belongs_to :project
+  belongs_to :project, counter_cache: true
   accepts_nested_attributes_for :project
 
-  belongs_to :user
-  before_validation :set_project
+  belongs_to :user, counter_cache: true
+  before_validation :set_project, :clear_comment
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
-  default_scope -> { order('created_at DESC') }
+  scope :sorted, -> { order(created_at: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
   # acts_as_taggable_on :tags
 
@@ -21,6 +21,22 @@ class Donation < ActiveRecord::Base
       self.project = Project.create_with({
         description: self.project.description,
         url: self.project.url}).find_or_create_by(name: self.project.name)
+    end
+  end
+
+  def show_comment
+    comment.present?
+  end
+
+  def show_comment=(value)
+    @show_comment = value
+  end
+
+  private
+
+  def clear_comment
+    if @show_comment == '0'
+      self.comment = nil
     end
   end
 
