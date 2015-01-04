@@ -15,6 +15,7 @@ module Factories
     attrs[:country]   ||= "ES"
     attrs[:password]              ||= "wadusm4n"
     attrs[:password_confirmation] ||= attrs[:password]
+    attrs[:invitation_token] ||= create_invitation(invited_email: attrs[:email]).invitation_token
     User.create!(attrs)
   end
 
@@ -26,5 +27,10 @@ module Factories
     attrs[:date]            ||= Date.today - 7.days
     attrs[:quantity_privacy]||= false
     Donation.create!(attrs)
+  end
+
+  def create_invitation(attrs = {})
+    attrs[:invited_email] ||= "johndonor@example.com"
+    Invitation.create!(attrs)
   end
 end

@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150103100337) do
   create_table "invitations", force: true do |t|
     t.string   "invitation_token"
     t.string   "invited_email"
-    t.boolean  "used"
+    t.boolean  "used",             default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

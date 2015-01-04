@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  get 'signup' => 'users#new'
+  get 'signup/:invitation_token'     => 'users#new', as: :signup # signup only by invitation
+  
+  get 'invite'     => 'invitations#new'
+  post 'invite'    => 'invitations#create'
+  get 'invite/:invitation_token'   => 'invitations#check'
 
   get 'pages/index'
   get 'about' => 'pages#about'

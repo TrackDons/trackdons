@@ -1,12 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Users signup' do
-  scenario 'As a logged in user, I should be able to create a new project on the fly' do
-    visit home_page
+  scenario 'When I have an invitation I can signup' do
+    invitation = create_invitation
 
-    within(:css, '#container') do
-      click_link 'Track your first donation'
-    end
+    visit signup_page(invitation)
 
     fill_in 'Name', with: 'Yorch'
     fill_in 'Email', with: 'yorch@example.com'

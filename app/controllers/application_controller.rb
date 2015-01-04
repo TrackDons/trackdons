@@ -6,9 +6,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsManagement
-
   before_action :set_locale
-
   helper_method :current_user, :extract_locale_from_subdomain, :logged_in?, :current_user?
 
   def set_locale
@@ -52,6 +50,13 @@ class ApplicationController < ActionController::Base
     if cookies[:donation]
       save_donation(cookie_donation)
       flash[:success] = "Hey, donation tracked, and you have your profile ready to keep tracking donations! Now this is a great day."
+    end
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to login_url
     end
   end
 
