@@ -3,6 +3,10 @@ module Paths
     '/'
   end
 
+  def signup_page(invitation)
+    "/signup/#{invitation.invitation_token}"
+  end
+
   def donations_page
     "/donations"
   end

@@ -14,21 +14,21 @@ class User < ActiveRecord::Base
 	validates :name, presence: true, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, allow_blank: true
   validates :country, presence: true
-  validates :valid_token, presence: true
 
+  validate :valid_invitation_token, on: :create
 
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }
 
   # Returns the hash digest of the given string.
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
   # Returns a random token.
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -60,15 +60,14 @@ class User < ActiveRecord::Base
 
   private
 
-    def set_currency
-      if new_record? && self.country.present?
-        self.currency = CurrencyFromCountry.new(self.country).currency
-      end
+  def set_currency
+    if new_record? && self.country.present?
+      self.currency = CurrencyFromCountry.new(self.country).currency
     end
+  end
 
-    def valid_token
-      Invitation.where("invitation_token = ? AND used = 'false'", :invitation_token).present?
-    end
-
+  def valid_invitation_token
+    self.invitation_token.present? && Invitation.valid_token?(self.invitation_token)
+  end
 
 end

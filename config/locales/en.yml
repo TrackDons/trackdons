@@ -88,15 +88,6 @@ en:
       donations_in_total:
         one: "%{count} donation in total"
         other: "%{count} donations in total"
-  users:
-    header:
-      donated: donated
-      in_the_last_month: in the last month
-      in_total: in total
-    show:
-      edit_your_profile: Edit your profile
-    index:
-      please_log_in: Please log in
   shared:
     user_links:
       hello: "Hello %{name}"
@@ -111,6 +102,14 @@ en:
     labels:
       your_friends_name: Your friend's name
       your_friends_email: Your friend's email
+    header:
+      donated: donated
+      in_the_last_month: in the last month
+      in_total: in total
+    show:
+      edit_your_profile: Edit your profile
+    index:
+      please_log_in: Please log in
   invitations:
     dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."

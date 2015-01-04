@@ -9,7 +9,7 @@ class InvitationsController < ApplicationController
   def check
     # user is not logged in
     # search for a valid invite with the given token
-    @invitation = Invitation.find_by_invitation_token(params[:invitation_token])
+    @invitation = Invitation.find_valid_token(params[:invitation_token])
     if @invitation.present?
       # allow him to see sign up page
       redirect_to signup_path(params[:invitation_token])
@@ -20,32 +20,23 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new
-    @invitation = current_user.invitations.build(invitation_params)
+    @invitation = current_user.invitations.new(invitation_params)
     if @invitation.save
-      url = invitation_url(@invitation)
-      UserMailer.send_invitation(@invitation, current_user, url).deliver # ToDo update to deliver_later after Rails upgrade
-      current_user.decrement!(:available_invitations)
-      flash[:success] = t('invitations.invitation_sent')
+      UserMailer.send_invitation(@invitation, current_user, invitation_url(@invitation)).deliver
+      t('invitations.invitation_sent')
       redirect_to invite_path
     else
-      #flash[:error] = t('invitations.already_exists')
-      #redirect_to invite_path
       render 'new'
     end
   end
 
   private
 
-    def invitation_params
-      params.require(:invitation).permit(:invited_email)
-    end
+  def invitation_params
+    params.require(:invitation).permit(:invited_email)
+  end
 
-    def invitation_url(invitation)
-      url_for(controller: 'invitations', 
-        action: 'check',
-        invitation_token: invitation.invitation_token,
-        host: 'trackdons.org') #ToDo I have some vars in app_config.yml but I don't manage to get them read by the app
-    end
-
+  def invitation_url(invitation)
+    url_for(controller: 'invitations', action: 'check', invitation_token: invitation.invitation_token, only_path: false)
+  end
 end

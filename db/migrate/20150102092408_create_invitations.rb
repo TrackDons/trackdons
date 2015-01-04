@@ -3,7 +3,7 @@ class CreateInvitations < ActiveRecord::Migration
     create_table :invitations do |t|
       t.string :invitation_token
       t.string :invited_email
-      t.boolean :used
+      t.boolean :used, default: false
       t.references :user, index: true
 
       t.timestamps

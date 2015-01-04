@@ -40,16 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      save_pending_donations || redirect_to(@user, notice: "Welcome to TrackDons. Hope you track a lot of dons!")
-    else
-      render 'new'
-    end
-  end
-
   def destroy
     @user.destroy
     flash[:success] = "User deleted"
@@ -80,7 +70,7 @@ class UsersController < ApplicationController
         flash[:error] = t('users.you_already_have_an_account')
         redirect_to root_path
       else
-        if Invitation.find_by_invitation_token(params[:invitation_token]).present?
+        if Invitation.valid_token?(params[:invitation_token])
           flash[:notice] = t('invitations.welcomme_message')
         else
           flash[:error] = t('invitations.not_valid')

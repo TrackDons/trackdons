@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'email_spec'
 end
 
 group :development do

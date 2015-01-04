@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get 'signup/:invitation_token'     => 'users#new', as: :signup # signup only by invitation
-  # get 'signup'     => 'users#new'
   
   get 'invite'     => 'invitations#new'
   post 'invite'    => 'invitations#create'
