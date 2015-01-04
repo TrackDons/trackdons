@@ -19,6 +19,10 @@ class Invitation < ActiveRecord::Base
     not_used.find_by(invitation_token: token)
   end
 
+  def to_param
+    invitation_token
+  end
+
   private
 
   def generate_invitation_token
