@@ -10,6 +10,7 @@ git clone git@github.com:furilo/trackdons.git
 cd trackdons
 bundle install
 rake db:setup
+cp config/secrets.yml.example config/secrets.yml
 rails server
 ```
 
