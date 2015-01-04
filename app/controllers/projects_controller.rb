@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :url, :twitter)
+    params.require(:project).permit(:name, :description, :url, :twitter, :donation_url)
   end
 
   def projects_with_urls(projects)
