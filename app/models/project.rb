@@ -29,4 +29,20 @@ class Project < ActiveRecord::Base
   def last_month_donations
     donations.where('date >= ?', 1.month.ago).count
   end
+
+  def twitter=(value)
+    super(clean_twitter_account_value(value))
+  end
+
+  private
+
+  def clean_twitter_account_value(twitter_account)
+    if twitter_account =~ /\Ahttp/
+      twitter_account = twitter_account.split('/').last
+    elsif twitter_account =~ /\@/
+      twitter_account = twitter_account.tr('@', '')
+    end
+
+    twitter_account
+  end
 end

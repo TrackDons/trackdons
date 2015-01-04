@@ -21,6 +21,7 @@ RSpec.feature 'Creating projects' do
     expect(page).to have_content('Project created')
     expect(page).to have_content('Rubular')
     expect(page).to have_content('rubular.com')
+    expect(page).to have_css('a', text: '@rubular')
 
     fill_in 'donation_date', :with => "2014-10-10"
     fill_in 'donation_quantity', :with => "200"
