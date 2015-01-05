@@ -23,10 +23,9 @@ gem 'i18n_country_select'
 gem 'i18n-country-translations'
 gem 'select2-rails'
 gem 'redcarpet'
-
 gem 'bcrypt', '~> 3.1.7'
-
 gem 'money-rails'
+gem 'rollbar', '~> 1.3.0'
 
 group :development, :test do
   gem 'sqlite3'
@@ -47,4 +46,3 @@ end
 group :production do
   gem 'pg'
 end
-
