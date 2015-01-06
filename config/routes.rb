@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   get 'invite'     => 'invitations#new'
   post 'invite'    => 'invitations#create'
-  get 'invite/:invitation_token'   => 'invitations#check'
+  get 'invite/:invitation_token'   => 'invitations#check', as: :check_invitation
 
   get 'pages/index'
   get 'about' => 'pages#about'
