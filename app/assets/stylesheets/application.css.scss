@@ -235,6 +235,11 @@ h2 { font-size: 24px; }
     font-size: 18px; 
     color: #666; 
     margin: 0 110px 10px 0;
+
+    .date {
+      opacity: .5;
+      font-weight: normal;
+    }
   }
   .donation_comment, .donation_tools {
     font-size: 14px; 

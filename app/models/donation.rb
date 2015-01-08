@@ -8,7 +8,7 @@ class Donation < ActiveRecord::Base
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
-  scope :sorted, -> { order(created_at: :desc) }
+  scope :sorted, -> { order(date: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
   # acts_as_taggable_on :tags
 
@@ -32,12 +32,14 @@ class Donation < ActiveRecord::Base
     @show_comment = value
   end
 
+  
+
   private
 
-  def clear_comment
-    if @show_comment == '0'
-      self.comment = nil
+    def clear_comment
+      if @show_comment == '0'
+        self.comment = nil
+      end
     end
-  end
 
 end

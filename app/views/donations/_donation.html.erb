@@ -17,6 +17,9 @@
     <% unless in_donations_page? %> 
       <%= link_to '#', donation_path(donation) %>
     <% end %>
+
+    <span class="date"><%= donation.date %></span>
+
   </h2>
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
