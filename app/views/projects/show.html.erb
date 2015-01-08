@@ -1,9 +1,12 @@
+<% set_meta_tags :description => t('metas.projects.project.description', :name => @project.name) %>
+<% set_meta_tags :keywords => "#{@project.name}, donation, promote, issues, reach, track donation" %>
+
 <section id="project" class="content_column">
 
   <div class="project_main">
 
     <section class="meta">
-      <h1><%= @project.name %></h1>
+      <h1><%= title @project.name %></h1>
       <div class="links">
         <div class="url">
           <a href="<%= @project.url %>" target="blank"><%= prettify_url(@project.url) %></a>

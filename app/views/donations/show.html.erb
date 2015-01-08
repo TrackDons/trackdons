@@ -1,3 +1,6 @@
+<% set_meta_tags :description => t("metas.donations.donation.description", :user => @donation.user.name, :project => @donation.project.name) %>
+<% set_meta_tags :title => t("metas.donations.donation.title", :user => @donation.user.name, :project => @donation.project.name) %>
+
 <section class="content_column">
 
   <% if params[:share_links].present? %>

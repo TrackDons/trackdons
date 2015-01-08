@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150103100337) do
   create_table "invitations", force: true do |t|
     t.string   "invitation_token"
     t.string   "invited_email"
-    t.boolean  "used",             default: false
+    t.boolean  "used"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 20150103100337) do
     t.boolean  "admin",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "currency"
     t.integer  "available_invitations", default: 5
+    t.string   "currency"
     t.integer  "donations_count",       default: 0
   end
 

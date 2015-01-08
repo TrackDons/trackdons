@@ -150,6 +150,13 @@ en:
         description: Browse and discover last donations reported on TrackDons
         title: Last donations
         keywords: donations, report, discover
+      donation:
+        description: "%{user} has made a donation to %{project} and has tracked it with donation tracking tool TrackDons"
+        title: Donation to %{project} by %{user}
+    users:
+      user:
+        description: "Check %{user} donations on TrackDons and get inspiration to donate"
+        title: "%{user} profile"
   date:
     formats:
       wadus: "%m.%d.%Y"
