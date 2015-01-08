@@ -130,3 +130,26 @@ en:
         %{url}
 
         If you have any comment, just write us to lets@trackdons.org
+  metas:
+    home:
+      description: TrackDons is a donation diary for projects that matter to you. An online experience to help with your donation efforts      
+    about:
+      description: Learn about TrackDons, its organization, how it works, how you can collaborate...
+      title: 'About'
+    projects:
+      home: 
+        description: Browse and discover all the different projects you can donate to
+        title: All projects
+        keywords: projects, donation, discover
+      project: 
+        description: Track your donations to %{name} with TrackDons and extend the projects reach
+        title: All projects
+        keywords: projects, donation, discover
+    donations:
+      home: 
+        description: Browse and discover last donations reported on TrackDons
+        title: Last donations
+        keywords: donations, report, discover
+  date:
+    formats:
+      wadus: "%m.%d.%Y"

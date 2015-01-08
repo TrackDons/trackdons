@@ -18,7 +18,7 @@
       <%= link_to '#', donation_path(donation) %>
     <% end %>
 
-    <span class="date"><%= donation.date %></span>
+    <span class="date"><%= l donation.date, format: :wadus %></span>
 
   </h2>
 
