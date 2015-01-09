@@ -8,6 +8,6 @@ RSpec.feature 'Static pages' do
       click_link 'About'
     end
 
-    expect(page).to have_content('About TrackDons')
+    expect(page).to have_css('h1', text: 'About')
   end
 end
