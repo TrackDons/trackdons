@@ -159,4 +159,4 @@ en:
         title: "%{user} profile"
   date:
     formats:
-      wadus: "%m.%d.%Y"
+      wadus: "%b %d %Y"

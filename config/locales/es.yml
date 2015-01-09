@@ -93,3 +93,6 @@ es:
       log_out: Salir
       login: Identificarse
       track_your_first_donation: Registra tu primera donación
+  date:
+    formats:
+      wadus: "%d.%m.%Y"
