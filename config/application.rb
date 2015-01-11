@@ -23,6 +23,7 @@ module Trackdons
     # config.i18n.default_locale = :de
     config.i18n.available_locales = [:en, :es, :fr]
     config.i18n.default_locale = :es
+    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
       g.orm             :active_record

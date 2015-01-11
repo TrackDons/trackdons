@@ -21,7 +21,7 @@ class InvitationsController < ApplicationController
   def create
     @invitation = current_user.invitations.new(invitation_params)
     if @invitation.save
-      UserMailer.send_invitation(@invitation, current_user, check_invitation_url(@invitation)).deliver
+      UserMailer.send_invitation(@invitation, current_user, check_invitation_url(@invitation)).deliver_now
       flash[:success] = t('invitations.invitation_sent')
       redirect_to invite_path
     else
