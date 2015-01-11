@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'money-rails'
 gem 'rollbar', '~> 1.3.0'
 gem 'meta-tags'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'sqlite3'

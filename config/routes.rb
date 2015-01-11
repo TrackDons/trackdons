@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'signup/:invitation_token'     => 'users#new', as: :signup # signup only by invitation
   
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/signin' => 'sessions#new', :as => :signin
+
   get 'invite'     => 'invitations#new'
   post 'invite'    => 'invitations#create'
   get 'invite/:invitation_token'   => 'invitations#check', as: :check_invitation
