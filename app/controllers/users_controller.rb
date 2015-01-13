@@ -71,7 +71,7 @@ class UsersController < ApplicationController
         redirect_to root_path
       else
         if Invitation.valid_token?(params[:invitation_token])
-          flash[:notice] = t('invitations.welcomme_message')
+          flash[:success] = t('invitations.welcomme_message')
         else
           flash[:error] = t('invitations.not_valid')
           redirect_to root_path
