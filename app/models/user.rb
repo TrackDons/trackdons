@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
+  def invitation
+    self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
+  end
+
   private
 
   def set_currency
@@ -69,5 +73,6 @@ class User < ActiveRecord::Base
   def valid_invitation_token
     self.invitation_token.present? && Invitation.valid_token?(self.invitation_token)
   end
+
 
 end

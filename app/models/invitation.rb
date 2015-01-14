@@ -23,6 +23,13 @@ class Invitation < ActiveRecord::Base
     invitation_token
   end
 
+  def mark_as_used!
+    update_column :used, true
+    user.increment!(:available_invitations)
+
+    UserMailer.accepted_invitation(self).deliver_now
+  end
+
   private
 
   def generate_invitation_token
