@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'pages/index'
   get 'about' => 'pages#about'
 
+  #get 'users/:id'   => 'users#show', as: :user
+
   resources :users
   resources :donations
   resources :projects do

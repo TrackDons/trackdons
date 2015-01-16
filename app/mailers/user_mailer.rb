@@ -20,6 +20,7 @@ class UserMailer < ApplicationMailer
 
   def accepted_invitation(invitation)
     @name = invitation.user.name
+    @friend_page = user_url(invitation.user, :host => 'trackdons.org')
     mail to: invitation.user.email, subject: t("invitations.invitation_accepted_subject", friend: @name)
   end
 end

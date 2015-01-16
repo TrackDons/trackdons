@@ -115,10 +115,10 @@ en:
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."
     already_exists: Mmm... it seems that the email you are trying to invite is already registered or is not a correct email. Try another!
     invitation_send_subject: 'Your friend %{friend} wants you to track and share your donations'
-    accepted_invitation_subject: 'Your friend %{friend} has accepted your invitation'
+    invitation_accepted_subject: 'Your friend %{friend} has accepted your invitation'
     invitation_sent: 'Great, your invitation has been sent. Lets see if your friend is such a great person as you are ;)'
     not_valid: 'Mmm... your invitation does not seem to be valid.'
-    welcomme_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'
+    welcomme_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'    
   user_mailer:
     send_invitation: 
       send_invitation_mail: |
@@ -135,9 +135,13 @@ en:
       accepted_invitation_mail: |
         Hi,
 
-        Your friend %{name} has just accepted your invitation to join TrackDons.org. Therefore, you'll have a new invitation available to invite new friends.
+        Your friend %{name} has just accepted your invitation to join TrackDons.org. So, two amazing things have just happened: 
 
-        If you have any comment, just write us to lets@trackdons.org
+        - You can go and greet your friend: %{friend_page}
+
+        - You have a new invitation available. Isn't that fantastic? Think on your next-most-active-donator friend, and call him (err... also remember to invite him)
+
+        We are always happy to hear from fellow donators, reach us at lets@trackdons.org
   metas:
     home:
       description: TrackDons is a donation diary for projects that matter to you. An online experience to help with your donation efforts      
