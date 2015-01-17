@@ -118,7 +118,7 @@ en:
     invitation_accepted_subject: 'Your friend %{friend} has accepted your invitation'
     invitation_sent: 'Great, your invitation has been sent. Lets see if your friend is such a great person as you are ;)'
     not_valid: 'Mmm... your invitation does not seem to be valid.'
-    welcomme_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'    
+    welcome_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'
   user_mailer:
     send_invitation: 
       send_invitation_mail: |
