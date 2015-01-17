@@ -1,53 +1,51 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 es:
   language_name: 'Español'
   hello: "Hello world"
-  home:
-  tagline: 'Un diario de donaciones a projectos que te importan'
+  # generics
+  proyecto: 'Projecto'
+  proyectos: 'proyectoos'
+  description: 'Descripción'
+  url: 'URL'
+  donación_url: 'URL de donativos'
+  create: 'Crear'
+  donaciones: 'Donaciones'
+  users: 'Usuarios'
+  about: 'Acerca de'
+  invite: 'Invitar'
   choose_your_language: 'Elige tu idioma'
-  # donations
-  donations:
+  want_to_contribute_your_own_language: '¿Quieres mejorar to idioma?'
+  # home
+  tagline: 'Un diario de donaciones a proyectoos que te importan'
+  main_bullet_1: 'Capta más donantes para los proyectos en los que crees, mostrando tus donaciones'
+  main_bullet_2: "Registra los proyectos que has donado -- y no te olvides de seguir haciéndolo"
+  main_bullet_3: 'Descubre proyectos que deberías de estar apoyando'
+  read_more_about_this_proyecto: 'Leer más sobre este proyecto'
+  track_a_donación: 'Registra una donación'
+  track_your_first_donación: 'Registra tu primera donación'
+  login_if_you_already: 'Identifícate si ya has registrado alguna donación'
+  # donaciones
+  donaciones:
     destroy:
       destroy_success: 'Donación eliminada correctamente'
     show:
-      donation_created: 'Viva! Tu donación queda apuntada. Compártela con tus amigos y anímales a que donen también'
+      donación_created: 'Viva! Tu donación queda apuntada. Compártela con tus amigos y anímales a que donen también'
       keep_the_quantity_private: 'Mantener la cantidad en privado'
       share_in_twitter: 'Compartir en Twitter'
       share_in_facebook: 'Compartir en Facebook'
       share_by_email: 'Compartir por email'
-      your_tracked_donation: 'Tu donación:'
-      user_donated_quantity_to_project: '%{name} donó %{donation} a %{project}'
+      your_tracked_donación: 'Tu donación:'
+      user_donated_quantity_to_proyecto: '%{name} donó %{donación} a %{project}'
       share_email_subject: 'Has donado últimamente?'
-      share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{project}: %{url}'
+      share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{proyecto}: %{url}'
       share_tweet: 'Has colaborado con algún proyecto flipante hoy? Mi última donación en @trackdons: %{url}'
-      donation_date: 'Fecha de donación: %{date}'
+      donación_date: 'Fecha de donación: %{date}'
       next: 'Más:'
-      project_page: 'La página de %{project}'
-      more_donations_by: 'Más donaciones de %{user}'
-      other_projects: 'Otros proyectos'
-    donation_do_widget:
+      proyecto_page: 'La página de %{project}'
+      more_donaciones_by: 'Más donaciones de %{user}'
+      other_proyectos: 'Otros proyectos'
+    donación_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
-    donation:
+    donación:
       to: 'a'
       by: 'por'
       edit: 'Editar'
@@ -56,29 +54,55 @@ es:
       delete_title: 'Borrar donación'
       sure: '¿Estás seguro?'
     form:
-      update_donation: Actualizar
+      update_donación: Actualizar
       cancel: Cancelar
-      edit_your_donation: Edita tu donación al proyecto %{name}
+      edit_your_donación: Edita tu donación al proyecto %{name}
       quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
-  projects:
+  # donaciones form
+  how_much_question: '¿Cuánto?'
+  when_did_you_donate: '¿Cuándo donaste?'
+  i_want_to_explain_why: 'Quiere explicar por qué he donado para animar a otros'
+  i_want_to_keep_private: 'Quiero mantener mi donación privada'
+  need_to_trackdon_for_another_proyecto: '¿Quieres TrackDon en otro proyecto?'
+  proyectos:
+    proyecto: 'Projecto'
+    all_proyectos: 'Todos los proyectos'
+    new_proyecto: 'Nuevo projyecto'
+    donate_in_proyecto_site: "Donar en la página del proyecto"
+    did_you_track: '¿Has donado a este proyecto? TrackDon!'
+    invite_your_friends_to_this_page: 'Invita a tus amigos a esta página'
     new:
-      existing_project_error: A project with this name already exists
+      existing_proyecto_error: Ya existe un proyecto con este nombre
     create:
-      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
+      proyecto_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
     show:
       have_you_donated: ¿Has donado al proyecto?
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
       invite_your_friends_to_this_page: Invita a tus amigos a esta página
-      donations_last_week:
+      donaciones_last_week:
         one: "%{count} donación la semana pasada"
         other: "%{count} donaciones la semana pasada"
       people_donated:
         one: "%{count} persona ha donado en total"
         other: "%{count} personas ha donado en total"
-      donations_in_total:
+      donaciones_in_total:
         one: "%{count} donacion en total"
         other: "%{count} donaciones en total"
+  shared:
+    user_links:
+      hello: "Hola %{name}"
+      log_out: Salir
+      login: Identificarse
+      track_your_first_donación: Registra tu primera donación
   users:
+    invite: 'Invita un amigo'
+    you_already_have_an_account: '¡Ya tienes una cuenta! Guarda la invitación para alguien más...'
+    dont_have_an_account_yet_html: Don't have an account yet? We are just getting started and letting people in bit by bit. You can ask a friend for an invitation, or answer these %{href} that will help us shape the product to get an invite soon.
+    dont_have_an_account_yet_html: ¿Aún no tienes una cuenta? Estamos empezando y dejando poco a poco a la gente registrarse. Puedes pedirle a un amigo una invitación, o responder estas preguntas %{href} que nos ayudarán a definir el producto y darte antes una invitación.
+    dont_have_an_account_yet_href: 'preguntas rápidas'
+    labels:
+      your_friends_name: El nombre de tu amigo/a
+      your_friends_email: El email de tu amigo/a
     header:
       donated: donado
       in_the_last_month: en el último mes
@@ -87,12 +111,53 @@ es:
       edit_your_profile: Edita tu perfil
     index:
       please_log_in: Por favor, inicia sesión
-  shared:
-    user_links:
-      hello: "Hola %{name}"
-      log_out: Salir
-      login: Identificarse
-      track_your_first_donation: Registra tu primera donación
+  invitations:
+    dont_have_enough_invitations: No tienes suficientes invitaciones. Sigue registrando donaciones y más, y pronto tendrás nuevas invitaciones.
+    pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."
+    already_exists: Mmm... it seems that the email you are trying to invite is already registered or is not a correct email. Try another!
+    invitation_send_subject: 'Tu amigo/a %{friend} quiere que registres y compartas tus donaciones.'
+    invitation_sent: 'Genial, tu invitación ha sido enviada. Veamos si tu amigo/a es tan buena persona como tú ;)'
+    not_valid: 'Mmm.... Tu invitación no parece válida.'
+    welcomme_message: '¡Genial! Con esta invitación te puedes registrar en TrackDons y empezar a registrar tus donaciones. Y después de registrar las primeras, recibirás invitaciones para que puedas animar a tus amigos a registrarse.'
+  user_mailer:
+    send_invitation: 
+      send_invitation_mail: |
+        Hola, 
+
+        Tu amigo %{name} está usando TrackDons.org para registrar sus donaciones a proyectos (ONGs, proyectos de software, crowdfundings). La idea es que si todo el mundo comparte sus donaciones, le daremos más visibilidad a los proyectos y obtendrán más recursos.
+
+        ¿Has donado recientemente a algún proyecto? Regístralo y díselo a tus amigos:
+
+        %{url}
+
+        Si tienes algún comentario escríbenos a lets@trackdons.org
+  metas:
+    home:
+      description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
+    about:
+      description: Saber más sobre TrackDons, su organización, cómo funciona, cómo puedes colaborar...
+      title: 'About'
+    proyectos:
+      home: 
+        description: Navega y descubre todos los diferentes proyectos donde puedes donar
+        title: Todos los proyectos
+        keywords: proyectos, donación, descubre
+      proyecto:
+        description: Registra tus donaciones a %{name} con TrackDons y mejora el alcance del proyecto
+        title: Todos los proyectos
+        keywords: proyectos, donación, descubre
+    donaciones:
+      home: 
+        description: Navega y descubre las últimas donaciones registradas en TrackDons
+        title: Últimas donaciones
+        keywords: donaciones, report, descubre
+      donación:
+        description: "%{user} has made a donación to %{proyecto} and has tracked it with donación tracking tool TrackDons"
+        title: Donación al %{project} por %{user}
+    users:
+      user:
+        description: "Mira las donaciones de %{user} en TrackDons e inspírate para donar"
+        title: "Perfil de %{user}"
   date:
     formats:
       wadus: "%d.%m.%Y"
