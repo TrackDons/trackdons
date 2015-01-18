@@ -21,8 +21,6 @@ RSpec.feature 'Inviting users' do
 
     expect(page).to have_content('You have 5 invites available')
  
-    #expect(UserMailer).to receive(:send_invitation).with('myfriend@example.com', @user, "http://trackdons.org/invite/#{}")
-
     fill_in "Your friend's email", with: 'myfriend@example.com'
     click_button 'Invite'
 
@@ -36,5 +34,20 @@ RSpec.feature 'Inviting users' do
     click_email_link_matching /invite/
 
     expect(page).to have_content('With this invitation you can sign up for TrackDons')
+
+    fill_in 'Name', with: 'Peter'
+    fill_in 'Password', with: 'waduswadus'
+    fill_in 'Confirmation', with: 'waduswadus'
+    select 'Spain', from: 'Country'
+    click_button 'Create my account'
+
+    expect(page).to have_content('Hello Peter')
+
+    open_email_for 'yorch@example.com'
+    email = current_email
+    expect(email).to have_body_text(/Your friend Yorch has just accepted your invitation to join TrackDons.org/)
+
+    @user.reload
+    expect(@user.available_invitations).to be(5)
   end
 end

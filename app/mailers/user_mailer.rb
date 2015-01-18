@@ -15,7 +15,12 @@ class UserMailer < ApplicationMailer
     @invitation = invitation
     @name = current_user.name
     @url = url
-    mail to: invitation.invited_email, subject: t("invitations.invitation_send_subject", :friend => @name)
+    mail to: invitation.invited_email, subject: t("invitations.invitation_send_subject", friend: @name)
   end
 
+  def accepted_invitation(invitation)
+    @name = invitation.user.name
+    @friend_page = user_url(invitation.user, :host => ENV['domain'])
+    mail to: invitation.user.email, subject: t("invitations.invitation_accepted_subject", friend: @name)
+  end
 end
