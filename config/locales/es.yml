@@ -153,12 +153,12 @@ es:
         description: Registra tus donaciones a %{name} con TrackDons y mejora el alcance del proyecto
         title: Todos los proyectos
         keywords: proyectos, donación, descubre
-    donaciones:
+    donations:
       home: 
         description: Navega y descubre las últimas donaciones registradas en TrackDons
         title: Últimas donaciones
         keywords: donaciones, report, descubre
-      donación:
+      donation:
         description: "%{user} has made a donación to %{proyecto} and has tracked it with donación tracking tool TrackDons"
         title: Donación al %{project} por %{user}
     users:

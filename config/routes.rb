@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
-    scope "/:locale" do
+
+  scope "/:locale" do
     root 'pages#index'
 
     get    'login'   => 'sessions#new'
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     delete 'logout'  => 'sessions#destroy'
 
     get 'signup/:invitation_token'     => 'users#new', as: :signup # signup only by invitation
-    
+
     get 'invite'     => 'invitations#new'
     post 'invite'    => 'invitations#create'
     get 'invite/:invitation_token'   => 'invitations#check', as: :check_invitation

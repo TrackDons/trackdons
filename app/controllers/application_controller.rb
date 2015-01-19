@@ -7,15 +7,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
-  helper_method :current_user, :extract_locale_from_subdomain, :logged_in?, :current_user?
+  helper_method :current_user, :logged_in?, :current_user?
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-    #I18n.locale = extract_locale_from_accept_language_header
   end
 
   def default_url_options(options={})
-    # logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { locale: I18n.locale }
   end
 
