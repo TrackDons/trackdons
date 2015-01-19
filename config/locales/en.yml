@@ -23,6 +23,8 @@ en:
   track_a_donation: 'Track a donation'
   track_your_first_donation: 'Track your first donation'
   login_if_you_already: 'Login if you already have tracked'
+  home: 
+    read_more_about_this_project: "Read more about this project"
   # donations
   donations:
     destroy:
@@ -110,6 +112,7 @@ en:
       edit_your_profile: Edit your profile
     index:
       please_log_in: Please log in
+    remember_me: Remember me on this computer
   invitations:
     dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."
