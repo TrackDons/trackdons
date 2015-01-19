@@ -1,29 +1,39 @@
 module Paths
   def home_page
-    '/'
+    locale_preffix + '/'
   end
 
   def signup_page(invitation)
-    "/signup/#{invitation.invitation_token}"
+    locale_preffix + "/signup/#{invitation.invitation_token}"
   end
 
   def donations_page
-    "/donations"
+    locale_preffix + "/donations"
   end
 
   def donation_page(donation)
-    "/donations/#{donation.id}"
+    locale_preffix + "/donations/#{donation.id}"
   end
 
   def project_page(project)
-    "/projects/#{project.slug}"
+    locale_preffix + "/projects/#{project.slug}"
   end
 
   def projects_page
-    "/projects"
+    locale_preffix + "/projects"
   end
 
   def user_page(user)
-    "/users/#{user.id}"
+    locale_preffix + "/users/#{user.id}"
+  end
+
+  def login_page
+    locale_preffix + "/login"
+  end
+
+  private
+
+  def locale_preffix
+    "/en"
   end
 end

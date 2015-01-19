@@ -53,8 +53,8 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     donation = create_donation(:user => @user, :project => @project, :quantity => 200)
 
     visit donation_page(donation)
-    expect(page).to have_link 'Wikiwadus project page', :href => project_path(@project)
-    expect(page).to have_link 'More donations by Yorch', :href => user_path(@user)
-    expect(page).to have_link 'Other projects', :href => projects_path
+    expect(page).to have_link 'Wikiwadus project page', :href => project_path('en',@project)
+    expect(page).to have_link 'More donations by Yorch', :href => user_path('en',@user)
+    expect(page).to have_link 'Other projects', :href => projects_path('en')
   end
 end

@@ -30,5 +30,7 @@ module Trackdons
       g.template_engine :erb
       g.test_framework  :rspec, fixture: false
     end
+
+    config.action_mailer.default_url_options = { host: 'trackdons.org' }
   end
 end
