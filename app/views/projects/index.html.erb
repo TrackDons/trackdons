@@ -3,7 +3,7 @@
 
 <section class="content_column">
 
-  <h1><%= title t('metas.projects.home.all_projects') %> (<%= link_to '+', new_project_path %>)</h1>
+  <h1><%= title t('metas.projects.home.title') %> (<%= link_to '+', new_project_path %>)</h1>
 
   <% @projects.each do |project| %>
     <%= render project %>
