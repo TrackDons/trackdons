@@ -4,11 +4,11 @@
   </h1>
 
   <div id="donations_last_month">
-    <%= money @user.total_donations_last_month %> <%= t('.donated') %>
+    <%= money @user.total_donations_last_month(current_user) %> <%= t('.donated') %>
     <small><%= t('.in_the_last_month') %></small>
   </div>
 
   <div id="donations_overall">
-    <%= money @user.total_donations %> <%= t('.in_total') %>
+    <%= money @user.total_donations(current_user) %> <%= t('.in_total') %>
   </div>
 </header>

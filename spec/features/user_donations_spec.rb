@@ -16,6 +16,30 @@ RSpec.feature 'User donations' do
     expect(page).to have_content('30.62€ in total')
   end
 
+  scenario "I see the total amount of donations don't include private donations when viewed by other user" do
+    other_user = create_user(name: 'Bruce', email: "bruce@example.com")
+
+    create_donation project: @project, quantity: 20.12, date: Date.today,  user: other_user, comment: 'This is my comment'
+    create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: other_user
+    create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: other_user, quantity_privacy: true
+
+    login_as "yorch@example.com", "wadusm4n"
+    visit user_page(other_user)
+
+    expect(page).to have_content('20.12€ donated in the last month')
+    expect(page).to have_content('30.62€ in total')
+  end
+
+  scenario 'I see the total amount of donations including private donations' do
+    create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
+    create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: @user, quantity_privacy: true
+
+    login_as "yorch@example.com", "wadusm4n"
+
+    expect(page).to have_content('30.12€ donated in the last month')
+    expect(page).to have_content('40.62€ in total')
+  end
+
   scenario 'I can delete a donation of mine' do
     other_user = create_user(name: 'Bruce', email: "bruce@example.com")
     create_donation project: @project, quantity: 20.12, date: Date.today, user: other_user

@@ -59,6 +59,7 @@ es:
       delete: 'Borrar'
       delete_title: 'Borrar donación'
       sure: '¿Estás seguro?'
+      a_donation: Una donación
     form:
       update_donation: Actualizar
       cancel: Cancelar

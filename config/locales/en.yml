@@ -55,6 +55,7 @@ en:
       delete: 'Delete'
       delete_title: 'Delete donation'
       sure: 'Are you sure?'
+      a_donation: A donation
     form:
       update_donation: Update
       cancel: Cancel
