@@ -49,7 +49,7 @@ es:
       project_page: 'La página de %{project}'
       more_donations_by: 'Más donaciones de %{user}'
       other_projects: 'Otros proyectos'
-    donación_do_widget:
+    donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
       to: 'a'
@@ -60,6 +60,9 @@ es:
       delete_title: 'Borrar donación'
       sure: '¿Estás seguro?'
       a_donation: Una donación
+      private_donation_not_visible_explanation: Esta donación es privada, de modo que la cantidad solo será visible para el autor
+      private_donation_not_visible_explanation_in_profile: Este usuario tiene donaciones privadas, por lo que el total no incluye todas
+      private_donation_not_visible_explanation_in_profile_for_self: Tienes donaciones privadas, así que el total solo lo verás tu, pero no los otros usuarios
     form:
       update_donation: Actualizar
       cancel: Cancelar

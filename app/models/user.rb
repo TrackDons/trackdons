@@ -62,6 +62,11 @@ class User < ActiveRecord::Base
     self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
   end
 
+  def has_private_donations
+    donations.exists?(quantity_privacy: true)
+  end
+  
+
   private
 
   def set_currency
