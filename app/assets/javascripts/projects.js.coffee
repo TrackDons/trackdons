@@ -5,7 +5,7 @@ $(document).on "page:change", ->
       value = value.trim()
       $.ajax({
         dataType: "json",
-        url: '/projects',
+        url: '/en/projects',
         data: {q: value},
         error: (jqXHR, textStatus, errorThrown) ->
           $('body').append "AJAX Error: #{textStatus}"

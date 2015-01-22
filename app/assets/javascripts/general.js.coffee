@@ -6,7 +6,7 @@ $(document).on "page:change", ->
   $('#donation_project_attributes_name').select2
     placeholder: 'Project'
     ajax:
-      url: '/projects'
+      url: '/en/projects'
       dataType: 'json'
       quietMillis: 250,
       results: (data, page) ->
