@@ -32,13 +32,13 @@ User.create!(name:  "Pedro Ximenez",
 end
 
 projects = Project.create([
-	{ id: 1, name: 'Wikipedia', url: 'http://www.wikipedia.com', twitter: 'wikipedia', description: 'This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia.', donation_url: 'https://donate.wikimedia.org/wiki/Special:FundraiserLandingPage'}, 
-	{ id: 2, name: 'ACNUR España', url: 'http://www.acnur.es', twitter: 'ACNURspain', description: 'ACNUR es la agencia española para los refugiados. Dependiente de la ONU', donation_url: 'https://www.eacnur.org/ayuda-ong-africa-donativos-hacerse-socio#_ga=1.240044163.1046714309.1413590594'  }, 
-	{ id: 3, name: 'My fantastic organization', url: 'http://www.mysteryworld.es', twitter: 'FantasticOrg', description: 'Mi descripción no puede dejar de ser fantástica'  },
-	{ id: 4, name: 'My Wadus ONG', url: 'http://www.mywadus.es', twitter: 'WadusONG', description: 'ONG description ONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG description'  },
-  { id: 5, name: 'Electronic Frontier Foundation', url: 'http://www.eff.org', twitter: 'EFF', description: 'The Electronic Frontier Foundation is the leading nonprofit organization defending civil liberties in the digital world. Founded in 1990, EFF champions user privacy, free expression, and innovation through impact litigation, policy analysis, grassroots activism, and technology development. We work to ensure that rights and freedoms are enhanced and protected as our use of technology grows.', donation_url: 'https://supporters.eff.org/donate'  },
-  { id: 6, name: 'CIC - Centro de Integración Ciudadana Monterrey', url: 'http://www.cic.mx', twitter: 'cicmty', description: 'El CIC es una red de confianza 100% ciudadana que enlaza e integra al ciudadano y las autoridades por medio de espacios claros, confiables y auténticos de participación en temas que impactan a la sociedad, buscando despertar las conciencias y activar a los ciudadanos a trabajar en suma para mejorar nuestra sociedad. Estos espacios se fundamentan en el aprovechamiento de nuevas tecnologías como las redes sociales y nuestra plataforma Tehuan.', donation_url: 'http://www.cic.mx/?p=2166'},
-  { id: 7, name: 'Mozilla - Firefox', url: 'http://www.mozilla.org', twitter: 'mozilla', description: "We're a global community dedicated to making the web better and more open for all. Join us to imagine, build & teach the web's future.", donation_url: 'https://sendto.mozilla.org'}
+	{ id: 1, name: 'Wikipedia', category_id: '8', url: 'http://www.wikipedia.com', twitter: 'wikipedia', description: 'This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia. This is the description of the wikipedia.', donation_url: 'https://donate.wikimedia.org/wiki/Special:FundraiserLandingPage'}, 
+	{ id: 2, name: 'ACNUR España', category_id: '12', url: 'http://www.acnur.es', twitter: 'ACNURspain', description: 'ACNUR es la agencia española para los refugiados. Dependiente de la ONU', donation_url: 'https://www.eacnur.org/ayuda-ong-africa-donativos-hacerse-socio#_ga=1.240044163.1046714309.1413590594'  }, 
+	{ id: 3, name: 'My fantastic organization', category_id: '13', url: 'http://www.mysteryworld.es', twitter: 'FantasticOrg', description: 'Mi descripción no puede dejar de ser fantástica'  },
+	{ id: 4, name: 'My Wadus ONG', category_id: '10', url: 'http://www.mywadus.es', twitter: 'WadusONG', description: 'ONG description ONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG descriptionONG description'  },
+  { id: 5, name: 'Electronic Frontier Foundation', category_id: '16', url: 'http://www.eff.org', twitter: 'EFF', description: 'The Electronic Frontier Foundation is the leading nonprofit organization defending civil liberties in the digital world. Founded in 1990, EFF champions user privacy, free expression, and innovation through impact litigation, policy analysis, grassroots activism, and technology development. We work to ensure that rights and freedoms are enhanced and protected as our use of technology grows.', donation_url: 'https://supporters.eff.org/donate'  },
+  { id: 6, name: 'CIC - Centro de Integración Ciudadana Monterrey', category_id: '5', url: 'http://www.cic.mx', twitter: 'cicmty', description: 'El CIC es una red de confianza 100% ciudadana que enlaza e integra al ciudadano y las autoridades por medio de espacios claros, confiables y auténticos de participación en temas que impactan a la sociedad, buscando despertar las conciencias y activar a los ciudadanos a trabajar en suma para mejorar nuestra sociedad. Estos espacios se fundamentan en el aprovechamiento de nuevas tecnologías como las redes sociales y nuestra plataforma Tehuan.', donation_url: 'http://www.cic.mx/?p=2166'},
+  { id: 7, name: 'Mozilla - Firefox', category_id: '16', url: 'http://www.mozilla.org', twitter: 'mozilla', description: "We're a global community dedicated to making the web better and more open for all. Join us to imagine, build & teach the web's future.", donation_url: 'https://sendto.mozilla.org'}
 ])
 Donation.create(quantity_cents: '1000', currency: 'EUR', date: '2014-10-14', project_id: 1, user_id: 1, comment: 'Wadus comment', quantity_privacy: 0)
 Donation.create(quantity_cents: '2000', currency: 'EUR', date: '2014-08-08', project_id: 1, user_id: 2, comment: 'Wadus comment', quantity_privacy: 1)
@@ -55,3 +55,24 @@ Donation.create(quantity_cents: '5000', currency: 'EUR', date: '2004-10-10', pro
   Read more at: https://blog.mozilla.org/press/2004/12/mozilla-foundation-places-two-page-advocacy-ad-in-the-new-york-times/ 
 
   http://tech.slashdot.org/story/04/10/19/1338254/firefox-seeks-full-page-ad-in-new-york-times")
+
+
+categories = Category.create([
+  { id: 1, name: 'Animals' }, 
+  { id: 2, name: 'Arts and Culture' }, 
+  { id: 3, name: 'Children' }, 
+  { id: 4, name: 'Climate Change' }, 
+  { id: 5, name: 'Democracy and Governance' }, 
+  { id: 6, name: 'Disaster Recovery' }, 
+  { id: 7, name: 'Economic Development' }, 
+  { id: 8, name: 'Education' }, 
+  { id: 9, name: 'Environment' }, 
+  { id: 10, name: 'Health' }, 
+  { id: 11, name: 'Human Rights' }, 
+  { id: 12, name: 'Humanitarian Assistance' }, 
+  { id: 13, name: 'Hunger' }, 
+  { id: 14, name: 'Microfinance' }, 
+  { id: 15, name: 'Sport' }, 
+  { id: 16, name: 'Technology' }, 
+  { id: 17, name: 'Women and Girls' }
+])  

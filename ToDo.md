@@ -1,12 +1,6 @@
-http://guides.rubyonrails.org/getting_started.html#rendering-a-partial-form
-https://www.railstutorial.org/book/_single-page#sec-method_definitions
-https://github.com/peterwillcn/rails4-autocomplete
-
 ### Specific ToDos
 
-- [ ] Intercionalización https://github.com/hexorx/countries
-- 
-
+- [ ] Intercionalización https://github.com/hexorx/countries 
 
 ### General ToDos
 
@@ -31,17 +25,39 @@ https://github.com/peterwillcn/rails4-autocomplete
 - [ ] Users
   - [ ] Esconder el ID usuario / mostrar username instead
   
-
 bin/rails generate model Donation quantity:decimal currency:string date:date comment:text tags:string project:references
 
 rails generate model User name:string email:string password_digest:string 
+rails generate model Invitation invitation_token:string invited_email:string used:boolean user:references 
 
 add_index :users, :email, unique: true
-
-
 
  Quantity
 	Currency
 	Date
 	Comment
 	Tag
+
+
+
+## oAuth login
+
+Cases:
+
+- Sign up with email, comes to login with Twitter
+  - Creates user, ask for email
+
+- Sign up with email, comes to login with Facebook
+  - We match emails; ask for password confirmation
+
+- Sign up with Twitter
+  - Asks for email (and optional: password) √
+
+## Category for projects
+
+- maquetación
+- modelo 
+- editar proyecto
+- listado de proyectos por categoria
+- filtro de proyectos
+- incluir categoria al añadir proyecto

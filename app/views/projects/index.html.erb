@@ -1,13 +1,42 @@
 <% set_meta_tags :description => t('metas.projects.home.description') %>
 <% set_meta_tags :keywords => t('metas.projects.home.keywords') %>
 
-<section class="content_column">
+<section class="wide_content">
 
-  <h1><%= title t('metas.projects.home.title') %> (<%= link_to '+', new_project_path %>)</h1>
+  <div class="main_column">
 
-  <% @projects.each do |project| %>
-    <%= render project %>
-  <% end %>
+    <section class="header">
+      
+      <h1><%= title @page_title %> (<%= link_to '+', new_project_path %>)</h1>
+
+      <div class="filters">
+        <a href="">A-Z</a>
+        <a href="">Latest</a>
+        <a href="">Popular</a>
+      </div>
+
+    </section>
+
+    <% @projects.each do |project| %>
+      <%= render project %>
+    <% end %>
+
+  </div>
+
+  <div class="sidebar">
+
+    <div class="categories">
+      <h2>Categories</h2>
+
+      <ul>
+        <% @categories.each do |category| %>
+          <li><%= link_to_unless_current category.name, category %></li>
+        <% end %>
+      </ul>
+    </div>
+
+
+  </div>
 
 </section>
 

@@ -22,14 +22,15 @@
 @import "http://fonts.googleapis.com/css?family=Raleway:400,700";
 @import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
 
-$main_color: #7C9200;
-$secondary_color: #565631;
+$main_color: #7C9200; /* main green */
+$secondary_color: #565631; /* dark green */
 $tertiary_color: #E4D6B3;
 
 /* colors */
 body { background: #F3E9D1; }
 body #sb-site, body .sb-site-container { background-color: transparent; }
 #logo { background: $secondary_color; }
+a { color: $main_color; }
 
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
@@ -317,6 +318,71 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
   };
 }
 
+.wide_content {
+  padding: 0 5%; 
+  overflow: hidden;
+
+  .sidebar, .main_column {
+    /*border: 1px solid red;*/
+  }
+  h2 {
+    font-size: 1.2em;
+    border-top: 5px solid $main_color;
+    color: $secondary_color;
+    padding: .5em 0 0 0;
+    margin: 0 0 1em 0;
+  }
+  h1 {
+    font-size: 1.2em;
+    color: $secondary_color;
+    padding: .5em 0 0 0;
+    margin: 0 0 1em 0;
+  }
+  
+  section.header {
+    border-top: 5px solid $main_color;
+    position: relative;
+
+    h1 {
+      display: inline-block;
+    }
+    .filters {
+      display: inline-block;
+      float: right;
+      margin-top: 1em;
+      font-size: .75em;
+      text-transform: uppercase;
+
+      a {
+        display: inline-block;
+        margin: 0 0 0 1em;
+      }
+    }
+  }
+  .sidebar {
+    float: left; 
+    width: 25%;
+
+    ul, li {
+      font-size: .9em; 
+      line-height: 1.4em; 
+      margin: 0; 
+      padding: 0; 
+      list-style-type: none;
+    }
+
+    .categories {
+      a {
+        text-decoration: none;
+      }
+    }
+
+  }
+  .main_column {
+    float: right;
+    width: 70%;
+  }
+}
 
 .long_text { width: 500px; font-size: 14px; }
 .long_text p { line-height: 22px; }

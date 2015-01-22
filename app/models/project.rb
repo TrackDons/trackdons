@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
 
   has_many :donations
   has_many :users, through: :donations
+  has_one :category
 
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
@@ -45,4 +46,5 @@ class Project < ActiveRecord::Base
 
     twitter_account
   end
+  
 end

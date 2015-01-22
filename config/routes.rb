@@ -22,5 +22,9 @@ Rails.application.routes.draw do
     resources :projects do
       resources :donations
     end
+
+    get 'projects-:category' => 'projects#index', as: :category
+
+  
   end
 end

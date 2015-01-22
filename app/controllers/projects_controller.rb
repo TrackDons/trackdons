@@ -2,7 +2,17 @@ class ProjectsController < ApplicationController
   before_filter :set_new_donation, only: :show
 
   def index
-    @projects = Project.search(params[:q])
+    if params[:category]    
+      c = Category.friendly.find(params[:category])
+      @projects = Project.where(:category_id => c.id)
+      @page_title = c.name
+    else  
+      @projects = Project.search(params[:q])
+      @page_title = t('metas.projects.home.title')
+    end
+
+
+    @categories = Category.all
 
     respond_to do |format|
       format.html
@@ -29,13 +39,14 @@ class ProjectsController < ApplicationController
 
   private
 
-  def project_params
-    params.require(:project).permit(:name, :description, :url, :twitter, :donation_url)
-  end
-
-  def projects_with_urls(projects)
-    projects.map do |project|
-      project.as_json.merge(project_url: url_for(project))
+    def project_params
+      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id)
     end
-  end
+
+    def projects_with_urls(projects)
+      projects.map do |project|
+        project.as_json.merge(project_url: url_for(project))
+      end
+    end
+
 end
