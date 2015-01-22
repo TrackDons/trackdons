@@ -20,3 +20,5 @@ config/secrets.yml
 
 app/assets/.DS_Store
 .DS_Store
+
+ToDo.md
