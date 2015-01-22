@@ -56,6 +56,9 @@ en:
       delete_title: 'Delete donation'
       sure: 'Are you sure?'
       a_donation: A donation
+      private_donation_not_visible_explanation: This donation is private, so the quantity will only be shown to the donation's author
+      private_donation_not_visible_explanation_in_profile: This user has private donations, so this total does not include every donation
+      private_donation_not_visible_explanation_in_profile_for_self: You have private donations, so the total won't show up for other users, only for you
     form:
       update_donation: Update
       cancel: Cancel
