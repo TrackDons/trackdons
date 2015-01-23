@@ -4,6 +4,7 @@
 
     <% if new_donation? %>
       <div class="track_don_project">
+        
         <% if @project %>
           <div class="track_don_project_name">
             <%= @project.name %>
@@ -24,6 +25,7 @@
             </div>
           <% end %>
         <% end %>
+        
       </div>
     <% else %>
       <div class="track_don_project">

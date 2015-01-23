@@ -31,6 +31,12 @@
           <!-- <li>People who donate to Wikipedia repeat 1,3 times, in an average of 8,4 months</li> -->
         </ul>
       </div>
+
+      <% if logged_in? %>
+        <%= link_to(t('.edit'), edit_project_path(@project)) %> ·
+        <%= link_to(t('.delete'), @project, method: :delete, data: {confirm: t('sure')}) %>      
+      <% end %>
+
     </section>
 
     <section class="actions">

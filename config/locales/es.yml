@@ -18,6 +18,7 @@ es:
   invite: 'Invitar'
   choose_your_language: 'Elige tu idioma'
   want_to_contribute_your_own_language: '¿Quieres contribuir con tu idioma?'
+  sure: '¿Estás seguro?'
   # home
   tagline: 'Un diario de las donaciones que realizas a los proyectos que te importan'
   main_bullet_1: 'Ayuda a captar más donantes para los proyectos en los que crees mostrando tus donaciones'
@@ -58,7 +59,6 @@ es:
       edit_title: 'Editar donación'
       delete: 'Borrar'
       delete_title: 'Borrar donación'
-      sure: '¿Estás seguro?'
     form:
       update_donation: Actualizar
       cancel: Cancelar
@@ -74,6 +74,7 @@ es:
     project: 'Proyecto'
     all_projects: 'Todos los proyectos'
     new_project: 'Nuevo proyecto'
+    edit_project: 'Editar proyecto'
     donate_in_project_site: "Donar en la página del proyecto"
     did_you_track: '¿Has donado a este proyecto? TrackDon!'
     invite_your_friends_to_this_page: 'Invita a tus amigos a esta página'
@@ -94,6 +95,10 @@ es:
       donation_in_total:
         one: "%{count} donacion en total"
         other: "%{count} donaciones en total"
+      edit: Editar
+      delete: Eliminar
+    destroy: 
+      deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
   shared:
     user_links:
       hello: "Hola %{name}"

@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
 
   has_many :donations
   has_many :users, through: :donations
-  has_one :category
+  belongs_to :category
 
   extend FriendlyId
   friendly_id :name, :use => [:slugged]

@@ -23,6 +23,7 @@ en:
   track_a_donation: 'Track a donation'
   track_your_first_donation: 'Track your first donation'
   login_if_you_already: 'Login if you already have tracked'
+  sure: 'Are you sure?'
   home: 
     read_more_about_this_project: "Read more about this project"
   # donations
@@ -54,7 +55,6 @@ en:
       edit_title: 'Edit donation'
       delete: 'Delete'
       delete_title: 'Delete donation'
-      sure: 'Are you sure?'
     form:
       update_donation: Update
       cancel: Cancel
@@ -70,6 +70,7 @@ en:
     project: 'Project'
     all_projects: 'All projects'
     new_project: 'New project'
+    edit_project: 'Edit project'
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
@@ -90,6 +91,10 @@ en:
       donations_in_total:
         one: "%{count} donation in total"
         other: "%{count} donations in total"
+      edit: Edit
+      delete: Delete
+    destroy: 
+      deleted: The project has been eliminated. Hope it made sense
   shared:
     user_links:
       hello: "Hello %{name}"

@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
+  
   before_filter :set_new_donation, only: :show
+  before_action :load_project,      only: [:edit, :update, :destroy]
 
   def index
     if params[:category]    
@@ -10,7 +12,6 @@ class ProjectsController < ApplicationController
       @projects = Project.search(params[:q])
       @page_title = t('metas.projects.home.title')
     end
-
 
     @categories = Category.all
 
@@ -26,7 +27,29 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @categories = Category.all
   end
+
+  def edit
+    @categories = Category.all
+  end
+
+  def update
+    if @project.update_attributes(project_params)
+      flash[:success] = "Project updated" 
+      redirect_to @project
+    else
+      @categories = Category.all
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @project.destroy
+    flash[:success] = t '.deleted'
+    redirect_to projects_path
+  end
+
 
   def create
     @project = Project.new(project_params)
@@ -41,6 +64,10 @@ class ProjectsController < ApplicationController
 
     def project_params
       params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id)
+    end
+
+    def load_project
+      @project = Project.friendly.find(params[:id])
     end
 
     def projects_with_urls(projects)
