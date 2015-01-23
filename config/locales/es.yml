@@ -19,6 +19,7 @@ es:
   choose_your_language: 'Elige tu idioma'
   want_to_contribute_your_own_language: '¿Quieres contribuir con tu idioma?'
   sure: '¿Estás seguro?'
+  category: Categoría
   # home
   tagline: 'Un diario de las donaciones que realizas a los proyectos que te importan'
   main_bullet_1: 'Ayuda a captar más donantes para los proyectos en los que crees mostrando tus donaciones'
@@ -40,17 +41,17 @@ es:
       share_in_twitter: 'Compartir en Twitter'
       share_in_facebook: 'Compartir en Facebook'
       share_by_email: 'Compartir por email'
-      your_tracked_donación: 'Tu donación:'
+      your_tracked_donation: 'Tu donación:'
       user_donated_quantity_to_proyecto: '%{name} donó %{donación} a %{project}'
       share_email_subject: 'Has donado últimamente?'
-      share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{proyecto}: %{url}'
+      share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{project}: %{url}'
       share_tweet: 'Has colaborado con algún proyecto flipante hoy? Mi última donación en @trackdons: %{url}'
       donation_date: 'Fecha de donación: %{date}'
       next: 'Más:'
       project_page: 'La página de %{project}'
       more_donations_by: 'Más donaciones de %{user}'
       other_projects: 'Otros proyectos'
-    donación_do_widget:
+    donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
       to: 'a'
@@ -99,6 +100,8 @@ es:
       delete: Eliminar
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
+    form:
+      select_category: Select category
   shared:
     user_links:
       hello: "Hola %{name}"
@@ -108,7 +111,6 @@ es:
   users:
     invite: 'Invita un amigo'
     you_already_have_an_account: '¡Ya tienes una cuenta! Guarda la invitación para alguien más...'
-    dont_have_an_account_yet_html: Don't have an account yet? We are just getting started and letting people in bit by bit. You can ask a friend for an invitation, or answer these %{href} that will help us shape the product to get an invite soon.
     dont_have_an_account_yet_html: ¿Aún no tienes una cuenta? Estamos empezando y dejando poco a poco a la gente registrarse. Puedes pedirle a un amigo una invitación, o responder estas %{href} que nos ayudarán a definir el producto y darte antes una invitación.
     dont_have_an_account_yet_href: 'preguntas rápidas'
     labels:
@@ -164,7 +166,7 @@ es:
         title: Últimas donaciones
         keywords: donaciones, report, descubre
       donation:
-        description: "%{user} has made a donación to %{proyecto} and has tracked it with donación tracking tool TrackDons"
+        description: "%{user} ha hecho una donación a %{project} y la ha registrado con TrackDons"
         title: Donación al %{project} por %{user}
     users:
       user:

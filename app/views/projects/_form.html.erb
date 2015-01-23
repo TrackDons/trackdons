@@ -45,7 +45,7 @@
 
     <p>
       <%= f.label :category, t('category') %>
-      <%= f.select :category_id, options_from_collection_for_select(@categories, "id", "name", @project.category_id) %>
+      <%= f.select :category_id, options_from_collection_for_select(@categories, "id", "name", @project.category_id), prompt: t('.select_category') %>
     </p>
 
     <p>

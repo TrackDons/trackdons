@@ -23,8 +23,6 @@
               <div class="hint"><%= project_form.label(:description, 'Project Description') %></div>
               <%= project_form.text_field :url %>
               <div class="hint"><%= project_form.label(:url, 'Project URL') %></div>
-              <%= project_form.select :category_id, options_from_collection_for_select(Category.all, "id", "name") %>
-              <div class="hint"><%= project_form.label(:url, 'Project Category') %></div>
             </div>
 
           <% end %>

@@ -24,6 +24,7 @@ en:
   track_your_first_donation: 'Track your first donation'
   login_if_you_already: 'Login if you already have tracked'
   sure: 'Are you sure?'
+  category: Category
   home: 
     read_more_about_this_project: "Read more about this project"
   # donations
@@ -93,6 +94,8 @@ en:
         other: "%{count} donations in total"
       edit: Edit
       delete: Delete
+    form:
+      select_category: Select category
     destroy: 
       deleted: The project has been eliminated. Hope it made sense
   shared:
