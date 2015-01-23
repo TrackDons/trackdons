@@ -39,7 +39,7 @@
     </div>
   <% end %>
 
-  <% if logged_in? && current_user?(donation.user) %>
+  <% if current_user?(donation.user) %>
     <div class="donation_tools">
       <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('.sure')}) %>

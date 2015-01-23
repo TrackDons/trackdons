@@ -11,12 +11,12 @@
   <div id="donations_overall">
     <%= money @user.total_donations(current_user) %> <%= t('.in_total') %>
 
-    <% if @user.has_private_donations %>
-      <% if logged_in? && current_user?(@user) %>
+    <% if @user.has_private_donations? %>
+      <% if current_user?(@user) %>
         <i class="fa fa-lock tipsit" title="<%= t('donations.donation.private_donation_not_visible_explanation_in_profile_for_self') %>"></i>
       <% else %>
         <i class="fa fa-lock tipsit" title="<%= t('donations.donation.private_donation_not_visible_explanation_in_profile') %>"></i>
-      <% end %>  
+      <% end %>
     <% end %>
   </div>
 </header>
