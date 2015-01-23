@@ -159,7 +159,7 @@ es:
         title: Últimas donaciones
         keywords: donaciones, report, descubre
       donation:
-        description: "%{user} has made a donación to %{proyecto} and has tracked it with donación tracking tool TrackDons"
+        description: "%{user} has made a donación to %{project} and has tracked it with donación tracking tool TrackDons"
         title: Donación al %{project} por %{user}
     users:
       user:
