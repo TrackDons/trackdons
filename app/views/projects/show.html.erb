@@ -34,7 +34,7 @@
 
       <% if logged_in? %>
         <%= link_to(t('.edit'), edit_project_path(@project)) %> ·
-        <%= link_to(t('.delete'), @project, method: :delete, data: {confirm: t('sure')}) %>      
+        <%# link_to(t('.delete'), @project, method: :delete, data: {confirm: t('sure')}) %>      
       <% end %>
 
     </section>

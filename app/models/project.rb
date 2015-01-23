@@ -11,6 +11,10 @@ class Project < ActiveRecord::Base
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }
 
+  scope :alpha, -> { order(name: :asc) }
+  scope :latest, -> { order(created_at: :desc) }
+  scope :popular, -> { order(donations_count: :asc) }
+
   def self.search(query)
     if query.present?
       where(["name like ?", "%#{query}%"])

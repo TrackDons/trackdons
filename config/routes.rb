@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       resources :donations
     end
 
-    get 'projects-:category' => 'projects#index', as: :category
+    get 'projects(::category)' => 'projects#index', as: :category
     post 'projects/:id/edit' => 'projects#update' 
     post 'projects/new' => 'projects#create' 
 

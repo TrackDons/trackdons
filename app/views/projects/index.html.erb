@@ -10,9 +10,9 @@
       <h1><%= title @page_title %> (<%= link_to '+', new_project_path %>)</h1>
 
       <div class="filters">
-        <a href="">A-Z</a>
-        <a href="">Latest</a>
-        <a href="">Popular</a>
+        <% @order_types.each do |order| %>
+          <%#link_to_unless_current order, category_path(:order_type => order) %>
+        <% end %>
       </div>
 
     </section>
@@ -30,7 +30,7 @@
 
       <ul>
         <% @categories.each do |category| %>
-          <li><%= link_to_unless_current category.name, category %></li>
+          <li><%= link_to_unless_current category.name, category_path(:category => category) %></li>
         <% end %>
       </ul>
     </div>

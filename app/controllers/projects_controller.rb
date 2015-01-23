@@ -4,16 +4,20 @@ class ProjectsController < ApplicationController
   before_action :load_project,      only: [:edit, :update, :destroy]
 
   def index
+
+    order = params[:order_type] || 'latest'
+
     if params[:category]    
       c = Category.friendly.find(params[:category])
       @projects = Project.where(:category_id => c.id)
       @page_title = c.name
-    else  
+    else
       @projects = Project.search(params[:q])
       @page_title = t('metas.projects.home.title')
     end
 
     @categories = Category.all
+    @order_types = order_types
 
     respond_to do |format|
       format.html
@@ -44,12 +48,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def destroy
-    @project.destroy
-    flash[:success] = t '.deleted'
-    redirect_to projects_path
-  end
-
+  # removing destroy action until we have some permissions thing
+  # def destroy
+  #   @project.destroy
+  #   flash[:success] = t '.deleted'
+  #   redirect_to projects_path
+  # end
 
   def create
     @project = Project.new(project_params)
@@ -75,5 +79,20 @@ class ProjectsController < ApplicationController
         project.as_json.merge(project_url: url_for(project))
       end
     end
+
+    def order_type(order)
+      if order == alpha
+        @projects = Project.where(:category_id => c.id).alpha
+      elsif order == alpha
+        @projects = Project.where(:category_id => c.id).latest
+      elsif order == alpha
+        @projects = Project.where(:category_id => c.id).popular
+      end
+    end
+
+    def order_types
+      order_types = ['latest', 'alpha', 'popular']
+    end
+
 
 end
