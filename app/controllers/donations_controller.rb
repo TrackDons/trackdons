@@ -5,7 +5,7 @@ class DonationsController < ApplicationController
 
   def index
     if params.has_key?(:project_id)
-      @donations = Project.friendly.find(params[:project_id]).donations.includes(:project, :user)
+      @donations = Project.friendly.find(params[:project_id]).donations.sorted.includes(:project, :user)
     else
       @donations = Donation.sorted.includes(:project, :user)
     end
