@@ -18,7 +18,7 @@
 
     <p>
       <%= f.label(:name, t('project')) %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, data: {projects_url: projects_path} %>
     </p>
 
     <p data-existing-project-error="<%= t('.existing_project_error') %>"></p>
