@@ -16,8 +16,9 @@
         <% else %>
           
           <%= f.fields_for(:project) do |project_form| %>
-            <%= project_form.hidden_field :name %>
+            <%= project_form.hidden_field :name, data: {projects_url: projects_path} %>
             <div class="hint"><%= project_form.label(:name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
+
             <div id="project_attributes">
               <%= project_form.text_area :description %>
               <div class="hint"><%= project_form.label(:description, 'Project Description') %></div>

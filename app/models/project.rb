@@ -41,14 +41,13 @@ class Project < ActiveRecord::Base
 
   private
 
-  def clean_twitter_account_value(twitter_account)
-    if twitter_account =~ /\Ahttp/
-      twitter_account = twitter_account.split('/').last
-    elsif twitter_account =~ /\@/
-      twitter_account = twitter_account.tr('@', '')
-    end
+    def clean_twitter_account_value(twitter_account)
+      twitter_account = if twitter_account =~ /\Ahttp/
+        twitter_account.split('/').last
+      elsif twitter_account =~ /\@/
+        twitter_account.tr('@', '')
+      end
 
-    twitter_account
-  end
-  
+      twitter_account
+    end
 end

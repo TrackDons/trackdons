@@ -60,6 +60,11 @@ es:
       edit_title: 'Editar donación'
       delete: 'Borrar'
       delete_title: 'Borrar donación'
+      sure: '¿Estás seguro?'
+      a_donation: Una donación
+      private_donation_not_visible_explanation: Esta donación es privada, de modo que la cantidad solo será visible para el autor
+      private_donation_not_visible_explanation_in_profile: Este usuario tiene donaciones privadas, por lo que el total no incluye todas
+      private_donation_not_visible_explanation_in_profile_for_self: Tienes donaciones privadas, así que el total solo lo verás tu, pero no los otros usuarios
     form:
       update_donation: Actualizar
       cancel: Cancelar

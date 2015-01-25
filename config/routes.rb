@@ -28,5 +28,4 @@ Rails.application.routes.draw do
     post 'projects/new' => 'projects#create' 
 
   end
-  
 end

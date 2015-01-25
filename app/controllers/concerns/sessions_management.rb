@@ -19,7 +19,7 @@ module SessionsManagement
   end
 
   def current_user?(user)
-    user == current_user
+    logged_in? && user == current_user
   end
 
   def logged_in_user

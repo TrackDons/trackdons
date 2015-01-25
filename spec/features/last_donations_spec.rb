@@ -7,15 +7,17 @@ RSpec.feature 'Latest donations' do
 
     other_user = create_user(name: 'Bruce', email: "bruce@example.com")
 
-    create_donation project: @project, quantity: 20, date: Date.today, user: @user
+    create_donation project: @project, quantity: 20, date: Date.today, user: @user, quantity_privacy: true
     create_donation project: @project, quantity: 30, date: Date.today, user: other_user
+    create_donation project: @project, quantity: 10, date: Date.today, user: other_user, quantity_privacy: true
   end
 
   scenario 'I can see the latest donations as an anonymous user' do
     visit donations_page
 
-    expect(page).to have_content '20€ to Wikiwadus by Yorch'
+    expect(page).to have_content 'A donation to Wikiwadus by Yorch'
     expect(page).to have_content '30€ to Wikiwadus by Bruce'
+    expect(page).to have_content 'A donation to Wikiwadus by Bruce'
   end
 
   scenario 'I can see the latest donations as a logged user' do

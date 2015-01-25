@@ -1,41 +1,41 @@
 <% set_meta_tags :description => t('metas.home.description') %>
 
-		<section id="home" class="content_column">
+<section id="home" class="content_column">
 
-			<h1 class="logo">TrackDons</h1>
-			<h2><%= t 'tagline' %></h2>
-      <ul>
-				<li><%= t 'main_bullet_1' %></li>
-				<li><%= t 'main_bullet_2' %></li>
-				<li><%= t 'main_bullet_3' %></li>
-			</ul>
-      <%= link_to t('home.read_more_about_this_project'), {controller: 'pages', action: 'about'}, class: 'button' %>
-		</section>
+  <h1 class="logo">TrackDons</h1>
+  <h2><%= t 'tagline' %></h2>
+  <ul>
+    <li><%= t 'main_bullet_1' %></li>
+    <li><%= t 'main_bullet_2' %></li>
+    <li><%= t 'main_bullet_3' %></li>
+  </ul>
+  <%= link_to t('home.read_more_about_this_project'), {controller: 'pages', action: 'about'}, class: 'button' %>
+</section>
 
-		<section id="track_donation" class="content_full">
+<section id="track_donation" class="content_full">
 
-			<div class="content_column">
+  <div class="content_column">
 
-        <% if logged_in? %>
-  				<header>
-            <h2>
-              <% if has_donations? %>
-                <%= t 'track_a_donation' %>
-              <% else %>
-                <%= t 'track_your_first_donation' %>
-              <% end %>
-            </h2>
-  					<% unless logged_in? %>
-  						<div id="login_if_you_already">
-                <%= link_to t('login_if_you_already'), login_path %></div>
-  					<% end %>
-  				</header>
-
-          <%= render 'donations/form' %>
-        <% else %>
-          <%= render 'sessions/invitation_to_waitlist' %>
+    <% if logged_in? %>
+      <header>
+        <h2>
+          <% if has_donations? %>
+            <%= t 'track_a_donation' %>
+          <% else %>
+            <%= t 'track_your_first_donation' %>
+          <% end %>
+        </h2>
+        <% unless logged_in? %>
+          <div id="login_if_you_already">
+            <%= link_to t('login_if_you_already'), login_path %></div>
         <% end %>
+      </header>
 
-			</div>
+      <%= render 'donations/form' %>
+    <% else %>
+      <%= render 'sessions/invitation_to_waitlist' %>
+    <% end %>
 
-		</section>
+  </div>
+
+</section>

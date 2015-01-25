@@ -8,6 +8,8 @@ class Donation < ActiveRecord::Base
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
+  scope :visible, -> { where(quantity_privacy: false) }
+  scope :quantity_private, -> { where(quantity_privacy: true) }
   scope :sorted, -> { order(date: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
   # acts_as_taggable_on :tags
@@ -32,7 +34,9 @@ class Donation < ActiveRecord::Base
     @show_comment = value
   end
 
-  
+  def private?
+    quantity_privacy?
+  end
 
   private
 

@@ -6,7 +6,7 @@ $(document).on "page:change", ->
   $('#donation_project_attributes_name').select2
     placeholder: 'Project'
     ajax:
-      url: '/en/projects'
+      url: $('#donation_project_attributes_name').data('projects-url')
       dataType: 'json'
       quietMillis: 250,
       results: (data, page) ->
@@ -14,9 +14,6 @@ $(document).on "page:change", ->
       cache: true
       data: (term, page) -> 
         return { q: term }
-    # query: (query) ->
-    #   data = {results: [{id: 'Wadus', text: 'Wadus'}, {id: 'Wadus 2', text: 'Wadus 2'}]}
-    #   query.callback data
     allowClear: 'true'
     createSearchChoice: (term, data) ->
       return {id:term, text: term + ' (Add project)'}
