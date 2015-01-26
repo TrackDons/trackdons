@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
       when 'alpha'
         order(name: :asc)
       when 'popular'
-        order(donations_count: :asc)
+        order(donations_count: :desc)
     end
   end
 
