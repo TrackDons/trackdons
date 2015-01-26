@@ -61,7 +61,9 @@ RSpec.feature 'User donations' do
 
     visit project_page(@project)
 
-    click_link('Edit')
+    within(:css, '.donation') do
+      click_link('Edit')
+    end
 
     fill_in 'How much?', :with => '25'
     fill_in 'When did you donate?', :with => '2013-10-10'

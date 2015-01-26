@@ -33,4 +33,9 @@ module Factories
     attrs[:invited_email] ||= "johndonor@example.com"
     Invitation.create!(attrs)
   end
+
+  def create_category(attrs = {})
+    attrs[:name] ||= "Animals"
+    Category.create!(attrs)
+  end
 end

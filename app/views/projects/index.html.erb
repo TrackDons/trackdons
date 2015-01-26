@@ -1,13 +1,42 @@
 <% set_meta_tags :description => t('metas.projects.home.description') %>
 <% set_meta_tags :keywords => t('metas.projects.home.keywords') %>
 
-<section class="content_column">
+<section class="wide_content">
 
-  <h1><%= title t('metas.projects.home.title') %> (<%= link_to '+', new_project_path %>)</h1>
+  <div class="main_column">
 
-  <% @projects.each do |project| %>
-    <%= render project %>
-  <% end %>
+    <section class="header">
+
+      <h1><%= title @page_title %> (<%= link_to '+', new_project_path %>)</h1>
+
+      <div class="filters">
+        <% ProjectsController::ORDER_TYPES.each do |order| %>
+          <span><%= link_to_unless @order == order, t('.'+order), category_path(sort_by: order, category: params[:category]) %></span>
+        <% end %>
+      </div>
+
+    </section>
+
+    <% if @projects.any? %>
+      <%= render @projects %>
+    <% else %>
+      <%= t('.create_a_new_project', category: @category.try(:name), href: new_project_path).html_safe %>
+    <% end %>
+
+  </div>
+
+  <div class="sidebar">
+
+    <div class="categories">
+      <h2><%= t('.categories') %></h2>
+
+      <ul>
+        <% @categories.each do |category| %>
+          <li><%= link_to_unless_current category.name, category_path(category: category) %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
 
 </section>
-

@@ -4,6 +4,7 @@
 
     <% if new_donation? %>
       <div class="track_don_project">
+        
         <% if @project %>
           <div class="track_don_project_name">
             <%= @project.name %>
@@ -13,6 +14,7 @@
           </div>
           <%= f.hidden_field :project_id, value: @project.id %>
         <% else %>
+          
           <%= f.fields_for(:project) do |project_form| %>
             <%= project_form.hidden_field :name, data: {projects_url: projects_path} %>
             <div class="hint"><%= project_form.label(:name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
@@ -23,8 +25,10 @@
               <%= project_form.text_field :url %>
               <div class="hint"><%= project_form.label(:url, 'Project URL') %></div>
             </div>
+
           <% end %>
         <% end %>
+        
       </div>
     <% else %>
       <div class="track_don_project">

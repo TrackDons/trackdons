@@ -23,6 +23,8 @@ en:
   track_a_donation: 'Track a donation'
   track_your_first_donation: 'Track your first donation'
   login_if_you_already: 'Login if you already have tracked'
+  sure: 'Are you sure?'
+  category: Category
   home: 
     read_more_about_this_project: "Read more about this project"
   # donations
@@ -74,9 +76,16 @@ en:
     project: 'Project'
     all_projects: 'All projects'
     new_project: 'New project'
+    edit_project: 'Edit project'
     donate_in_project_site: "Donate in project's site"
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
+    index:
+      categories: Categories
+      latest: Latest
+      alpha: Alpha
+      popular: Popular
+      create_a_new_project: There are no projects in the category %{category}. Be the first to create <a href="%{href}">one</a>!
     new:
       existing_project_error: A project with this name already exists
     create:
@@ -94,6 +103,12 @@ en:
       donations_in_total:
         one: "%{count} donation in total"
         other: "%{count} donations in total"
+      edit: Edit
+      delete: Delete
+    form:
+      select_category: Select category
+    destroy: 
+      deleted: The project has been eliminated. Hope it made sense
   shared:
     user_links:
       hello: "Hello %{name}"

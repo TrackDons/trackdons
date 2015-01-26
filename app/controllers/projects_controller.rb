@@ -1,8 +1,25 @@
 class ProjectsController < ApplicationController
-  before_filter :set_new_donation, only: :show
+
+  before_action :set_new_donation, only: :show
+  before_action :load_categories,  only: [:index, :new, :edit, :update]
+  before_action :load_project,     only: [:edit, :update, :destroy]
+
+  ORDER_TYPES   = ['latest', 'alpha', 'popular']
+  DEFAULT_ORDER = 'latest'
 
   def index
-    @projects = Project.search(params[:q])
+    @order = params[:sort_by] || DEFAULT_ORDER
+
+    if params[:category]
+      @category = Category.friendly.find(params[:category])
+      @projects = @category.projects
+      @page_title = @category.name
+    else
+      @projects = Project.search(params[:q])
+      @page_title = t('metas.projects.home.title')
+    end
+
+    @projects = @projects.sorted_by(@order)
 
     respond_to do |format|
       format.html
@@ -18,6 +35,25 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def edit
+  end
+
+  def update
+    if @project.update_attributes(project_params)
+      flash[:success] = "Project updated" 
+      redirect_to @project
+    else
+      render 'edit'
+    end
+  end
+
+  # removing destroy action until we have some permissions thing
+  # def destroy
+  #   @project.destroy
+  #   flash[:success] = t '.deleted'
+  #   redirect_to projects_path
+  # end
+
   def create
     @project = Project.new(project_params)
     if @project.save
@@ -29,13 +65,21 @@ class ProjectsController < ApplicationController
 
   private
 
-  def project_params
-    params.require(:project).permit(:name, :description, :url, :twitter, :donation_url)
-  end
-
-  def projects_with_urls(projects)
-    projects.map do |project|
-      project.as_json.merge(project_url: url_for(project))
+    def project_params
+      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id)
     end
-  end
+
+    def load_project
+      @project = Project.friendly.find(params[:id])
+    end
+
+    def projects_with_urls(projects)
+      projects.map do |project|
+        project.as_json.merge(project_url: url_for(project))
+      end
+    end
+
+    def load_categories
+      @categories = Category.order(name: :asc)
+    end
 end
