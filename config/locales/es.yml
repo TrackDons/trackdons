@@ -84,6 +84,12 @@ es:
     donate_in_project_site: "Donar en la página del proyecto"
     did_you_track: '¿Has donado a este proyecto? TrackDon!'
     invite_your_friends_to_this_page: 'Invita a tus amigos a esta página'
+    index:
+      categories: Categorías
+      latest: Últimos
+      alpha: Alfabético
+      popular: Popularidad
+      create_a_new_project: No hay proyectos en la categoría %{category}. ¡Sé el primero en crear <a href="%{href}">uno</a>!
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:

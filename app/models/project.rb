@@ -15,11 +15,22 @@ class Project < ActiveRecord::Base
   scope :latest, -> { order(created_at: :desc) }
   scope :popular, -> { order(donations_count: :asc) }
 
+  def self.sorted_by(order)
+    case order
+      when 'latest'
+        order(created_at: :desc)
+      when 'alpha'
+        order(name: :asc)
+      when 'popular'
+        order(donations_count: :asc)
+    end
+  end
+
   def self.search(query)
     if query.present?
       where(["name like ?", "%#{query}%"])
     else
-      order(name: :asc)
+      self
     end
   end
 

@@ -6,19 +6,21 @@
   <div class="main_column">
 
     <section class="header">
-      
+
       <h1><%= title @page_title %> (<%= link_to '+', new_project_path %>)</h1>
 
       <div class="filters">
-        <% @order_types.each do |order| %>
-          <%#link_to_unless_current order, category_path(:order_type => order) %>
+        <% ProjectsController::ORDER_TYPES.each do |order| %>
+          <%= link_to_unless @order == order, t('.'+order), category_path(sort_by: order, category: params[:category]) %>
         <% end %>
       </div>
 
     </section>
 
-    <% @projects.each do |project| %>
-      <%= render project %>
+    <% if @projects.any? %>
+      <%= render @projects %>
+    <% else %>
+      <%= t('.create_a_new_project', category: @category.try(:name), href: new_project_path).html_safe %>
     <% end %>
 
   </div>
@@ -26,17 +28,15 @@
   <div class="sidebar">
 
     <div class="categories">
-      <h2>Categories</h2>
+      <h2><%= t('.categories') %></h2>
 
       <ul>
         <% @categories.each do |category| %>
-          <li><%= link_to_unless_current category.name, category_path(:category => category) %></li>
+          <li><%= link_to_unless_current category.name, category_path(category: category) %></li>
         <% end %>
       </ul>
     </div>
 
-
   </div>
 
 </section>
-

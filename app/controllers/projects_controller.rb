@@ -1,23 +1,25 @@
 class ProjectsController < ApplicationController
-  
-  before_filter :set_new_donation, only: :show
-  before_action :load_project,      only: [:edit, :update, :destroy]
+
+  before_action :set_new_donation, only: :show
+  before_action :load_categories,  only: [:index, :new, :edit, :update]
+  before_action :load_project,     only: [:edit, :update, :destroy]
+
+  ORDER_TYPES   = ['latest', 'alpha', 'popular']
+  DEFAULT_ORDER = 'latest'
 
   def index
+    @order = params[:sort_by] || DEFAULT_ORDER
 
-    order = params[:order_type] || 'latest'
-
-    if params[:category]    
-      c = Category.friendly.find(params[:category])
-      @projects = Project.where(:category_id => c.id)
-      @page_title = c.name
+    if params[:category]
+      @category = Category.friendly.find(params[:category])
+      @projects = @category.projects
+      @page_title = @category.name
     else
       @projects = Project.search(params[:q])
       @page_title = t('metas.projects.home.title')
     end
 
-    @categories = Category.all
-    @order_types = order_types
+    @projects = @projects.sorted_by(@order)
 
     respond_to do |format|
       format.html
@@ -31,11 +33,9 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @categories = Category.all
   end
 
   def edit
-    @categories = Category.all
   end
 
   def update
@@ -43,7 +43,6 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project updated" 
       redirect_to @project
     else
-      @categories = Category.all
       render 'edit'
     end
   end
@@ -80,19 +79,7 @@ class ProjectsController < ApplicationController
       end
     end
 
-    def order_type(order)
-      if order == alpha
-        @projects = Project.where(:category_id => c.id).alpha
-      elsif order == alpha
-        @projects = Project.where(:category_id => c.id).latest
-      elsif order == alpha
-        @projects = Project.where(:category_id => c.id).popular
-      end
+    def load_categories
+      @categories = Category.order(name: :asc)
     end
-
-    def order_types
-      order_types = ['latest', 'alpha', 'popular']
-    end
-
-
 end

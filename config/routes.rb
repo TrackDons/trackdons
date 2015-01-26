@@ -24,8 +24,5 @@ Rails.application.routes.draw do
     end
 
     get 'projects(::category)' => 'projects#index', as: :category
-    post 'projects/:id/edit' => 'projects#update' 
-    post 'projects/new' => 'projects#create' 
-
   end
 end

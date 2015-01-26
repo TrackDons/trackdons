@@ -2,7 +2,7 @@
 
   <h1><%= @page_title %></h1>
 
-  <%= form_for :project, html: {class: "simple_form"} do |f| %>
+  <%= form_for @project, html: {class: "simple_form"} do |f| %>
 
     <% if @project.errors.any? %>
       <div id="error_explanation">
