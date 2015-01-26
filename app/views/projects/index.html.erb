@@ -11,7 +11,7 @@
 
       <div class="filters">
         <% ProjectsController::ORDER_TYPES.each do |order| %>
-          <%= link_to_unless @order == order, t('.'+order), category_path(sort_by: order, category: params[:category]) %>
+          <span><%= link_to_unless @order == order, t('.'+order), category_path(sort_by: order, category: params[:category]) %></span>
         <% end %>
       </div>
 

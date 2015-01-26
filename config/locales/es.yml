@@ -89,7 +89,7 @@ es:
       latest: Últimos
       alpha: Alfabético
       popular: Popularidad
-      create_a_new_project: No hay proyectos en la categoría %{category}. ¡Sé el primero en crear <a href="%{href}">uno</a>!
+      create_a_new_project: Todavía no hay proyectos en la categoría %{category}. Si sabes de algún proyecto que debería estar aquí,  <a href="%{href}">puedes crearlo</a>
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:
@@ -112,7 +112,7 @@ es:
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
     form:
-      select_category: Select category
+      select_category: Selecciona categoría
   shared:
     user_links:
       hello: "Hola %{name}"
