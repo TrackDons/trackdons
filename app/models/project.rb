@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
 
   scope :alpha, -> { order(name: :asc) }
   scope :latest, -> { order(created_at: :desc) }
-  scope :popular, -> { order(donations_count: :asc) }
+  scope :popular, -> { order(donations_count: :desc) }
 
   def self.sorted_by(order)
     case order
