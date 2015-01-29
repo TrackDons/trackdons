@@ -1,9 +1,8 @@
 ### To set up the project
 
-It assumes you have running
+It assumes you have running:
 
-* Rails 4.1.6
-* ruby 2.0.0p247
+* ruby 2.x.x (it works from 2.0.0 to 2.1.5)
 
 ```
 git clone git@github.com:furilo/trackdons.git
@@ -14,16 +13,7 @@ cp config/secrets.yml.example config/secrets.yml
 rails server
 ```
 
-i18n is being set up in place, and will be controlled (partially) through subdomains. So you can set up some development hosts:
-
-````
-127.0.0.1   en.trackdons.local
-127.0.0.1   es.trackdons.local
-127.0.0.1   fr.trackdons.local
-127.0.0.1   it.trackdons.local
-````
-
-Then navigate to: http://en.trackdons.local:3000
+Then navigate to: http://localhost:3000
 
 
 ### To work on a new feature / bug / improvement
@@ -42,6 +32,3 @@ Create a branch and pull request.
 * http://plugins.adchsm.me/slidebars
 * https://github.com/onomojo/i18n_country_select
 * https://github.com/onomojo/i18n-country-translations
-
-
-
