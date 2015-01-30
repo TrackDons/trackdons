@@ -18,9 +18,9 @@ class UserMailer < ApplicationMailer
     mail to: invitation.invited_email, subject: t("invitations.invitation_send_subject", friend: @name)
   end
 
-  def accepted_invitation(invitation)
-    @name = invitation.user.name
-    @friend_page = user_url(I18n.locale, invitation.user)
-    mail to: invitation.user.email, subject: t("invitations.invitation_accepted_subject", friend: @name)
+  def accepted_invitation(inviter, invited_user)
+    @name = invited_user.name
+    @friend_page = user_url(I18n.locale, invited_user)
+    mail to: inviter.email, subject: t("invitations.invitation_accepted_subject", friend: @name)
   end
 end

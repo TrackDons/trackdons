@@ -21,7 +21,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.invitation.try(:mark_as_used!)
+      if invitation = @user.invitation
+        invitation.mark_as_used!(@user)
+      end
       log_in @user
       save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
     else

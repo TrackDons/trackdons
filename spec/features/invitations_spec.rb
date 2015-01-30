@@ -45,7 +45,7 @@ RSpec.feature 'Inviting users' do
 
     open_email_for 'yorch@example.com'
     email = current_email
-    expect(email).to have_body_text(/Your friend Yorch has just accepted your invitation to join TrackDons.org/)
+    expect(email).to have_body_text(/Your friend Peter has just accepted your invitation to join TrackDons.org/)
 
     @user.reload
     expect(@user.available_invitations).to be(5)

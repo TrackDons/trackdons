@@ -1,8 +1,9 @@
 class Invitation < ActiveRecord::Base
   belongs_to :user
+  belongs_to :invited_user, class_name: User
 
   before_validation :generate_invitation_token, :sanitize_email
-  
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :invited_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates_associated :user
@@ -23,11 +24,14 @@ class Invitation < ActiveRecord::Base
     invitation_token
   end
 
-  def mark_as_used!
-    update_column :used, true
+  def mark_as_used!(invited_user)
+    self.invited_user = invited_user
+    self.used = true
+    save!
+
     user.increment!(:available_invitations)
 
-    UserMailer.accepted_invitation(self).deliver_now
+    UserMailer.accepted_invitation(self.user, self.invited_user).deliver_now
   end
 
   private
