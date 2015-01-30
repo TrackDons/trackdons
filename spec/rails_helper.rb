@@ -59,4 +59,8 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.after(:each) do
+    Timecop.return
+  end
 end

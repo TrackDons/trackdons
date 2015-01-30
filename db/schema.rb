@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130152256) do
+ActiveRecord::Schema.define(version: 20150130170858) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -23,25 +23,27 @@ ActiveRecord::Schema.define(version: 20150130152256) do
 
   create_table "donations", force: :cascade do |t|
     t.integer  "quantity_cents"
-    t.string   "currency",         limit: 255
+    t.string   "currency"
     t.date     "date"
     t.text     "comment"
-    t.string   "tags",             limit: 255
-    t.boolean  "quantity_privacy",             default: false
+    t.string   "tags"
+    t.boolean  "quantity_privacy",      default: false
     t.integer  "project_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "recurring_donation_id"
   end
 
   add_index "donations", ["project_id"], name: "index_donations_on_project_id"
+  add_index "donations", ["recurring_donation_id"], name: "index_donations_on_recurring_donation_id"
   add_index "donations", ["user_id"], name: "index_donations_on_user_id"
 
   create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",           limit: 255, null: false
-    t.integer  "sluggable_id",               null: false
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
     t.string   "sluggable_type", limit: 50
-    t.string   "scope",          limit: 255
+    t.string   "scope"
     t.datetime "created_at"
   end
 
@@ -51,9 +53,9 @@ ActiveRecord::Schema.define(version: 20150130152256) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "invitations", force: :cascade do |t|
-    t.string   "invitation_token", limit: 255
-    t.string   "invited_email",    limit: 255
-    t.boolean  "used",                         default: false
+    t.string   "invitation_token"
+    t.string   "invited_email"
+    t.boolean  "used",             default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,40 +64,41 @@ ActiveRecord::Schema.define(version: 20150130152256) do
 
   add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
 
-  create_table "project_translations", force: :cascade do |t|
-    t.integer  "project_id",  null: false
-    t.string   "locale",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-  end
-
-  add_index "project_translations", ["locale"], name: "index_project_translations_on_locale"
-  add_index "project_translations", ["project_id"], name: "index_project_translations_on_project_id"
-
-  create_table "projects", force: :cascade do |t|
-    t.string   "name",            limit: 255
-    t.text     "description"
-    t.string   "url",             limit: 255
-    t.string   "twitter",         limit: 255
-    t.string   "donation_url",    limit: 255
+    t.string   "url"
+    t.string   "twitter"
+    t.string   "donation_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",            limit: 255
-    t.integer  "donations_count",             default: 0
+    t.string   "slug"
+    t.integer  "donations_count", default: 0
     t.integer  "category_id"
   end
 
   add_index "projects", ["category_id"], name: "index_projects_on_category_id"
   add_index "projects", ["slug"], name: "index_projects_on_slug"
 
+  create_table "recurring_donations", force: :cascade do |t|
+    t.integer  "user_id",          null: false
+    t.integer  "project_id",       null: false
+    t.integer  "quantity_cents",   null: false
+    t.string   "currency",         null: false
+    t.integer  "frequency_units",  null: false
+    t.string   "frequency_period", null: false
+    t.date     "started_at",       null: false
+    t.date     "finished_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type", limit: 255
+    t.string   "taggable_type"
     t.integer  "tagger_id"
-    t.string   "tagger_type",   limit: 255
+    t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -104,25 +107,25 @@ ActiveRecord::Schema.define(version: 20150130152256) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count",             default: 0
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                  limit: 255
-    t.string   "username",              limit: 255
-    t.string   "email",                 limit: 255
-    t.string   "country",               limit: 255
-    t.string   "password_digest",       limit: 255
-    t.string   "remember_digest",       limit: 255
-    t.boolean  "admin",                             default: false
+    t.string   "name"
+    t.string   "username"
+    t.string   "email"
+    t.string   "country"
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",                 default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "currency",              limit: 255
-    t.integer  "available_invitations",             default: 5
-    t.integer  "donations_count",                   default: 0
+    t.string   "currency"
+    t.integer  "available_invitations", default: 5
+    t.integer  "donations_count",       default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

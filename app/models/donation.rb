@@ -4,6 +4,9 @@ class Donation < ActiveRecord::Base
   accepts_nested_attributes_for :project
 
   belongs_to :user, counter_cache: true
+
+  belongs_to :recurring_doation
+
   before_validation :set_project, :clear_comment
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
