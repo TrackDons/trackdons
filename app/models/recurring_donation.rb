@@ -18,8 +18,19 @@ class RecurringDonation < ActiveRecord::Base
 
     find_each do |recurring_donation|
       if recurring_donation.next_donation_date == today and recurring_donation.donations.where(date: today).empty?
-        recurring_donation.create_donation!
+        recurring_donation.create_donation!(today)
       end
+    end
+  end
+
+  def create_pending_donations
+    offset = 0
+    date   = started_at
+    end_date = finished_at || Date.today
+
+    while date < end_date
+      create_donation!(date)
+      date = donation_date_in_offset(offset += 1)
     end
   end
 
@@ -35,13 +46,13 @@ class RecurringDonation < ActiveRecord::Base
     date
   end
 
-  def create_donation!
+  def create_donation!(date)
     self.donations.new.tap do |d|
       d.project = project
       d.user = user
       d.currency = currency
       d.quantity_cents = quantity_cents
-      d.date = Date.today
+      d.date = date
       d.save!
     end
   end
