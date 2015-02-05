@@ -152,6 +152,17 @@ es:
         %{url}
 
         Si tienes algún comentario escríbenos a lets@trackdons.org
+    accepted_invitation:
+      accepted_invitation_mail: |
+        Hola,
+
+        Tu amigo %{name} acaba de aceptar tu invitación y se ha apuntado a TrackDons. O sea que ahora dos cosas han pasado:
+        
+        - Puedes dar la bienvenida a tu amigo: %{friend_page}
+
+        - Tienes una nueva invitación disponible. ¿No es fantástico? Piensa en tu próximo-amigo-más-activo-donante, y llámale... (esto... y también acuérdate de invitarle)
+        
+        Siempre nos gusta escuchar opiniones sobre otros donantes, puedes escribirnos a lets@trackdons.org
   metas:
     home:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
