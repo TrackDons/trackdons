@@ -137,6 +137,7 @@ es:
     pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."
     already_exists: Mmm... it seems that the email you are trying to invite is already registered or is not a correct email. Try another!
     invitation_send_subject: 'Tu amigo/a %{friend} quiere que registres y compartas tus donaciones.'
+    invitation_accepted_subject: 'Tu amigo %{friend} ha aceptado tu invitación'
     invitation_sent: 'Genial, tu invitación ha sido enviada. Veamos si tu amigo/a es tan buena persona como tú ;)'
     not_valid: 'Mmm.... Tu invitación no parece válida.'
     welcomme_message: '¡Genial! Con esta invitación te puedes registrar en TrackDons y empezar a registrar tus donaciones. Y después de registrar las primeras, recibirás invitaciones para que puedas animar a tus amigos a registrarse.'
