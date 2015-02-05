@@ -23,12 +23,11 @@
 
 		<section id="header">
 			<div id="menu_icon" class="fa fa-align-justify sb-toggle-left"><span>Menu</span></div>
-			<div id="logo"><a href="/">TrackDons</a></div>
+			<div id="logo"><%= link_to 'TrackDons', root_path %></div>
 			<section id="nav_site" class="content_column">
 				<ul>
 					<li><%= link_to t('Projects'), controller: 'projects' %></li>
 					<li><%= link_to t('Donations'), controller: 'donations' %></li>
-					<li><%= link_to t('Users'), users_path %></li>
 					<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
 				</ul>
 			</section>

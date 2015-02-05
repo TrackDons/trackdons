@@ -3,14 +3,15 @@ en:
   hello: "Hello world"
   # generics
   project: 'Project'
-  projects: 'Projects'
+  Projects: 'Projects'
+  Donations: 'Donations'
+  Users: 'Users'
+  About: 'About'
   description: 'Description'
   url: 'URL'
   donation_url: 'Donation URL'
   create: 'Create'
   donations: 'Donations'
-  users: 'Users'
-  about: 'About'
   invite: 'Invite'
   choose_your_language: 'Choose your language'
   want_to_contribute_your_own_language: 'Want to contribute your language?'

@@ -31,6 +31,7 @@ body { background: #F3E9D1; }
 body #sb-site, body .sb-site-container { background-color: transparent; }
 #logo { background: $secondary_color; }
 a { color: $main_color; }
+ul, li { font-size: 100%; line-height: 100%; }
 
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
@@ -385,7 +386,7 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
 }
 
 .long_text { width: 500px; font-size: 14px; }
-.long_text p { line-height: 22px; }
+.long_text p, .long_text ul, .long_text li { line-height: 22px; }
 
 .user_page {}
 .user_page header { padding: 20px; position: relative;}
