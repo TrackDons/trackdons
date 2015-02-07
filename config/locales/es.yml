@@ -191,6 +191,10 @@ es:
       user:
         description: "Mira las donaciones de %{user} en TrackDons e inspírate para donar"
         title: "Perfil de %{user}"
+  cookies_eu:
+    cookies_text: "Usamos cookies para ofrecerte un mejor servicio, en ningún caso usamos tus datos para beneficio personal o para venderlos a terceros. Si continúas navegando aceptas nuestro uso de las Cookies."
+    learn_more: "Más información"
+    ok: "OK"
   date:
     formats:
       wadus: "%d.%m.%Y"
