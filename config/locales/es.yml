@@ -197,7 +197,7 @@ es:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
     about:
       description: Saber más sobre TrackDons, su organización, cómo funciona, cómo puedes colaborar...
-      title: 'About'
+      title: 'Sobre TrackDons'
     projects:
       home: 
         description: Navega y descubre todos los diferentes proyectos donde puedes donar
