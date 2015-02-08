@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   before_action :set_new_donation, only: :show
-  before_action :load_categories,  only: [:index, :new, :edit, :update]
+  before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
   before_action :load_project,     only: [:edit, :update, :destroy]
 
   ORDER_TYPES   = ['latest', 'alpha', 'popular']

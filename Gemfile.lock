@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:ferblape/rails-i18n.git
+  revision: e34968b498408a92091208cf621dcb4c4b262c4f
+  specs:
+    rails-i18n (4.0.3)
+      i18n (~> 0.6)
+      railties (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -66,6 +74,7 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    dynamic_form (1.1.4)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -221,6 +230,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
+  dynamic_form
   email_spec
   friendly_id (~> 5.0.0)
   i18n-country-translations
@@ -235,6 +245,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.2.0)
+  rails-i18n!
   redcarpet
   rollbar (~> 1.3.0)
   rspec-rails

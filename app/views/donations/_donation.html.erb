@@ -23,7 +23,7 @@
     <% end %>
 
     <span class="date">
-      <%= l donation.date, format: :wadus %>
+      <%= l donation.date, format: :donation %>
       <% if donation.private? %>
         <i class="fa fa-lock tipsit" title="<%= t('.private_donation_not_visible_explanation') %>"></i>
       <% end %>
