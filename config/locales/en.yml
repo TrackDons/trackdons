@@ -194,4 +194,4 @@ en:
         title: "%{user} profile"
   date:
     formats:
-      wadus: "%b %d %Y"
+      donation: "%b %d %Y"

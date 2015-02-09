@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'money-rails'
 gem 'rollbar', '~> 1.3.0'
 gem 'meta-tags'
+gem 'rails-i18n', git: 'git@github.com:ferblape/rails-i18n.git'
+gem 'dynamic_form'
 
 group :development, :test do
   gem 'sqlite3'

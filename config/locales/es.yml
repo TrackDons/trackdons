@@ -1,4 +1,32 @@
 es:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Error al guardar"
+    models:
+      user: Usuario
+      invitation: Invitación
+      category: Categoría
+      donation: Donación
+      project: Proyecto
+      recurring_donation: Donación recurrente
+    attributes:
+      invitation:
+        invited_email: E-mail
+        user: Usuario
+      project:
+        name: Nombre
+        url: URL
+        description: Descripción
+        category_id: Categoría
+        donation_url: URL de donaciones
+      donation:
+        date: Fecha
+        project_id: Proyecto
+        quantity: Cantidad
+        currency: Moneda
+        user_id: Usuario
+        comment: Comentario
   language_name: 'Español'
   hello: "Hello world"
   # generics
@@ -169,7 +197,7 @@ es:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
     about:
       description: Saber más sobre TrackDons, su organización, cómo funciona, cómo puedes colaborar...
-      title: 'About'
+      title: 'Sobre TrackDons'
     projects:
       home: 
         description: Navega y descubre todos los diferentes proyectos donde puedes donar
@@ -193,4 +221,4 @@ es:
         title: "Perfil de %{user}"
   date:
     formats:
-      wadus: "%d.%m.%Y"
+      donation: "%d.%m.%Y"
