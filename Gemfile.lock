@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:ferblape/rails-i18n.git
+  remote: git://github.com/ferblape/rails-i18n.git
   revision: e34968b498408a92091208cf621dcb4c4b262c4f
   specs:
     rails-i18n (4.0.3)
