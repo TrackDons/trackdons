@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
+  root 'pages#root', as: :redirected_root
 
   scope "/:locale" do
     root 'pages#index'
