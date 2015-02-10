@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include DonationsCalculations
+  include ChartData
 
   has_secure_password
 

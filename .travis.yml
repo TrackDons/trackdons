@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 2.1.5
+  - 2.1.2
+before_script:
+  - "for i in config/*.example; do cp \"$i\" \"${i/.example}\"; done"

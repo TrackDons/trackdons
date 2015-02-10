@@ -54,9 +54,9 @@
 		
 		<div class="language_selector">
 			<%= t('choose_your_language') %>:
-			<% I18n.available_locales.each do |locale_to_iterate| %>
-	      <%= link_to_unless_current language_name_for(locale_to_iterate), locale: locale_to_iterate %> ·
-	    <% end %>
+      <%= I18n.available_locales.map { |locale|
+            link_to_unless_current(language_name_for(locale), locale: locale)
+	        }.join(' · ').html_safe %>
 	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>	      
 		</div>
 

@@ -6,26 +6,11 @@
     <%= t('invitations.dont_have_enough_invitations') %>    
   <% else %>
     
-    <% if @invitation.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited
-          this article from being saved:</h2>
-        <ul>
-        <% @invitation.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= error_messages_for @invitation %>
 
     <p><%= t('invitations.pending_invites', :count => current_user.available_invitations) %></p>
 
     <%= form_for :invitation, url: invite_path, html: {class: "simple_form"} do |f| %>
-
-      <p>
-        <%# f.label :name %>
-        <%# f.text_field :name %>
-      </p>
 
       <p>
         <%= f.label :invited_email, t('users.labels.your_friends_email') %>

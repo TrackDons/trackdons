@@ -27,6 +27,8 @@ gem 'money-rails'
 gem 'rollbar', '~> 1.3.0'
 gem 'meta-tags'
 gem 'cookies_eu'
+gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
+gem 'dynamic_form'
 
 group :development, :test do
   gem 'sqlite3'

@@ -5,7 +5,8 @@ class Invitation < ActiveRecord::Base
   before_validation :generate_invitation_token, :sanitize_email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :invited_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :invited_email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
+                            uniqueness: { case_sensitive: false }
   validates_associated :user
 
   scope :not_used, ->{ where(used: false) }
