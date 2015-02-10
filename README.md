@@ -1,3 +1,15 @@
+![](https://travis-ci.org/TrackDons/trackdons.svg)
+
+TrackDons is a simple tool to keep track of the projects you have donated to. It lets remind you which projects
+have you donated to and when (and if you should donate again), and it encourages you to share the donations
+you have made as a way of inspiring your friends to donate to this or other projects in need.
+
+Read more about it in the [About page](http://trackdons.org/en/about).
+
+## Contributing
+
+This is an open project, so any contribution is welcome. Take a look go the [Wiki](https://github.com/TrackDons/trackdons/wiki) to start contributing.
+
 ### To set up the project
 
 It assumes you have running:
