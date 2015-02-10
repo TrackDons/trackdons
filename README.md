@@ -4,7 +4,7 @@ TrackDons is a simple tool to keep track of the projects you have donated to. It
 have you donated to and when (and if you should donate again), and it encourages you to share the donations
 you have made as a way of inspiring your friends to donate to this or other projects in need.
 
-Read more about it in the [About page](http://trackdons.org/en/about).
+You can start tracking your donations at [trackdons.org](http://www.trackdons.org) - and learn more about it in the [About page](http://trackdons.org/en/about).
 
 ## Contributing
 
@@ -17,7 +17,7 @@ It assumes you have running:
 * ruby 2.x.x (it works from 2.0.0 to 2.1.5)
 
 ```
-git clone git@github.com:furilo/trackdons.git
+git clone git@github.com:TrackDons/trackdons.git
 cd trackdons
 bundle install
 rake db:setup
@@ -39,8 +39,6 @@ Create a branch and pull request.
 * Create a new Pull Request
 
 
-### Libraries/gems being used (see Gemfile for complete reference):
+### Libraries/gems being used 
 
-* http://plugins.adchsm.me/slidebars
-* https://github.com/onomojo/i18n_country_select
-* https://github.com/onomojo/i18n-country-translations
+See Gemfile for complete reference
