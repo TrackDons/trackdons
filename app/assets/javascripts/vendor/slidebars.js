@@ -226,7 +226,7 @@
 					animate($right, '0px', 'right'); // Animation
 					rightActive = false;
 				}
-			
+
 				setTimeout(function() { // Wait for closing animation to finish.
 					$('html').removeClass('sb-active sb-active-left sb-active-right'); // Remove active classes.
 					if ($left) $left.removeClass('sb-active');

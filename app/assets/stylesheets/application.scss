@@ -1,37 +1,88 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+/* 
+ * 1. Core
+ * -------
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * Any module relative to app configuration it should be here. This includes the global reset for common ground
+ * in all browsers, any custom reset we want to apply, all variables the app uses, sass functions and mixins...
  *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- *= require jquery-ui/autocomplete
- *= require tipsy
- *= require slidebars
- *= require select2
- *= 
  */
 
-@import "http://fonts.googleapis.com/css?family=Raleway:400,700";
-@import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
+@import "core/settings";
+@import "core/reset";
 
-$main_color: #7C9200; /* main green */
-$secondary_color: #565631; /* dark green */
-$tertiary_color: #E4D6B3;
+/* 
+ * 2. Base
+ * -------
+ *
+ * All base styles for the app will be under base folder. This includes fonts, regular styles for headings, 
+ * paragraphs, lists, links, etc.
+ *
+ */
 
-/* colors */
-body { background: #F3E9D1; }
+@import "base/fonts";
+@import "base/base";
+@import "base/links";
+@import "base/lists";
+
+/* 
+ * 3. Helpers
+ * ----------
+ *
+ * Utility classes, like to clearfix the floats or align text. This follows the single responsability principle.
+ *
+ */
+
+@import "helpers/clearfix";
+
+/* 
+ * 4. Objects
+ * ----------
+ *
+ * We want reusable modules that they could be applied repeatedly on different pages. This alignes with
+ * the DRY principle
+ *
+ */
+
+// ....
+
+/* 
+ * 5. Layout
+ * ---------
+ *
+ * Sometimes it happens you need to overwrite some components' behaviour. This should be an exception, and if you 
+ * find yourself overwriting any component twice, we are probably doing wrong.
+ *
+ */
+
+ // ....
+
+/* 
+ * 6. Vendors
+ * ----------
+ *
+ * Any vendor styles, usually linked to jquery plugins or javascripts, should go here.
+ *
+ */
+
+@import "vendor/select2";
+@import "vendor/slidebars";
+@import "vendor/tipsy";
+
+/* 
+
+Prefer components over page level styles, for large term maintenability reasons mostly. We want our front end to 
+feel like library code. We should start to break files like this into smaller more focused files like 
+form.scss, button.scss, tags.scss, dropdown.css, etc.
+
+And this is important, make a tatoo in your arm if you prefer, but follow this rule: 
+DON'T USE #ID FOR STYLING. DON'T. JUST DON'T.
+
+*/
+
+/* In order to above, this should be deprecated */
+
 body #sb-site, body .sb-site-container { background-color: transparent; }
 #logo { background: $secondary_color; }
-a { color: $main_color; }
-ul, li { font-size: 100%; line-height: 100%; }
 
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
@@ -44,8 +95,6 @@ a.button, .donation a.button, a.button:visited, .donation a.button:visited { tex
 .donation { border-top-color: #D9DAAA;}
 .user_page header, #first_donation_pending { background: #EBE8CC; }
 
-/* fonts */
-body { font-weight: 400; font-size: 1em; font-family: 'Raleway', Arial, sans-serif; overflow: hidden; overflow-y: scroll; min-height: 590px;color: $secondary-color;}
 input[type='submit'], textarea, button, .ui-autocomplete { font-family: 'Raleway', Arial, sans-serif; }
 body .tipsy { font-size: 11px; }
 
@@ -64,9 +113,7 @@ body .tipsy { font-size: 11px; }
   #menu_icon span { text-indent: -9999px; display: inline-block; }
 
 .sb-slidebar {
-  padding: 5%;
-  position: relative;
-
+  
   ul {
     margin: 0; 
     padding: 0; 

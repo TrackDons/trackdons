@@ -11,12 +11,13 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery-ui/autocomplete
-//= require jquery-ui/tooltip
 //= require jquery_ujs
-//= require tipsy
-//= require slidebars
-//= require select2  
-//= require turbolinks
-//= require jquery.sparkline.min
-//= require_tree .
+//= require vendor/tipsy
+//= require vendor/slidebars
+//= require vendor/jquery.sparkline
+//= require vendor/select2
+
+//= require general
+//= require invitations
+//= require projects
+//= require donations

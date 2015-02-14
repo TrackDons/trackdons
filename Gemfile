@@ -10,17 +10,22 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem "jquery-rails"
-gem "jquery-ui-rails"
-gem 'jquery-turbolinks'
+
+# For frontend templating
+gem 'ejs'
+
+# It seems we are not using jquery-ui
+# gem "jquery-ui-rails"
+# gem 'jquery-turbolinks'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
-gem 'select2-rails'
+# gem 'select2-rails'
 gem 'redcarpet'
 gem 'bcrypt', '~> 3.1.7'
 gem 'money-rails'
@@ -40,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'timecop'
+  gem 'jasmine'
 end
 
 group :development do
