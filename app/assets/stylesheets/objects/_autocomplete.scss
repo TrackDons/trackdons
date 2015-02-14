@@ -4,12 +4,17 @@
  *
  */
 
+.autocomplete-holder {
+  position: relative;
+}
+
 .autocomplete {
   background-color: #f8f8f8;
   display: none;
   margin: 0;
   padding: 3px 0;
   position: absolute;
+  width: 100%;
 }
 
 .autocomplete-item {

@@ -19,21 +19,16 @@
       // disable the native auto complete functionality
       this.input.attr("autocomplete", "off");
 
-      this.$el.width(this.input.outerWidth());
-
       this.input
       .keyup(_.bind(this.keyup, this))
       .keydown(_.bind(this.keydown, this))
       .after(this.$el)
-      .blur($.proxy(this.blur, this))
-      ;
+      .blur($.proxy(this.blur, this));
 
       return this;
     },
 
     keydown: function (event) {
-      console.log("keydown", event);
-
       if (event.keyCode == 38) return this.move(-1);
       if (event.keyCode == 40) return this.move(+1);
       if (event.keyCode == 13) return this.onEnter();
@@ -60,7 +55,6 @@
     filter: function (keyword) {
       var keyword = keyword.toLowerCase();
       if (this.collection.url) {
-        console.log("fetchResults");
         var parameters = {};
         parameters[this.queryParameter] = keyword;
 
@@ -75,9 +69,7 @@
         });
 
       } else {
-        console.log("loadResult");
         this.loadResult(this.collection.filter(function (model) {
-          console.log(model.label());
           return model.label().toLowerCase().indexOf(keyword) !== -1
         }), keyword);
       }
@@ -92,15 +84,11 @@
     },
 
     move: function (position) {
-      
-
       var current = this.$el.children(".is-active"),
           siblings = this.$el.children(),
           index = current.index() + position;
 
-      console.log("move", current, index, siblings.eq(index).length);
       if (siblings.eq(index).length) {
-        console.log("is-active", siblings.eq(index));
         current.removeClass("is-active");
         siblings.eq(index).addClass("is-active");
       }
