@@ -12,11 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//= require vendor/underscore
+//= require vendor/backbone
+
 //= require vendor/tipsy
 //= require vendor/slidebars
 //= require vendor/jquery.sparkline
 //= require vendor/select2
 
+//= require namespace
 //= require general
 //= require invitations
 //= require projects
