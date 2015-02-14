@@ -11,6 +11,9 @@ es:
       project: Proyecto
       recurring_donation: Donación recurrente
     attributes:
+      user:
+        password: Contraseña
+        password_confirmation: Confirma tu contraseña
       invitation:
         invited_email: E-mail
         user: Usuario
@@ -141,8 +144,30 @@ es:
     user_links:
       hello: "Hola %{name}"
       log_out: Salir
-      login: Identificarse
+      login: Identificarse en TrackDons
       track_your_first_donación: Registra tu primera donación
+  sessions:
+    new:
+      login: Identificarse en TrackDons
+      remember_me: Recuérdame en este equipo
+      forgot_password: '¿Olvidaste la contraseña?'
+      login_action: Entrar
+  password_resets:
+    password_reset_subject: Recupera tu contraseña de TrackDons
+    new:
+      reset_your_password: Recupera tu contraseña
+      email: Email
+      continue: Continuar
+      enter_your_email: 'Introduce tu email para recuperar tu contraseña:'
+    create:
+      invalid_email: Email no válido
+      success: Te acabamos de enviar un email con un enlace para recuperar tu contraseña
+    edit:
+      reset_your_password: Recupera tu contraseña
+      save: Guardar cambios
+      enter_your_password: 'Introduce tu nueva contraseña:'
+    update:
+      success: Contraseña actualizada correctamente
   users:
     invite: 'Invita un amigo'
     you_already_have_an_account: '¡Ya tienes una cuenta! Guarda la invitación para alguien más...'
@@ -159,7 +184,6 @@ es:
       edit_your_profile: Edita tu perfil
     index:
       please_log_in: Por favor, inicia sesión
-    remember_me: Recuérdame en este equipo
   invitations:
     dont_have_enough_invitations: No tienes suficientes invitaciones. Sigue registrando donaciones y más, y pronto tendrás nuevas invitaciones.
     pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."
@@ -192,6 +216,15 @@ es:
         - Tienes una nueva invitación disponible. ¿No es fantástico? Piensa en tu próximo-amigo-más-activo-donante, y llámale... (esto... y también acuérdate de invitarle)
         
         Siempre nos gusta escuchar opiniones sobre otros donantes, puedes escribirnos a lets@trackdons.org
+    password_reset:
+      password_reset_email: |
+        Hola,
+
+        Haz click en el siguiente e-mail para recuperar tu contraseña:
+
+        %{url}
+
+        Si tienes algún comentario escríbenos a lets@trackdons.org
   metas:
     home:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar

@@ -103,6 +103,7 @@ form.simple_form { width: 400px}
 form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px;}
 form.simple_form input[type='checkbox'] { width: auto; }
 form.simple_form textarea { height: 100px; }
+form.simple_form input[type='submit'] { width: 40%;}
 
 .alert {  }
 .success, .info, .warning, .danger {}
