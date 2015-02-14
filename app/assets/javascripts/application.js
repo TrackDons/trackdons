@@ -20,8 +20,17 @@
 //= require vendor/slidebars
 //= require vendor/jquery.sparkline
 //= require vendor/select2
+//= require vendor/pikaday
 
 //= require namespace
+
+//= require models/autocomplete/model
+//= require collections/autocomplete/collection
+//= require views/autocomplete/autocomplete-item
+//= require views/autocomplete/autocomplete
+
+//= require modules/pikaday.jquery
+
 //= require general
 //= require invitations
 //= require projects
