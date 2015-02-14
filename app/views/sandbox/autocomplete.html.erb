@@ -1,0 +1,42 @@
+<div class="ninety percent mx-auto">
+    <div id="example">
+      <h3>AutoComplete Example - json inline</h3>
+      <form action="#">
+        <div class="autocomplete-holder sixty percent">
+          <input type="text" placeholder="Select a framework" id="mvc" class="field-text hundred percent"/>
+        </div>
+      </form>
+    </div>
+</div>
+
+<script>
+  var frameworks = new TrackDons.Collections.AutoComplete.Collection([
+    {"label": "backbone"},
+    {"label": "backbone-marionette"},
+    {"label": "react"},
+    {"label": "react-flux"},
+    {"label": "react-fluffy"},
+    {"label": "foo-react"},
+    {"label": "angular"},
+    {"label": "angular-boo"},
+    {"label": "riot"},
+    {"label": "ember"},
+    {"label": "canjs"},
+    {"label": "knockoutjs"},
+    {"label": "ampersand"},
+    {"label": "polymer"},
+    {"label": "meteor"},
+    {"label": "dojo"}
+  ]);
+
+  new TrackDons.Views.AutoComplete.Component({
+    input: $("#mvc"),
+    collection: frameworks,
+    onSelect: function (model) {
+      console.log(I18n.t("donations.donation.sure"), model.label());
+    }
+  }).render();
+
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+</script>

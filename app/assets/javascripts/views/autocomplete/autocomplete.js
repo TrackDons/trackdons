@@ -13,6 +13,7 @@
     initialize: function (options) {
       _.extend(this, options);
       this.filter = _.debounce(this.filter, this.wait);
+      $(document).on('click', _.bind(this.hide, this));
     },
 
     render: function () {
@@ -22,8 +23,7 @@
       this.input
       .keyup(_.bind(this.keyup, this))
       .keydown(_.bind(this.keydown, this))
-      .after(this.$el)
-      .blur($.proxy(this.blur, this));
+      .after(this.$el);
 
       return this;
     },
@@ -46,7 +46,7 @@
         if (this.isValid(keyword)) {
           this.filter(keyword);
         } else {
-          this.hide()
+          this.hide();
         }
         this.currentText = keyword;
       }
@@ -88,11 +88,52 @@
           siblings = this.$el.children(),
           index = current.index() + position;
 
+      if (index < 0) {
+        return false;
+      }
+
       if (siblings.eq(index).length) {
         current.removeClass("is-active");
         siblings.eq(index).addClass("is-active");
       }
+
+      this.ensureHighlightVisible();
+      
       return false;
+    },
+
+    highlight: function() {
+      var current = this.$el.children(".is-active"),
+          index = 0;
+      return current.index();
+    },
+
+    ensureHighlightVisible: function () {
+        var results = this.$el, children, index, child, hb, rb, y, more, topOffset;
+
+        index = this.highlight();
+        if (index < 0) return;
+
+        if (index == 0) {
+            results.scrollTop(0);
+            return;
+        }
+
+        children = this.$el.children();
+        child = $(children[index]);
+        topOffset = (child.offset() || {}).top || 0;
+        hb = topOffset + child.outerHeight(true);
+        rb = results.offset().top + results.outerHeight(false);
+
+        if (hb > rb) {
+          results.scrollTop(results.scrollTop() + (hb - rb));
+        }
+
+        y = topOffset - results.offset().top;
+
+        if (y < 0) {
+          results.scrollTop(results.scrollTop() + y); // y is negative
+        }
     },
 
     onEnter: function () {

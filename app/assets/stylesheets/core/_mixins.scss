@@ -1,0 +1,83 @@
+  /*
+
+Mixins
+------
+
+Chunks of code to help us along the way. If you need to perform some calculation
+place that in the `generic/_functions.scss` file, mixins is more for CSS
+properties.
+
+*/
+
+@mixin size($width, $height: $width) {
+  @if $width  != false { width: $width; }
+  @if $height != false { height: $height; }
+}
+
+@mixin position($top, $right, $bottom, $left) {
+  position: absolute;
+  @if $top    != false { top: $top; }
+  @if $right  != false { right: $right; }
+  @if $bottom != false { bottom: $bottom; }
+  @if $left   != false { left: $left; }
+}
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder       { color: $color; }
+  &:-moz-placeholder                 { color: $color; }
+  &:focus::-webkit-input-placeholder { color: lighten($color, 20%); }
+  &:focus:-moz-placeholder           { color: lighten($color, 20%); }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+@mixin keyframes( $animationName ) {
+    @-webkit-keyframes $animationName {
+        @content;
+    }
+    @-moz-keyframes $animationName {
+        @content;
+    }
+    @-o-keyframes $animationName {
+        @content;
+    }
+    @keyframes $animationName {
+        @content;
+    }
+}
+
+/*
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+@mixin triangle($direction, $size: 8px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  }
+}

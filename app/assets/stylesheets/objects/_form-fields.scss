@@ -1,0 +1,24 @@
+/*
+ *
+ * Form fields
+ * -----------
+ *
+ * Put here any styles applied to form elements. Try to avoid styling generic elements, first option
+ * is to create a class always
+ *
+ */
+
+.field-text {
+  border: 1px dashed $main_color;
+  box-sizing: border-box;
+  font-family: $font-base;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 32px;
+  padding: 4px 8px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 2px $main_color;
+  }
+ }

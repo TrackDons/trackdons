@@ -25,7 +25,6 @@ gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
-# gem 'select2-rails'
 gem 'redcarpet'
 gem 'bcrypt', '~> 3.1.7'
 gem 'money-rails'
@@ -33,6 +32,7 @@ gem 'rollbar', '~> 1.3.0'
 gem 'meta-tags'
 gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
+gem "i18n-js", ">= 3.0.0.rc8" 
 
 group :development, :test do
   gem 'sqlite3'
