@@ -190,11 +190,11 @@ en:
       password_reset_email: |
         Hi,
 
-        Click on the following link to recover your password:
+        Somebody, hopefully you, has requested some help to recover your TrackDons password. Click here to get that help:
 
         %{url}
 
-        If you have any comment, just write us to lets@trackdons.org
+        If you haven't requested the password recovery, just ignore this message. If you have any comment, just write us to lets@trackdons.org
   metas:
     home:
       description: TrackDons is a donation diary for projects that matter to you. An online experience to help with your donation efforts      
