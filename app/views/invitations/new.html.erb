@@ -23,7 +23,7 @@
 
   <% end %>
 
-  <% if current_user.invitations.any? %>
+  <% if current_user.invitations(true).any? %>
 
     <section id="invitations_sent">
 
