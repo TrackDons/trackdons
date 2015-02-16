@@ -21,7 +21,19 @@
 
     <% end %>
 
-    
+  <% end %>
+
+  <% if current_user.invitations.any? %>
+
+    <section id="invitations_sent">
+
+      <p>You have sent this invitations:</p>
+
+      <table>
+        <%= render current_user.invitations %>
+      </table>
+
+    </section>
     
   <% end %>
 
