@@ -1,0 +1,11 @@
+  <tr>
+    <td><%= invitation.invited_email %></td>
+    <td><%= l invitation.created_at, format: :donation %></td>
+    <td>
+      <% if invitation.used == true %>
+        <%= link_to t('invitations.alive_and_donating'), user_path(invitation.invited_user_id) %>
+      <% else %>
+        <%= t 'invitations.not_yet_a_user' %>
+      <% end %>
+    </td>
+  </tr>

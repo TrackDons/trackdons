@@ -112,6 +112,12 @@ form.simple_form input[type='submit'] { width: 40%;}
 /* rails */
 .field_with_errors { border: 1px solid red;}
 
+/* tables */
+td {
+  border-top: 1px solid $tertiary_color;
+  border-left: 1px dashed $tertiary_color;
+  padding: 10px;
+}
 .pages_index #logo { display: none; }
 #logo { position: absolute; top: 0; width: 100px; height: 100%; text-align: center; vertical-align: middle; font-weight: 700}
 #logo a { display: block; padding: 12px 8px; font-size: 13px; text-decoration: none; text-transform: uppercase; }

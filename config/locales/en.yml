@@ -163,6 +163,8 @@ en:
     invitation_sent: 'Great, your invitation has been sent. Lets see if your friend is such a great person as you are ;)'
     not_valid: 'Mmm... your invitation does not seem to be valid.'
     welcome_message: 'Great! With this invitation you can sign up for TrackDons and start tracking your donations. And after your first tracks, you will also be able to invite that friend you know needs this project'
+    alive_and_donating: alive and donating ;)
+    not_yet_a_user: not yet a user :( ping her!
   user_mailer:
     send_invitation: 
       send_invitation_mail: |
@@ -225,3 +227,7 @@ en:
   date:
     formats:
       donation: "%b %d %Y"
+  time:
+    formats:
+      donation: "%b %d %Y"
+
