@@ -25,6 +25,7 @@
 @import "base/base";
 @import "base/links";
 @import "base/lists";
+@import "base/label";
 
 /* 
  * 3. Helpers
@@ -48,6 +49,7 @@
  *
  */
 
+@import "objects/form";
 @import "objects/form-fields";
 @import "objects/autocomplete";
 

@@ -2,39 +2,100 @@
     <div id="example">
       <h3>AutoComplete Example - json inline</h3>
       <form action="#">
-        <div class="autocomplete-holder sixty percent inline-block">
-          <input type="text" placeholder="Select a framework" id="mvc" class="field-text hundred percent"/>
-        </div>
+        
+        <div class="inline-block">
+          <div class="form-group inline-block">
+            <div class="form-label  uppercase">
+              <label for="project">Project</label>
+            </div>
+            <div class="form-fields">
+              <div class="autocomplete-holder">
+                <input type="text" placeholder="Select a project" id="projects" class="field-text hundred percent"/>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group inline-block">
+            <div class="form-label uppercase">
+              <label for="project">Amount</label>
+            </div>
+            <div class="form-fields">
+              <div class="field-group">
+                <input type="text" placeholder="ie. 125" id="mvc" class="field-text field-group-item"/>
+                <div class="field-select field-group-item">
+                  <select>
+                    <option value="">€</option>
+                    <option value="">$</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <input type="text" placeholder="Pick a date" id="mvc" class="field-text thirty percent" data-behaviour="datepicker" value="Thu Feb 12 2015"/>
+          <div class="form-group inline-block">
+            <div class="form-label uppercase">
+              <label for="project">Recurring?</label>
+            </div>
+            <div class="form-fields">
+              <div class="field-select field-group-item">
+                <select>
+                  <option value="">Daily</option>
+                  <option value="">Weekly</option>
+                  <option value="">2 Weeks</option>
+                  <option value="">3 Weeks</option>
+                  <option value="">Monthly</option>
+                  <option value="">2 Months</option>
+                  <option value="">3 Months</option>
+                  <option value="">4 Months</option>
+                  <option value="">6 Months</option>
+                  <option value="">12 Months</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group inline-block">
+            <div class="form-label uppercase">
+              <label for="project">Starting date</label>
+            </div>
+            <div class="form-fields">
+              <input type="text" placeholder="Pick a date" id="mvc" class="field-text" data-behaviour="datepicker" value="9 Oct 2014"/>
+            </div>
+          </div>
+
+          <div class="form-group inline-block">
+            <div class="form-label uppercase">
+              <label for="project">Private?</label>
+            </div>
+            <div class="form-fields solid">
+              <input id="private" type="checkbox" class="mr1" />
+              <label for="private">Yes</label>
+            </div>
+          </div>
+        </div>
 
       </form>
     </div>
 </div>
 
 <script>
-  var frameworks = new TrackDons.Collections.AutoComplete.Collection([
-    {"label": "backbone"},
-    {"label": "backbone-marionette"},
-    {"label": "react"},
-    {"label": "react-flux"},
-    {"label": "react-fluffy"},
-    {"label": "foo-react"},
-    {"label": "angular"},
-    {"label": "angular-boo"},
-    {"label": "riot"},
-    {"label": "ember"},
-    {"label": "canjs"},
-    {"label": "knockoutjs"},
-    {"label": "ampersand"},
-    {"label": "polymer"},
-    {"label": "meteor"},
-    {"label": "dojo"}
+  var projects = new TrackDons.Collections.AutoComplete.Collection([
+    {"label": "Wikipedia"},
+    {"label": "Mozilla Foundation"},
+    {"label": "Acnur"},
+    {"label": "Médico Sin Fronteras"},
+    {"label": "Wadus ONG"},
+    {"label": "Eclectic"},
+    {"label": "Fronteers"},
+    {"label": "Podemos"},
+    {"label": "Ciudadanos"},
+    {"label": "CIC"},
+    {"label": "Red Cross"}
   ]);
 
   new TrackDons.Views.AutoComplete.Component({
-    input: $("#mvc"),
-    collection: frameworks,
+    input: $("#projects"),
+    collection: projects,
     onSelect: function (model) {
       console.log(I18n.t("donations.donation.sure"), model.label());
     }
