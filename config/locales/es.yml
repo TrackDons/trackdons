@@ -15,7 +15,7 @@ es:
         password: Contraseña
         password_confirmation: Confirma tu contraseña
       invitation:
-        invited_email: E-mail
+        invited_email: Correo-e
         user: Usuario
       project:
         name: Nombre
@@ -156,12 +156,12 @@ es:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:
       reset_your_password: Recupera tu contraseña
-      email: Email
+      email: Correo-e
       continue: Continuar
-      enter_your_email: 'Introduce tu email para recuperar tu contraseña:'
+      enter_your_email: 'Introduce tu correo-e para recuperar tu contraseña:'
     create:
-      invalid_email: Email no válido
-      success: Te acabamos de enviar un email con un enlace para recuperar tu contraseña
+      invalid_email: Correo-e no válido
+      success: Te acabamos de enviar un correo-e con un enlace para recuperar tu contraseña
     edit:
       reset_your_password: Recupera tu contraseña
       save: Guardar cambios
@@ -255,3 +255,8 @@ es:
   date:
     formats:
       donation: "%d.%m.%Y"
+  helpers:
+    label:
+      session:
+        email: Correo-e
+        password: Contraseña

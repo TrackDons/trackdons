@@ -100,12 +100,13 @@ body .tipsy { font-size: 11px; }
 /* forms */
 button, .button, input[type='submit'] { margin: 10px 0 20px 0; border: 0; padding: 10px 16px; font-size: 14px; display: inline-block; }
 form.simple_form { width: 400px}
-form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px;}
+form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px; font-size: 1em;}
+form.simple_form input[type='submit'] { padding: 8px; font-weight: bold; }
 form.simple_form input[type='checkbox'] { width: auto; }
 form.simple_form textarea { height: 100px; }
 form.simple_form input[type='submit'] { width: 40%;}
 
-.alert { background: #EBE8CC; padding-top: 1em; padding-bottom: 1em; }
+.alert { background: #EBE8CC; padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
 .success, .info, .warning, .danger { }
 
 /* rails */

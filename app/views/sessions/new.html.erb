@@ -9,7 +9,7 @@
     </p>
 
     <p>
-      <%= f.label :password %>
+      <%= f.label :password %> <%= link_to t('.forgot_password'), new_password_reset_path  %>
       <%= f.password_field :password %>
     </p>
 
@@ -21,7 +21,7 @@
     </p>
 
     <%= f.submit t('.login_action'), class: "btn btn-primary" %>
-    <%= link_to t('.forgot_password'), new_password_reset_path  %>
+    
   <% end %>
 
   <%= render 'invitation_to_waitlist' %>
