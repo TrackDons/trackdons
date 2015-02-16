@@ -23,6 +23,8 @@ Rails.application.routes.draw do
       resources :donations
     end
 
+    resources :password_resets, only: [:new, :create, :edit, :update]
+
     get 'projects(::category)' => 'projects#index', as: :category
   end
 end

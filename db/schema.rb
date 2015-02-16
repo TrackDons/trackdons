@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130170858) do
+ActiveRecord::Schema.define(version: 20150214165037) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20150130170858) do
     t.string   "currency"
     t.integer  "available_invitations", default: 5
     t.integer  "donations_count",       default: 0
+    t.string   "password_reset_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

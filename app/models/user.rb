@@ -67,6 +67,11 @@ class User < ActiveRecord::Base
     donations.quantity_private.any?
   end
 
+  def generate_password_reset_token!
+    generate_token(:password_reset_token)
+    save!
+  end
+
   private
 
   def set_currency
@@ -79,5 +84,10 @@ class User < ActiveRecord::Base
     self.invitation_token.present? && Invitation.valid_token?(self.invitation_token)
   end
 
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while self.class.exists?(column => self[column])
+  end
 
 end
