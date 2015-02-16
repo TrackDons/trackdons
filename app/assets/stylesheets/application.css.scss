@@ -105,8 +105,8 @@ form.simple_form input[type='checkbox'] { width: auto; }
 form.simple_form textarea { height: 100px; }
 form.simple_form input[type='submit'] { width: 40%;}
 
-.alert {  }
-.success, .info, .warning, .danger {}
+.alert { background: #EBE8CC; padding-top: 1em; padding-bottom: 1em; }
+.success, .info, .warning, .danger { }
 
 /* rails */
 .field_with_errors { border: 1px solid red;}
