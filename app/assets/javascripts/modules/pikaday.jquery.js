@@ -32,3 +32,7 @@
   };
 
 }));
+
+$(function(){
+  $('[data-behaviour=datepicker]').pikaday();
+});

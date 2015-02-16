@@ -1,14 +1,14 @@
 /*
-
-Percent
--------
-
-Width in percents for all elements. Supported values are 1% to 100%.
-
-    <div class="five percent">5% width</div>
-    <div class="thirty percent">30% width</div>
-
-*/
+ *
+ *  Percent
+ *  -------
+ *
+ *  Width in percents for all elements. Supported values are 5% to 100% in steps of 5%.
+ *
+ *   <div class="five percent">5% width</div>
+ *   <div class="thirty percent">30% width</div>
+ *
+ */
 
 .percent {
   @for $i from 1 through 20 {
