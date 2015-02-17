@@ -7,8 +7,8 @@
     
     <p><big><%= t('.user_is_using', :name => @donation.user.name) %></big></p>
     <p>
-      <%= t '.in_which_projects' %><br>
-      <%= link_to t('.create_your_own'), root_path %>      
+      <%= t '.in_which_projects' %>
+      <%= link_to t('.create_your_own'), root_path, :class => "cta ml0 mt3" %>      
     </p>
 
   </section>
