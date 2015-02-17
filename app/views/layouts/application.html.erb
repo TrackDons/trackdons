@@ -14,6 +14,11 @@
 	<style type="text/css">
 	@import url();
 	</style>
+	
+	<script>
+  	I18n.defaultLocale = "<%= I18n.default_locale %>";
+  	I18n.locale = "<%= I18n.locale %>";
+	</script>
 
 </head>
 <body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">

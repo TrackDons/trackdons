@@ -51,7 +51,7 @@
 
 @import "objects/form";
 @import "objects/form-fields";
-@import "objects/autocomplete";
+@import "objects/justify-columns";
 
 /* 
  * 5. Layout
@@ -458,14 +458,6 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
 
 .ui-autocomplete { border: 1px solid red; }
 
-.select2-container { width: 540px; font-size: 22px; font-weight: bold; font-family: Raleway; height: 40px; margin-bottom: 8px !important; 
-  a.select2-choice { line-height: 32px; display: block; height: 35px; border: 1px dashed #7c9200; padding: 4px 6px 0px;
-    
-  }
-}
-.select2-results .select2-highlighted { background: #7c9200 !important; }
-.select2-drop-active { border: 1px dashed #7c9200 !important; border-top: none !important; }
-.select2-search input[type=text] { font-family: Raleway; font-size: 18px; }
 #first_donation_pending { padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
 
 #footer { text-align: center; font-size: 12px }

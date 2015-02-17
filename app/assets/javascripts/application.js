@@ -26,11 +26,6 @@
 
 //= require namespace
 
-//= require models/autocomplete/model
-//= require collections/autocomplete/collection
-//= require views/autocomplete/autocomplete-item
-//= require views/autocomplete/autocomplete
-
 //= require modules/pikaday.jquery
 //= require modules/autofocus.jquery
 

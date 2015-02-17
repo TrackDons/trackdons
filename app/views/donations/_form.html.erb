@@ -16,7 +16,7 @@
         <% else %>
           
           <%= f.fields_for(:project) do |project_form| %>
-            <%= project_form.hidden_field :name, data: {projects_url: projects_path} %>
+            <%= project_form.hidden_field :name, data: {projects_url: projects_path}, :class => "js-select2" %>
             <div class="hint"><%= project_form.label(:name, 'ie. Wikipedia, Redd Cross, UNR') %></div>
 
             <div id="project_attributes">

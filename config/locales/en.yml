@@ -73,6 +73,7 @@ en:
   i_want_to_explain_why: 'I want to explain why I have donated to encourage others to do so'
   i_want_to_keep_private: 'I want to keep my donation private'
   need_to_trackdon_for_another_project: 'Need to TrackDon for another project?'
+  add_project: '(Add project)'
   projects:
     project: 'Project'
     all_projects: 'All projects'

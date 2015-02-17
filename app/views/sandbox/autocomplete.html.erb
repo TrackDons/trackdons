@@ -3,25 +3,23 @@
       <h3>AutoComplete Example - json inline</h3>
       <form action="#">
         
-        <div class="inline-block">
-          <div class="form-group inline-block">
+        <div class="inline-block justify-columns" style="width: 540px;">
+          <div class="form-group justify-item" style="width: 130px;">
             <div class="form-label  uppercase">
-              <label for="project">Project</label>
+              <label for="projects">Project</label>
             </div>
             <div class="form-fields">
-              <div class="autocomplete-holder">
-                <input type="text" placeholder="Select a project" id="projects" class="field-text hundred percent"/>
-              </div>
+              <input type="text" id="projects" data-projects_url = "<%= projects_path %>" class="hundred percent js-select2"/>
             </div>
           </div>
           
-          <div class="form-group inline-block">
+          <div class="form-group justify-item">
             <div class="form-label uppercase">
-              <label for="project">Amount</label>
+              <label for="mvc">Amount</label>
             </div>
             <div class="form-fields">
               <div class="field-group">
-                <input type="text" placeholder="ie. 125" id="mvc" class="field-text field-group-item"/>
+                <input style="width: 80px;" type="text" placeholder="ie. 125" id="mvc" class="field-text field-group-item"/>
                 <div class="field-select field-group-item">
                   <select>
                     <option value="">€</option>
@@ -32,13 +30,13 @@
             </div>
           </div>
 
-          <div class="form-group inline-block">
+          <div class="form-group justify-item">
             <div class="form-label uppercase">
-              <label for="project">Recurring?</label>
+              <label for="recurring">Recurring?</label>
             </div>
             <div class="form-fields">
               <div class="field-select field-group-item">
-                <select>
+                <select id="recurring">
                   <option value="">Daily</option>
                   <option value="">Weekly</option>
                   <option value="">2 Weeks</option>
@@ -54,18 +52,18 @@
             </div>
           </div>
 
-          <div class="form-group inline-block">
+          <div class="form-group justify-item">
             <div class="form-label uppercase">
-              <label for="project">Starting date</label>
+              <label for="pikadate">Starting date</label>
             </div>
             <div class="form-fields">
-              <input type="text" placeholder="Pick a date" id="mvc" class="field-text" data-behaviour="datepicker" value="9 Oct 2014"/>
+              <input style="width: 120px;" type="text" placeholder="Pick a date" id="pikadate" class="field-text" data-behaviour="datepicker" value="9 Oct 2014"/>
             </div>
           </div>
 
-          <div class="form-group inline-block">
+          <div class="form-group justify-item">
             <div class="form-label uppercase">
-              <label for="project">Private?</label>
+              <label for="private">Private?</label>
             </div>
             <div class="form-fields solid">
               <input id="private" type="checkbox" class="mr1" />
@@ -79,28 +77,6 @@
 </div>
 
 <script>
-  var projects = new TrackDons.Collections.AutoComplete.Collection([
-    {"label": "Wikipedia"},
-    {"label": "Mozilla Foundation"},
-    {"label": "Acnur"},
-    {"label": "Médico Sin Fronteras"},
-    {"label": "Wadus ONG"},
-    {"label": "Eclectic"},
-    {"label": "Fronteers"},
-    {"label": "Podemos"},
-    {"label": "Ciudadanos"},
-    {"label": "CIC"},
-    {"label": "Red Cross"}
-  ]);
+ 
 
-  new TrackDons.Views.AutoComplete.Component({
-    input: $("#projects"),
-    collection: projects,
-    onSelect: function (model) {
-      console.log(I18n.t("donations.donation.sure"), model.label());
-    }
-  }).render();
-
-  I18n.defaultLocale = "<%= I18n.default_locale %>";
-  I18n.locale = "<%= I18n.locale %>";
 </script>

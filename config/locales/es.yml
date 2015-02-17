@@ -30,7 +30,7 @@ es:
   language_name: 'Español'
   hello: "Hello world"
   # generics
-  project: 'Projecto'
+  project: 'Proyecto'
   Projects: 'Proyectos'
   Donations: 'Donaciones'
   Users: 'Usuarios'
@@ -100,6 +100,7 @@ es:
   i_want_to_explain_why: 'Quiere explicar por qué he donado para animar a otros'
   i_want_to_keep_private: 'Quiero mantener mi donación privada'
   need_to_trackdon_for_another_project: '¿Quieres TrackDon en otro proyecto?'
+  add_project: '(Añadir proyecto)'
   projects:
     project: 'Proyecto'
     all_projects: 'Todos los proyectos'
