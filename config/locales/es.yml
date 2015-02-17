@@ -188,6 +188,9 @@ es:
       in_total: en total
     show:
       edit_your_profile: Edita tu perfil
+      track_your_first_donation: Registra tu primera donación
+      get_started: 'Empieza ahora:'
+      welcome: 'Bienvenido! Utiliza TrackDons para llevar un registro de los proyectos a los que has apoyado, dar difusión a tus donaciones e inspirar a tus amigos.'
     index:
       please_log_in: Por favor, inicia sesión
   invitations:
