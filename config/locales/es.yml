@@ -78,6 +78,12 @@ es:
       project_page: 'La página de %{project}'
       more_donations_by: 'Más donaciones de %{user}'
       other_projects: 'Otros proyectos'
+      user_is_using: '%{name} está usando TrackDons para llevar un registro de las donaciones que hace a los proyectos en los que cree.'
+      in_which_projects: En qué proyectos crees tú?
+      create_your_own: Crea tu propio registro y ayuda a tus proyectos favoritos. 
+      great_donation_tracked: Bien, tu donación está registrada. Esto es solo el principio.
+      be_an_active_promoter: Sé un promotor activo de la donación que has hecho. 
+      its_the_best_way: Es la mejor forma de convencer a tus amigos. 
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
