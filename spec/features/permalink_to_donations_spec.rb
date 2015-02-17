@@ -18,7 +18,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     select '$', from: :donation_currency
     click_button 'TrackDon'
 
-    expect(page).to have_content 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
+    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
     expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
   end
 
