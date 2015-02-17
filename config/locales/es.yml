@@ -222,11 +222,11 @@ es:
       password_reset_email: |
         Hola,
 
-        Alguien, probablemente tu, has pedido ayuda para recuperar tu contraseña de TrackDons. Sigue este enlace para recuperarla:
+        Alguien, probablemente tú, has pedido ayuda para recuperar tu contraseña de TrackDons. Sigue este enlace para recuperarla:
 
         %{url}
 
-        Si no has sido tu, puedes ignorar este mensaje, y tu contraseña seguirá siendo la misma. Si tienes algún comentario escríbenos a lets@trackdons.org
+        Si no has sido tú, puedes ignorar este mensaje, y tu contraseña seguirá siendo la misma. Si tienes algún comentario escríbenos a lets@trackdons.org
   metas:
     home:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
