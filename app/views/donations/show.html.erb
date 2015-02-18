@@ -1,25 +1,46 @@
 <% set_meta_tags :description => t("metas.donations.donation.description", :user => @donation.user.name, :project => @donation.project.name) %>
 <% set_meta_tags :title => t("metas.donations.donation.title", :user => @donation.user.name, :project => @donation.project.name) %>
+  
+<% if !logged_in? && !current_user?(@donation.user) %>
+  
+  <section class="big_banner">
+    
+    <p><big><%= t('.user_is_using', :name => @donation.user.name) %></big></p>
+    <p>
+      <%= t '.in_which_projects' %>
+      <%= link_to t('.create_your_own'), root_path, :class => "button ml0 mt3" %>      
+    </p>
+
+  </section>
+
+<% elsif current_user?(@donation.user) %>
+  
+  <section class="big_banner">
+    
+    <p><big><%= t('.great_donation_tracked') %></big></p>
+    <p>
+      <%= t '.be_an_active_promoter' %><br>
+      <%= t('.its_the_best_way') %>      
+    </p>
+
+    <ul id="share_buttons">
+      <li>
+        <%= link_to t('donations.show.share_in_twitter'), "https://twitter.com/home?status=#{u t('donations.show.share_tweet', :url => donation_url(@donation))}", { :class => 'button popup' } %>
+      </li>
+      <li>
+        <%= link_to t('donations.show.share_in_facebook'), "http://www.facebook.com/sharer/sharer.php?u=#{u donation_url(@donation)}", {:class => 'button popup' } %>
+      </li>
+      <li>
+        <%= link_to t('donations.show.share_by_email'), 
+        "mailto:?subject=#{u t('donations.show.share_email_subject')}&body=#{u t('donations.show.share_email_body', :project => @donation.project.name, :url => donation_url(@donation))}", { :class => 'button popup' } %>
+      </li>
+    </ul>
+
+  </section>
+
+<% end %>
 
 <section class="content_column">
-
-  <% if params[:share_links].present? %>
-    <div id="share_block">
-      <p><%= t 'donations.show.donation_created' %></p>
-      <ul id="share_buttons">
-        <li>
-          <%= link_to t('donations.show.share_in_twitter'), "https://twitter.com/home?status=#{u t('donations.show.share_tweet', :url => donation_url(@donation))}", { :class => 'popup' } %>
-        </li>
-        <li>
-          <%= link_to t('donations.show.share_in_facebook'), "http://www.facebook.com/sharer/sharer.php?u=#{u donation_url(@donation)}", {:class => 'popup' } %>
-        </li>
-        <li>
-          <%= link_to t('donations.show.share_by_email'), 
-          "mailto:?subject=#{u t('donations.show.share_email_subject')}&body=#{u t('donations.show.share_email_body', :project => @donation.project.name, :url => donation_url(@donation))}", { :class => 'popup' } %>
-        </li>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="tracked_donation">
     <% if params[:share_links].present? %>

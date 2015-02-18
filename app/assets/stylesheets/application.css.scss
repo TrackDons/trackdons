@@ -22,6 +22,8 @@
 @import "http://fonts.googleapis.com/css?family=Raleway:400,700";
 @import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
 
+@import "helpers/white-spacing";
+
 $main_color: #7C9200; /* main green */
 $secondary_color: #565631; /* dark green */
 $tertiary_color: #E4D6B3;
@@ -36,7 +38,25 @@ ul, li { font-size: 100%; line-height: 100%; }
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
 #header a { color: #FFF; }
-button, .button, input[type='submit'] { background: $main-color; color: #FFF; }
+button, .button, input[type='submit'] { 
+  background: $main-color; 
+  color: #FFF;
+  display: inline-block;
+  padding: .6em 2em .4em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 0;
+  border-bottom: 2px solid darken($main-color, 10%);
+  transition: all 0.3s ease 0s;
+  font-size: 1em; 
+  font-weight: bold;
+
+  &:hover {
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    background: darken($main-color, 3%);
+  }
+}
 a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
 .content_full { background: #EBE8CC; }
 #track_donation header h2, h1 { border-color: $main-color; color: $main-color; }
@@ -98,10 +118,16 @@ body .tipsy { font-size: 11px; }
 .content_full {  }
 
 /* forms */
-button, .button, input[type='submit'] { margin: 10px 0 20px 0; border: 0; padding: 10px 16px; font-size: 14px; display: inline-block; }
-form.simple_form { width: 400px}
+button, .button, input[type='submit'] { 
+/*  margin: 10px 0 20px 0; 
+  border: 0; 
+  padding: 10px 16px; 
+  font-size: 14px; 
+  display: inline-block; 
+*/}
+form.simple_form { width: 400px; margin-bottom: 2em; }
 form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px; font-size: 1em;}
-form.simple_form input[type='submit'] { padding: 8px; font-weight: bold; }
+form.simple_form input[type='submit'] { /*padding: 8px; font-weight: bold;*/ }
 form.simple_form input[type='checkbox'] { width: auto; }
 form.simple_form textarea { height: 100px; }
 form.simple_form input[type='submit'] { width: 40%;}
@@ -267,6 +293,21 @@ h2 { font-size: 24px; }
 small { font-size: 11px; }
 hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; width: 100%; }
 
+.big_banner {
+  @extend .content_column;
+  background: #BAC271; 
+  margin-top: -40px;
+  margin-bottom: 2em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 1.15em;
+  line-height: 1.4em;
+
+  big {
+    font-size: 1.2em;
+  }
+}
+
 #share_block { 
   background-color: #D9DAAA; 
   padding: 20px;
@@ -284,17 +325,9 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
   li { 
     width: 29%; 
     margin-right: 26px; 
-    background-color: $main-color; 
     text-align: center;
     display: inline-block;
-
-    a, a:visited { 
-      display: block; 
-      color: #fff; 
-      font-size: 14px; 
-      font-weight: 500; 
-      line-height: 30px;
-    }
+    font-size: .9em;
   }
   li:last-child { 
     margin-right: 0px; 

@@ -27,7 +27,7 @@ RSpec.feature 'Creating projects' do
     fill_in 'donation_quantity', :with => "200"
     click_button 'TrackDon'
 
-    expect(page).to have_content 'Hooray! Your donation is tracked. You can share it with your friends to encourage them to donate as well'
+    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
     expect(page).to have_content '200€ to Rubular by Yorch'
   end
 end
