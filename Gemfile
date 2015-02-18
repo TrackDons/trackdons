@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,7 +32,6 @@ gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'spring'
   gem 'rspec-rails'
   gem 'capybara'
@@ -45,8 +46,4 @@ end
 group :development do
   gem 'mina'
   gem 'web-console', '~> 2.0'
-end
-
-group :production do
-  gem 'pg'
 end

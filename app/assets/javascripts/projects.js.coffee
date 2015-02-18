@@ -20,4 +20,5 @@ $(document).on "page:change", ->
             $('form *').attr('disabled', null)
             $('p[data-existing-project-error]').html('')
       })
-
+  $('#country').on "change", ->
+    window.location.href = $(this).val()

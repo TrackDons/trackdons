@@ -1,4 +1,11 @@
 en:
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            countries:
+              invalid: "must contain a valid name of country"
   language_name: "English"
   hello: "Hello world"
   # generics
@@ -89,7 +96,9 @@ en:
     did_you_track: 'Did you donate to this project? TrackDon!'
     invite_your_friends_to_this_page: 'Invite your friends to this page'
     index:
+      global: Global
       categories: Categories
+      countries: Countries
       latest: Latest
       alpha: Alpha
       popular: Popular
@@ -217,6 +226,9 @@ en:
       home: 
         description: Browse and discover all the different projects you can donate to
         title: All projects
+        title_with_category_and_country: Projects for %{category} from %{country}
+        title_with_category: Projects for %{category}
+        title_with_country: Projects from %{country}
         keywords: projects, donation, discover
       project: 
         description: Track your donations to %{name} with TrackDons and extend the projects reach
