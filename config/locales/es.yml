@@ -39,7 +39,7 @@ es:
   language_name: 'Español'
   hello: "Hello world"
   # generics
-  project: 'Projecto'
+  project: 'Proyecto'
   Projects: 'Proyectos'
   Donations: 'Donaciones'
   Users: 'Usuarios'
@@ -134,7 +134,7 @@ es:
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:
-      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
+      project_created: Proyecto creado. ¡Compártelo y comienza a guardar donaciones!
     show:
       have_you_donated: ¿Has donado al proyecto?
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?

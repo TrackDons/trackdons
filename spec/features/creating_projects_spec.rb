@@ -16,6 +16,9 @@ RSpec.feature 'Creating projects' do
     fill_in 'URL', with: 'http://rubular.com'
     fill_in 'Donation URL', with: 'http://rubular.com/donate'
     fill_in 'Twitter', with: 'http://twitter.com/rubular'
+    select 'Spain', from: 'project_countries'
+    select 'United Kingdom', from: 'project_countries'
+
     click_button 'Create'
 
     expect(page).to have_content('Project created')

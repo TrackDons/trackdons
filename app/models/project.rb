@@ -67,10 +67,6 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def countries=(value)
-    super([value])
-  end
-
   private
 
     def valid_countries

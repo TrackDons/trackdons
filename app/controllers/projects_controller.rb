@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id, :countries)
+      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id, countries: [])
     end
 
     def load_project
