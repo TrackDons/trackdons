@@ -37,11 +37,19 @@
       </ul>
     </div>
 
+
     <% if options_for_countries_select.length > 1 %>
     <div class="countries">
       <h2><%= t('.countries') %></h2>
 
-      <%= select_tag(:country, options_for_select(options_for_countries_select, projects_with_filter_path(@category, @country))) %>
+      <ul>
+        <% @countries.each do |country| %>
+          <li><%= link_to_unless_current country[0], projects_with_filter_path(@category, country[1])  %></li>
+        <% end %>
+      </ul>
+  
+      <%# select_tag(:country, options_for_select(options_for_countries_select, projects_with_filter_path(@category, @country))) %>
+
     </div>
     <% end %>
   </div>

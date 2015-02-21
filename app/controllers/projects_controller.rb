@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :set_new_donation, only: :show
   before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
+  before_action :load_countries,  only: [:index]
   before_action :load_project,     only: [:edit, :update, :destroy]
 
   ORDER_TYPES   = ['latest', 'alpha', 'popular']
@@ -81,6 +82,12 @@ class ProjectsController < ApplicationController
     def load_categories
       @categories = Category.order(name: :asc)
     end
+
+    def load_countries
+      @countries = Project.used_countries
+    end
+    
+    
 
     def load_projects_from_filters(filters)
       @projects = Project
