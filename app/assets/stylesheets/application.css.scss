@@ -413,10 +413,14 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
       list-style-type: none;
     }
 
-    .categories {
+    .categories, .countries {
       a {
         text-decoration: none;
       }
+    }
+
+    div {
+      margin-bottom: 40px;
     }
 
   }

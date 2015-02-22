@@ -10,10 +10,13 @@ class Project < ActiveRecord::Base
   validates :name, length: { minimum: 3 }, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }
+  validate :valid_countries
 
   scope :alpha, -> { order(name: :asc) }
   scope :latest, -> { order(created_at: :desc) }
   scope :popular, -> { order(donations_count: :desc) }
+  scope :category, lambda { |category| where(category_id: category.id) }
+  scope :country, lambda { |country| where("? = ANY(countries)", country) }
 
   def self.sorted_by(order)
     case order
@@ -34,6 +37,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.used_countries
+    pluck(:countries).flatten.uniq.map do |country|
+      [I18n.t(country, :scope => :countries), country]
+    end
+  end
+
   def total_people_donated
     users.distinct.count
   end
@@ -50,15 +59,29 @@ class Project < ActiveRecord::Base
     super(clean_twitter_account_value(value))
   end
 
+  def geographical_scope
+    if countries.any?
+      countries.map{|c| I18n.t("countries.#{c}") }
+    else
+      :global
+    end
+  end
+
   private
 
+    def valid_countries
+      if self.countries.any?
+        if (self.countries - I18nCountrySelect::Countries::COUNTRY_CODES).any?
+          errors.add(:countries, I18n.t('activerecord.errors.models.project.attributes.countries.invalid'))
+        end
+      end
+    end
+
     def clean_twitter_account_value(twitter_account)
-      twitter_account = if twitter_account =~ /\Ahttp/
+      if twitter_account =~ /\Ahttp/
         twitter_account.split('/').last
       elsif twitter_account =~ /\@/
         twitter_account.tr('@', '')
       end
-
-      twitter_account
     end
 end

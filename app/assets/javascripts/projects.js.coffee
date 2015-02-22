@@ -21,3 +21,10 @@ $(document).on "page:change", ->
             $('p[data-existing-project-error]').html('')
       })
 
+  console.log('hola')
+
+  $('#project_countries').select2()
+
+  $('#country').on "change", ->
+    window.location.href = $(this).val()
+

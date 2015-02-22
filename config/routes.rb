@@ -25,6 +25,6 @@ Rails.application.routes.draw do
 
     resources :password_resets, only: [:new, :create, :edit, :update]
 
-    get 'projects(::category)' => 'projects#index', as: :category
+    get 'projects(/*filters)' => 'projects#index', as: :projects_filtered
   end
 end

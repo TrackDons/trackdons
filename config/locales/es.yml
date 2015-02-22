@@ -3,6 +3,11 @@ es:
     errors:
       messages:
         record_invalid: "Error al guardar"
+      models:
+        project:
+          attributes:
+            countries:
+              invalid: "tiene que contener nombres válidos de país"
     models:
       user: Usuario
       invitation: Invitación
@@ -23,6 +28,7 @@ es:
         description: Descripción
         category_id: Categoría
         donation_url: URL de donaciones
+        countries: Países
       donation:
         date: Fecha
         project_id: Proyecto
@@ -33,7 +39,7 @@ es:
   language_name: 'Español'
   hello: "Hello world"
   # generics
-  project: 'Projecto'
+  project: 'Proyecto'
   Projects: 'Proyectos'
   Donations: 'Donaciones'
   Users: 'Usuarios'
@@ -118,7 +124,9 @@ es:
     did_you_track: '¿Has donado a este proyecto? TrackDon!'
     invite_your_friends_to_this_page: 'Invita a tus amigos a esta página'
     index:
+      global: Global
       categories: Categorías
+      countries: Países
       latest: Últimos
       alpha: Alfabético
       popular: Popularidad
@@ -126,7 +134,7 @@ es:
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:
-      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
+      project_created: Proyecto creado. ¡Compártelo y comienza a guardar donaciones!
     show:
       have_you_donated: ¿Has donado al proyecto?
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
@@ -246,6 +254,9 @@ es:
       home: 
         description: Navega y descubre todos los diferentes proyectos donde puedes donar
         title: Todos los proyectos
+        title_with_category_and_country: Proyectos sobre %{category} en %{country}
+        title_with_category: Proyectos sobre %{category}
+        title_with_country: Proyectos en %{country}
         keywords: proyectos, donación, descubre
       project:
         description: Registra tus donaciones a %{name} con TrackDons y mejora el alcance del proyecto
