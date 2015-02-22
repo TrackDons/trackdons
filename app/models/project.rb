@@ -38,7 +38,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.used_countries
-    pluck(:countries).flatten.sort.uniq.map do |country|
+    pluck(:countries).flatten.uniq.map do |country|
       [I18n.t(country, :scope => :countries), country]
     end
   end
@@ -71,7 +71,7 @@ class Project < ActiveRecord::Base
 
     def valid_countries
       if self.countries.any?
-        if (self.countries & I18nCountrySelect::Countries::COUNTRY_CODES).empty?
+        if (self.countries - I18nCountrySelect::Countries::COUNTRY_CODES).any?
           errors.add(:countries, I18n.t('activerecord.errors.models.project.attributes.countries.invalid'))
         end
       end
