@@ -31,6 +31,7 @@
       <h2><%= t('.categories') %></h2>
 
       <ul>
+        <li><%= link_to_unless_current t('.any_category'), projects_with_filter_path(nil, @country) %></li>
         <% @categories.each do |category| %>
           <li><%= link_to_unless_current category.name, projects_with_filter_path(category, @country) %></li>
         <% end %>
@@ -43,13 +44,11 @@
       <h2><%= t('.countries') %></h2>
 
       <ul>
+        <li><%= link_to_unless_current t('.global'), projects_with_filter_path(@category, nil) %></li>
         <% @countries.each do |country| %>
-          <li><%= link_to_unless_current country[0], projects_with_filter_path(@category, country[1])  %></li>
+          <li><%= link_to_unless_current country[0], projects_with_filter_path(@category, country[1]) %></li>
         <% end %>
       </ul>
-  
-      <%# select_tag(:country, options_for_select(options_for_countries_select, projects_with_filter_path(@category, @country))) %>
-
     </div>
     <% end %>
   </div>
