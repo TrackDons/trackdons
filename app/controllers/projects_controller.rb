@@ -80,7 +80,8 @@ class ProjectsController < ApplicationController
     end
 
     def load_categories
-      @categories = Category.order(name: :asc)
+      @categories = Category.includes(:translations).
+                      order('category_translations.name ASC')
     end
 
     def load_countries

@@ -30,15 +30,17 @@ gem 'rollbar', '~> 1.3.0'
 gem 'meta-tags'
 gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
+gem 'globalize', '~> 5.0.0'
 
 group :development, :test do
   gem 'spring'
+end
+
+group :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'quiet_assets'
-  gem 'byebug'
   gem 'launchy'
-  gem 'database_cleaner'
   gem 'email_spec'
   gem 'timecop'
 end
@@ -46,4 +48,6 @@ end
 group :development do
   gem 'mina'
   gem 'web-console', '~> 2.0'
+  gem 'quiet_assets'
+  gem 'byebug'
 end
