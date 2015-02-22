@@ -41,4 +41,16 @@ RSpec.feature 'Projects navigation' do
     expect(page).to have_css(".project:nth-child(2) a", text: "Médicos Sin Fronteras")
     expect(page).to have_css(".project:nth-child(3) a", text: "Cruz Roja")
   end
+
+  scenario 'I should be able to filter by Country' do
+    visit projects_page
+
+    expect(page).to have_css(".project:nth-child(2) a", text: "Wikipedia")
+    expect(page).to have_css(".project:nth-child(3) a", text: "Médicos Sin Fronteras")
+    expect(page).to have_css(".project:nth-child(4) a", text: "Cruz Roja")
+
+    click_link "United States"
+
+    expect(page).to have_css(".project:nth-child(2) a", text: "Cruz Roja")
+  end
 end

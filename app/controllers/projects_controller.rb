@@ -84,10 +84,8 @@ class ProjectsController < ApplicationController
     end
 
     def load_countries
-      @countries = Project.used_countries
+      @countries = Project.used_countries.sort{|a,b| a[0] <=> b[0] }
     end
-    
-    
 
     def load_projects_from_filters(filters)
       @projects = Project
