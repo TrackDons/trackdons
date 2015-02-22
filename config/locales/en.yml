@@ -112,6 +112,14 @@ en:
       have_you_donated: Have you donated to the project?
       do_you_want_to_actually_donate: Do you want to actually donate to the project?
       invite_your_friends_to_this_page: Invite your friends to this page
+      follow: Follow
+      trackdon: TrackDon
+      donations_number: 
+        one: '%{count} donation'
+        other: '%{count} donations'
+      donors_number: 
+        one: '%{count} donor'
+        other: '%{count} donors'
       donations_last_week:
         one: "%{count} donation in the last week"
         other: "%{count} donations in the last week"

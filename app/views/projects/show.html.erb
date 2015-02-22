@@ -1,79 +1,86 @@
 <% set_meta_tags :description => t('metas.projects.project.description', :name => @project.name) %>
 <% set_meta_tags :keywords => "#{@project.name}, donation, promote, issues, reach, track donation" %>
 
-<section id="project" class="content_column">
+<section id="project_1502" class="wide_content">
 
-  <div class="project_main">
+  <div class="header">
 
-    <section class="meta">
-      <h1><%= title @project.name %></h1>
-      <div class="links">
-        <div class="url">
-          <a href="<%= @project.url %>" target="blank"><%= prettify_url(@project.url) %></a>
+    <h1><%= title @project.name %></h1>
+
+    <div class="links">
+
+      <div class="url">
+        <a href="<%= @project.url %>" target="blank"><%= prettify_url(@project.url) %></a>
+      </div>
+
+      <% if @project.twitter.present? %>
+        <div class="twitter">
+          <a href="http://www.twitter.com/<%= @project.twitter %>" target="blank">@<%= @project.twitter %></a>
         </div>
-
-        <% if @project.twitter.present? %>
-          <div class="twitter">
-            <a href="http://www.twitter.com/<%= @project.twitter %>" target="blank">@<%= @project.twitter %></a>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="description">
-        <%= markdown @project.description %>
-      </div>
-
-      <div class="facts">
-        <ul>
-          <li><%= t('.donations_last_week', count: @project.last_month_donations) %></li>
-          <li><%= t('.people_donated', count: @project.total_people_donated) %></li>
-          <li><%= t('.donations_in_total', count: @project.total_donations) %></li>
-          <!-- <li>People who donate to Wikipedia repeat 1,3 times, in an average of 8,4 months</li> -->
-        </ul>
-      </div>
-
-      <% if logged_in? %>
-        <%= link_to(t('.edit'), edit_project_path(@project)) %> ·
-        <%# link_to(t('.delete'), @project, method: :delete, data: {confirm: t('sure')}) %>      
       <% end %>
 
-    </section>
+    </div>
 
-    <section class="actions">
-      <div>
-        <p><%= t('.have_you_donated') %></p>
-        <a href="#track_donation" class="button">TrackDon</a>
-      </div>
-      <div>
-        <p><%= t('.do_you_want_to_actually_donate') %></p>
-        <a href="<%= @project.donation_url %>" class="button"><%= t('projects.donate_in_project_site') %></a>
-      </div>
-      <div>
-        <p><%= t('.invite_your_friends_to_this_page') %></p>
-        <a target="_blank" href="mailto:?to=&subject=Has hecho alguna donación?&body=Mira este site para llevar un registro de las donaciones que haces, y así motivar a los demás a que también donen. Por ejemplo, mira mi donación a <%= @project.name %> ToDo: URL_SITE/PROJECT" class="button"><%= t 'invite' %></a>
-      </div>
-      <!-- <div class="similar_projects">
-        <p>Similar projects</p>
-        <ul>
-        <li><a href="#">WadusWiki</a></li>
-        <li><a href="#">WikiWadus</a></li>
-        <li><a href="#">TheDefinitiveWiki</a></li>
-        </ul>
-        </div> -->
-    </section>
+    <div class="action_buttons">
+      <%= link_to t('.follow'), track_donation_path, :class => 'button' %>
+      <%= link_to t('.trackdon'), '#track_donation', :class => 'button' %>
+    </div>
 
   </div>
 
-  <h2><%= t('Donations') %></h2>
+  <div class="description">
+    <%= markdown @project.description %>
+    <% if logged_in? %>
+      <%= link_to(t('.edit'), edit_project_path(@project)) %> ·
+      <%# link_to(t('.delete'), @project, method: :delete, data: {confirm: t('sure')}) %>      
+    <% end %>
+  </div>
 
-  <%= render @project.donations %>
+  <section class="donations main_column left">
 
-  <section id="track_donation">
-    <h2><%= t('projects.did_you_track') %> </h2>
+    <h2>
+      <%= t('.donations_number', count: @project.total_donations) %>
+      <span><%= t('.donors_number', count: @project.total_people_donated) %></span>
+      <%# t('.donations_last_week', count: @project.last_month_donations) %>
+    </h2>
+    
+    <%= render @project.donations %>
 
-    <%= render 'donations/form' %>
   </section>
 
-  <%# link_to 'Edit', edit_project_path(@project) %>
+  <section class="sidebar right">
+
+    <div class="updates">
+
+      <h2><%= t '.updates' %></h2>
+
+      
+    </div>
+
+    <div class="related">
+
+      <h2><%= t '.related_projects' %></h2>
+
+      <% if @project.category.projects.present? %>
+        <% @project.category.projects.where.not(id: @project.id).first(3).each do |project| %>
+          <%= link_to project.name, project_path(project) %>
+        <% end %>  
+      <% end %>
+
+    </div>
+
+  </section>
+
 
 </section>
+
+<div class="content_full">
+  <div class="content_column">
+    <section id="track_donation">
+      <h2><%= t('projects.did_you_track') %> </h2>
+
+      <%= render 'donations/form' %>
+    </section>
+  </div>
+</div>
+
