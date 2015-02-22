@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
       @projects = Project.search(params[:q])
     end
 
-    @projects = @projects.sorted_by(@order)
+    @projects = @projects.send(@order.to_sym)
 
     respond_to do |format|
       format.html

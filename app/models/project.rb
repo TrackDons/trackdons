@@ -13,21 +13,10 @@ class Project < ActiveRecord::Base
   validate :valid_countries
 
   scope :alpha, -> { order(name: :asc) }
-  scope :latest, -> { order(created_at: :desc) }
+  scope :latest, -> { order(id: :desc) }
   scope :popular, -> { order(donations_count: :desc) }
   scope :category, lambda { |category| where(category_id: category.id) }
   scope :country, lambda { |country| where("? = ANY(countries)", country) }
-
-  def self.sorted_by(order)
-    case order
-      when 'latest'
-        order(created_at: :desc)
-      when 'alpha'
-        order(name: :asc)
-      when 'popular'
-        order(donations_count: :desc)
-    end
-  end
 
   def self.search(query)
     if query.present?
