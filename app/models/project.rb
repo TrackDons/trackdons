@@ -79,9 +79,11 @@ class Project < ActiveRecord::Base
 
     def clean_twitter_account_value(twitter_account)
       if twitter_account =~ /\Ahttp/
-        twitter_account.split('/').last
+        twitter_account = twitter_account.split('/').last
       elsif twitter_account =~ /\@/
-        twitter_account.tr('@', '')
+        twitter_account.tr!('@', '')
       end
+
+      twitter_account
     end
 end
