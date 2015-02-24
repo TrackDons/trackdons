@@ -7,8 +7,13 @@ RSpec.describe Project do
       expect(subject.twitter).to eq('cruzroja')
     end
 
-    it 'it should remove the @ from the value provided' do
+    it 'should remove the @ from the value provided' do
       subject.twitter = '@cruzroja'
+      expect(subject.twitter).to eq('cruzroja')
+    end
+
+    it 'should maintain the value when does not contain an @' do
+      subject.twitter = 'cruzroja'
       expect(subject.twitter).to eq('cruzroja')
     end
   end
