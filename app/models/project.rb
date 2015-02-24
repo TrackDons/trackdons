@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+ class Project < ActiveRecord::Base
 
   has_many :donations
   has_many :users, through: :donations
@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
 
+  acts_as_followable
+  
   validates :name, length: { minimum: 3 }, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }

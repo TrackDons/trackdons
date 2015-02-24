@@ -30,6 +30,7 @@ gem 'meta-tags'
 gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
 gem 'globalize', '~> 5.0.0'
+gem "acts_as_follower"
 
 group :development, :test do
   gem 'spring'

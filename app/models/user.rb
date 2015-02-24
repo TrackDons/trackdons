@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :projects, through: :donations
   has_many :invitations
 
+  acts_as_follower
+  
   attr_accessor :remember_token, :invitation_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

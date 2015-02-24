@@ -62,9 +62,11 @@
       <h2><%= t '.related_projects' %></h2>
 
       <% if @project.category.projects.present? %>
+      <ul>
         <% @project.category.projects.where.not(id: @project.id).first(3).each do |project| %>
-          <%= link_to project.name, project_path(project) %>
+          <li><%= link_to project.name, project_path(project) %></li>
         <% end %>  
+      </ul>
       <% end %>
 
     </div>
@@ -74,12 +76,18 @@
 
 </section>
 
+
 <div class="content_full">
   <div class="content_column">
     <section id="track_donation">
-      <h2><%= t('projects.did_you_track') %> </h2>
+      
+      <% if logged_in? %>
+        <h2><%= t('projects.did_you_track') %> </h2>
+        <%= render 'donations/form' %>
+      <% else %>
+        <%= render 'sessions/invitation_to_waitlist' %>
+      <% end %>
 
-      <%= render 'donations/form' %>
     </section>
   </div>
 </div>

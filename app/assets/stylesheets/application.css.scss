@@ -27,6 +27,7 @@
 $main_color: #7C9200; /* main green */
 $secondary_color: #565631; /* dark green */
 $tertiary_color: #E4D6B3;
+$light_background: #EBE8CC;
 
 /* colors */
 body { background: #F3E9D1; }
@@ -258,6 +259,11 @@ h2 { font-size: 24px; }
 
     .links {
       display: inline-block;
+
+      div {
+        display: inline-block;
+        padding-right: 1em;
+      }
     }
 
     .action_buttons {
@@ -305,10 +311,26 @@ h2 { font-size: 24px; }
     overflow: hidden;
   }*/
 
+  li {
+    margin-bottom: 1em;
+  }
+
   // ToDo: make this the default donation style
   .donation {
+    position: relative;
     border: none;
+    padding: 1em;
+    margin: -1em -1em 1em -1em;
 
+    .line {
+      position: absolute;
+      left: 30px;
+      top: 46px;
+      width: 2px;
+      background: $light_background;
+      height: 100%;
+
+    }
     h2 {
       border: none;
       font-size: .9em;
@@ -317,10 +339,19 @@ h2 { font-size: 24px; }
     .gravatar {
       width: 30px;
       height: 30px;
+      margin-right: 13px;
     }
-    .donation_comment {
-
+    .donation_comment, .donation_tools {
+      margin: 0 0 0 42px;
+      font-size: .8em;
     }
+    #donation_do_widget {
+      display: none;
+    }
+  }
+  .donation:hover {
+    background: $light_background;
+    border-radius: 6px;
   }
 }
 
