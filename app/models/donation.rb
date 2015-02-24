@@ -15,7 +15,6 @@ class Donation < ActiveRecord::Base
   scope :quantity_private, -> { where(quantity_privacy: true) }
   scope :sorted, -> { order(date: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
-  # acts_as_taggable_on :tags
 
   validates :project_id, presence: true
   validates :user_id, presence: true
