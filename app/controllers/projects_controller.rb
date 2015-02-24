@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
       @projects = Project.search(params[:q])
     end
 
-    @projects = @projects.sorted_by(@order)
+    @projects = @projects.send(@order.to_sym)
 
     respond_to do |format|
       format.html
@@ -80,7 +80,8 @@ class ProjectsController < ApplicationController
     end
 
     def load_categories
-      @categories = Category.order(name: :asc)
+      @categories = Category.includes(:translations).
+                      order('category_translations.name ASC')
     end
 
     def load_countries
