@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
     current_user.follow(@project)
     respond_to do |format|
       format.html { redirect_to @project }
-      format.json { render :json => 'ok' }
+      format.js
     end
   end
 
@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
     current_user.stop_following(@project)
     respond_to do |format|
       format.html { redirect_to @project }
-      format.js { render :json => 'ok' }
+      format.js
     end
   end
 
