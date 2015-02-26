@@ -57,7 +57,7 @@
       :global
     end
   end
-
+  
   private
 
     def valid_countries

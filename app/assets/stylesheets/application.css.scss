@@ -39,6 +39,7 @@ ul, li { font-size: 100%; line-height: 100%; }
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
 #header a { color: #FFF; }
+a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
 button, .button, input[type='submit'] { 
   background: $main-color; 
   color: #FFF;
@@ -58,7 +59,15 @@ button, .button, input[type='submit'] {
     background: darken($main-color, 3%);
   }
 }
-a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
+a.button.not_active {
+  background: darken($light_background, 10%);
+  color: $main_color;
+  border-bottom-color: $main_color;
+}
+a.button.not_active:hover {
+  background: darken($light_background, 20%);
+  color: darken($main_color, 10%);
+}
 .content_full { background: #EBE8CC; }
 #track_donation header h2, h1 { border-color: $main-color; color: $main-color; }
 #project .meta { background: #EBE8CC; }

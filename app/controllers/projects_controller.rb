@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_new_donation, only: :show
   before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
   before_action :load_countries,  only: [:index]
-  before_action :load_project,     only: [:edit, :update, :destroy]
+  before_action :load_project,     only: [:edit, :update, :destroy, :follow, :unfollow]
 
   ORDER_TYPES   = ['latest', 'alpha', 'popular']
   DEFAULT_ORDER = 'latest'
@@ -63,6 +63,22 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def follow
+    current_user.follow(@project)
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.json { render :json => 'ok' }
+    end
+  end
+
+  def unfollow
+    current_user.stop_following(@project)
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.js { render :json => 'ok' }
+    end
+  end
+
   private
 
     def project_params
@@ -104,4 +120,5 @@ class ProjectsController < ApplicationController
         end
       end
     end
+
 end

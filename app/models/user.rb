@@ -2,14 +2,15 @@ class User < ActiveRecord::Base
   include DonationsCalculations
   include ChartData
 
+  acts_as_followable
+  acts_as_follower
+  
   has_secure_password
 
   has_many :donations, dependent: :destroy
   has_many :projects, through: :donations
   has_many :invitations
 
-  acts_as_follower
-  
   attr_accessor :remember_token, :invitation_token
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

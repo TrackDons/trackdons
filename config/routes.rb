@@ -26,5 +26,9 @@ Rails.application.routes.draw do
     resources :password_resets, only: [:new, :create, :edit, :update]
 
     get 'projects(/*filters)' => 'projects#index', as: :projects_filtered
+
+    patch 'projects/:id/follow'   => 'projects#follow', as: :project_follow
+    patch 'projects/:id/unfollow'   => 'projects#unfollow', as: :project_unfollow
+    
   end
 end
