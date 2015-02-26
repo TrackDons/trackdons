@@ -36,8 +36,11 @@
  */
 
 @import "helpers/clearfix";
+@import "helpers/is-hidden";
 @import "helpers/percent";
+@import "helpers/font-sizes";
 @import "helpers/white-spacing";
+@import "helpers/colors";
 @import "helpers/layout";
 
 /* 
@@ -52,6 +55,7 @@
 @import "objects/form";
 @import "objects/form-fields";
 @import "objects/justify-columns";
+@import "objects/content";
 
 /* 
  * 5. Layout
@@ -62,7 +66,7 @@
  *
  */
 
- // ....
+ @import "layout/donations";
 
 /* 
  * 6. Vendors
@@ -182,10 +186,10 @@ h2 { font-size: 24px; }
 #home li { font-size: 18px; margin: 0 0 22px 0;}
 #home ul { width: 410px; }
 
-#track_donation { border-top: 1px solid #FFF; padding-right: 100px; padding-top: 20px;}
-#track_donation header { margin: 20px 0; position: relative; }
-#track_donation h2 { font-size: 18px;}
-#track_donation header h2 { font-size: 16px; border-bottom-width: 4px; border-bottom-style: solid; padding-bottom: 3px;  }
+#track_donation { border-top: 1px solid #FFF; /*padding-right: 100px; padding-top: 20px;*/}
+// #track_donation header { margin: 20px 0; position: relative; }
+// #track_donation h2 { font-size: 18px;}
+//#track_donation header h2 { font-size: 16px; border-bottom-width: 4px; border-bottom-style: solid; padding-bottom: 3px;  }
 #login_if_you_already { position: absolute; top: 2px; right: 0; }
 #login_if_you_already a { text-decoration: none; color: #97A732; }
 

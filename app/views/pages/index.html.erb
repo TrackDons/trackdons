@@ -12,19 +12,19 @@
   <%= link_to t('home.read_more_about_this_project'), {controller: 'pages', action: 'about'}, class: 'button' %>
 </section>
 
-<section id="track_donation" class="content_full">
+<section id="track_donation" class="pt3">
 
-  <div class="content_column">
+  <div class="content-big">
 
     <% if logged_in? %>
-      <header>
-        <h2>
+      <header class="mt3 mb3">
+        <h3 class="main-color">
           <% if has_donations? %>
             <%= t 'track_a_donation' %>
           <% else %>
             <%= t 'track_your_first_donation' %>
           <% end %>
-        </h2>
+        </h3>
         <% unless logged_in? %>
           <div id="login_if_you_already">
             <%= link_to t('login_if_you_already'), login_path %></div>
@@ -36,6 +36,6 @@
       <%= render 'sessions/invitation_to_waitlist' %>
     <% end %>
 
-  </div>
+  <!-- </div> -->
 
 </section>

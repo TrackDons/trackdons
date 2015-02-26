@@ -32,10 +32,3 @@
   };
 
 }));
-
-$(function(){
-  $('[data-behaviour=datepicker]').pikaday({
-    firstDay: 1,
-    i18n: I18n.t("date.picker")
-  });
-});

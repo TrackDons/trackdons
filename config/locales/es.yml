@@ -101,6 +101,17 @@ es:
   i_want_to_keep_private: 'Quiero mantener mi donación privada'
   need_to_trackdon_for_another_project: '¿Quieres TrackDon en otro proyecto?'
   add_project: '(Añadir proyecto)'
+  donation: 
+    project: 'Proyecto'
+    amount: 'Cantidad'
+    recurring: 'Recurring?'
+    date: 'Fecha'
+    recurring_date: 'Fecha comienzo'
+    pick_date: 'Elije una fecha'
+    private: '¿Privado?'
+    description: 'Descripción'
+    url: 'URL del proyecto'
+    add: '+ añade otro'
   projects:
     project: 'Proyecto'
     all_projects: 'Todos los proyectos'

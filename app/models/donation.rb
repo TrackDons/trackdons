@@ -5,7 +5,7 @@ class Donation < ActiveRecord::Base
 
   belongs_to :user, counter_cache: true
 
-  belongs_to :recurring_doation
+  belongs_to :recurring_donation
 
   before_validation :set_project, :clear_comment
 

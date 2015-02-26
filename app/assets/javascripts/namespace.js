@@ -2,9 +2,7 @@
 
   // Namespace
   var TrackDons = {
-    Models: {},
-    Collections: {},
-    Views: {}
+    Components: {}
   }
 
   context.TrackDons = TrackDons;

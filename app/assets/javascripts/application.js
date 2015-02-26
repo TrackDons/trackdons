@@ -12,17 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require i18n
 //= require i18n/translations
 
 //= require vendor/underscore
 //= require vendor/backbone
-//= require vendor/backbone.listenFor
+//= require vendor/pubsub
 
 //= require vendor/tipsy
 //= require vendor/slidebars
 //= require vendor/jquery.sparkline
 //= require vendor/select2
 //= require vendor/pikaday
+
+//= require templates/donation
 
 //= require namespace
 
@@ -33,3 +36,5 @@
 //= require invitations
 //= require projects
 //= require donations
+
+//= require components/donations

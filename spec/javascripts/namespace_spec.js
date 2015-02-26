@@ -2,9 +2,7 @@ describe('Namespace', function() {
 
   it('should be defined', function() {
     expect(TrackDons).toBeDefined();
-    expect(TrackDons.Models).toBeDefined();
-    expect(TrackDons.Collections).toBeDefined();
-    expect(TrackDons.Views).toBeDefined();
+    expect(TrackDons.Components).toBeDefined();
   });
 
   it('should load fixture', function () {

@@ -59,9 +59,9 @@ en:
       delete_title: 'Delete donation'
       sure: 'Are you sure?'
       a_donation: A donation
-      private_donation_not_visible_explanation: This donation is private, so the quantity will only be shown to the donation's author
-      private_donation_not_visible_explanation_in_profile: This user has private donations, so this total does not include every donation
-      private_donation_not_visible_explanation_in_profile_for_self: You have private donations, so the total won't show up for other users, only for you
+      private_donation_not_visible_explanation: "This donation is private, so the quantity will only be shown to the donation's author"
+      private_donation_not_visible_explanation_in_profile: "This user has private donations, so this total does not include every donation"
+      private_donation_not_visible_explanation_in_profile_for_self: "You have private donations, so the total won't show up for other users, only for you"
     form:
       update_donation: Update
       cancel: Cancel
@@ -74,6 +74,17 @@ en:
   i_want_to_keep_private: 'I want to keep my donation private'
   need_to_trackdon_for_another_project: 'Need to TrackDon for another project?'
   add_project: '(Add project)'
+  donation: 
+    project: 'Project'
+    amount: 'Amount'
+    recurring: 'Recurring?'
+    date: 'Date'
+    recurring_date: 'Starting Date'
+    pick_date: 'Pick a date'
+    private: 'Private?'
+    description: 'Description'
+    url: 'Project URL'
+    add: '+ add another'
   projects:
     project: 'Project'
     all_projects: 'All projects'

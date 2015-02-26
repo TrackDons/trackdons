@@ -1,82 +1,93 @@
 <div class="ninety percent mx-auto">
     <div id="example">
-      <h3>AutoComplete Example - json inline</h3>
+      <h3>Project</h3>
       <form action="#">
         
-        <div class="inline-block justify-columns" style="width: 540px;">
-          <div class="form-group justify-item" style="width: 130px;">
-            <div class="form-label  uppercase">
-              <label for="projects">Project</label>
-            </div>
-            <div class="form-fields">
-              <input type="text" id="projects" data-projects_url = "<%= projects_path %>" class="hundred percent js-select2"/>
-            </div>
-          </div>
-          
-          <div class="form-group justify-item">
-            <div class="form-label uppercase">
-              <label for="mvc">Amount</label>
-            </div>
-            <div class="form-fields">
-              <div class="field-group">
-                <input style="width: 80px;" type="text" placeholder="ie. 125" id="mvc" class="field-text field-group-item"/>
-                <div class="field-select field-group-item">
-                  <select>
-                    <option value="">€</option>
-                    <option value="">$</option>
-                  </select>
+        <div class="bb-donations" data-projects="<%= projects_path %>">
+          <div class="js-donations mb2">
+
+            <div class="bb-donation mb3">
+              <div class="justify-columns donations-holder">
+                <div class="form-group justify-item forty percent">
+                  <div class="form-label uppercase">
+                    <label for="projects"><%= I18n.t('donation.project') %></label>
+                  </div>
+                  <div class="form-fields">
+                    <input type="text" name="donation[project_attributes][name]" class="hundred percent js-select2"/>
+                  </div>
+                </div>
+                
+                <div class="form-group justify-item">
+                  <div class="form-label uppercase">
+                    <label for="donation_quantity"><%= I18n.t('donation.amount') %></label>
+                  </div>
+                  <div class="form-fields">
+                    <div class="field-group">
+                      <input type="text" id="donation_quantity" name="donation[quantity]" placeholder="ie. 125" class="donation-amount field-text field-group-item"/>
+                      <div class="field-select field-group-item">
+                        <select name="donation[currency]">
+                          <option value="">€</option>
+                          <option value="">$</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group justify-item">
+                  <div class="form-label uppercase">
+                    <label for="recurring"><%= I18n.t('donation.recurring') %></label>
+                  </div>
+                  <div class="form-fields">
+                    <div class="field-select field-group-item">
+                      <select class="js-donation-reurring" name="donation[recurring]">
+                        <option value="no" selected="selected">No</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="2 weeks">2 Weeks</option>
+                        <option value="3 weeks">3 Weeks</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="2 months">2 Months</option>
+                        <option value="3 months">3 Months</option>
+                        <option value="4 months">4 Months</option>
+                        <option value="6 months">6 Months</option>
+                        <option value="12 months">12 Months</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group justify-item">
+                  <div class="form-label uppercase">
+                    <label class="js-donation-date" for="pikadate"><%= I18n.t('donation.date') %></label>
+                  </div>
+                  <div class="form-fields">
+                    <input type="text" name="donation[date]" placeholder="<%= I18n.t('donation.pick_date') %>" id="pikadate" class="donation-date field-text" data-behaviour="datepicker"/>
+                  </div>
+                </div>
+
+                <div class="form-group justify-item">
+                  <div class="form-label uppercase">
+                    <label class="tipsit" for="private" original-title="<%=I18n.t('donations.form.quantity_privacy_hint') %>" ><%= I18n.t('donation.private') %></label>
+                  </div>
+                  <div class="form-fields solid">
+                    <input name="donation[quantity_privacy]" type="hidden" value="0">
+                    <input name="donation[quantity_privacy]" type="checkbox" class="mr1" id="donation_quantity_privacy" />
+                    <label for="donation_quantity_privacy">Yes</label>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div class="form-group justify-item">
-            <div class="form-label uppercase">
-              <label for="recurring">Recurring?</label>
-            </div>
-            <div class="form-fields">
-              <div class="field-select field-group-item">
-                <select id="recurring">
-                  <option value="">Daily</option>
-                  <option value="">Weekly</option>
-                  <option value="">2 Weeks</option>
-                  <option value="">3 Weeks</option>
-                  <option value="">Monthly</option>
-                  <option value="">2 Months</option>
-                  <option value="">3 Months</option>
-                  <option value="">4 Months</option>
-                  <option value="">6 Months</option>
-                  <option value="">12 Months</option>
-                </select>
+              <div class="js-details donation-details mt2 justify-item">
+                <textarea class="field-textarea hundred percent mb2" name="donation[project_attributes][description]" placeholder="<%= I18n.t('donation.description') %>"></textarea>
+                <input type="text" class="field-text hundred percent" name="donation[project_attributes][url]" placeholder="<%= I18n.t('donation.url') %>">
               </div>
             </div>
           </div>
-
-          <div class="form-group justify-item">
-            <div class="form-label uppercase">
-              <label for="pikadate">Starting date</label>
-            </div>
-            <div class="form-fields">
-              <input style="width: 120px;" type="text" placeholder="Pick a date" id="pikadate" class="field-text" data-behaviour="datepicker" value="9 Oct 2014"/>
-            </div>
-          </div>
-
-          <div class="form-group justify-item">
-            <div class="form-label uppercase">
-              <label for="private">Private?</label>
-            </div>
-            <div class="form-fields solid">
-              <input id="private" type="checkbox" class="mr1" />
-              <label for="private">Yes</label>
-            </div>
+        
+          <div id="add-donation" class="js-add-donation s11">
+            <a href="#"><%= I18n.t('donation.add') %></a>
           </div>
         </div>
-
       </form>
     </div>
 </div>
-
-<script>
- 
-
-</script>
