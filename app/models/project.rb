@@ -57,7 +57,19 @@ class Project < ActiveRecord::Base
       :global
     end
   end
-  
+
+  def related_projects
+    @related_projects ||= begin
+      project_source = if category
+        category.projects
+      else
+        self.class
+      end
+
+      project_source.where.not(id: self.id).first(3)
+    end
+  end
+
   private
 
     def valid_countries

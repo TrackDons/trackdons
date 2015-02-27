@@ -60,9 +60,9 @@
 
       <h2><%= t '.related_projects' %></h2>
 
-      <% if @project.category.projects.present? %>
+      <% if @project.related_projects.any? %>
       <ul>
-        <% @project.category.projects.where.not(id: @project.id).first(3).each do |project| %>
+        <% @project.related_projects.each do |project| %>
           <li><%= link_to project.name, project_path(project) %></li>
         <% end %>  
       </ul>
