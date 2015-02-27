@@ -31,6 +31,7 @@ gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
 gem 'globalize', '~> 5.0.0'
 gem "acts_as_follower"
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development, :test do
   gem 'spring'
