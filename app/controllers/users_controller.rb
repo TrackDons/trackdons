@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @projects_following = @user.following_by_type('Project')
   end
 
   def new

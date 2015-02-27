@@ -17,7 +17,7 @@
 
 <% end %>
 
-<section id="user" class="user_page content_column">
+<section id="user" class="user_page wide_content">
 
   <%= render 'header' %>
 
@@ -26,18 +26,46 @@
       <div id="edit_your_profile"><%= link_to t('.edit_your_profile'), edit_user_path(current_user) %></div>
     <% end %>
 
-    <a href="">Donations (<%= @user.donations.size %>)</a>
+<!--     <a href="">Donations (<%= @user.donations.size %>)</a>
     <a href="">Projects (<%= @user.projects.distinct.count %>)</a>
+ -->    
   </div>
 
-  <div id="user_donations">
-    <%= render @user.donations.sorted %>
+  <div class="main_column">
+
+    <div id="user_donations">
+
+      <h2><%= t 'Donations' %></h2>
+
+      <div id="donations_chart"></div>
+
+      <script type="text/javascript">
+        $("#donations_chart").sparkline(<%= @user.chart_data(current_user) %>, { type: 'bar', barColor: '#565631', width: 100, barWidth: 9 });
+      </script>
+
+
+      <%= render @user.donations.sorted %>
+    </div>
+
+    <div id="user_projects" style="display: none">
+      <% if @user.projects.any? %>
+        <%= render @user.projects %>
+      <% end %>
+    </div>
+
   </div>
 
-  <div id="user_projects" style="display: none">
-    <% if @user.projects.any? %>
-      <%= render @user.projects %>
+  <div class="sidebar">
+
+    <h2><%= t '.following' %></h2>
+
+    <% if @projects_following.present? %>
+      <ul>
+      <% @projects_following.each do |project| %>
+        <li><%= link_to project.name, project_path(project) %></li>
+      <% end %>
+      </ul>
     <% end %>
-  </div>
+  </div>  
 
 </section>

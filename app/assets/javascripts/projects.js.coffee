@@ -26,5 +26,10 @@ $(document).on "page:change", ->
   $('#country').on "change", ->
     window.location.href = $(this).val()
 
-  
+  $('#unfollow_button').hover (->
+    $(this).html 'Unfollow'
+    return
+  ), ->
+    $(this).html 'Following'
+    return
   

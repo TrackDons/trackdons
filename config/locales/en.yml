@@ -131,10 +131,19 @@ en:
         other: "%{count} donations in total"
       edit: Edit
       delete: Delete
+      updates: Updates
+      related_projects: Related Projects
     form:
       select_category: Select category
     destroy: 
       deleted: The project has been eliminated. Hope it made sense
+    action_buttons:
+      follow_explanation: Be updated on project achievements and news, and receive donation suggestions and reminders
+      follow: Follow
+      following: Following
+      unfollow: Unfollow
+    form:
+      select_category: Select category
   shared:
     user_links:
       hello: "Hello %{name}"

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
   before_action :load_countries,  only: [:index]
   before_action :load_project,     only: [:edit, :update, :destroy, :follow, :unfollow]
-
+  
   ORDER_TYPES   = ['latest', 'alpha', 'popular']
   DEFAULT_ORDER = 'latest'
 

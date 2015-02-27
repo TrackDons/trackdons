@@ -4,7 +4,7 @@
 
   <div class="line"></div>
 
-  <h2>
+  <h3>
     <% if donation.private? && (!logged_in? || donation.user != current_user) %>
       <%= t('.a_donation') %>
     <% else %>
@@ -32,7 +32,7 @@
       <% end %>
     </span>
 
-  </h2>
+  </h3>
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 

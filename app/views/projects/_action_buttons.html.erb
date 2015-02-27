@@ -3,22 +3,25 @@
 <% if logged_in? %>
   <% if current_user.following?(@project) %>
     <%# button_to("Un-Follow", project_unfollow_path(@project), :method => :patch, :remote => true, ) %>
-    <%= link_to "Unfollow", project_unfollow_path(@project),
+    <%= link_to t('.following'), project_unfollow_path(@project),
           :remote => true,
           :method => :patch,
-          :class => "button unfollow",
-          :id => 'follow_button' %>
+          :class => "button active",
+          :id => 'unfollow_button' %>
   <% else %>
     <%# button_to("Follow", project_follow_path(@project), :method => :patch, :remote => true) %>
-    <%= link_to "Follow", project_follow_path(@project),
+    <%= link_to t('.follow'), project_follow_path(@project),
           :remote => true,
           :method => :patch,
-          :class => "button follow",
-          :id => 'follow_button' %>
+          :class => "button not_active tipsit",
+          :id => 'follow_button',
+          title: t('.follow_explanation') %>
   <% end %>
 <% else %>
-  <!-- TODO: what to do for anonymous users? -->
+  <%= link_to t('.follow'), login_path,
+          :class => "button not_active tipsit",
+          :id => 'follow_button',
+          title: t('.follow_explanation') %>
 <% end %>
-</span> <!-- TODO: check this span -->
 
 <%= link_to t('.trackdon'), '#track_donation', :class => 'button' %>

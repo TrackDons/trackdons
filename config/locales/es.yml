@@ -112,7 +112,7 @@ es:
   # donaciones form
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
-  i_want_to_explain_why: 'Quiere explicar por qué he donado para animar a otros'
+  i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'
   i_want_to_keep_private: 'Quiero mantener mi donación privada'
   need_to_trackdon_for_another_project: '¿Quieres TrackDon en otro proyecto?'
   projects:
@@ -140,6 +140,14 @@ es:
       have_you_donated: ¿Has donado al proyecto?
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
       invite_your_friends_to_this_page: Invita a tus amigos a esta página
+      follow: Seguir
+      trackdon: TrackDon
+      donations_number: 
+        one: '%{count} donación'
+        other: '%{count} donaciones'
+      donors_number: 
+        one: '%{count} donante'
+        other: '%{count} donantes'
       donation_last_week:
         one: "%{count} donación la semana pasada"
         other: "%{count} donaciones la semana pasada"
@@ -151,8 +159,15 @@ es:
         other: "%{count} donaciones en total"
       edit: Editar
       delete: Eliminar
+      updates: Actualizaciones
+      related_projects: Proyectos relacionados
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
+    action_buttons:
+      follow_explanation: Manténte actualizado en los logros y noticias de este proyecto, y recibe sugerencias de donaciones y recordatorios
+      follow: Seguir
+      following: Siguiendo
+      unfollow: Dejar de seguir
     form:
       select_category: Selecciona categoría
   shared:
