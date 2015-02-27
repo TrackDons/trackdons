@@ -27,9 +27,9 @@ $(document).on "page:change", ->
     window.location.href = $(this).val()
 
   $('#unfollow_button').hover (->
-    $(this).html 'Unfollow'
+    $(this).html($(this).data('opposite-action'))
     return
   ), ->
-    $(this).html 'Following'
+    $(this).html($(this).data('current-action'))
     return
-  
+

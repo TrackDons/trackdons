@@ -189,6 +189,8 @@ en:
       track_your_first_donation: Track your first donation
       get_started: 'Get started right now:'
       welcome: 'Welcome! Use TrackDons to keep track of the projects you have supported, and share your donations to inspire your friends.'
+      following: Following
+      not_following_projects_yet: 0 projects followed
     index:
       please_log_in: Please log in
   invitations:

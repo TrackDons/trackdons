@@ -6,7 +6,11 @@
           :remote => true,
           :method => :patch,
           :class => "button active",
-          :id => 'unfollow_button' %>
+          :id => 'unfollow_button',
+          :data => {
+            :current_action => t('.following'),
+            :opposite_action => t('.unfollow')
+          } %>
   <% else %>
     <%= link_to t('.follow'), follow_project_path(@project),
           :remote => true,

@@ -164,7 +164,7 @@ es:
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
     action_buttons:
-      follow_explanation: Manténte actualizado en los logros y noticias de este proyecto, y recibe sugerencias de donaciones y recordatorios
+      follow_explanation: Mantente actualizado en los logros y noticias de este proyecto, y recibe sugerencias de donaciones y recordatorios
       follow: Seguir
       following: Siguiendo
       unfollow: Dejar de seguir
@@ -215,6 +215,8 @@ es:
       track_your_first_donation: Registra tu primera donación
       get_started: 'Empieza ahora:'
       welcome: 'Bienvenido! Utiliza TrackDons para llevar un registro de los proyectos a los que has apoyado, dar difusión a tus donaciones e inspirar a tus amigos.'
+      following: Siguiendo
+      not_following_projects_yet: 0 proyectos seguidos
     index:
       please_log_in: Por favor, inicia sesión
   invitations:

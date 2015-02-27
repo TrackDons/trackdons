@@ -59,13 +59,15 @@
 
     <h2><%= t '.following' %></h2>
 
-    <% if @projects_following.present? %>
+    <% if @projects_following.any? %>
       <ul>
       <% @projects_following.each do |project| %>
-        <li><%= link_to project.name, project_path(project) %></li>
+        <li><%= link_to project.name, project %></li>
       <% end %>
       </ul>
+    <% else %>
+      <p><%= t('.not_following_projects_yet') %></p>
     <% end %>
-  </div>  
+  </div>
 
 </section>
