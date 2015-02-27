@@ -2,15 +2,13 @@
 
 <% if logged_in? %>
   <% if current_user.following?(@project) %>
-    <%# button_to("Un-Follow", project_unfollow_path(@project), :method => :patch, :remote => true, ) %>
-    <%= link_to t('.following'), project_unfollow_path(@project),
+    <%= link_to t('.following'), unfollow_project_path(@project),
           :remote => true,
           :method => :patch,
           :class => "button active",
           :id => 'unfollow_button' %>
   <% else %>
-    <%# button_to("Follow", project_follow_path(@project), :method => :patch, :remote => true) %>
-    <%= link_to t('.follow'), project_follow_path(@project),
+    <%= link_to t('.follow'), follow_project_path(@project),
           :remote => true,
           :method => :patch,
           :class => "button not_active tipsit",
