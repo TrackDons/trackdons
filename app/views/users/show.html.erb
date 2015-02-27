@@ -43,8 +43,8 @@
         $("#donations_chart").sparkline(<%= @user.chart_data(current_user) %>, { type: 'bar', barColor: '#565631', width: 100, barWidth: 9 });
       </script>
 
-
       <%= render @user.donations.sorted %>
+
     </div>
 
     <div id="user_projects" style="display: none">

@@ -250,11 +250,14 @@ h2 { font-size: 24px; }
 .project a { width: 120px; margin: 0 10px 10px 0; float: left; padding: 5px; height: 60px; text-align: bottom; border: 1px solid #CDD195; }
 .project a { display: block;}
 
-.projects_index {
+body.projects_index {
   .sidebar {
     h2 {
       border-top: 5px solid #7c9200;
       font-size: 1.2em;
+    }
+    li {
+      margin-bottom: .2em;
     }
   }
 }
@@ -334,14 +337,13 @@ h2 { font-size: 24px; }
     overflow: hidden;
   }*/
 
-  li {
-    margin-bottom: 1em;
-  }
-
   #unfollow_button {
     width: 58px;
     text-align: center;
   }
+}
+.wide_content .sidebar .related li {
+  margin-bottom: 1em;
 }
 
 .donation .tags a { display: inline-block; font-size: 11px; font-weight: normal; color: #666; text-decoration: none; background: #F3E9D1; padding: 2px; margin: 0 6px 0 0;}
@@ -500,17 +502,15 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
   .sidebar, .main_column {
     /*border: 1px solid red;*/
   }
-  /*h2 {
-    color: $secondary_color;
+  h2 {
     padding: .5em 0 0 0;
     margin: 0 0 1em 0;
   }
   h1 {
     font-size: 1.2em;
-    color: $secondary_color;
     padding: .5em 0 0 0;
     margin: 0 0 1em 0;
-  }*/
+  }
   
   section.header {
     border-top: 5px solid $main_color;
@@ -542,12 +542,10 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
       margin: 0; 
       padding: 0; 
       list-style-type: none;
-
-      li {
-        margin-bottom: 1em;
-      }
     }
-
+    li {
+      margin-bottom: 1em;
+    }
     .categories, .countries {
       a {
         text-decoration: none;
