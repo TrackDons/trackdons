@@ -1,12 +1,15 @@
-<section id="user" class="user_page content_column">
+<section id="user" class="user_page wide_content">
 
 	<%= render 'header' %>
 
-  <h1>Update your profile</h1>
+  <div id="user_nav"></div>
 
-  <div class="row">
+  <div class="main_column">
+
+    <h2><%= title t('.update_your_profile') %></h2>
+
     <%= form_for(@user, html: {class: "simple_form"}) do |f| %>
-      
+
       <%= render 'shared/error_messages' %>
 
       <p>
@@ -25,23 +28,24 @@
       </p>
 
       <p>
-        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </p>
 
       <p>
-        <%= f.label :country, t('Country') %>
+        <%= f.label :country %>
         <%= country_code_select(:user, :country) %>
       </p>
 
-
-      <%= f.submit "Save changes" %>
+      <%= f.submit t('.save') %>
     <% end %>
 
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails">change your avatar at gravatar.com</a>
+      <a href="http://gravatar.com/emails"><%= t('.gravatar') %></a>
     </div>
   </div>
+
+  <%= render 'sidebar' %>
 
 </section>

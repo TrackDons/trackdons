@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       save_pending_donations || redirect_to(user)
+      return
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'

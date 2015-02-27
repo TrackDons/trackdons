@@ -1,0 +1,9 @@
+<div class="sidebar">
+  <h2><%= t('.profile_options') %></h2>
+
+  <ul>
+    <li><%= link_to_unless_current(t('.update_your_profile'), edit_user_path(current_user)) %></li>
+    <li><%= link_to_unless_current(t('.external_services'), external_authentications_path) %></li>
+  </ul>
+
+</div>

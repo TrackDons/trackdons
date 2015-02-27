@@ -32,6 +32,10 @@ gem 'dynamic_form'
 gem 'globalize', '~> 5.0.0'
 gem "acts_as_follower"
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'hstore_accessor'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'spring'

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#root', as: :redirected_root
 
+  get 'auth/:service/callback', to: 'external_authentications#create'
+  get 'auth/failure', to: 'external_authentications#failure'
+
   scope "/:locale" do
     root 'pages#index'
 
@@ -26,6 +29,8 @@ Rails.application.routes.draw do
         patch 'unfollow'
       end
     end
+
+    resources :external_authentications, only: [:index, :edit, :update, :destroy]
 
     resources :password_resets, only: [:new, :create, :edit, :update]
 

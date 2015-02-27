@@ -21,8 +21,11 @@
     </p>
 
     <%= f.submit t('.login_action'), class: "btn btn-primary" %>
-    
   <% end %>
+
+  <div>
+    <%= link_to(t('.login_with_twitter'), '/auth/twitter') %>
+  </div>
 
   <%= render 'invitation_to_waitlist' %>
 

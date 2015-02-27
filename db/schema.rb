@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150224110207) do
+ActiveRecord::Schema.define(version: 20150226175510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 20150224110207) do
     t.integer  "available_invitations", default: 5
     t.integer  "donations_count",       default: 0
     t.string   "password_reset_token"
+    t.hstore   "credentials"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

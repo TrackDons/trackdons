@@ -1,0 +1,35 @@
+<section id="user" class="user_page wide_content">
+
+	<%= render 'users/header' %>
+
+  <div id="user_nav"></div>
+
+  <div class="main_column">
+
+    <h2><%= title t('.external_services') %></h2>
+
+    <p>
+      <strong>Twitter</strong> ·
+      <% if @current_external_services.include?(:twitter) %>
+        <%= link_to(t('.unlink'), external_authentication_path(:twitter), method: :delete, confirm: t('sure')) %>
+      <% else %>
+        <%= link_to(t('.link', account: 'Twitter'), '/auth/twitter') %>
+      <% end %>
+    </p>
+
+    <% if false %>
+    <p>
+      <strong>Facebook</strong> ·
+      <% if @current_external_services.include?(:faceboo) %>
+        <%= link_to(t('.unlink'), external_authentication_path(:faceboo), method: :delete, confirm: t('sure')) %>
+      <% else %>
+        <%= link_to(t('.link', account: 'Facebook'), '/auth/faceboo') %>
+      <% end %>
+    </p>
+    <% end %>
+
+  </div>
+
+  <%= render 'users/sidebar' %>
+
+</section>

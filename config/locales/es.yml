@@ -17,8 +17,11 @@ es:
       recurring_donation: Donación recurrente
     attributes:
       user:
+        name: Nombre
+        email: Correo-e
         password: Contraseña
         password_confirmation: Confirma tu contraseña
+        country: País
       invitation:
         invited_email: Correo-e
         user: Usuario
@@ -182,6 +185,7 @@ es:
       remember_me: Recuérdame en este equipo
       forgot_password: '¿Olvidaste la contraseña?'
       login_action: Entrar
+      login_with_twitter: Entrar con Twitter
   password_resets:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:
@@ -219,6 +223,25 @@ es:
       not_following_projects_yet: 0 proyectos seguidos
     index:
       please_log_in: Por favor, inicia sesión
+    edit:
+      update_your_profile: Actualiza tu perfil
+      save: Guardar cambios
+      gravatar: Actualiza tu avatar en gravatar.com
+    sidebar:
+      update_your_profile: Actualiza tu perfil
+      external_services: Servicios externos
+      profile_options: Opciones del perfil
+  external_authentications:
+    index:
+      external_services: Servicios externos
+      unlink: Desvincular cuenta
+      link: Vincular cuenta de %{account}
+    create:
+      link_successful: Cuenta vinculada correctamente
+    destroy:
+      unlink_successful: Cuenta desvinculada correctamente
+  external_service_unauthorized:
+    unauthorized: Servicio no pudo ser vinculado
   invitations:
     dont_have_enough_invitations: No tienes suficientes invitaciones. Sigue registrando donaciones y más, y pronto tendrás nuevas invitaciones.
     pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."
