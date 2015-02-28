@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   friendly_id :name, :use => [:slugged]
 
   acts_as_followable
-  
+
   validates :name, length: { minimum: 3 }, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }

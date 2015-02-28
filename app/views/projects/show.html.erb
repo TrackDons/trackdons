@@ -44,8 +44,8 @@
       <span><%= t('.donors_number', count: @project.total_people_donated) %></span>
       <%# t('.donations_last_week', count: @project.last_month_donations) %>
     </h2>
-    
-    <%= render @project.donations %>
+
+    <%= render @project.donations.sorted %>
 
   </section>
 
@@ -54,7 +54,7 @@
     <div class="updates">
 
       <h2><%= t '.updates' %></h2>
-      
+
     </div>
 
     <div class="related">
@@ -65,7 +65,7 @@
       <ul>
         <% @project.related_projects.each do |project| %>
           <li><%= link_to project.name, project_path(project) %></li>
-        <% end %>  
+        <% end %>
       </ul>
       <% end %>
 
@@ -80,7 +80,7 @@
 <div class="content_full">
   <div class="content_column">
     <section id="track_donation">
-      
+
       <% if logged_in? %>
         <h2><%= t('projects.did_you_track') %> </h2>
         <%= render 'donations/form' %>
