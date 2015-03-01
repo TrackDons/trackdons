@@ -52,8 +52,8 @@ RSpec.feature 'User donations' do
 
     click_link('Delete')
 
-    expect(page).to have_content('0€ donated in the last month')
-    expect(page).to have_content('0€ in total')
+    expect(page).to_not have_content('A donation by Bruce')
+    #expect(page).to have_content('0€ in total')
   end
 
   scenario 'I can edit a donation of mine' do

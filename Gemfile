@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -22,7 +24,6 @@ gem 'ejs'
 # gem 'turbolinks'
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
-gem 'acts-as-taggable-on', '~> 3.4'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
 gem 'redcarpet'
@@ -33,16 +34,19 @@ gem 'meta-tags'
 gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
 gem 'dynamic_form'
 gem "i18n-js", ">= 3.0.0.rc8" 
+gem 'globalize', '~> 5.0.0'
+gem "acts_as_follower"
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'spring'
+end
+
+group :test do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'quiet_assets'
-  gem 'byebug'
   gem 'launchy'
-  gem 'database_cleaner'
   gem 'email_spec'
   gem 'timecop'
   gem 'jasmine'
@@ -51,8 +55,6 @@ end
 group :development do
   gem 'mina'
   gem 'web-console', '~> 2.0'
-end
-
-group :production do
-  gem 'pg'
+  gem 'quiet_assets'
+  gem 'byebug'
 end

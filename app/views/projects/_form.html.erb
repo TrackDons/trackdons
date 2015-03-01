@@ -39,6 +39,11 @@
     </p>
 
     <p>
+      <%= f.label :countries %>
+      <%= country_code_select(:project, :countries, nil, {}, {multiple: true}) %>
+    </p>
+
+    <p>
       <%= f.submit(t('create')) %>
     </p>
   <% end %>

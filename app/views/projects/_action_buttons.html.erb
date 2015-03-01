@@ -1,0 +1,29 @@
+<%# link_to t('.follow'), track_donation_path, :class => 'button not_active' %>
+
+<% if logged_in? %>
+  <% if current_user.following?(@project) %>
+    <%= link_to t('.following'), unfollow_project_path(@project),
+          :remote => true,
+          :method => :patch,
+          :class => "button active",
+          :id => 'unfollow_button',
+          :data => {
+            :current_action => t('.following'),
+            :opposite_action => t('.unfollow')
+          } %>
+  <% else %>
+    <%= link_to t('.follow'), follow_project_path(@project),
+          :remote => true,
+          :method => :patch,
+          :class => "button not_active tipsit",
+          :id => 'follow_button',
+          title: t('.follow_explanation') %>
+  <% end %>
+<% else %>
+  <%= link_to t('.follow'), login_path,
+          :class => "button not_active tipsit",
+          :id => 'follow_button',
+          title: t('.follow_explanation') %>
+<% end %>
+
+<%= link_to t('.trackdon'), '#track_donation', :class => 'button' %>

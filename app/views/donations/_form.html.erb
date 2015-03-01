@@ -98,7 +98,7 @@
     <%= hidden_field_tag :back_url, project_path(@project) %>
   <% end %>
 
-  <%= f.submit(donation_form_button_text, class: 'big' ) %>
+  <%= f.submit(donation_form_button_text, class: 'big mb4' ) %>
   <% if editing_donation? %>
     <%= link_to(t('.cancel'), @donation) %>
   <% end %>

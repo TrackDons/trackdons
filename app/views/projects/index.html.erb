@@ -1,17 +1,17 @@
 <% set_meta_tags :description => t('metas.projects.home.description') %>
 <% set_meta_tags :keywords => t('metas.projects.home.keywords') %>
 
-<section class="wide_content">
+<section class="wide_content projects">
 
   <div class="main_column">
 
     <section class="header">
 
-      <h1><%= title @page_title %> (<%= link_to '+', new_project_path %>)</h1>
+      <h1><%= title(projects_page_title) %> (<%= link_to '+', new_project_path %>)</h1>
 
       <div class="filters">
         <% ProjectsController::ORDER_TYPES.each do |order| %>
-          <span><%= link_to_unless @order == order, t('.'+order), category_path(sort_by: order, category: params[:category]) %></span>
+          <span><%= link_to_unless @order == order, t('.'+order), projects_with_filter_path(@category, @country, sort_by: order) %></span>
         <% end %>
       </div>
 
@@ -31,13 +31,26 @@
       <h2><%= t('.categories') %></h2>
 
       <ul>
+        <li><%= link_to_unless_current t('.any_category'), projects_with_filter_path(nil, @country) %></li>
         <% @categories.each do |category| %>
-          <li><%= link_to_unless_current category.name, category_path(category: category) %></li>
+          <li><%= link_to_unless_current category.name, projects_with_filter_path(category, @country) %></li>
         <% end %>
       </ul>
     </div>
 
+
+    <% if options_for_countries_select.length > 1 %>
+    <div class="countries">
+      <h2><%= t('.countries') %></h2>
+
+      <ul>
+        <li><%= link_to_unless_current t('.global'), projects_with_filter_path(@category, nil) %></li>
+        <% @countries.each do |country| %>
+          <li><%= link_to_unless_current country[0], projects_with_filter_path(@category, country[1]) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
   </div>
 
 </section>
-

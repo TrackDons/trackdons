@@ -1,15 +1,10 @@
 class UserMailer < ApplicationMailer
 
-  # def welcome(user)
-  #   @user = user
-  #   @url  = 'http://selladay.ajogalvan.com'
-  #   mail(to: @user.email, subject: t('users.your_sell_a_day_adventure_starts'))
-  # end
-
-  # def password_reset(user)
-  #   @user = user
-  #   mail to: user.email, subject: t("users.password_reset")
-  # end
+  def password_reset(user)
+    @user = user
+    @url = edit_password_reset_url(I18n.locale, @user.password_reset_token)
+    mail to: user.email, subject: t("password_resets.password_reset_subject")
+  end
 
   def send_invitation(invitation, current_user, url)
     @invitation = invitation

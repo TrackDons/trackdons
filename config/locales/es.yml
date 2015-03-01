@@ -3,6 +3,11 @@ es:
     errors:
       messages:
         record_invalid: "Error al guardar"
+      models:
+        project:
+          attributes:
+            countries:
+              invalid: "tiene que contener nombres válidos de país"
     models:
       user: Usuario
       invitation: Invitación
@@ -11,8 +16,11 @@ es:
       project: Proyecto
       recurring_donation: Donación recurrente
     attributes:
+      user:
+        password: Contraseña
+        password_confirmation: Confirma tu contraseña
       invitation:
-        invited_email: E-mail
+        invited_email: Correo-e
         user: Usuario
       project:
         name: Nombre
@@ -20,6 +28,7 @@ es:
         description: Descripción
         category_id: Categoría
         donation_url: URL de donaciones
+        countries: Países
       donation:
         date: Fecha
         project_id: Proyecto
@@ -75,6 +84,12 @@ es:
       project_page: 'La página de %{project}'
       more_donations_by: 'Más donaciones de %{user}'
       other_projects: 'Otros proyectos'
+      user_is_using: '%{name} está usando TrackDons para llevar un registro de las donaciones que hace a los proyectos en los que cree.'
+      in_which_projects: ¿En qué proyectos crees tú?
+      create_your_own: Crea tu propio registro y ayuda a tus proyectos favoritos. 
+      great_donation_tracked: Bien, tu donación está registrada. Esto es solo el principio.
+      be_an_active_promoter: Sé un promotor activo de la donación que has hecho. 
+      its_the_best_way: Es la mejor forma de convencer a tus amigos. 
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
@@ -97,7 +112,7 @@ es:
   # donaciones form
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
-  i_want_to_explain_why: 'Quiere explicar por qué he donado para animar a otros'
+  i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'
   i_want_to_keep_private: 'Quiero mantener mi donación privada'
   need_to_trackdon_for_another_project: '¿Quieres TrackDon en otro proyecto?'
   add_project: '(Añadir proyecto)'
@@ -121,7 +136,10 @@ es:
     did_you_track: '¿Has donado a este proyecto? TrackDon!'
     invite_your_friends_to_this_page: 'Invita a tus amigos a esta página'
     index:
+      global: Global
+      any_category: Todas
       categories: Categorías
+      countries: Países
       latest: Últimos
       alpha: Alfabético
       popular: Popularidad
@@ -129,11 +147,19 @@ es:
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:
-      project_created: Projecto creado. ¡Compártelo y comienza a guardar donaciones!
+      project_created: Proyecto creado. ¡Compártelo y comienza a guardar donaciones!
     show:
       have_you_donated: ¿Has donado al proyecto?
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
       invite_your_friends_to_this_page: Invita a tus amigos a esta página
+      follow: Seguir
+      trackdon: TrackDon
+      donations_number: 
+        one: '%{count} donación'
+        other: '%{count} donaciones'
+      donors_number: 
+        one: '%{count} donante'
+        other: '%{count} donantes'
       donation_last_week:
         one: "%{count} donación la semana pasada"
         other: "%{count} donaciones la semana pasada"
@@ -145,16 +171,45 @@ es:
         other: "%{count} donaciones en total"
       edit: Editar
       delete: Eliminar
+      updates: Actualizaciones
+      related_projects: Proyectos relacionados
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
+    action_buttons:
+      follow_explanation: Mantente actualizado en los logros y noticias de este proyecto, y recibe sugerencias de donaciones y recordatorios
+      follow: Seguir
+      following: Siguiendo
+      unfollow: Dejar de seguir
     form:
       select_category: Selecciona categoría
   shared:
     user_links:
       hello: "Hola %{name}"
       log_out: Salir
-      login: Identificarse
+      login: Identificarse en TrackDons
       track_your_first_donación: Registra tu primera donación
+  sessions:
+    new:
+      login: Identificarse en TrackDons
+      remember_me: Recuérdame en este equipo
+      forgot_password: '¿Olvidaste la contraseña?'
+      login_action: Entrar
+  password_resets:
+    password_reset_subject: Recupera tu contraseña de TrackDons
+    new:
+      reset_your_password: Recupera tu contraseña
+      email: Correo-e
+      continue: Continuar
+      enter_your_email: 'Introduce tu correo-e para recuperar tu contraseña:'
+    create:
+      invalid_email: Correo-e no válido
+      success: Te acabamos de enviar un correo-e con un enlace para recuperar tu contraseña
+    edit:
+      reset_your_password: Recupera tu contraseña
+      save: Guardar cambios
+      enter_your_password: 'Introduce tu nueva contraseña:'
+    update:
+      success: Contraseña actualizada correctamente
   users:
     invite: 'Invita un amigo'
     you_already_have_an_account: '¡Ya tienes una cuenta! Guarda la invitación para alguien más...'
@@ -169,9 +224,13 @@ es:
       in_total: en total
     show:
       edit_your_profile: Edita tu perfil
+      track_your_first_donation: Registra tu primera donación
+      get_started: 'Empieza ahora:'
+      welcome: 'Bienvenido! Utiliza TrackDons para llevar un registro de los proyectos a los que has apoyado, dar difusión a tus donaciones e inspirar a tus amigos.'
+      following: Siguiendo
+      not_following_projects_yet: 0 proyectos seguidos
     index:
       please_log_in: Por favor, inicia sesión
-    remember_me: Recuérdame en este equipo
   invitations:
     dont_have_enough_invitations: No tienes suficientes invitaciones. Sigue registrando donaciones y más, y pronto tendrás nuevas invitaciones.
     pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."
@@ -181,6 +240,8 @@ es:
     invitation_sent: 'Genial, tu invitación ha sido enviada. Veamos si tu amigo/a es tan buena persona como tú ;)'
     not_valid: 'Mmm.... Tu invitación no parece válida.'
     welcomme_message: '¡Genial! Con esta invitación te puedes registrar en TrackDons y empezar a registrar tus donaciones. Y después de registrar las primeras, recibirás invitaciones para que puedas animar a tus amigos a registrarse.'
+    alive_and_donating: registrado y donando ;)
+    not_yet_a_user: todavía no se ha registrado :( dále un toque!
   user_mailer:
     send_invitation: 
       send_invitation_mail: |
@@ -204,6 +265,15 @@ es:
         - Tienes una nueva invitación disponible. ¿No es fantástico? Piensa en tu próximo-amigo-más-activo-donante, y llámale... (esto... y también acuérdate de invitarle)
         
         Siempre nos gusta escuchar opiniones sobre otros donantes, puedes escribirnos a lets@trackdons.org
+    password_reset:
+      password_reset_email: |
+        Hola,
+
+        Alguien, probablemente tú, has pedido ayuda para recuperar tu contraseña de TrackDons. Sigue este enlace para recuperarla:
+
+        %{url}
+
+        Si no has sido tú, puedes ignorar este mensaje, y tu contraseña seguirá siendo la misma. Si tienes algún comentario escríbenos a lets@trackdons.org
   metas:
     home:
       description: TrackDons es un diario de donaciones de los proyectos que te importan. Una experiencia on-line para ayudarte a donar
@@ -214,6 +284,9 @@ es:
       home: 
         description: Navega y descubre todos los diferentes proyectos donde puedes donar
         title: Todos los proyectos
+        title_with_category_and_country: Proyectos sobre %{category} en %{country}
+        title_with_category: Proyectos sobre %{category}
+        title_with_country: Proyectos en %{country}
         keywords: proyectos, donación, descubre
       project:
         description: Registra tus donaciones a %{name} con TrackDons y mejora el alcance del proyecto
@@ -240,3 +313,11 @@ es:
       months: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
       weekdays: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado']
       weekdaysShort: ['Do','Lu','Ma','Mi','Ju','Vi','Sa']
+  time:
+    formats:
+      donation: "%d.%m.%Y"
+  helpers:
+    label:
+      session:
+        email: Correo-e
+        password: Contraseña

@@ -26,8 +26,14 @@ Rails.application.routes.draw do
     resources :donations
     resources :projects do
       resources :donations
+      member do
+        patch 'follow'
+        patch 'unfollow'
+      end
     end
 
-    get 'projects(::category)' => 'projects#index', as: :category
+    resources :password_resets, only: [:new, :create, :edit, :update]
+
+    get 'projects(/*filters)' => 'projects#index', as: :projects_filtered
   end
 end

@@ -2,24 +2,24 @@ class ProjectsController < ApplicationController
 
   before_action :set_new_donation, only: :show
   before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
-  before_action :load_project,     only: [:edit, :update, :destroy]
-
+  before_action :load_countries,  only: [:index]
+  before_action :load_project,     only: [:edit, :update, :destroy, :follow, :unfollow]
+  
   ORDER_TYPES   = ['latest', 'alpha', 'popular']
   DEFAULT_ORDER = 'latest'
+
+  FILTERS_AVAILABLE = ['category', 'country']
 
   def index
     @order = params[:sort_by] || DEFAULT_ORDER
 
-    if params[:category]
-      @category = Category.friendly.find(params[:category])
-      @projects = @category.projects
-      @page_title = @category.name
+    if params[:filters]
+      load_projects_from_filters(params[:filters])
     else
       @projects = Project.search(params[:q])
-      @page_title = t('metas.projects.home.title')
     end
 
-    @projects = @projects.sorted_by(@order)
+    @projects = @projects.send(@order.to_sym)
 
     respond_to do |format|
       format.html
@@ -63,10 +63,26 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def follow
+    current_user.follow(@project)
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.js
+    end
+  end
+
+  def unfollow
+    current_user.stop_following(@project)
+    respond_to do |format|
+      format.html { redirect_to @project }
+      format.js
+    end
+  end
+
   private
 
     def project_params
-      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id)
+      params.require(:project).permit(:name, :description, :url, :twitter, :donation_url, :category_id, countries: [])
     end
 
     def load_project
@@ -80,6 +96,29 @@ class ProjectsController < ApplicationController
     end
 
     def load_categories
-      @categories = Category.order(name: :asc)
+      @categories = Category.includes(:translations).
+                      order('category_translations.name ASC')
     end
+
+    def load_countries
+      @countries = Project.used_countries.sort{|a,b| a[0] <=> b[0] }
+    end
+
+    def load_projects_from_filters(filters)
+      @projects = Project
+
+      filters.split('/').in_groups_of(2).each do |filter_group|
+        filter_name, filter_value = filter_group
+        next if !FILTERS_AVAILABLE.include?(filter_name)
+
+        if filter_name == 'category'
+          @category = Category.friendly.find(filter_value)
+          @projects = @projects.category(@category)
+        elsif filter_name == 'country'
+          @country = filter_value
+          @projects = @projects.country(@country)
+        end
+      end
+    end
+
 end

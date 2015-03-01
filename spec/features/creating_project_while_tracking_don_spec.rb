@@ -21,7 +21,7 @@ RSpec.feature 'Adding projects while tracking donations. When I create a donatio
 
     click_button 'TrackDon'
 
-    expect(page).to have_content 'Hooray!'
+    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
     expect(page).to have_content '25€ to Ngrok by Yorch'
   end
 end

@@ -62,5 +62,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     Timecop.return
+    reset_mailer
   end
 end

@@ -20,10 +20,4 @@
     <% end %>
   </div>
 
-  <div id="donations_chart"></div>
-
-  <script type="text/javascript">
-    $("#donations_chart").sparkline(<%= @user.chart_data(current_user) %>, { type: 'bar', barColor: '#565631', width: 100, barWidth: 9 });
-  </script>
-
 </header>
