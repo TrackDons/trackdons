@@ -157,6 +157,7 @@ en:
       forgot_password: 'Forgot password?'
       login_action: Log in
       login_with_twitter: Log in with Twitter
+      login_with_facebook: Log in with Facebook
   password_resets:
     password_reset_subject: Reset your password at TrackDons
     new:

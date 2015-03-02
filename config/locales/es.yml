@@ -186,6 +186,7 @@ es:
       forgot_password: '¿Olvidaste la contraseña?'
       login_action: Entrar
       login_with_twitter: Entrar con Twitter
+      login_with_facebook: Entrar con Facebook
   password_resets:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:

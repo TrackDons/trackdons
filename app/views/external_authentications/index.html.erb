@@ -17,16 +17,14 @@
       <% end %>
     </p>
 
-    <% if false %>
     <p>
       <strong>Facebook</strong> ·
-      <% if @current_external_services.include?(:faceboo) %>
-        <%= link_to(t('.unlink'), external_authentication_path(:faceboo), method: :delete, confirm: t('sure')) %>
+      <% if @current_external_services.include?(:facebook) %>
+        <%= link_to(t('.unlink'), external_authentication_path(:facebook), method: :delete, confirm: t('sure')) %>
       <% else %>
-        <%= link_to(t('.link', account: 'Facebook'), '/auth/faceboo') %>
+        <%= link_to(t('.link', account: 'Facebook'), '/auth/facebook') %>
       <% end %>
     </p>
-    <% end %>
 
   </div>
 

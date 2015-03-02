@@ -13,10 +13,11 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token, :invitation_token
 
-  hstore_accessor :credentials,
-      twitter_login:  :string,
-      twitter_token:  :string,
-      twitter_secret: :string
+  hstore_accessor :credentials, twitter_id:     :string,
+                                twitter_token:  :string,
+                                twitter_secret: :string,
+                                facebook_id:    :string,
+                                facebook_token:  :string
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
