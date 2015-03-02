@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :donations
   has_many :invitations
 
-  attr_accessor :remember_token, :invitation_token
+  attr_accessor :remember_token
 
   hstore_accessor :credentials, twitter_id:     :string,
                                 twitter_token:  :string,
@@ -24,8 +24,6 @@ class User < ActiveRecord::Base
 	validates :name, presence: true, length: { maximum: 50 }
   validates :password, length: { minimum: 6 }, allow_blank: true
   validates :country, presence: true
-
-  validate :valid_invitation_token, on: :create
 
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }
@@ -68,10 +66,6 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
-  def invitation
-    self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
-  end
-
   def has_private_donations?
     donations.quantity_private.any?
   end
@@ -87,10 +81,6 @@ class User < ActiveRecord::Base
     if new_record? && self.country.present?
       self.currency = CurrencyFromCountry.new(self.country).currency
     end
-  end
-
-  def valid_invitation_token
-    self.invitation_token.present? && Invitation.valid_token?(self.invitation_token)
   end
 
   def generate_token(column)

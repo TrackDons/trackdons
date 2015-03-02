@@ -84,8 +84,6 @@
       <% if logged_in? %>
         <h2><%= t('projects.did_you_track') %> </h2>
         <%= render 'donations/form' %>
-      <% else %>
-        <%= render 'sessions/invitation_to_waitlist' %>
       <% end %>
 
     </section>

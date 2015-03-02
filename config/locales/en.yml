@@ -197,12 +197,15 @@ en:
       please_log_in: Please log in
     edit:
       update_your_profile: Update your profile
-      save: Save changes
       gravatar: Change your avatar at gravatar.com
     sidebar:
       update_your_profile: Update your profile
       external_services: External services
       profile_options: Profile options
+    new:
+      signup: Create your account
+    form:
+      save: Save
   external_authentications:
     index:
       external_services: External services

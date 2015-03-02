@@ -3,8 +3,8 @@ module Paths
     locale_preffix + '/'
   end
 
-  def signup_page(invitation)
-    locale_preffix + "/signup/#{invitation.invitation_token}"
+  def signup_page
+    locale_preffix + "/signup"
   end
 
   def donations_page

@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
   before_action :load_user,      only: [:show, :edit, :update, :destroy]
 
-  before_action :validates_invitation_token, only: :new # we only allow signups if you have an invitation token
-
   def index
     @users = User.all
   end
@@ -16,15 +14,16 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new email: @invitation.invited_email
+    redirect_to current_user if logged_in?
+
+    @user = User.new
   end
 
   def create
+    redirect_to current_user if logged_in?
+
     @user = User.new(user_params)
     if @user.save
-      if invitation = @user.invitation
-        invitation.mark_as_used!(@user)
-      end
       log_in @user
       save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
     else
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country, :invitation_token)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country)
     end
 
     def admin_user
@@ -63,19 +62,4 @@ class UsersController < ApplicationController
     def load_user
       @user = User.find(params[:id])
     end
-
-    def validates_invitation_token
-      if logged_in?
-        flash[:error] = t('users.you_already_have_an_account')
-        redirect_to root_path
-      else
-        if @invitation = Invitation.find_valid_token(params[:invitation_token])
-          flash.now[:notice] = t('invitations.welcome_message')
-        else
-          flash[:error] = t('invitations.not_valid')
-          redirect_to root_path
-        end
-      end
-    end
-    
 end

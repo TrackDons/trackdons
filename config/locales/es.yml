@@ -177,11 +177,11 @@ es:
     user_links:
       hello: "Hola %{name}"
       log_out: Salir
-      login: Identificarse en TrackDons
-      track_your_first_donación: Registra tu primera donación
+      login: Entrar
+      track_your_first_donation: Registra tu primera donación
   sessions:
     new:
-      login: Identificarse en TrackDons
+      login: Identificarse
       remember_me: Recuérdame en este equipo
       forgot_password: '¿Olvidaste la contraseña?'
       login_action: Entrar
@@ -226,12 +226,15 @@ es:
       please_log_in: Por favor, inicia sesión
     edit:
       update_your_profile: Actualiza tu perfil
-      save: Guardar cambios
       gravatar: Actualiza tu avatar en gravatar.com
     sidebar:
       update_your_profile: Actualiza tu perfil
       external_services: Servicios externos
       profile_options: Opciones del perfil
+    new:
+      signup: Crea tu cuenta
+    form:
+      save: Guardar
   external_authentications:
     index:
       external_services: Servicios externos
