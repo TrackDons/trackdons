@@ -11,11 +11,37 @@ class ExternalServiceManager
     service = auth_information[:provider].to_sym
     raise "Invalid service" unless SUPPORTED_SERVICES.include?(service)
 
+    uid = auth_information[:uid]
+
     if service == :twitter
-      klass.with_twitter_id(auth_information[:info][:nickname]).first
+      klass.with_twitter_id(uid).first
     elsif service == :facebook
-      klass.with_facebook_id(auth_information[:uid]).first
+      klass.with_facebook_id(uid).first
     end
+  end
+
+  def self.create_instance(klass, auth_information)
+    service = auth_information[:provider].to_sym
+    raise "Invalid service" unless SUPPORTED_SERVICES.include?(service)
+
+    user = klass.new
+    user.external_service = service
+
+    if service == :facebook
+      user.name     = auth_information[:info][:name]
+      user.email    = auth_information[:info][:email]
+      user.username = user.name.parameterize
+    elsif service == :twitter
+      user.name = auth_information[:info][:name]
+      user.username = auth_information[:info][:nickname]
+    end
+
+    # TODO: add country automatically by using the IP
+    user.country = 'ES'
+
+    link_to_service(service)
+
+    user
   end
 
   def include?(service)
@@ -50,10 +76,11 @@ class ExternalServiceManager
   private
 
   def link_to_twitter(auth_information)
-    user.twitter_id     = auth_information[:info][:nickname]
+    user.external_service = :twitter
+    user.twitter_id     = auth_information[:uid]
     user.twitter_token  = auth_information[:credentials][:token]
     user.twitter_secret = auth_information[:credentials][:secret]
-    user.save!
+    user.save
   end
 
   def unlink_from_twitter
@@ -63,11 +90,11 @@ class ExternalServiceManager
     user.save!
   end
 
-
   def link_to_facebook(auth_information)
+    user.external_service = :facebook
     user.facebook_id    = auth_information[:uid]
     user.facebook_token = auth_information[:credentials][:token]
-    user.save!
+    user.save
   end
 
   def unlink_from_facebook
@@ -75,4 +102,5 @@ class ExternalServiceManager
     user.facebook_token = nil
     user.save!
   end
+
 end

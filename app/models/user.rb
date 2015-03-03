@@ -4,26 +4,27 @@ class User < ActiveRecord::Base
 
   acts_as_followable
   acts_as_follower
-  
-  has_secure_password
+
+  has_secure_password validations: false
 
   has_many :donations, dependent: :destroy
   has_many :projects, through: :donations
   has_many :invitations
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :external_service
 
   hstore_accessor :credentials, twitter_id:     :string,
                                 twitter_token:  :string,
                                 twitter_secret: :string,
                                 facebook_id:    :string,
-                                facebook_token:  :string
+                                facebook_token: :string
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	validates :name, presence: true, length: { maximum: 50 }
-  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, length: { minimum: 6 }, confirmation: true, if: Proc.new{|u| u.external_service.blank? }, allow_blank: true
   validates :country, presence: true
+
 
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }

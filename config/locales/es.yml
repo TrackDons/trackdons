@@ -233,6 +233,8 @@ es:
       profile_options: Opciones del perfil
     new:
       signup: Crea tu cuenta
+      signup_with_twitter: Registrarse con Twitter
+      signup_with_facebook: Registrarse con Facebook
     form:
       save: Guardar
   external_authentications:

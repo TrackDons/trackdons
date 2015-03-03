@@ -27,8 +27,16 @@ class ExternalAuthenticationsController < ApplicationController
           redirect_to user_path(I18n.locale, current_user) and return
         end
       else
-        # TODO: signup
-        render text: 'TO DO'
+        user = ExternalServiceManager.create_instance(User, auth_information)
+        if user.new_record?
+          @user = user
+          @user.errors.clear
+          render 'complete_signup'
+        else
+          log_in user
+
+          save_pending_donations || redirect_to(user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
+        end
       end
     end
   end

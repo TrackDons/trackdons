@@ -1,0 +1,18 @@
+<section class="content_column" id="user">
+  <h1><%= title(t('.complete_signup')) %></h1>
+
+  <p>To complete the signup we need you to provide your email:</p>
+
+  <%= form_for(@user, html: {class: "simple_form"}) do |f| %>
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </p>
+
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :username %>
+    <%= f.hidden_field :country %>
+
+    <%= f.submit t('.save') %>
+  <% end %>
+</section>

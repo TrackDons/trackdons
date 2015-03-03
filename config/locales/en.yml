@@ -204,6 +204,8 @@ en:
       profile_options: Profile options
     new:
       signup: Create your account
+      signup_with_twitter: Signup with Twitter
+      signup_with_facebook: Signup with Facebook
     form:
       save: Save
   external_authentications:
