@@ -217,6 +217,10 @@ en:
       link_successful: Account linked successfully
     destroy:
       unlink_successful: Account unlinked successfully
+    complete_signup:
+      complete_signup: Complete the signup
+      complete_signup_info: "To complete the signup we need you to provide your email:"
+      save: Save
   external_service_unauthorized:
     unauthorized: Service couldn't be linked
   invitations:

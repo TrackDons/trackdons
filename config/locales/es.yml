@@ -246,6 +246,10 @@ es:
       link_successful: Cuenta vinculada correctamente
     destroy:
       unlink_successful: Cuenta desvinculada correctamente
+    complete_signup:
+      complete_signup: Completa el registro
+      save: Guardar
+      complete_signup_info: "Para completar el registro necesitamos que introduzcas tu e-mail:"
   external_service_unauthorized:
     unauthorized: Servicio no pudo ser vinculado
   invitations:

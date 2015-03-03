@@ -39,7 +39,8 @@ class ExternalServiceManager
     # TODO: add country automatically by using the IP
     user.country = 'ES'
 
-    link_to_service(service)
+    service_manager = self.new(user)
+    service_manager.link_to_service(auth_information)
 
     user
   end

@@ -29,8 +29,10 @@ class ExternalAuthenticationsController < ApplicationController
       else
         user = ExternalServiceManager.create_instance(User, auth_information)
         if user.new_record?
+          user.errors.clear
           @user = user
-          @user.errors.clear
+          session[:external_service_auth_information] = auth_information.slice(:uid, :credentials, :provider, :info)
+
           render 'complete_signup'
         else
           log_in user

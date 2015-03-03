@@ -25,6 +25,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
+
+      if session[:external_service_auth_information]
+        current_external_services = ExternalServiceManager.new(current_user)
+        current_external_services.link_to_service(ActiveSupport::HashWithIndifferentAccess.new(session[:external_service_auth_information]))
+        session[:external_service_auth_information].clear
+      end
       save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
     else
       render 'new'

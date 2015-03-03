@@ -1,7 +1,7 @@
 <section class="content_column" id="user">
   <h1><%= title(t('.complete_signup')) %></h1>
 
-  <p>To complete the signup we need you to provide your email:</p>
+  <p><%= t('.complete_signup_info') %></p>
 
   <%= form_for(@user, html: {class: "simple_form"}) do |f| %>
     <p>
