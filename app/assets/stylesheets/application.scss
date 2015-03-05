@@ -1,33 +1,103 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+/* 
+ * 1. Core
+ * -------
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * Any module relative to app configuration it should be here. This includes the global reset for common ground
+ * in all browsers, any custom reset we want to apply, all variables the app uses, sass functions and mixins...
  *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- *= require jquery-ui/autocomplete
- *= require tipsy
- *= require slidebars
- *= require select2
- *= 
  */
 
-@import "http://fonts.googleapis.com/css?family=Raleway:400,700";
-@import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
+@import "core/settings";
+@import "core/functions";
+@import "core/mixins";
+@import "core/reset";
 
+/* 
+ * 2. Base
+ * -------
+ *
+ * All base styles for the app will be under base folder. This includes fonts, regular styles for headings, 
+ * paragraphs, lists, links, etc.
+ *
+ */
+
+@import "base/fonts";
+@import "base/base";
+@import "base/links";
+@import "base/lists";
+@import "base/label";
+
+/* 
+ * 3. Helpers
+ * ----------
+ *
+ * Utility classes, like to clearfix the floats or align text. This follows the single responsability principle.
+ *
+ */
+
+@import "helpers/clearfix";
+@import "helpers/is-hidden";
+@import "helpers/percent";
+@import "helpers/font-sizes";
 @import "helpers/white-spacing";
+@import "helpers/colors";
+@import "helpers/layout";
+@import "helpers/float";
+@import "helpers/with-border";
+@import "helpers/bold";
+@import "helpers/align";
 
-$main_color: #7C9200; /* main green */
-$secondary_color: #565631; /* dark green */
-$tertiary_color: #E4D6B3;
-$light_background: #EBE8CC;
+/* 
+ * 4. Objects
+ * ----------
+ *
+ * We want reusable modules that they could be applied repeatedly on different pages. This alignes with
+ * the DRY principle
+ *
+ */
+
+@import "objects/form";
+@import "objects/form-fields";
+@import "objects/justify-columns";
+@import "objects/content";
+@import "objects/checkbox";
+@import "objects/avatar";
+
+/* 
+ * 5. Layout
+ * ---------
+ *
+ * Sometimes it happens you need to overwrite some components' behaviour. This should be an exception, and if you 
+ * find yourself overwriting any component twice, we are probably doing wrong.
+ *
+ */
+
+ @import "layout/donations";
+ @import "layout/post-donation";
+
+/* 
+ * 6. Vendors
+ * ----------
+ *
+ * Any vendor styles, usually linked to jquery plugins or javascripts, should go here.
+ *
+ */
+
+@import "vendor/select2";
+@import "vendor/slidebars";
+@import "vendor/tipsy";
+@import "vendor/pikaday";
+
+/* 
+
+Prefer components over page level styles, for large term maintenability reasons mostly. We want our front end to 
+feel like library code. We should start to break files like this into smaller more focused files like 
+form.scss, button.scss, tags.scss, dropdown.css, etc.
+
+And this is important, make a tatoo in your arm if you prefer, but follow this rule: 
+DON'T USE #ID FOR STYLING. DON'T. JUST DON'T.
+
+*/
 
 /* colors */
 body { background: #F3E9D1; }

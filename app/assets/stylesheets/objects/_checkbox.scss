@@ -1,0 +1,46 @@
+.field-checkbox.is-fancy {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  width: 20px;
+}
+
+.field-checkbox.is-fancy label {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px $main_color;
+}
+
+.field-checkbox.is-fancy label:hover:after {
+  opacity: 0.6;
+}
+
+.field-checkbox.is-fancy input[type=checkbox] {
+  display: none;
+  visibility: hidden;
+}
+
+.field-checkbox.is-fancy input[type=checkbox]:checked + label {
+  background: $white;
+  box-shadow: 0 0 0 1px $main_color;
+}
+
+.field-checkbox.is-fancy input[type=checkbox]:checked + label:after {
+  background: transparent;
+  border: 4px solid $main_color;
+  border-right: none;
+  border-top: none;
+  content: '';
+  height: 5px;
+  left: 4px;
+  position: absolute;
+  top: 4px;
+  transform: rotate(-50deg);
+  width: 9px;
+}

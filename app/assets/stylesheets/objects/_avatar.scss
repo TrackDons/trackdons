@@ -1,0 +1,23 @@
+.avatar {
+  display: inline-block;
+  height: auto;
+
+  &.is-small {
+    width: 32px;
+  }
+
+  &.is-medium {
+    width: 48px;
+  }
+
+  &.is-large {
+    width: 72px;
+  }
+}
+
+.avatar img {
+  border-radius: 3px;
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}

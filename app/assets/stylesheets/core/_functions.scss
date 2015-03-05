@@ -1,0 +1,27 @@
+/*
+
+Functions
+---------
+
+Calculations used by other SCSS files. If you need to DRY-up some CSS properties
+put that code in `core/_mixins.scss`, this is only for functions.
+
+*/
+
+@function number-to-width-unit($num) {
+  $count: 1;
+
+  @each $word in five, ten, fifteen, twenty,
+  twentyfive, thirty, thirtyfive, forty, fortyfive, 
+  fifty, fiftyfive, sixty, sixtyfive, seventy, seventyfive, 
+  eighty, eightyfive, ninety, ninetyfive, hundred {
+    @if ($count == $num) { @return $word; }
+    $count: $count + 1;
+  }
+
+  @return "invalid";
+}
+
+@function width-unit-to-percent($num) {
+  @return ($num * 5%);
+}

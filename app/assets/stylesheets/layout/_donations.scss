@@ -1,0 +1,25 @@
+/*
+ *
+ * Donation object
+ * ---------------
+ *
+ * The holder object list of donations
+ *
+ */
+
+.donations-holder,
+.donation-details {
+  width: 700px;
+}
+
+.donation-amount {
+  width: 80px;
+}
+
+.donation-date {
+  width: 120px;
+}
+
+.donation-details {
+  display: none;
+}
