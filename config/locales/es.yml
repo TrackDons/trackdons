@@ -237,6 +237,8 @@ es:
       signup_with_facebook: Registrarse con Facebook
     form:
       save: Guardar
+    create:
+      account_already_exists: Ya existe otra cuenta con este e-mail. Por favor, inicia sesión y vincula tu cuenta desde el perfil.
   external_authentications:
     index:
       external_services: Servicios externos

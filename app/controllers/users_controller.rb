@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     redirect_to current_user if logged_in?
 
     @user = User.new(user_params)
+
+    if session[:external_service_auth_information]
+      if User.find_by(email: @user.email).present?
+        flash[:alert] = t('.account_already_exists')
+        redirect_to login_path and return
+      end
+    end
+
     if @user.save
       log_in @user
 
@@ -31,7 +39,7 @@ class UsersController < ApplicationController
         current_external_services.link_to_service(ActiveSupport::HashWithIndifferentAccess.new(session[:external_service_auth_information]))
         session[:external_service_auth_information].clear
       end
-      save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
+      save_pending_donations || redirect_to(@user)
     else
       render 'new'
     end

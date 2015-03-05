@@ -208,6 +208,8 @@ en:
       signup_with_facebook: Signup with Facebook
     form:
       save: Save
+    create:
+      account_already_exists: There's an account with this email. Please, login and link the account from the profile page.
   external_authentications:
     index:
       external_services: External services

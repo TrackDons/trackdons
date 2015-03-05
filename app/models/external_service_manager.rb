@@ -24,20 +24,23 @@ class ExternalServiceManager
     service = auth_information[:provider].to_sym
     raise "Invalid service" unless SUPPORTED_SERVICES.include?(service)
 
-    user = klass.new
-    user.external_service = service
-
     if service == :facebook
-      user.name     = auth_information[:info][:name]
-      user.email    = auth_information[:info][:email]
-      user.username = user.name.parameterize
+      user = klass.find_by(email: auth_information[:info][:email]) || klass.new
+      if !user.new_record?
+        user.save
+      else
+        user.external_service = service
+        user.name             = auth_information[:info][:name]
+        user.username         = user.name.parameterize
+        user.country          = 'ES'
+      end
     elsif service == :twitter
+      user = klass.new
+      user.external_service = service
       user.name = auth_information[:info][:name]
       user.username = auth_information[:info][:nickname]
+      user.country = 'ES'
     end
-
-    # TODO: add country automatically by using the IP
-    user.country = 'ES'
 
     service_manager = self.new(user)
     service_manager.link_to_service(auth_information)
