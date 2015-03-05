@@ -1,0 +1,23 @@
+/*
+ * Base styles for html pages
+ *
+ */
+
+html, body {
+  height: 100%;
+  min-height: 590px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body { 
+  background: #F3E9D1; 
+  color: $secondary-color;
+  font-family: 'Raleway', Arial, sans-serif; 
+  font-size: 1.6rem; 
+  font-weight: 400; 
+  overflow-y: scroll; 
+  overflow: hidden; 
+}

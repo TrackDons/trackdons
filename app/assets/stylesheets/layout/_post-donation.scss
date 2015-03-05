@@ -1,0 +1,70 @@
+.pd-list {
+  margin-bottom: 75px;
+}
+
+.content-left-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #E7E0BC;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.pd-content-right {
+  width: calc(100% - 50px);
+}
+
+.pd-holder-border {
+  position: relative;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    height: calc(100% - 32px);
+    width: 2px;
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    background-color: #E9E6C8;
+  }
+}
+
+.pd-date {
+  color: #b0aea5;
+  font-size: 1rem;
+  margin-left: 5px;
+  position: relative;
+  top: -1rem;
+}
+
+.pd-user {
+  color: $main_color;
+  display: inline-block;
+  line-height: 32px;
+  vertical-align: top;
+}
+
+.pd-content-right-container {
+  width: 90%;
+  margin-left: 45px;
+}
+
+.pd-choise {
+  background-color: #CCCCCC;
+  width: 100%; 
+  box-sizing: border-box;
+  padding: 1.6rem;
+  color: #949494;
+}
+
+.pd-remind {
+  line-height: 20px;
+}
+
+.button-container {
+  text-align: center;
+}
