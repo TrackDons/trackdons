@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :projects, through: :donations
   has_many :invitations
 
-  attr_accessor :remember_token, :external_service
+  attr_accessor :remember_token, :external_service, :invitation_token
 
   hstore_accessor :credentials, twitter_id:     :string,
                                 twitter_token:  :string,
@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, confirmation: true, if: Proc.new{|u| u.external_service.blank? }, allow_blank: true
   validates :country, presence: true
 
+  validate :valid_invitation_token, on: :create
 
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }
@@ -76,6 +77,10 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def invitation
+    self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
+  end
+
   private
 
   def set_currency
@@ -88,6 +93,14 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while self.class.exists?(column => self[column])
+  end
+
+  def valid_invitation_token
+    if self.invitation_token.present?
+      unless Invitation.valid_token?(self.invitation_token)
+        self.invitation_token = nil
+      end
+    end
   end
 
 end

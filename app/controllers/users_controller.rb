@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   def new
     redirect_to current_user if logged_in?
 
-    @user = User.new
+    @user = User.new(invitation_token: params[:invitation_token])
+    @user.email = @user.invitation.invited_email if @user.invitation
   end
 
   def create
@@ -33,6 +34,10 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
+
+      if invitation = @user.invitation
+        invitation.mark_as_used!(@user)
+      end
 
       if session[:external_service_auth_information]
         current_external_services = ExternalServiceManager.new(current_user)
@@ -66,7 +71,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country, :username)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country, :username, :invitation_token)
     end
 
     def admin_user

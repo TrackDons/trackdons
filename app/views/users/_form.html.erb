@@ -28,6 +28,8 @@
     <%= country_code_select(:user, :country) %>
   </p>
 
+  <%= f.hidden_field :invitation_token, value: params[:invitation_token] %>
+
   <%= f.submit t('.save') %>
 <% end %>
 
