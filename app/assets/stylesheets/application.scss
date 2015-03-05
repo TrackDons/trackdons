@@ -46,6 +46,7 @@
 @import "helpers/with-border";
 @import "helpers/bold";
 @import "helpers/align";
+@import "helpers/flex";
 
 /* 
  * 4. Objects
@@ -62,6 +63,7 @@
 @import "objects/content";
 @import "objects/checkbox";
 @import "objects/avatar";
+@import "objects/grid";
 
 /* 
  * 5. Layout
@@ -74,7 +76,7 @@
 
  @import "layout/donations";
  @import "layout/post-donation";
-
+ @import "layout/home-donation";
 /* 
  * 6. Vendors
  * ----------

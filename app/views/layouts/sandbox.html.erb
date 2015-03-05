@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang=en-us>
+<head>
+	<meta charset=utf-8>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <%= display_meta_tags :site => 'TrackDons', :reverse => true %>
+  
+  <script type="text/javascript" src="http://localhost:4000/ahoy.js"></script>
+  <script>
+    ahoy.trackAll();
+  </script>
+  
+	<style type="text/css">
+	@import url();
+	</style>
+
+</head>
+<body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
+
+<div id="sb-site" class="sb-site-container">
+	<div id="container" >
+
+		<section id="header">
+			<div id="menu_icon" class="fa fa-align-justify sb-toggle-left"><span>Menu</span></div>
+			<div id="logo"><%= link_to 'TrackDons', root_path %></div>
+			<section id="nav_site" class="content_column">
+				<ul>
+					<li><%= link_to t('Projects'), controller: 'projects' %></li>
+					<li><%= link_to t('Donations'), controller: 'donations' %></li>
+					<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
+				</ul>
+			</section>
+			<section id="nav_personal">
+				<ul>
+          <%= render 'shared/user_links' %>
+        </ul>
+			</section>
+      
+		</section>
+      
+		<%= yield %>
+
+
+	</div> 
+
+	<section id="footer">
+		
+		<div class="language_selector">
+			<%= t('choose_your_language') %>:
+      <%= I18n.available_locales.map { |locale|
+            link_to_unless_current(language_name_for(locale), locale: locale)
+	        }.join(' · ').html_safe %>
+	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>	      
+		</div>
+
+	</section>
+
+</div>
+
+
+
+
+<div class="sb-slidebar sb-left sb-style-push sb-style-overlay sb-width-custom" data-sb-width="300px">
+	<!-- Your left Slidebar content. -->
+	<ul>
+		<li><%= link_to t('Projects'), controller: 'projects' %></li>
+		<li><%= link_to t('Donations'), controller: 'donations' %></li>
+		<li><%= link_to t('Users'), users_path %></li>
+		<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
+	</ul>
+
+	<ul class="bottom">
+    <%= render 'shared/user_links' %>
+	</ul>
+</div>
+
+<%= "Locale: #{I18n.locale}" if Rails.env.development? %>
+<%# debug(request) if Rails.env.development? %>
+<%= debug(params) if Rails.env.development? %>
+<%= debug(cookies) if Rails.env.development? %>
+
+
+</body>
+</html>

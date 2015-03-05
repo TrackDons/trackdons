@@ -6,3 +6,18 @@
 a { 
   color: $main_color; 
 }
+
+.link-share {
+  padding: 0.7rem;
+  background: $main_color;
+  color: white;
+  font-size: 1rem;
+  width: 105px;
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.link-blue {
+  color: #247AA3;
+}
