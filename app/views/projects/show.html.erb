@@ -21,7 +21,6 @@
 
     </div>
 
-
     <div class="action_buttons" id="action_buttons">
       <%= render 'action_buttons' %>
     </div>
@@ -77,18 +76,16 @@
 </section>
 
 
-<div class="content_full">
-  <div class="content_column">
+<div class="content-big">
     <section id="track_donation">
 
       <% if logged_in? %>
-        <h2><%= t('projects.did_you_track') %> </h2>
+        <h3 class="main-color"><%= t('projects.did_you_track') %> </h2>
         <%= render 'donations/form' %>
       <% else %>
         <%= render 'sessions/invitation_to_waitlist' %>
       <% end %>
 
     </section>
-  </div>
 </div>
 

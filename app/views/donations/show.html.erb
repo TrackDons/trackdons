@@ -43,8 +43,10 @@
 <section class="content_column">
 
   <div class="tracked_donation">
-    <% if params[:share_links].present? %>
-      <small><%= t('donations.show.your_tracked_donation') %></small>
+    <% if current_user?(@donation.user) %>
+      <div class="mb3">
+        <small><%= t('donations.show.your_tracked_donation') %></small>
+      </div>
     <% end %>
     <%= render @donation %>
   </div>
