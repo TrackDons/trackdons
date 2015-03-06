@@ -85,6 +85,8 @@ class ExternalServiceManager
     user.twitter_token  = auth_information[:credentials][:token]
     user.twitter_secret = auth_information[:credentials][:secret]
     user.save
+
+    add_twitter_friends unless user.new_record?
   end
 
   def unlink_from_twitter
@@ -99,12 +101,34 @@ class ExternalServiceManager
     user.facebook_id    = auth_information[:uid]
     user.facebook_token = auth_information[:credentials][:token]
     user.save
+
+    add_facebook_friends unless user.new_record?
   end
 
   def unlink_from_facebook
     user.facebook_id = nil
     user.facebook_token = nil
     user.save!
+  end
+
+  def add_twitter_friends
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = Rails.application.secrets.twitter_api_key
+      config.consumer_secret     = Rails.application.secrets.twitter_api_secret
+      config.access_token        = user.twitter_token
+      config.access_token_secret = user.twitter_secret
+    end
+
+    # TODO: review the performance. We might need to do this action in
+    # a background task
+    client.friend_ids.map(&:to_i).each do |friend_id|
+      if friend = User.with_twitter_id(friend_id).first
+        user.follow(friend)
+      end
+    end
+  end
+
+  def add_facebook_friends
   end
 
 end
