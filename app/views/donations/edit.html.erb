@@ -1,10 +1,5 @@
-<section id="track_donation" class="content_full">
 
-  <div class="content_column tracked_donation">
-    <% if params[:share_links].present? %>
-      <small><%= t('donations.show.your_tracked_donation') %></small>
-    <% end %>
+  <div class="content-big">
+    <h3 class="main-color"><%= t('donations.form.edit_your_donation', name: @donation.project.name) %></h3>
     <%= render 'form' %>
   </div>
-
-</section>

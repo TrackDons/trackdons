@@ -12,7 +12,7 @@
             :opposite_action => t('.unfollow')
           } %>
   <% else %>
-    <%= link_to t('.follow'), follow_project_path(@project),
+    <%= link_to t('.thinking_on_donating'), follow_project_path(@project),
           :remote => true,
           :method => :patch,
           :class => "button not_active tipsit",

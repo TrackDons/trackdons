@@ -1,99 +1,105 @@
 <%= form_for(donation_for_form) do |f| %>
-  
-  <div class="bb-donation" data-projects="<%= projects_path %>">
-    <div class="js-donations mb2">
 
-    <% if new_donation? %>
-      <div class="track_don_project">
-        
-        <% if @project %>
-          <div class="track_don_project_name">
-            <%= @project.name %>
-          </div>
-          <div class="hint">
-            <%= link_to t('need_to_trackdon_for_another_project'), root_path(anchor: 'track_donation') %>
-          </div>
-          <%= f.hidden_field :project_id, value: @project.id %>
-        <% else %>
-          <div class="justify-columns donations-holder">
-            <div class="form-group justify-item forty percent" id="donation-<%= @project %>">
+  <div class="bb-donations" data-projects="<%= projects_path %>">
+    <div class="js-donations mb1">
+
+      <div class="bb-donation mb2">
+        <div class="justify-columns donations-holder">
+
+            <div class="form-group justify-item forty percent">
               <%= f.fields_for(:project) do |project_form| %>
                 <div class="form-label uppercase">
                   <%= project_form.label(:name, I18n.t('donation.project')) %>
                 </div>
                 <div class="form-fields">
-                  <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
+                  <% if new_donation? %>
+                    <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
+                  <% else %>
+                    <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
+                  <% end %>
                 </div>
-              <% end %>
+              <% end %>          
             </div>
-            
-            <div class="form-group justify-item">
-              <div class="form-label uppercase">
-                <%= f.label(:quantity, I18n.t('donation.amount')) %>
-              </div>
-              <div class="form-fields">
-                <div class="field-group">
-                  <%= f.text_field :quantity, placeholder: 'ie. 125', :class => "donation-amount field-text field-group-item" %>
-                  <div class="field-select field-group-item">
-                    <%= f.select :currency, [['€', 'EUR'],['$', 'USD']] %>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- <h2><%= t('.edit_your_donation', name: @project.name) %></h2> -->
 
-            <div class="form-group justify-item">
-              <div class="form-label uppercase">
-                <%= f.label(:frequency_period, t('donation.recurring')) %> 
-              </div>
-              <div class="form-fields">
+          <div class="form-group justify-item">
+            <div class="form-label uppercase">
+              <%= f.label(:quantity, t('donation.amount')) %>
+            </div>
+            <div class="form-fields">
+              <div class="field-group">
+                <%= f.text_field :quantity, placeholder: 'ie. 125', :class => "donation-amount field-text field-group-item" %>
                 <div class="field-select field-group-item">
-                  <!-- How the hell is built this field -->
-                  
+                  <%= f.select :currency, [['€', 'EUR'],['$', 'USD']] %>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="form-group justify-item">
-              <div class="form-label uppercase">
-                <%= f.label(:date, t('donation.date'), :class => 'js-donation-date') %> 
-              </div>
-              <div class="form-fields">
-                <%= f.text_field :date, :placeholder => t('donation.pick_date'), :class => "donation-date field-text", :data => {:behaviour => "datepicker"} %>
-              </div>
+          <div class="form-group justify-item">
+            <div class="form-label uppercase">
+              <label for="recurring"><%= I18n.t('donation.recurring') %></label>
             </div>
-
-            <div class="form-group justify-item">
-              <div class="form-label uppercase">
-                <%= f.label(:quantity_privacy, t('donation.private'), :title => t('donations.form.quantity_privacy_hint'), :class => 'tipsit') %> 
-              </div>
-              <div class="form-fields solid">
-                <%= f.check_box :quantity_privacy %>
-                <%= f.label(:quantity_privacy, 'Yes') %> 
+            <div class="form-fields">
+              <div class="field-select field-group-item">
+                <select class="js-donation-reurring" name="donation[recurring]">
+                  <option value="no" selected="selected">No</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="2 weeks">2 Weeks</option>
+                  <option value="3 weeks">3 Weeks</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="2 months">2 Months</option>
+                  <option value="3 months">3 Months</option>
+                  <option value="4 months">4 Months</option>
+                  <option value="6 months">6 Months</option>
+                  <option value="12 months">12 Months</option>
+                </select>
               </div>
             </div>
           </div>
-          <div class="js-details donation-details mt2 justify-item hundred percent">
-            <%= f.fields_for(:project) do |project_form| %>
-              <%= project_form.text_area :description, :placeholder => t('donation.description'), :class => "field-textarea hundred percent mb2" %>
-              <%= project_form.text_field :url, :placeholder => t('donation.url'), :class => "field-text hundred percent" %>
-            <% end %>
+
+          <div class="form-group justify-item">
+            <div class="form-label uppercase">
+              <%= f.label(:date, t('donation.date'), :class => 'js-donation-date') %> 
+            </div>
+            <div class="form-fields">
+              <%= f.text_field :date, :placeholder => t('donation.pick_date'), :class => "donation-date field-text", :data => {:behaviour => "datepicker"} %>
+            </div>
           </div>
-        <% end %>
+
+          <div class="form-group justify-item">
+            <div class="form-label uppercase">
+              <%= f.label(:quantity_privacy, t('donation.private'), :title => t('donations.form.quantity_privacy_hint'), :class => 'tipsit') %> 
+            </div>
+            <div class="form-fields solid">
+              <%= f.check_box :quantity_privacy %>
+              <%= f.label(:quantity_privacy, 'Yes') %> 
+            </div>
+          </div>
+
+        </div>
         
-      </div>
+        <div class="js-details donation-details mt2 justify-item hundred percent">
+          <%= f.fields_for(:project) do |project_form| %>
+            <%= project_form.text_area :description, :placeholder => t('donation.description'), :class => "field-textarea hundred percent mb2" %>
+            <%= project_form.text_field :url, :placeholder => t('donation.url'), :class => "field-text hundred percent" %>
+          <% end %>
+        </div>
 
-      <div id="add-donation" class="js-add-donation s11">
-        <a href="#"><%= I18n.t('donation.add') %></a>
       </div>
 
     </div>
 
-    <% else %>
-      <div class="track_don_project">
-        <h2><%= t('.edit_your_donation', name: @project.name) %></h2>
+    <% unless new_donation? %>
+      <div id="add-donation" class="js-add-donation s11 mb3">
+        <a href="#"><%= I18n.t('donation.add') %></a>
       </div>
     <% end %>
 
+  </div>
+
+    
   <% unless new_donation? %>
     <%= hidden_field_tag :back_url, project_path(@project) %>
   <% end %>
