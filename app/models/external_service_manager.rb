@@ -129,6 +129,13 @@ class ExternalServiceManager
   end
 
   def add_facebook_friends
+    graph = Koala::Facebook::API.new(user.facebook_token)
+    # Provides the list of users using Trackdons
+    graph.get_connections("me", "friends").each do |friend|
+      if friend = User.with_facebook_id(friend['id']).first
+        user.follow(friend)
+      end
+    end
   end
 
 end

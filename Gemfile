@@ -36,6 +36,7 @@ gem 'hstore_accessor'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'omniauth-facebook'
+gem 'koala'
 
 group :development, :test do
   gem 'spring'
