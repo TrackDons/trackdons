@@ -32,6 +32,7 @@ class ExternalServiceManager
         user.external_service = service
         user.name             = auth_information[:info][:name]
         user.username         = user.name.parameterize
+        user.email            = auth_information[:info][:email]
         user.country          = 'ES'
       end
     elsif service == :twitter
