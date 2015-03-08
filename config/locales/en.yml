@@ -169,6 +169,8 @@ en:
       remember_me: Remember me on this computer
       forgot_password: 'Forgot password?'
       login_action: Log in
+      login_with_twitter: Log in with Twitter
+      login_with_facebook: Log in with Facebook
   password_resets:
     password_reset_subject: Reset your password at TrackDons
     new:
@@ -206,6 +208,36 @@ en:
       not_following_projects_yet: 0 projects followed
     index:
       please_log_in: Please log in
+    edit:
+      update_your_profile: Update your profile
+      gravatar: Change your avatar at gravatar.com
+    sidebar:
+      update_your_profile: Update your profile
+      external_services: External services
+      profile_options: Profile options
+    new:
+      signup: Create your account
+      signup_with_twitter: Signup with Twitter
+      signup_with_facebook: Signup with Facebook
+    form:
+      save: Save
+    create:
+      account_already_exists: There's an account with this email. Please, login and link the account from the profile page.
+  external_authentications:
+    index:
+      external_services: External services
+      unlink: Unlink account
+      link: Link %{account} account
+    create:
+      link_successful: Account linked successfully
+    destroy:
+      unlink_successful: Account unlinked successfully
+    complete_signup:
+      complete_signup: Complete the signup
+      complete_signup_info: "To complete the signup we need you to provide your email:"
+      save: Save
+  external_service_unauthorized:
+    unauthorized: Service couldn't be linked
   invitations:
     dont_have_enough_invitations: You don't have enough invitations. Keep tracking donations and more, and you will get them!
     pending_invites: "You have %{count} invites available. Put them to good use and let your friends promote the projects they donate to."

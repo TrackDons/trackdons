@@ -6,24 +6,27 @@ Rails.application.routes.draw do
     get '/sandbox/*template' => 'sandbox#show'
   end
 
+  get 'auth/:service/callback', to: 'external_authentications#create'
+  get 'auth/failure', to: 'external_authentications#failure'
+
   scope "/:locale" do
     root 'pages#index'
 
-    get    'login'   => 'sessions#new'
-    post   'login'   => 'sessions#create'
-    delete 'logout'  => 'sessions#destroy'
+    get    'login'  => 'sessions#new'
+    post   'login'  => 'sessions#create'
+    delete 'logout' => 'sessions#destroy'
+    get    'signup(/:invitation_token)' => 'users#new', as: :signup
 
-    get 'signup/:invitation_token'     => 'users#new', as: :signup # signup only by invitation
+    get 'invite'  => 'invitations#new'
+    post 'invite' => 'invitations#create'
+    get 'invite/:invitation_token' => 'invitations#check', as: :check_invitation
 
-    get 'invite'     => 'invitations#new'
-    post 'invite'    => 'invitations#create'
-    get 'invite/:invitation_token'   => 'invitations#check', as: :check_invitation
-
-    get 'pages/index'
     get 'about' => 'pages#about'
 
     resources :users
+
     resources :donations
+
     resources :projects do
       resources :donations
       member do
@@ -31,6 +34,8 @@ Rails.application.routes.draw do
         patch 'unfollow'
       end
     end
+
+    resources :external_authentications, only: [:index, :edit, :update, :destroy]
 
     resources :password_resets, only: [:new, :create, :edit, :update]
 

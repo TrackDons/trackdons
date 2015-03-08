@@ -17,8 +17,11 @@ es:
       recurring_donation: Donación recurrente
     attributes:
       user:
+        name: Nombre
+        email: Correo-e
         password: Contraseña
         password_confirmation: Confirma tu contraseña
+        country: País
       invitation:
         invited_email: Correo-e
         user: Usuario
@@ -187,14 +190,16 @@ es:
     user_links:
       hello: "Hola %{name}"
       log_out: Salir
-      login: Identificarse en TrackDons
-      track_your_first_donación: Registra tu primera donación
+      login: Entrar
+      track_your_first_donation: Registra tu primera donación
   sessions:
     new:
-      login: Identificarse en TrackDons
+      login: Identificarse
       remember_me: Recuérdame en este equipo
       forgot_password: '¿Olvidaste la contraseña?'
       login_action: Entrar
+      login_with_twitter: Entrar con Twitter
+      login_with_facebook: Entrar con Facebook
   password_resets:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:
@@ -232,6 +237,36 @@ es:
       not_following_projects_yet: 0 proyectos seguidos
     index:
       please_log_in: Por favor, inicia sesión
+    edit:
+      update_your_profile: Actualiza tu perfil
+      gravatar: Actualiza tu avatar en gravatar.com
+    sidebar:
+      update_your_profile: Actualiza tu perfil
+      external_services: Servicios externos
+      profile_options: Opciones del perfil
+    new:
+      signup: Crea tu cuenta
+      signup_with_twitter: Registrarse con Twitter
+      signup_with_facebook: Registrarse con Facebook
+    form:
+      save: Guardar
+    create:
+      account_already_exists: Ya existe otra cuenta con este e-mail. Por favor, inicia sesión y vincula tu cuenta desde el perfil.
+  external_authentications:
+    index:
+      external_services: Servicios externos
+      unlink: Desvincular cuenta
+      link: Vincular cuenta de %{account}
+    create:
+      link_successful: Cuenta vinculada correctamente
+    destroy:
+      unlink_successful: Cuenta desvinculada correctamente
+    complete_signup:
+      complete_signup: Completa el registro
+      save: Guardar
+      complete_signup_info: "Para completar el registro necesitamos que introduzcas tu e-mail:"
+  external_service_unauthorized:
+    unauthorized: Servicio no pudo ser vinculado
   invitations:
     dont_have_enough_invitations: No tienes suficientes invitaciones. Sigue registrando donaciones y más, y pronto tendrás nuevas invitaciones.
     pending_invites: "Tienes %{count} invitaciones disponibles. Dales buen uso y deja a tus amigos promocionar proyectos a los que donan."

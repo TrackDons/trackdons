@@ -1,11 +1,9 @@
 class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :profile_owner,  only: [:edit, :update]
   before_action :admin_user,     only: :destroy
   before_action :load_user,      only: [:show, :edit, :update, :destroy]
-
-  before_action :validates_invitation_token, only: :new # we only allow signups if you have an invitation token
 
   def index
     @users = User.all
@@ -16,17 +14,37 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new email: @invitation.invited_email
+    redirect_to current_user if logged_in?
+
+    @user = User.new(invitation_token: params[:invitation_token])
+    @user.email = @user.invitation.invited_email if @user.invitation
   end
 
   def create
+    redirect_to current_user if logged_in?
+
     @user = User.new(user_params)
+
+    if session[:external_service_auth_information]
+      if User.find_by(email: @user.email).present?
+        flash[:alert] = t('.account_already_exists')
+        redirect_to login_path and return
+      end
+    end
+
     if @user.save
+      log_in @user
+
       if invitation = @user.invitation
         invitation.mark_as_used!(@user)
       end
-      log_in @user
-      save_pending_donations || redirect_to(@user, success: "Welcome to TrackDons. Hope you track a lot of dons!")
+
+      if session[:external_service_auth_information]
+        current_external_services = ExternalServiceManager.new(current_user)
+        current_external_services.link_to_service(ActiveSupport::HashWithIndifferentAccess.new(session[:external_service_auth_information]))
+        session[:external_service_auth_information].clear
+      end
+      save_pending_donations || redirect_to(@user)
     else
       render 'new'
     end
@@ -53,12 +71,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country, :invitation_token)
-    end
-
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless @user == current_user
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :country, :username, :invitation_token)
     end
 
     def admin_user
@@ -68,19 +81,4 @@ class UsersController < ApplicationController
     def load_user
       @user = User.find(params[:id])
     end
-
-    def validates_invitation_token
-      if logged_in?
-        flash[:error] = t('users.you_already_have_an_account')
-        redirect_to root_path
-      else
-        if @invitation = Invitation.find_valid_token(params[:invitation_token])
-          flash.now[:notice] = t('invitations.welcome_message')
-        else
-          flash[:error] = t('invitations.not_valid')
-          redirect_to root_path
-        end
-      end
-    end
-    
 end

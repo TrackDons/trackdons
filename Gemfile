@@ -37,6 +37,11 @@ gem "i18n-js", ">= 3.0.0.rc8"
 gem 'globalize', '~> 5.0.0'
 gem "acts_as_follower"
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'hstore_accessor'
+gem 'omniauth-twitter'
+gem 'twitter'
+gem 'omniauth-facebook'
+gem 'koala'
 
 group :development, :test do
   gem 'spring'

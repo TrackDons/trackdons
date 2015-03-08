@@ -15,7 +15,6 @@ module Factories
     attrs[:country]   ||= "ES"
     attrs[:password]              ||= "wadusm4n"
     attrs[:password_confirmation] ||= attrs[:password]
-    attrs[:invitation_token] ||= create_invitation(invited_email: attrs[:email]).invitation_token
     User.create!(attrs)
   end
 

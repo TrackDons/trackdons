@@ -33,13 +33,13 @@ RSpec.feature 'Inviting users' do
     open_email_for 'myfriend@example.com'
     click_email_link_matching /invite/
 
-    expect(page).to have_content('With this invitation you can sign up for TrackDons')
+    #expect(page).to have_content('With this invitation you can sign up for TrackDons')
 
     fill_in 'Name', with: 'Peter'
     fill_in 'Password', with: 'waduswadus'
-    fill_in 'Confirmation', with: 'waduswadus'
+    fill_in 'Password confirmation', with: 'waduswadus'
     select 'Spain', from: 'Country'
-    click_button 'Create my account'
+    click_button 'Save'
 
     expect(page).to have_content('Hello Peter')
 

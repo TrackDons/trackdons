@@ -4,19 +4,25 @@ class User < ActiveRecord::Base
 
   acts_as_followable
   acts_as_follower
-  
-  has_secure_password
+
+  has_secure_password validations: false
 
   has_many :donations, dependent: :destroy
   has_many :projects, through: :donations
   has_many :invitations
 
-  attr_accessor :remember_token, :invitation_token
+  attr_accessor :remember_token, :external_service, :invitation_token
+
+  hstore_accessor :credentials, twitter_id:     :string,
+                                twitter_token:  :string,
+                                twitter_secret: :string,
+                                facebook_id:    :string,
+                                facebook_token: :string
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 	validates :name, presence: true, length: { maximum: 50 }
-  validates :password, length: { minimum: 6 }, allow_blank: true
+  validates :password, length: { minimum: 6 }, confirmation: true, if: Proc.new{|u| u.external_service.blank? }, allow_blank: true
   validates :country, presence: true
 
   validate :valid_invitation_token, on: :create
@@ -62,10 +68,6 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
-  def invitation
-    self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
-  end
-
   def has_private_donations?
     donations.quantity_private.any?
   end
@@ -73,6 +75,10 @@ class User < ActiveRecord::Base
   def generate_password_reset_token!
     generate_token(:password_reset_token)
     save!
+  end
+
+  def invitation
+    self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
   end
 
   private
@@ -83,14 +89,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def valid_invitation_token
-    self.invitation_token.present? && Invitation.valid_token?(self.invitation_token)
-  end
-
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while self.class.exists?(column => self[column])
+  end
+
+  def valid_invitation_token
+    if self.invitation_token.present?
+      unless Invitation.valid_token?(self.invitation_token)
+        self.invitation_token = nil
+      end
+    end
   end
 
 end

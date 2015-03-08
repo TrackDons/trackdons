@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
 
-  # http_basic_authenticate_with name: "track", password: "wadus", if: -> { Rails.env.production? }
-
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
   helper_method :current_user, :logged_in?, :current_user?
+
+  rescue_from OAuth::Unauthorized, with: :external_service_unauthorized
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -51,11 +51,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
+    def profile_owner
+      @user = params[:id] ? User.find(params[:id]) : current_user
+
+      redirect_to(root_path) unless @user == current_user
     end
 
+    def external_service_unauthorized
+      flash[:error] = t('.unauthorized')
+      redirect_to root_path
+    end
 end
