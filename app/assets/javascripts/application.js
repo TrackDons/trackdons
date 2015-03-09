@@ -18,5 +18,6 @@
 //= require slidebars
 //= require select2  
 //= require turbolinks
+//= require cookies_eu
 //= require jquery.sparkline.min
 //= require_tree .
