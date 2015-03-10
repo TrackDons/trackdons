@@ -180,6 +180,11 @@ en:
       already_have_account: I have an account
       back_to_login: Back to login
       recover_password: Recover password
+      connect_with_twitter_or_facebook: Connect with Twitter or Facebook to start tracking your donations quick and with friends
+      well_never_publish: We'll never publish anything without asking for explicit consent (we hate it!)
+      or_choose_tradition: Or just do the traditional field filling 
+      complete_your: Complete your signup and you'll be tracking in 3, 2, 1...
+      tell_us_to_recover: "Tell us your email and we'll help you recover your password: "     
   password_resets:
     password_reset_subject: Reset your password at TrackDons
     new:

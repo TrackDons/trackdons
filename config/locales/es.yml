@@ -198,8 +198,22 @@ es:
       remember_me: Recuérdame en este equipo
       forgot_password: '¿Olvidaste la contraseña?'
       login_action: Entrar
+      create_account: Crear cuenta
       login_with_twitter: Entrar con Twitter
       login_with_facebook: Entrar con Facebook
+      user: Usuario
+      name: Nombre y Apellido
+      email: Correo-e
+      password: Contraseña
+      password_confirmation: Confirmación de contraseña
+      already_have_account: Ya tengo cuenta
+      back_to_login: Iniciar sesión
+      recover_password: Recuperar password
+      connect_with_twitter_or_facebook: Conéctate con Twitter o Facebook y comienza a registrar donaciones rápido y con amigos
+      well_never_publish: Nunca publicaremos algo sin tu permiso (¡odiamos cuando nos pasa!)
+      or_choose_tradition: O haz lo de rellenar campos
+      complete_your: Completa tu registro y estarás donando en 3, 2, 1...
+      tell_us_to_recover: "Dínos tu correo-e y te ayudaremos a recuperar tu contraseña:"
   password_resets:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:
@@ -240,6 +254,7 @@ es:
     edit:
       update_your_profile: Actualiza tu perfil
       gravatar: Actualiza tu avatar en gravatar.com
+      country: País
     sidebar:
       update_your_profile: Actualiza tu perfil
       external_services: Servicios externos

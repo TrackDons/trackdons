@@ -4,8 +4,8 @@
 
       <div id="cd-login" >
 
-        <p class="mb0"><strong>Conéctate con Twitter o Facebook para registrar tus donaciones rápido y con amigos:</strong></p>
-        <p class="mt0"><em>Nunca publicaremos nada en tu nombre sin antes pedirte permiso (odiamos cuando nos pasa)</em></p>
+        <p class="mb0"><strong><%= t 'sessions.new.connect_with_twitter_or_facebook' %></strong></p>
+        <p class="mt0"><em><%= t 'sessions.new.well_never_publish' %></em></p>
 
         <div class="social-login mt4 mb4 clearfix">
           <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
@@ -14,7 +14,7 @@
 
         <div class="separator"></div>
 
-        <p>O utiliza lo de rellenar algunos campos:</p>
+        <p><%= t 'sessions.new.or_choose_tradition' %></p>
 
         <%= form_for :session, url: login_path, html: {class: "login-form"} do |f| %>
           <div class="field-group mb2">
@@ -47,7 +47,7 @@
         
         <% # substitute the contents of users/_form with the following %>
 
-        <p><strong>Completa tu registro y estarás donando en 3, 2, 1...</strong></p>
+        <p><strong><%= t 'sessions.new.complete_your' %></strong></p>
 
         <%= form_for :user, url: users_path, html: {class: "login-form"} do |f| %>
 
@@ -109,7 +109,7 @@
 
       <div id="cd-reset-password" >
         
-        <p><strong>Dínos tu email y te ayudamos a recuperar tu password:</strong></p>
+        <p><strong><%= t 'sessions.new.tell_us_to_recover' %></strong></p>
 
         <%= form_for :password_resets, url: password_resets_path, html: {class: "login-form"} do |f| %>
 
