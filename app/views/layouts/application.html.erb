@@ -11,10 +11,10 @@
 
   <%= display_meta_tags :site => 'TrackDons', :reverse => true %>
   
-  <script type="text/javascript" src="http://localhost:4000/ahoy.js"></script>
+  <!--<script type="text/javascript" src="http://localhost:4000/ahoy.js"></script>
   <script>
     ahoy.trackAll();
-  </script>
+  </script>-->
   
 	<style type="text/css">
 	@import url();
@@ -41,7 +41,7 @@
 					<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
 				</ul>
 			</section>
-			<section id="nav_personal">
+			<section id="nav_personal" class="nav_personal">
 				<ul>
           <%= render 'shared/user_links' %>
         </ul>
@@ -90,6 +90,9 @@
     <%= render 'shared/user_links' %>
 	</ul>
 </div>
+
+<%= render 'shared/modal_login' %>
+
 
 <%= "Locale: #{I18n.locale}" if Rails.env.development? %>
 <%# debug(request) if Rails.env.development? %>

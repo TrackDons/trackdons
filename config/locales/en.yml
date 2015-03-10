@@ -169,8 +169,17 @@ en:
       remember_me: Remember me on this computer
       forgot_password: 'Forgot password?'
       login_action: Log in
+      create_account: Create account
       login_with_twitter: Log in with Twitter
       login_with_facebook: Log in with Facebook
+      user: User
+      name: Name & Surname
+      email: Email
+      password: Password
+      password_confirmation: Password confirmation
+      already_have_account: I have an account
+      back_to_login: Back to login
+      recover_password: Recover password
   password_resets:
     password_reset_subject: Reset your password at TrackDons
     new:
@@ -211,6 +220,7 @@ en:
     edit:
       update_your_profile: Update your profile
       gravatar: Change your avatar at gravatar.com
+      country: Country
     sidebar:
       update_your_profile: Update your profile
       external_services: External services

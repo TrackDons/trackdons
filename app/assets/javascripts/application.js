@@ -18,6 +18,7 @@
 //= require vendor/underscore
 //= require vendor/backbone
 //= require vendor/pubsub
+//= require vendor/modernizr
 
 //= require vendor/tipsy
 //= require vendor/slidebars
@@ -31,6 +32,7 @@
 
 //= require modules/pikaday.jquery
 //= require modules/autofocus.jquery
+//= require modules/modal
 
 //= require general
 //= require invitations

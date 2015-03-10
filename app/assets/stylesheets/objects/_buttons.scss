@@ -1,0 +1,36 @@
+/* ToDo: substitute .button with .btn */
+a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
+.btn, button, .button, a.button, input[type='submit'] { 
+  background: $main-color; 
+  color: #FFF;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: .6em 2em .4em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 0;
+  border-bottom: 2px solid darken($main-color, 10%);
+  transition: all 0.3s ease 0s;
+  font-size: 1em; 
+  font-weight: bold;
+
+  &:hover {
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    background: darken($main-color, 3%);
+  }
+}
+a.button.not_active {
+  background: darken($light_background, 10%);
+  color: $main_color;
+  border-bottom-color: $main_color;
+}
+a.button.not_active:hover {
+  background: darken($light_background, 20%);
+  color: darken($main_color, 10%);
+}
+
+.btn-secondary {
+  opacity: .5;
+}

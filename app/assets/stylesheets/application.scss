@@ -7,6 +7,8 @@
  *
  */
 
+@import "bourbon";
+
 @import "core/settings";
 @import "core/functions";
 @import "core/mixins";
@@ -54,8 +56,10 @@
 
 @import "objects/form";
 @import "objects/form-fields";
+@import "objects/buttons";
 @import "objects/justify-columns";
 @import "objects/content";
+@import "objects/modal";
 
 /* 
  * 5. Layout
@@ -95,46 +99,12 @@ DON'T USE #ID FOR STYLING. DON'T. JUST DON'T.
 /* In order to above, this should be deprecated */
 @import "helpers/white-spacing";
 
-$main_color: #7C9200; /* main green */
-$secondary_color: #565631; /* dark green */
-$tertiary_color: #E4D6B3;
-$light_background: #EBE8CC;
-
 body #sb-site, body .sb-site-container { background-color: transparent; }
 #logo { background: $secondary_color; }
 
 #container { background: #F8F2E3; border-color: #E4D6B3; }
 #header { background: $main-color; color: #FFF; }
 #header a { color: #FFF; }
-a.button, .donation a.button, a.button:visited, .donation a.button:visited { text-decoration: none; color: #FFF; }
-button, .button, input[type='submit'] { 
-  background: $main-color; 
-  color: #FFF;
-  display: inline-block;
-  padding: .6em 2em .4em;
-  text-decoration: none;
-  border-radius: 3px;
-  border: 0;
-  border-bottom: 2px solid darken($main-color, 10%);
-  transition: all 0.3s ease 0s;
-  font-size: 1em; 
-  font-weight: bold;
-
-  &:hover {
-    /*text-decoration: underline;*/
-    cursor: pointer;
-    background: darken($main-color, 3%);
-  }
-}
-a.button.not_active {
-  background: darken($light_background, 10%);
-  color: $main_color;
-  border-bottom-color: $main_color;
-}
-a.button.not_active:hover {
-  background: darken($light_background, 20%);
-  color: darken($main_color, 10%);
-}
 .content_full { background: #EBE8CC; }
 #track_donation header h2, h1 { border-color: $main-color; color: $main-color; }
 #project .meta { background: #EBE8CC; }

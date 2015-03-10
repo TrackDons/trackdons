@@ -33,7 +33,8 @@ module SessionsManagement
 
   def log_in(user)
     session[:user_id] = user.id
-    params[:session] && params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+    # params[:session] && params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+    remember(user)
   end
 
   def log_out

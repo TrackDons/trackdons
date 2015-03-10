@@ -1,0 +1,138 @@
+<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+  <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+    <div class="cd-user-login p4 m4">
+
+      <div id="cd-login" >
+
+        <p class="mb0"><strong>Conéctate con Twitter o Facebook para registrar tus donaciones rápido y con amigos:</strong></p>
+        <p class="mt0"><em>Nunca publicaremos nada en tu nombre sin antes pedirte permiso (odiamos cuando nos pasa)</em></p>
+
+        <div class="social-login mt4 mb4 clearfix">
+          <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
+          <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>        
+        </div>
+
+        <div class="separator"></div>
+
+        <p>O utiliza lo de rellenar algunos campos:</p>
+
+        <%= form_for :session, url: login_path, html: {class: "login-form"} do |f| %>
+          <div class="field-group mb2">
+            <%= f.label :email, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :password, class: 'form-icon' do %> 
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= link_to '?', new_password_reset_path, class: 'recover-password tipsit', title: t('sessions.new.forgot_password') %>
+            <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password') %>
+          </div>
+
+          <div class="clearfix mt3 pb4">
+            <%= f.button t('sessions.new.create_account'), class: " btn btn-secondary float-left create-account" %>
+            <%= f.submit t('sessions.new.login_action'), class: " btn btn-primary float-right" %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+      <div id="cd-signup" >
+        
+        <% # substitute the contents of users/_form with the following %>
+
+        <p><strong>Completa tu registro y estarás donando en 3, 2, 1...</strong></p>
+
+        <%= form_for :user, url: users_path, html: {class: "login-form"} do |f| %>
+
+          <%# render 'shared/error_messages' %>
+
+          <div class="field-group mb2">
+            <%= f.label :name, class: 'form-icon' do %> 
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.name' %>
+            <% end %>
+            <%= f.text_field :name, class: 'input-text', placeholder: t('sessions.new.name') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :email, class: 'form-icon' do %>
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+          </div>
+          
+          <div class="field-group mb2">
+            <%= f.label :password, class: 'form-icon' do %> 
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :password_confirmation, class: 'form-icon' do %> 
+              <span class="fa fa-key"></span>
+              <%= t 'sessions.new.password' %>
+            <% end %>
+            <%= f.password_field :password_confirmation, class: 'input-text', placeholder: t('sessions.new.password_confirmation') %>
+          </div>
+
+          <div class="field-group mb2">
+            <%= f.label :country, class: 'form-icon' do %> 
+              <span class="fa fa-globe"></span>
+              <%= t 'users.edit.country' %>
+            <% end %>
+            <%= country_code_select(:user, :country, 'Select your country', { class: 'form-select' }) %>
+            
+          </div>
+
+          <%= f.hidden_field :invitation_token, value: params[:invitation_token] %>
+
+          <div class="clearfix mt3 pb4">
+            <%= f.button t('sessions.new.already_have_account'), class: "btn btn-secondary float-left login" %>
+            <%= f.submit t('sessions.new.create_account'), class: "btn btn-primary float-right" %>
+          </div>
+
+        <% end %>
+
+
+
+      </div>
+
+      <div id="cd-reset-password" >
+        
+        <p><strong>Dínos tu email y te ayudamos a recuperar tu password:</strong></p>
+
+        <%= form_for :password_resets, url: password_resets_path, html: {class: "login-form"} do |f| %>
+
+          <div class="field-group mb2">
+            <%= f.label :email, class: 'form-icon' do %> 
+              <span class="fa fa-user"></span>
+              <%= t 'sessions.new.email' %>
+            <% end %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+          </div>
+
+          <div class="clearfix mt3 pb4">
+            <%= f.button t('sessions.new.back_to_login'), class: "btn btn-secondary float-left login" %>
+            <%= f.submit t('sessions.new.recover_password'), class: "btn btn-primary float-right" %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+
+
+      <a href="#0" class="cd-close-form">Close</a>
+    </div><!-- .cd-user-login -->
+  </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->
