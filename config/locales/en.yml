@@ -185,6 +185,8 @@ en:
       or_choose_tradition: Or just do the traditional field filling 
       complete_your: Complete your signup and you'll be tracking in 3, 2, 1...
       tell_us_to_recover: "Tell us your email and we'll help you recover your password: "     
+    create:
+      invalid_data: Invalid credentials
   password_resets:
     password_reset_subject: Reset your password at TrackDons
     new:
@@ -238,6 +240,7 @@ en:
       save: Save
     create:
       account_already_exists: There's an account with this email. Please, login and link the account from the profile page.
+      invalid_data: The data you've introduced is not valid. Please, check it and try again.
   external_authentications:
     index:
       external_services: External services

@@ -1,8 +1,9 @@
-<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+<div class="cd-user-modal" <%= %Q{data-error="#{flash[:modal_error]}"}.html_safe if flash[:modal_error] %>> <!-- this is the entire modal form, including the background -->
   <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
     <div class="cd-user-login p4 m4">
 
       <div id="cd-login" >
+        <%= modal_flash_message(:login) %>
 
         <p class="mb0"><strong><%= t 'sessions.new.connect_with_twitter_or_facebook' %></strong></p>
         <p class="mt0"><em><%= t 'sessions.new.well_never_publish' %></em></p>
@@ -44,10 +45,12 @@
       </div>
 
       <div id="cd-signup" >
-        
+        <%= modal_flash_message(:signup) %>
+
         <% # substitute the contents of users/_form with the following %>
 
         <p><strong><%= t 'sessions.new.complete_your' %></strong></p>
+
 
         <%= form_for :user, url: users_path, html: {class: "login-form"} do |f| %>
 
@@ -108,7 +111,8 @@
       </div>
 
       <div id="cd-reset-password" >
-        
+        <%= modal_flash_message(:password_reset) %>
+
         <p><strong><%= t 'sessions.new.tell_us_to_recover' %></strong></p>
 
         <%= form_for :password_resets, url: password_resets_path, html: {class: "login-form"} do |f| %>

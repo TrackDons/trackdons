@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       save_pending_donations || redirect_to(user)
       return
     else
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      modal_error('login', t('.invalid_data'))
+      redirect_to(:back)
     end
   end
 

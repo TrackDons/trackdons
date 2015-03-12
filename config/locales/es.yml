@@ -213,7 +213,9 @@ es:
       well_never_publish: Nunca publicaremos algo sin tu permiso (¡odiamos cuando nos pasa!)
       or_choose_tradition: O haz lo de rellenar campos
       complete_your: Completa tu registro y estarás donando en 3, 2, 1...
-      tell_us_to_recover: "Dínos tu correo-e y te ayudaremos a recuperar tu contraseña:"
+      tell_us_to_recover: "Dinos tu correo-e y te ayudaremos a recuperar tu contraseña:"
+    create:
+      invalid_data: Credenciales incorrectos
   password_resets:
     password_reset_subject: Recupera tu contraseña de TrackDons
     new:
@@ -266,6 +268,7 @@ es:
     form:
       save: Guardar
     create:
+      invalid_data: Los datos introducidos no son válidos. Por favor revísalos y vuelve a intentarlo.
       account_already_exists: Ya existe otra cuenta con este e-mail. Por favor, inicia sesión y vincula tu cuenta desde el perfil.
   external_authentications:
     index:

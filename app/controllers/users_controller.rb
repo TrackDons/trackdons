@@ -46,7 +46,8 @@ class UsersController < ApplicationController
       end
       save_pending_donations || redirect_to(@user)
     else
-      render 'new'
+      modal_error('signup', t('.invalid_data'))
+      redirect_to(:back)
     end
   end
 

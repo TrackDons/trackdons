@@ -61,4 +61,10 @@ class ApplicationController < ActionController::Base
       flash[:error] = t('.unauthorized')
       redirect_to root_path
     end
+
+    def modal_error(flash_type, message)
+      flash[:modal_error] = flash_type
+      flash["modal_#{flash_type}_error".to_sym] = message
+    end
+
 end

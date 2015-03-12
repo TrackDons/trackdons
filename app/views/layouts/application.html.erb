@@ -50,10 +50,8 @@
 		</section>
 
 		<section id="main_content">
-			<% flash.each do |message_type, message| %>
-			  <div class="alert alert-<%= message_type %>"><%= message %></div>
-			<% end %>
-      
+      <%= flash_message %>
+
 			<%= yield %>
 
 		</section>
@@ -74,15 +72,11 @@
 
 </div>
 
-
-
-
 <div class="sb-slidebar sb-left sb-style-push sb-style-overlay sb-width-custom" data-sb-width="300px">
 	<!-- Your left Slidebar content. -->
 	<ul>
 		<li><%= link_to t('Projects'), controller: 'projects' %></li>
 		<li><%= link_to t('Donations'), controller: 'donations' %></li>
-		<li><%= link_to t('Users'), users_path %></li>
 		<li><%= link_to t('About'), controller: 'pages', action: 'about' %></li>
 	</ul>
 
@@ -91,8 +85,9 @@
 	</ul>
 </div>
 
-<%= render 'shared/modal_login' %>
-
+<% unless logged_in? %>
+  <%= render 'shared/modal_login' %>
+<% end %>
 
 <%= "Locale: #{I18n.locale}" if Rails.env.development? %>
 <%# debug(request) if Rails.env.development? %>
