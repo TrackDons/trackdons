@@ -64,6 +64,7 @@ jQuery(document).ready(function($){
 
   $('.recover-password').on('click', function(event){
     event.preventDefault();
+    $('#password_resets_email').val($('#session_email').val());
     forgot_password_selected();
   });
 
