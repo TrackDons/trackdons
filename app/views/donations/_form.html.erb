@@ -91,7 +91,7 @@
 
     </div>
 
-    <% unless new_donation? %>
+    <% if false && !new_donation? %>
       <div id="add-donation" class="js-add-donation s11 mb3">
         <a href="#"><%= I18n.t('donation.add') %></a>
       </div>
@@ -99,7 +99,6 @@
 
   </div>
 
-    
   <% unless new_donation? %>
     <%= hidden_field_tag :back_url, project_path(@project) %>
   <% end %>
