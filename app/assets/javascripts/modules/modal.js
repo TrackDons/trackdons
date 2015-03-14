@@ -28,6 +28,9 @@ jQuery(document).ready(function($){
     open_modal('login');
   }
 
+  if(window.location.hash == "#signup"){
+    open_modal('signup');
+  }
   //close modal
   $('.cd-user-modal').on('click', function(event){
     if( $(event.target).is($form_modal) || $(event.target).is('.cd-close-form') ) {

@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     root_path(anchor: 'login')
   end
 
+  def signup_path(params)
+    root_path(params.merge(anchor: 'signup'))
+  end
+
   protected
 
     def set_new_donation

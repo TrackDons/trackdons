@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
 
   def check
     if Invitation.valid_token?(params[:invitation_token])
-      redirect_to signup_path(I18n.locale, params[:invitation_token])
+      redirect_to signup_path(invitation_token: params[:invitation_token])
     else
       flash[:error] = t('invitations.not_valid')
       redirect_to invite_path

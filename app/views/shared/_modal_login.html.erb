@@ -49,7 +49,7 @@
 
         <p><strong><%= t 'sessions.new.complete_your' %></strong></p>
 
-        <%= form_for User.new(params[:invitation_token]), url: users_path, html: {class: "login-form"} do |f| %>
+        <%= form_for User.new(invitation_token: params[:invitation_token]), url: users_path, html: {class: "login-form"} do |f| %>
 
           <%# render 'shared/error_messages' %>
 

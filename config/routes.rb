@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
     post   'sessions'  => 'sessions#create'
     delete 'logout' => 'sessions#destroy'
-    get    'signup(/:invitation_token)' => 'users#new', as: :signup
 
     get 'invite'  => 'invitations#new'
     post 'invite' => 'invitations#create'
