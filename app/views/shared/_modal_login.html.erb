@@ -23,7 +23,7 @@
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.email' %>
             <% end %>
-            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email'), autofocus: true %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email'), autofocus: true, tabindex: 1 %>
           </div>
 
           <div class="field-group mb2">
@@ -32,12 +32,12 @@
               <%= t 'sessions.new.password' %>
             <% end %>
             <%= link_to '?', 'javascript:void(0)', class: 'recover-password tipsit', title: t('sessions.new.forgot_password') %>
-            <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password') %>
+            <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password'), tabindex: 2 %>
           </div>
 
           <div class="clearfix mt3 pb4">
-            <%= f.button t('sessions.new.create_account'), class: " btn btn-secondary float-left create-account" %>
-            <%= f.submit t('sessions.new.login_action'), class: " btn btn-primary float-right" %>
+            <%= f.button t('sessions.new.create_account'), class: "btn btn-secondary float-left create-account", tabindex: 4 %>
+            <%= f.submit t('sessions.new.login_action'), class: "btn btn-primary float-right", tabindex: 3 %>
           </div>
 
         <% end %>

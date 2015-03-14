@@ -35,8 +35,19 @@ jQuery(document).ready(function($){
     }	
   });
 
+  // Prevent Enter key to click on the first button of the form, which is the link to the
+  // other form
+  $(document).keydown(function(event){
+    if(event.which=='13'){
+      event.preventDefault();
+      $('form:visible').submit();
+    }
+  });
+
   //close modal when clicking the esc keyboard button
   $(document).keyup(function(event){
+    event.preventDefault();
+
     if(event.which=='27'){
       $form_modal.removeClass('is-visible');
     }
