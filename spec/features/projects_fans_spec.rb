@@ -24,7 +24,7 @@ RSpec.feature 'Projects fans' do
     visit projects_page
 
     click_link "Cruz Roja"
-    click_link "Follow"
+    click_link "Thinking on donating"
 
     expect(page).to have_css(:a, text: 'Following')
 

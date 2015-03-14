@@ -17,7 +17,7 @@
 
         <p><%= t 'sessions.new.or_choose_tradition' %></p>
 
-        <%= form_for :session, url: sessions_path, html: {class: "login-form"} do |f| %>
+        <%= form_for :session, url: sessions_path, html: {class: "login-form", id: "new_session"} do |f| %>
           <div class="field-group mb2">
             <%= f.label :email, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
@@ -51,8 +51,6 @@
 
         <%= form_for User.new(invitation_token: params[:invitation_token]), url: users_path, html: {class: "login-form"} do |f| %>
 
-          <%# render 'shared/error_messages' %>
-
           <div class="field-group mb2">
             <%= f.label :name, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
@@ -66,7 +64,7 @@
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.email' %>
             <% end %>
-            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email'), value: f.object.invitation.try(:invited_email) %>
           </div>
 
           <div class="field-group mb2">

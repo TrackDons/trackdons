@@ -125,7 +125,6 @@ en:
       do_you_want_to_actually_donate: Do you want to actually donate to the project?
       invite_your_friends_to_this_page: Invite your friends to this page
       follow: Follow
-      thinking_on_donating: Thinking on donating
       trackdon: TrackDon
       donations_number: 
         one: '%{count} donation'
@@ -155,6 +154,7 @@ en:
       follow: Follow
       following: Following
       unfollow: Unfollow
+      thinking_on_donating: Thinking on donating
     form:
       select_category: Select category
   shared:

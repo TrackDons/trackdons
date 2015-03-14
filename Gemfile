@@ -46,6 +46,7 @@ gem 'bourbon'
 
 group :development, :test do
   gem 'spring'
+  gem 'byebug'
 end
 
 group :test do
@@ -62,5 +63,4 @@ group :development do
   gem 'mina'
   gem 'web-console', '~> 2.0'
   gem 'quiet_assets'
-  gem 'byebug'
 end

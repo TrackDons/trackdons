@@ -156,7 +156,6 @@ es:
       do_you_want_to_actually_donate: ¿Quieres donar al proyecto?
       invite_your_friends_to_this_page: Invita a tus amigos a esta página
       follow: Seguir
-      thinking_on_donating: Pensando en donar
       trackdon: TrackDon
       donations_number: 
         one: '%{count} donación'
@@ -180,6 +179,7 @@ es:
     destroy: 
       deleted: El proyecto ha sido eliminado. Esperemos que tenga sentido
     action_buttons:
+      thinking_on_donating: Pensando en donar
       follow_explanation: Mantente actualizado en los logros y noticias de este proyecto, y recibe sugerencias de donaciones y recordatorios
       follow: Seguir
       following: Siguiendo

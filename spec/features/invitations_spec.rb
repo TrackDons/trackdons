@@ -8,8 +8,6 @@ RSpec.feature 'Inviting users' do
   scenario 'As a logged user I am able to invite some friends' do
     login_as "yorch@example.com", "wadusm4n"
 
-    visit home_page
-
     within(:css, '#container') do
       click_link 'Invite a friend'
     end
@@ -33,13 +31,13 @@ RSpec.feature 'Inviting users' do
     open_email_for 'myfriend@example.com'
     click_email_link_matching /invite/
 
-    #expect(page).to have_content('With this invitation you can sign up for TrackDons')
-
-    fill_in 'Name', with: 'Peter'
-    fill_in 'Password', with: 'waduswadus'
-    fill_in 'Password confirmation', with: 'waduswadus'
-    select 'Spain', from: 'Country'
-    click_button 'Save'
+    within(:css, '#new_user') do
+      fill_in 'Name & Surname', with: 'Peter'
+      fill_in 'user_password', with: 'waduswadus'
+      fill_in 'user_password_confirmation', with: 'waduswadus'
+      select 'Spain', from: 'Country'
+      click_button 'Create account'
+    end
 
     expect(page).to have_content('Hello Peter')
 
