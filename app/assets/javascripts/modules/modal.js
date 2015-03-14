@@ -7,15 +7,25 @@ jQuery(document).ready(function($){
       $main_nav = $('.nav_personal');
 
   $('.cd-signup').on('click', function(event){
+    event.preventDefault();
     open_modal('login');
   });
 
   $('.cd-signin').on('click', function(event){
+    event.preventDefault();
     open_modal('login');
   });
 
   if($('.cd-user-modal').data('error') !== undefined){
     open_modal($('.cd-user-modal').data('error'));
+  }
+
+  if($('.cd-user-modal').data('error') !== undefined){
+    open_modal($('.cd-user-modal').data('error'));
+  }
+
+  if(window.location.hash == "#login"){
+    open_modal('login');
   }
 
   //close modal
@@ -71,7 +81,15 @@ jQuery(document).ready(function($){
 
   function open_modal(target){
     $form_modal.addClass('is-visible');	
-    (target == 'login') ? login_selected() : signup_selected();
+    if (target == 'login') {
+      login_selected();
+    } else {
+      if (target == 'signup') {
+        signup_selected();
+      } else {
+        forgot_password_selected();
+      }
+    }
   }
 
   function login_selected(){

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
-  helper_method :current_user, :logged_in?, :current_user?
+  helper_method :current_user, :logged_in?, :current_user?, :login_path
 
   rescue_from OAuth::Unauthorized, with: :external_service_unauthorized
 
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options={})
     { locale: I18n.locale }
+  end
+
+  def login_path
+    root_path(anchor: 'login')
   end
 
   protected

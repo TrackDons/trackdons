@@ -14,7 +14,7 @@
 
       <p>
         <%= f.label :invited_email, t('users.labels.your_friends_email') %>
-        <%= f.text_field :invited_email %>
+        <%= f.text_field :invited_email, autofocus: true %>
       </p>
 
       <%= f.submit "Invite", class: "btn btn-primary" %>
@@ -24,7 +24,6 @@
   <% end %>
 
   <% if current_user.invitations(true).any? %>
-
     <section id="invitations_sent">
 
       <p>You have sent this invitations:</p>
@@ -34,7 +33,6 @@
       </table>
 
     </section>
-    
   <% end %>
 
 </section>

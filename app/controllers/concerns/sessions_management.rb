@@ -24,7 +24,7 @@ module SessionsManagement
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = t('.please_log_in')
+      modal_error('login', t('.please_log_in'))
       redirect_to login_path and return false
     end
   end

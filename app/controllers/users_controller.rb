@@ -13,13 +13,6 @@ class UsersController < ApplicationController
     @projects_following = @user.following_by_type('Project')
   end
 
-  def new
-    redirect_to current_user if logged_in?
-
-    @user = User.new(invitation_token: params[:invitation_token])
-    @user.email = @user.invitation.invited_email if @user.invitation
-  end
-
   def create
     redirect_to current_user if logged_in?
 
@@ -27,7 +20,7 @@ class UsersController < ApplicationController
 
     if session[:external_service_auth_information]
       if User.find_by(email: @user.email).present?
-        flash[:alert] = t('.account_already_exists')
+        modal_error('login', t('.account_already_exists'))
         redirect_to login_path and return
       end
     end

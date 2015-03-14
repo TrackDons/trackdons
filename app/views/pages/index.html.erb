@@ -9,7 +9,7 @@
     <li><%= t 'main_bullet_2' %></li>
     <li><%= t 'main_bullet_3' %></li>
   </ul>
-  <%= link_to t('home.read_more_about_this_project'), {controller: 'pages', action: 'about'}, class: 'button' %>
+  <%= link_to t('home.read_more_about_this_project'), about_path, class: 'button' %>
 </section>
 
 <section id="track_donation" class="pt3">
@@ -25,15 +25,10 @@
             <%= t 'track_your_first_donation' %>
           <% end %>
         </h3>
-        <% unless logged_in? %>
-          <div id="login_if_you_already">
-            <%= link_to t('login_if_you_already'), login_path %></div>
-        <% end %>
       </header>
 
       <%= render 'donations/form' %>
     <% end %>
-
-  <!-- </div> -->
+  </div>
 
 </section>

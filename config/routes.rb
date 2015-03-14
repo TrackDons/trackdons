@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   scope "/:locale" do
     root 'pages#index'
 
-    get    'login'  => 'sessions#new'
-    post   'login'  => 'sessions#create'
+    post   'sessions'  => 'sessions#create'
     delete 'logout' => 'sessions#destroy'
     get    'signup(/:invitation_token)' => 'users#new', as: :signup
 
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
 
     get 'about' => 'pages#about'
 
-    resources :users
+    resources :users, except: [:new]
 
     resources :donations
 
@@ -37,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :external_authentications, only: [:index, :edit, :update, :destroy]
 
-    resources :password_resets, only: [:new, :create, :edit, :update]
+    resources :password_resets, only: [:create, :edit, :update]
 
     get 'projects(/*filters)' => 'projects#index', as: :projects_filtered
   end

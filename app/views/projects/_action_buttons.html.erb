@@ -1,5 +1,3 @@
-<%# link_to t('.follow'), track_donation_path, :class => 'button not_active' %>
-
 <% if logged_in? %>
   <% if current_user.following?(@project) %>
     <%= link_to t('.following'), unfollow_project_path(@project),
@@ -21,7 +19,7 @@
   <% end %>
 <% else %>
   <%= link_to t('.follow'), login_path,
-          :class => "button not_active tipsit",
+          :class => "button not_active tipsit cd-signin",
           :id => 'follow_button',
           title: t('.follow_explanation') %>
 <% end %>

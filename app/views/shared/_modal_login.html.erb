@@ -10,28 +10,28 @@
 
         <div class="social-login mt4 mb4 clearfix">
           <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
-          <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>        
+          <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>
         </div>
 
         <div class="separator"></div>
 
         <p><%= t 'sessions.new.or_choose_tradition' %></p>
 
-        <%= form_for :session, url: login_path, html: {class: "login-form"} do |f| %>
+        <%= form_for :session, url: sessions_path, html: {class: "login-form"} do |f| %>
           <div class="field-group mb2">
             <%= f.label :email, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.email' %>
             <% end %>
-            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email'), autofocus: true %>
           </div>
 
           <div class="field-group mb2">
-            <%= f.label :password, class: 'form-icon' do %> 
+            <%= f.label :password, class: 'form-icon' do %>
               <span class="fa fa-key"></span>
               <%= t 'sessions.new.password' %>
             <% end %>
-            <%= link_to '?', new_password_reset_path, class: 'recover-password tipsit', title: t('sessions.new.forgot_password') %>
+            <%= link_to '?', 'javascript:void(0)', class: 'recover-password tipsit', title: t('sessions.new.forgot_password') %>
             <%= f.password_field :password, class: 'input-text', placeholder: t('sessions.new.password') %>
           </div>
 
@@ -47,17 +47,14 @@
       <div id="cd-signup" >
         <%= modal_flash_message(:signup) %>
 
-        <% # substitute the contents of users/_form with the following %>
-
         <p><strong><%= t 'sessions.new.complete_your' %></strong></p>
 
-
-        <%= form_for :user, url: users_path, html: {class: "login-form"} do |f| %>
+        <%= form_for User.new(params[:invitation_token]), url: users_path, html: {class: "login-form"} do |f| %>
 
           <%# render 'shared/error_messages' %>
 
           <div class="field-group mb2">
-            <%= f.label :name, class: 'form-icon' do %> 
+            <%= f.label :name, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.name' %>
             <% end %>
@@ -71,9 +68,9 @@
             <% end %>
             <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
           </div>
-          
+
           <div class="field-group mb2">
-            <%= f.label :password, class: 'form-icon' do %> 
+            <%= f.label :password, class: 'form-icon' do %>
               <span class="fa fa-key"></span>
               <%= t 'sessions.new.password' %>
             <% end %>
@@ -81,7 +78,7 @@
           </div>
 
           <div class="field-group mb2">
-            <%= f.label :password_confirmation, class: 'form-icon' do %> 
+            <%= f.label :password_confirmation, class: 'form-icon' do %>
               <span class="fa fa-key"></span>
               <%= t 'sessions.new.password' %>
             <% end %>
@@ -89,12 +86,11 @@
           </div>
 
           <div class="field-group mb2">
-            <%= f.label :country, class: 'form-icon' do %> 
+            <%= f.label :country, class: 'form-icon' do %>
               <span class="fa fa-globe"></span>
               <%= t 'users.edit.country' %>
             <% end %>
             <%= country_code_select(:user, :country, 'Select your country', { class: 'form-select' }) %>
-            
           </div>
 
           <%= f.hidden_field :invitation_token, value: params[:invitation_token] %>
@@ -103,22 +99,18 @@
             <%= f.button t('sessions.new.already_have_account'), class: "btn btn-secondary float-left login" %>
             <%= f.submit t('sessions.new.create_account'), class: "btn btn-primary float-right" %>
           </div>
-
         <% end %>
-
-
-
       </div>
 
       <div id="cd-reset-password" >
-        <%= modal_flash_message(:password_reset) %>
+        <%= modal_flash_message(:password_resets) %>
 
         <p><strong><%= t 'sessions.new.tell_us_to_recover' %></strong></p>
 
         <%= form_for :password_resets, url: password_resets_path, html: {class: "login-form"} do |f| %>
 
           <div class="field-group mb2">
-            <%= f.label :email, class: 'form-icon' do %> 
+            <%= f.label :email, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.email' %>
             <% end %>
@@ -129,12 +121,8 @@
             <%= f.button t('sessions.new.back_to_login'), class: "btn btn-secondary float-left login" %>
             <%= f.submit t('sessions.new.recover_password'), class: "btn btn-primary float-right" %>
           </div>
-
         <% end %>
-
       </div>
-
-
 
       <a href="#0" class="cd-close-form">Close</a>
     </div><!-- .cd-user-login -->

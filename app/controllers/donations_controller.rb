@@ -15,10 +15,6 @@ class DonationsController < ApplicationController
     @donation = Donation.find(params[:id])
   end
 
-  # TODO: can be removed?
-  def new
-  end
-
   def create
     if logged_in?
       save_donation(donation_params)

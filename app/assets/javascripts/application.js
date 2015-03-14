@@ -35,7 +35,6 @@
 //= require modules/modal
 
 //= require general
-//= require invitations
 //= require projects
 //= require donations
 

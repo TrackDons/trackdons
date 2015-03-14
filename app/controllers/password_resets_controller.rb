@@ -1,19 +1,17 @@
 class PasswordResetsController < ApplicationController
   before_action :load_user, only: [:edit, :update]
 
-  def new
-  end
-
   def create
     if user = User.find_by_email(params[:email])
       user.generate_password_reset_token!
       UserMailer.password_reset(user).deliver_now
 
-      flash.now[:success] = t('.success')
+      flash[:success] = t('.success')
     else
-      flash.now[:error] = t('.invalid_email')
+      modal_error('password_resets', t('.invalid_email'))
     end
-    render 'new'
+
+    redirect_to(:back)
   end
 
   def edit
