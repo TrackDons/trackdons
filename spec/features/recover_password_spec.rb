@@ -8,18 +8,13 @@ RSpec.feature 'Recover password' do
   end
 
   scenario 'An user recovers her password' do
-    visit login_page
+    visit home_page
 
-    click_link 'Forgot password?'
+    within(:css, "#new_password_resets") do
+      fill_in "Email", with: 'yorch@example.com'
+      click_button 'Recover password'
+    end
 
-    expect(page).to have_content('Enter your email to recover your password')
-    fill_in "Email", with: 'bademail.com'
-    click_button 'Continue'
-
-    expect(page).to have_content('Invalid email address')
-
-    fill_in "Email", with: 'yorch@example.com'
-    click_button 'Continue'
     expect(page).to have_content('We have just sent you an email with a link to recover your password')
 
     open_email_for 'yorch@example.com'
@@ -27,9 +22,11 @@ RSpec.feature 'Recover password' do
 
     expect(page).to have_content('Enter your new password')
 
-    fill_in 'Password', with: 'waduswadus'
-    fill_in 'Password confirmation', with: 'waduswadus'
-    click_button 'Save changes'
+    within(:css, '.simple_form') do
+      fill_in 'user_password', with: 'waduswadus'
+      fill_in 'user_password_confirmation', with: 'waduswadus'
+      click_button 'Save changes'
+    end
 
     expect(page).to have_content('Password updated successfully')
     within(:css, '#container') do

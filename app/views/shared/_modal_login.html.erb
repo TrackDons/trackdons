@@ -105,19 +105,19 @@
 
         <p><strong><%= t 'sessions.new.tell_us_to_recover' %></strong></p>
 
-        <%= form_for :password_resets, url: password_resets_path, html: {class: "login-form"} do |f| %>
+        <%= form_tag password_resets_path, class: "login-form", id: "new_password_resets" do %>
 
           <div class="field-group mb2">
-            <%= f.label :email, class: 'form-icon' do %>
+            <%= label_tag :email, class: 'form-icon' do %>
               <span class="fa fa-user"></span>
               <%= t 'sessions.new.email' %>
             <% end %>
-            <%= f.text_field :email, class: 'input-text', placeholder: t('sessions.new.email') %>
+            <%= text_field_tag :email, "", class: 'input-text', placeholder: t('sessions.new.email') %>
           </div>
 
           <div class="clearfix mt3 pb4">
-            <%= f.button t('sessions.new.back_to_login'), class: "btn btn-secondary float-left login" %>
-            <%= f.submit t('sessions.new.recover_password'), class: "btn btn-primary float-right" %>
+            <%= button_tag t('sessions.new.back_to_login'), class: "btn btn-secondary float-left login" %>
+            <%= submit_tag t('sessions.new.recover_password'), class: "btn btn-primary float-right" %>
           </div>
         <% end %>
       </div>
