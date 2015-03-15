@@ -1,4 +1,4 @@
-<%= form_for(donation_for_form, url: (@project ? project_donations_path : donations_path)) do |f| %>
+<%= form_for(donation_for_form, url: (@project ? project_donations_path(@project) : donations_path)) do |f| %>
 
   <div class="bb-donations" data-projects="<%= projects_path %>">
     <div class="js-donations mb1">
@@ -41,7 +41,7 @@
             </div>
             <div class="form-fields">
               <div class="field-select field-group-item">
-                <select class="js-donation-reurring" name="donation[recurring]" value="<%= f.object.recurring %>>
+                <select class="js-donation-reurring" name="donation[recurring]" value="<%= f.object.recurring %>">
                   <option value="no" selected="selected">No</option>
                   <option value="daily"><%= t('.daily') %></option>
                   <option value="weekly"><%= t('.weekly') %></option>
