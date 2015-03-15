@@ -47,6 +47,7 @@ gem 'bourbon'
 group :development, :test do
   gem 'spring'
   gem 'byebug'
+  gem 'jasmine'
 end
 
 group :test do
@@ -56,7 +57,6 @@ group :test do
   gem 'launchy'
   gem 'email_spec'
   gem 'timecop'
-  gem 'jasmine'
 end
 
 group :development do
