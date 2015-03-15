@@ -18,10 +18,10 @@ gem 'ejs'
 
 # It seems we are not using jquery-ui
 # gem "jquery-ui-rails"
-# gem 'jquery-turbolinks'
+gem 'jquery-turbolinks'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+gem 'turbolinks'
 
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 gem 'i18n_country_select'
