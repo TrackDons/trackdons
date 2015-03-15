@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require i18n
 //= require i18n/translations
+//= require turbolinks
 
 //= require vendor/underscore
 //= require vendor/backbone
