@@ -13,11 +13,11 @@ RSpec.feature 'Adding projects while tracking donations. When I create a donatio
 
     find('#donation_project_attributes_name').set 'Ngrok'
 
-    fill_in 'Project Description', :with => 'Introspected tunnels to localhost'
-    fill_in 'URL', :with => 'https://ngrok.com/'
+    fill_in 'donation_project_attributes_description', :with => 'Introspected tunnels to localhost'
+    fill_in 'donation_project_attributes_url', :with => 'https://ngrok.com/'
 
-    fill_in 'When did you donate?', :with => '2014-10-10'
-    fill_in 'How much?', :with => '25'
+    fill_in 'Date', :with => '2014-10-10'
+    fill_in 'Amount', :with => '25'
 
     click_button 'TrackDon'
 
