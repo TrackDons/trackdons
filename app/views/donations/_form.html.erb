@@ -15,7 +15,7 @@
                   <% if new_donation? %>
                     <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
                   <% else %>
-                    <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
+                    <%= project_form.text_field :name, :class => "hundred percent field-text", :disabled => true %>
                   <% end %>
                 </div>
               <% end %>          
