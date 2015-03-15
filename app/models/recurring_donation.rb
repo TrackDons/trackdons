@@ -13,6 +13,7 @@ class RecurringDonation < ActiveRecord::Base
   validates :quantity_cents, presence: true
   validates :frequency_units, presence: true, numericality: true
   validates :frequency_period, presence: true, inclusion: { in: %W{ day days month months year years week weeks } }
+  validate :date_is_not_in_the_future
 
   before_validation :set_frequency, :set_project
   after_create { create_pending_donations }
@@ -96,6 +97,12 @@ class RecurringDonation < ActiveRecord::Base
       self.project = Project.create_with({
         description: self.project.description,
         url: self.project.url}).find_or_create_by(name: self.project.name)
+    end
+  end
+
+  def date_is_not_in_the_future
+    if self.date && self.date > Date.today
+      errors.add(:date, :invalid)
     end
   end
 

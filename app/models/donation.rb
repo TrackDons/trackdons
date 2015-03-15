@@ -19,6 +19,8 @@ class Donation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :date, presence: true
 
+  validate :date_is_not_in_the_future
+
   before_validation :set_project, :clear_comment
 
   def show_comment
@@ -46,6 +48,12 @@ class Donation < ActiveRecord::Base
         self.project = Project.create_with({
           description: self.project.description,
           url: self.project.url}).find_or_create_by(name: self.project.name)
+      end
+    end
+
+    def date_is_not_in_the_future
+      if self.date && self.date > Date.today
+        errors.add(:date, :invalid)
       end
     end
 

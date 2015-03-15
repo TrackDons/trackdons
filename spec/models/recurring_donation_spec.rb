@@ -52,7 +52,7 @@ RSpec.describe RecurringDonation, type: :model do
 
     context 'when no donation exist' do
       it 'should create the donations for today date' do
-        expect(project.donations.count).to be(0)
+        project.donations.clear
 
         described_class.create_today_donations
 
@@ -69,7 +69,7 @@ RSpec.describe RecurringDonation, type: :model do
 
     context 'when donations already exist' do
       it 'should not create any duplicated donation' do
-        expect(project.donations.count).to be(0)
+        project.donations.clear
 
         described_class.create_today_donations
 
@@ -86,6 +86,7 @@ RSpec.describe RecurringDonation, type: :model do
     context "when recurring donation date date is a day that don't exist in all months" do
       it 'should create the donations' do
         Timecop.freeze Time.parse('2015-2-28')
+        project.donations.clear
 
         expect(project.donations.count).to be(0)
 
