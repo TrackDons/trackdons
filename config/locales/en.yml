@@ -93,6 +93,8 @@ en:
       monthly: Monthly
       weeks: "%{n} weeks"
       months: "%{n} months"
+    create:
+      error_creating_donation: "Donation couldn't be created: %{errors}"
 
   # donations form
   how_much_question: 'How much?'

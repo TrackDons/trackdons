@@ -42,7 +42,8 @@ class ApplicationController < ActionController::Base
           cookies.delete(:donation) if cookies[:donation]
           redirect_to donation_path(@donation, share_links: true)
         else
-          render 'donations/new'
+          flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
+          redirect_to(:back)
         end
       else
         recurring_donation = current_user.recurring_donations.build(donation_params.merge(project: project))
@@ -53,7 +54,8 @@ class ApplicationController < ActionController::Base
           redirect_to donation_path(donation, share_links: true)
         else
           @donation = Donation.new(attributes: recurring_donation.attributes.except('frequency_period', 'frequency_units', 'finished_at'))
-          render 'donations/new'
+          flash[:error] = t('.error_creating_donation', errors: recurring_donation.errors.full_messages.to_sentence)
+          redirect_to(:back)
         end
       end
     end

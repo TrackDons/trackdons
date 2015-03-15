@@ -131,6 +131,8 @@ es:
       monthly: Mensual
       weeks: "%{n} semanas"
       months: "%{n} meses"
+    create:
+      error_creating_donation: "No se pudo crear la donación: %{errors}"
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
   i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'
