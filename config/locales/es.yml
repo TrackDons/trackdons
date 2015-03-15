@@ -112,7 +112,11 @@ es:
       cancel: Cancelar
       edit_your_donation: Edita tu donación al proyecto %{name}
       quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
-  # donaciones form
+      daily: Diario
+      weekly: Semanal
+      monthly: Mensual
+      weeks: "%{n} semanas"
+      months: "%{n} meses"
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
   i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'

@@ -1,13 +1,12 @@
 class Donation < ActiveRecord::Base
 
   belongs_to :project, counter_cache: true
-  accepts_nested_attributes_for :project
-
   belongs_to :user, counter_cache: true
-
   belongs_to :recurring_donation
 
-  before_validation :set_project, :clear_comment
+  attr_accessor :recurring
+
+  accepts_nested_attributes_for :project
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
@@ -20,13 +19,7 @@ class Donation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :date, presence: true
 
-  def set_project
-    if self.project && self.project.new_record?
-      self.project = Project.create_with({
-        description: self.project.description,
-        url: self.project.url}).find_or_create_by(name: self.project.name)
-    end
-  end
+  before_validation :set_project, :clear_comment
 
   def show_comment
     comment.present?
@@ -45,6 +38,14 @@ class Donation < ActiveRecord::Base
     def clear_comment
       if @show_comment == '0'
         self.comment = nil
+      end
+    end
+
+    def set_project
+      if self.project && self.project.new_record?
+        self.project = Project.create_with({
+          description: self.project.description,
+          url: self.project.url}).find_or_create_by(name: self.project.name)
       end
     end
 

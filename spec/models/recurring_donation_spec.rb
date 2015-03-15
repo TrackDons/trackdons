@@ -12,7 +12,7 @@ RSpec.describe RecurringDonation, type: :model do
     it 'should calculate the next donation date' do
       recurring_donation = create_recurring_donation({
         frequency_units: 3, frequency_period: 'months',
-        started_at: Date.parse('2014-1-1')
+        date: Date.parse('2014-1-1')
       })
 
       expect(recurring_donation.next_donation_date).to eq(Date.parse('2015-4-1'))
@@ -23,7 +23,7 @@ RSpec.describe RecurringDonation, type: :model do
 
       recurring_donation = create_recurring_donation({
         frequency_units: 1, frequency_period: 'months',
-        started_at: Date.parse('2014-12-31')
+        date: Date.parse('2014-12-31')
       })
 
       expect(recurring_donation.next_donation_date).to eq(Date.parse('2015-1-31'))
@@ -34,7 +34,7 @@ RSpec.describe RecurringDonation, type: :model do
 
       recurring_donation = create_recurring_donation({
         frequency_units: 1, frequency_period: 'months',
-        started_at: Date.parse('2014-12-31')
+        date: Date.parse('2014-12-31')
       })
 
       expect(recurring_donation.next_donation_date).to eq(Date.parse('2015-2-28'))
@@ -46,7 +46,7 @@ RSpec.describe RecurringDonation, type: :model do
       create_recurring_donation({
         user: user, project: project, quantity: 30, currency: 'EUR',
         frequency_units: 1, frequency_period: 'months',
-        started_at: Date.parse('2014-12-30')
+        date: Date.parse('2014-12-30')
       })
     end
 
@@ -83,7 +83,7 @@ RSpec.describe RecurringDonation, type: :model do
       end
     end
 
-    context "when recurring donation started_at date is a day that don't exist in all months" do
+    context "when recurring donation date date is a day that don't exist in all months" do
       it 'should create the donations' do
         Timecop.freeze Time.parse('2015-2-28')
 

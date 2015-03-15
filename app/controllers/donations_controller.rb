@@ -42,7 +42,7 @@ class DonationsController < ApplicationController
   private
 
   def donation_params
-    params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy, :show_comment,
+    params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy, :show_comment, :recurring,
                                      :project_id, project_attributes: [:name, :description, :url, :id, :category_id])
   end
 

@@ -3,13 +3,19 @@ class RecurringDonation < ActiveRecord::Base
   belongs_to :user
   has_many :donations
 
+  accepts_nested_attributes_for :project
+  attr_accessor :recurring
+
   validates :user_id, presence: true
   validates :project_id, presence: true
-  validates :started_at, presence: true
+  validates :date, presence: true
   validates :currency, presence: true
   validates :quantity_cents, presence: true
   validates :frequency_units, presence: true, numericality: true
   validates :frequency_period, presence: true, inclusion: { in: %W{ day days month months year years week weeks } }
+
+  before_validation :set_frequency, :set_project
+  after_create { create_pending_donations }
 
   monetize :quantity_cents, as: :quantity, with_model_currency: :currency
 
@@ -25,12 +31,12 @@ class RecurringDonation < ActiveRecord::Base
 
   def create_pending_donations
     offset = 0
-    date   = started_at
+    current_date = date
     end_date = finished_at || Date.today
 
-    while date < end_date
-      create_donation!(date)
-      date = donation_date_in_offset(offset += 1)
+    while current_date < end_date
+      create_donation!(current_date)
+      current_date = donation_date_in_offset(offset += 1)
     end
   end
 
@@ -38,21 +44,22 @@ class RecurringDonation < ActiveRecord::Base
     return if finished_at.present?
 
     offset = 0
-    date   = started_at
-    while date < Date.today
-      date = donation_date_in_offset(offset += 1)
+    current_date = date
+    while(current_date < Date.today)
+      current_date = donation_date_in_offset(offset += 1)
     end
 
-    date
+    current_date
   end
 
-  def create_donation!(date)
+  def create_donation!(in_date)
     self.donations.new.tap do |d|
-      d.project = project
-      d.user = user
-      d.currency = currency
-      d.quantity_cents = quantity_cents
-      d.date = date
+      d.project = self.project
+      d.user = self.user
+      d.currency = self.currency
+      d.quantity_cents = self.quantity_cents
+      d.date = in_date
+      d.quantity_privacy = self.quantity_privacy
       d.save!
     end
   end
@@ -60,7 +67,36 @@ class RecurringDonation < ActiveRecord::Base
   private
 
   def donation_date_in_offset(offset)
-    started_at + (frequency_units * offset).send(frequency_period.to_sym)
+    date + (frequency_units * offset).send(frequency_period.to_sym)
+  end
+
+  def set_frequency
+    if self.recurring.present? && self.frequency_period.blank? && self.frequency_units.blank?
+      case self.recurring
+      when 'daily'
+        self.frequency_period = 'day'
+        self.frequency_units = 1
+      when 'weekly'
+        self.frequency_period = 'week'
+        self.frequency_units = 1
+      when 'monthly'
+        self.frequency_period = 'month'
+        self.frequency_units = 1
+      when 'yearly'
+        self.frequency_period = 'year'
+        self.frequency_units = 1
+      else
+        self.frequency_units, self.frequency_period = self.recurring.split(' ')
+      end
+    end
+  end
+
+  def set_project
+    if self.project && self.project.new_record?
+      self.project = Project.create_with({
+        description: self.project.description,
+        url: self.project.url}).find_or_create_by(name: self.project.name)
+    end
   end
 
 end

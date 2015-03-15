@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
@@ -34,16 +32,31 @@ class ApplicationController < ActionController::Base
     end
 
     def save_donation(donation_params)
-      @donation = current_user.donations.build(donation_params)
-      if donation_params[:project_id] and project = Project.find_by(id: donation_params[:project_id])
-        @donation.project = project
+      if donation_params[:project_id]
+        project = Project.find_by(id: donation_params[:project_id])
       end
 
-      if @donation.save
-        cookies.delete(:donation) if cookies[:donation]
-        redirect_to donation_path(@donation, :share_links => true)
+      if donation_params[:recurring] == 'no'
+        @donation = current_user.donations.build(donation_params.merge(project: project))
+        if @donation.save
+          cookies.delete(:donation) if cookies[:donation]
+          redirect_to donation_path(@donation, share_links: true)
+        else
+          render 'donations/new'
+        end
       else
-        render 'new'
+        recurring_donation = current_user.recurring_donations.build(donation_params.merge(project: project))
+        if recurring_donation.save
+          if donation = recurring_donation.donations.sorted.last
+            redirect_to donation_path(donation, share_links: true)
+          else
+            flash[:success] = "Donación recurrente creada correctamente. TrackDons registrará automáticamente las donaciones futuras"
+            redirect_to(:back)
+          end
+        else
+          @donation = recurring_donation
+          render 'donations/new'
+        end
       end
     end
 

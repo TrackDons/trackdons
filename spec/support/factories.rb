@@ -43,7 +43,7 @@ module Factories
     attrs[:project]          ||= create_project
     attrs[:quantity]         ||= 10
     attrs[:currency]         ||= 'EUR'
-    attrs[:started_at]       ||= Date.today - 7.days
+    attrs[:date]             ||= Date.today - 7.days
     attrs[:frequency_units]  ||= 1
     attrs[:frequency_period] ||= 'year'
     RecurringDonation.create!(attrs)

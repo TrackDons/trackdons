@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226175510) do
+ActiveRecord::Schema.define(version: 20150315075047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,16 +110,17 @@ ActiveRecord::Schema.define(version: 20150226175510) do
   add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
 
   create_table "recurring_donations", force: :cascade do |t|
-    t.integer  "user_id",          null: false
-    t.integer  "project_id",       null: false
-    t.integer  "quantity_cents",   null: false
-    t.string   "currency",         null: false
-    t.integer  "frequency_units",  null: false
-    t.string   "frequency_period", null: false
-    t.date     "started_at",       null: false
+    t.integer  "user_id",                          null: false
+    t.integer  "project_id",                       null: false
+    t.integer  "quantity_cents",                   null: false
+    t.string   "currency",                         null: false
+    t.integer  "frequency_units",                  null: false
+    t.string   "frequency_period",                 null: false
+    t.date     "date",                             null: false
     t.date     "finished_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "quantity_privacy", default: false
   end
 
   create_table "taggings", force: :cascade do |t|

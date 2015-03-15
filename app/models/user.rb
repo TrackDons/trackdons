@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
 
   has_many :donations, dependent: :destroy
+  has_many :recurring_donations, dependent: :destroy
   has_many :projects, through: :donations
   has_many :invitations
 

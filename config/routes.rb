@@ -24,9 +24,11 @@ Rails.application.routes.draw do
     resources :users, except: [:new]
 
     resources :donations
+    resources :recurring_donations, only: [:new, :create]
 
     resources :projects do
       resources :donations
+      resources :recurring_donations, only: [:new, :create]
       member do
         patch 'follow'
         patch 'unfollow'
