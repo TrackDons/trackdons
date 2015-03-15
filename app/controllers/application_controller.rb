@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
     end
 
     def save_donation(donation_params)
-      if donation_params[:project_id]
-        project = Project.find_by(id: donation_params[:project_id])
+      if donation_params[:project_attributes] && donation_params[:project_attributes][:id]
+        project = Project.find_by(id: donation_params[:project_attributes][:id])
       end
 
       if donation_params[:recurring] == 'no'
@@ -47,14 +47,12 @@ class ApplicationController < ActionController::Base
       else
         recurring_donation = current_user.recurring_donations.build(donation_params.merge(project: project))
         if recurring_donation.save
-          if donation = recurring_donation.donations.sorted.last
-            redirect_to donation_path(donation, share_links: true)
-          else
-            flash[:success] = "Donación recurrente creada correctamente. TrackDons registrará automáticamente las donaciones futuras"
-            redirect_to(:back)
-          end
+          # TODO: we redirect to the last donation created in the recurring donation
+          #       We could probably show information about the recurring donation
+          donation = recurring_donation.donations.sorted.last
+          redirect_to donation_path(donation, share_links: true)
         else
-          @donation = recurring_donation
+          @donation = Donation.new(attributes: recurring_donation.attributes.except('frequency_period', 'frequency_units', 'finished_at'))
           render 'donations/new'
         end
       end

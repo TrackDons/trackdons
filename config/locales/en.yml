@@ -6,6 +6,14 @@ en:
           attributes:
             countries:
               invalid: "must contain a valid name of country"
+        donation:
+          attributes:
+            date:
+              invalid: "must be today or previous to today"
+        recurring_donation:
+          attributes:
+            date:
+              invalid: "must be today or previous to today"
   language_name: "English"
   hello: "Hello world"
   # generics
