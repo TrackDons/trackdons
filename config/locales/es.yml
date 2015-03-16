@@ -73,14 +73,38 @@ es:
   # home
   tagline: 'Un diario de las donaciones que realizas a los proyectos que te importan'
   main_bullet_1: 'Ayuda a captar más donantes para los proyectos en los que crees mostrando tus donaciones'
-  main_bullet_2: "Registra los proyectos a los que has donado -- y no te olvides de seguir haciéndolo"
+  main_bullet_2: "Registra los proyectos a los que has donado — y no te olvides de seguir haciéndolo"
   main_bullet_3: 'Descubre los proyectos a los que deberías estar apoyando'
   read_more_about_this_proyect: 'Más sobre este proyecto'
   track_a_donación: 'Registra una donación'
   track_your_first_donación: 'Registra tu primera donación'
   login_if_you_already: 'Identifícate si ya has registrado alguna donación'
+  no: no
   home: 
     read_more_about_this_project: "Más sobre este proyecto"
+    have_you_donated_sometime: ¿Has donado alguna vez a una ONG o un proyecto?
+    yes_of_course: Si, claro
+    so_its_about_time: Pues ya va siendo hora, ¿o qué?
+    so_its_about_time_explanation: |
+      Te animamos a que contribuyas con una pequeña (o gran) donación a uno de los muchos proyectos que se mantienen gracias a las contribuciones de personas como tú. Hay proyectos de todo tipo, seguro que encuentras alguno que haga algo que te parezca interesante.
+
+      Hay un montón de personas realizando donaciones a proyectos que les importan. Puedes leer por qué lo hacen y a lo mejor te sirve de inspiración. Sabemos que los tiempos están como están, pero casi siempre se puede sacar alguna pequeña cantidad.
+
+      Lo de pensar en realizar alguna donación nos ayuda a poner en perspectiva en qué nos gastamos nuestro dinero. Las grandes multinacionales "optimizan" el importe de sus impuestos con prácticas fiscales opacas y cuestionables. ¿Dónde acaba nuestro dinero? Apoyando de forma directa a pequeñas organizaciones, tienes un mejor control de a qué se dedica tu dinero.
+    see_projects: Ver proyectos
+    see_donations: Ver donaciones
+    would_you_like_to_recruit_more_support: ¿Te gustaría conseguir más apoyo para los proyectos a los que has donado?
+    you_are_not_the_only_one: No eres el único
+    you_are_not_the_only_one_explanation: |
+      Según las estadísticas y muchos testimonios de responsables de grandes ONGs, un gran porcentaje de donantes no está por la labor de hacer pública su donación. Pero nosotros pensamos que es absurdo. Donar es solo la primera parte, contarlo y  conseguir más donantes, la segunda y más importante.
+    do_you_fancy_creating_your_public_trackdon: ¿Te animas a crear tu cuaderno público de donaciones para inspirar a tus amigos?
+    how_not: ¿Cómo que no?
+    how_not_explanation: No esperábamos que nadie dijese esto, la verdad... A ver que nos inventamos ahora. Bueno, la verdad es que no mucho. Dejaremos que la evidencia hable por si misma. Échale un vistazo a las donaciones que han registrado otros usuarios en TrackDons para que entiendas qué motivaciones tienen para hacerlo.
+    ok_we_get_it: Bueno, vale. Lo entendemos
+    ok_we_get_it_explanation: |
+      Más de uno nos ha dicho que hablar de sus donaciones en público es como presumir de ellas, y que ellos no quieren presumir; solo ayudar. Nosotros tampoco queremos que presumas, solo que inspires a tus amigos y les des ideas: de que pueden donar, y a qué proyectos. Por eso, cuando registras una donación puedes mantener la cantidad como privada (solo la verás tú; el resto de tus amigos verán solo el proyecto al que has donado). [Puedes leer más sobre este proyecto](%{link}).
+
+      Si aún así sigues sin verlo claro, que sepas que estamos pensando en ofrecer la posibilidad de que puedas tener un perfil privado que te ayude a gestionar tus donaciones de forma confidencial. Si estás interesado en algo así, [dános un toque](lets@trackdons.org) y puede que le demos prioridad ;)
   # donaciones
   donations:
     destroy:

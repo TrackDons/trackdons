@@ -1,0 +1,43 @@
+/*
+ *
+ * Home for logged-out users
+ * -------------------------
+ *
+ * 
+ *
+ */
+
+.home_for_newcomers {
+  z-index: 2;
+  position: absolute;
+  top: -2em;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  @include linear-gradient($caqui, $light_background);
+  
+  .slide {
+    padding: 0 3em;
+    position: relative;
+    @include vertical-align;
+
+    .question {
+      font-size: 2.2em;
+      line-height: 1.4em;
+      font-weight: bold;
+      margin: 0 0 1em 0;
+    }
+    .answer, .content_column {
+      width: 50%;
+      margin: auto;
+      margin-bottom: 3em;
+    }
+  }
+
+  .access_link {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+}

@@ -71,6 +71,7 @@
  */
 
  @import "layout/donations";
+ @import "layout/home-newcomers";
 
 /* 
  * 6. Vendors
@@ -202,7 +203,6 @@ h2 { font-size: 24px; }
 #home { padding-top: 30px; padding-bottom: 30px;}
 #home ul, #home li { margin: 0; padding: 0; list-style-type: none; }
 #home li { font-size: 18px; margin: 0 0 22px 0;}
-#home ul { width: 410px; }
 
 // #track_donation header { margin: 20px 0; position: relative; }
 // #track_donation h2 { font-size: 18px;}

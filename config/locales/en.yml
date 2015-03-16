@@ -43,6 +43,34 @@ en:
   category: Category
   home: 
     read_more_about_this_project: "Read more about this project"
+    have_you_donated_sometime: Have you ever donated to an NGO or project?
+    yes_of_course: Yes, of course
+    so_its_about_time: "So its about time, isn't it?"
+    so_its_about_time_explanation: |
+      We invite you to contribute with a small (or big) donation to one of the many projects maintained thanks to the contributions of people like you and me. There are all kinds of projects, for sure you will find some that interests you. 
+      
+      There are lots of people making donations to projects they care about. You can read why they do it and maybe it will serve as inspiration. Things are tough, but there is always something to contribute (and its not always money!)
+      
+      Thinking about donating puts in perspective in what do we spend our money. Big multinational corporations do things like "optimizing" their tax bill with opaque fiscal practices. Where does our money ends when we buy from them? Giving direct support to small organizations you get a better control of what your money is spent on.
+      
+    see_projects: Browse projects
+    see_donations: Browse donations
+    would_you_like_to_recruit_more_support: Would you like to recruit more support for the projects you have donated to?
+    you_are_not_the_only_one: You are not the only one
+    you_are_not_the_only_one_explanation: |
+      According to stats many NGO donors is not happy with sharing and making public the fact that they have donated. We think it doesn't make sense.
+
+      Donating is just the first part: The second, and most important, telling about it and recruiting more donors
+       
+    do_you_fancy_creating_your_public_trackdon: Do you fancy creating a log of your donations to inspire your friends?
+    how_not: How not?
+    how_not_explanation: We didn't expect nobody saying this, really... So let's see what we come up with now. Let's evidence speak for itself. Take a look to the donations tracked by other users so you can get a glimpse of their motivations for donatings.
+    ok_we_get_it: OK. We understand it.
+    ok_we_get_it_explanation: |
+      More than one have told us that talking publicly about their donations is like showing off, and they don't want to show off; they just want to help. We neither want to make you show off, just that you inspire your friends and give them ideas: that they can donate, and to which interesting projects. Because of that, when you track a donation you can keep the quantity private (it will only be vissible to you, your friends only will see the projects you have donated to). [Read more about TrackDons](%{link}).
+      
+      If you keep without being sure about tracking donations publicly, know that we are thinking of the possibility of creating a all-private mode that will help to be organized. If you would use something like that, [ping us](mailto:lets@trackdons.org) and we might give it priority in our roadmap ;)
+  
   # donations
   donations:
     destroy:

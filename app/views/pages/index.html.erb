@@ -1,34 +1,122 @@
 <% set_meta_tags :description => t('metas.home.description') %>
 
-<section id="home" class="content_column">
+<section id="home_for_newcomers" class="home_for_newcomers">
 
-  <h1 class="logo">TrackDons</h1>
-  <h2><%= t 'tagline' %></h2>
-  <ul>
-    <li><%= t 'main_bullet_1' %></li>
-    <li><%= t 'main_bullet_2' %></li>
-    <li><%= t 'main_bullet_3' %></li>
-  </ul>
-  <%= link_to t('home.read_more_about_this_project'), about_path, class: 'button' %>
-</section>
+  <div class="access_link ">
+    <%= link_to t('sessions.new.already_have_account'), '', :class => 'cd-signin btn btn-soft' %>
+  </div>
 
-<section id="track_donation" class="pt3">
+  <div id="slide-1" class="slide">
 
-  <div class="content-big">
+    <div class="question"><%= t('home.have_you_donated_sometime') %></div>
 
-    <% if logged_in? %>
-      <header class="mt3 mb3">
-        <h3 class="main-color">
-          <% if has_donations? %>
-            <%= t 'track_a_donation' %>
-          <% else %>
-            <%= t 'track_your_first_donation' %>
-          <% end %>
-        </h3>
-      </header>
+    <div class="buttons">
+      <%= link_to t('no'), '', class: 'btn-no btn mr3' %>
+      <%= link_to t('home.yes_of_course'), '', class: 'btn-yes btn' %>
+    </div>
 
-      <%= render 'donations/form' %>
-    <% end %>
+  </div>
+
+  <div id="slide-1-no" class="slide is-hidden">
+
+    <div class="question"><%= t('home.so_its_about_time') %></div>
+
+    <div class="answer">
+      <%= markdown(t('home.so_its_about_time_explanation')) %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to t('home.see_projects'), projects_path, class: 'button' %>
+    </div>
+
+  </div>
+
+  <div id="slide-2" class="slide is-hidden">
+
+    <div class="question"><%= t('home.would_you_like_to_recruit_more_support') %></div>
+
+    <div class="buttons">
+      <%= link_to t('no'), '', class: 'btn-no btn mr3' %>
+      <%= link_to t('home.yes_of_course'), '', class: 'btn-yes btn' %>
+    </div>
+
+  </div>
+
+  <div id="slide-2-no" class="slide is-hidden">
+
+    <div class="question"><%= t('home.you_are_not_the_only_one') %></div>
+
+    <div class="answer">
+      <%= markdown(t('home.you_are_not_the_only_one_explanation')) %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to t('home.see_projects'), '', class: 'button' %>
+    </div>
+
+  </div>
+
+  <div id="slide-3" class="slide is-hidden">
+
+    <div class="question"><%= t('home.do_you_fancy_creating_your_public_trackdon') %></div>
+
+    <div class="buttons">
+      <%= link_to t('no'), '', class: 'btn-no btn mr3' %>
+      <%= link_to t('home.yes_of_course'), '', class: 'btn-yes btn' %>
+    </div>
+
+  </div>
+
+  <div id="slide-3-no" class="slide is-hidden">
+    
+    <div class="question"><%= t('home.how_not') %></div>
+
+    <div class="answer">
+      <%= t('home.how_not_explanation') %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to t('home.see_donations'), donations_path, class: 'button' %>
+    </div>
+
+  </div>
+
+  <div id="slide-4" class="slide is-hidden">
+
+    <section id="home" class="content_column">
+
+      <h1 class="logo">TrackDons</h1>
+      <h2><%= t 'tagline' %></h2>
+      <ul>
+        <li><%= t 'main_bullet_1' %></li>
+        <li><%= t 'main_bullet_2' %></li>
+        <li><%= t 'main_bullet_3' %></li>
+      </ul>
+      <%# link_to t('home.read_more_about_this_project'), about_path, class: 'button' %>
+      <%= link_to t('track_your_first_donation'), '', :class => 'cd-signin btn mt3' %>
+    </section>
+
+  </div>
+
+  <div id="slide-4-no" class="slide is-hidden">
+
+    <div class="question"><%= t('home.ok_we_get_it') %></div>
+
+    <div class="answer">
+      <%= markdown(t('home.ok_we_get_it_explanation', link: about_path)) %>
+    </div>
+
+    <div class="buttons">
+      <%= link_to t('home.see_donations'), donations_path, class: 'button' %>
+    </div>
+
   </div>
 
 </section>
+
+
+
+
+
+
+
