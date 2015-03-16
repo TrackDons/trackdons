@@ -19,9 +19,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if session[:external_service_auth_information]
-      if User.find_by(email: @user.email).present?
-        modal_error('login', t('.account_already_exists'))
-        redirect_to login_path and return
+      if user = User.find_by(email: @user.email)
+        log_in user
+        link_external_service(current_user, session[:external_service_auth_information])
+
+        save_pending_donations || redirect_to(current_user)
+        return
       end
     end
 
@@ -32,11 +35,7 @@ class UsersController < ApplicationController
         invitation.mark_as_used!(@user)
       end
 
-      if session[:external_service_auth_information]
-        current_external_services = ExternalServiceManager.new(current_user)
-        current_external_services.link_to_service(ActiveSupport::HashWithIndifferentAccess.new(session[:external_service_auth_information]))
-        session[:external_service_auth_information].clear
-      end
+      link_external_service(current_user, session[:external_service_auth_information])
       save_pending_donations || redirect_to(@user)
     else
       modal_error('signup', t('.invalid_data'))
@@ -74,5 +73,13 @@ class UsersController < ApplicationController
 
     def load_user
       @user = User.find(params[:id])
+    end
+
+    def link_external_service(current_user, external_service_auth_information)
+      if external_service_auth_information
+        current_external_services = ExternalServiceManager.new(current_user)
+        current_external_services.link_to_service(ActiveSupport::HashWithIndifferentAccess.new(external_service_auth_information))
+        external_service_auth_information.clear
+      end
     end
 end
