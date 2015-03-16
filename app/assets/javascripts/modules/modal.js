@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-  var $form_modal = $('.cd-user-modal'),
+  var $form_modal = $('#modal-signin'),
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup'),
       $form_forgot_password = $form_modal.find('#cd-reset-password'),
@@ -16,12 +16,12 @@ jQuery(document).ready(function($){
     open_modal('login');
   });
 
-  if($('.cd-user-modal').data('error') !== undefined){
-    open_modal($('.cd-user-modal').data('error'));
+  if($('#modal-signin').data('error') !== undefined){
+    open_modal($('#modal-signin').data('error'));
   }
 
-  if($('.cd-user-modal').data('error') !== undefined){
-    open_modal($('.cd-user-modal').data('error'));
+  if($('#modal-track').data('error') !== undefined){
+    open_modal($('#modal-track').data('error'));
   }
 
   if(window.location.hash == "#login"){
@@ -31,10 +31,11 @@ jQuery(document).ready(function($){
   if(window.location.hash == "#signup"){
     open_modal('signup');
   }
+  
   //close modal
   $('.cd-user-modal').on('click', function(event){
-    if( $(event.target).is($form_modal) || $(event.target).is('.cd-close-form') ) {
-      $form_modal.removeClass('is-visible');
+    if( $(event.target).is('.cd-user-modal') || $(event.target).is('.cd-close-form') ) {
+      $('.cd-user-modal').removeClass('is-visible');
     }	
   });
 
@@ -50,9 +51,8 @@ jQuery(document).ready(function($){
   //close modal when clicking the esc keyboard button
   $(document).keyup(function(event){
     event.preventDefault();
-
     if(event.which=='27'){
-      $form_modal.removeClass('is-visible');
+      $('.cd-user-modal').removeClass('is-visible');
     }
   });
 
@@ -88,13 +88,19 @@ jQuery(document).ready(function($){
 
   $('.recover-password').on('click', function(event){
     event.preventDefault();
-    $('#password_resets_email').val($('#session_email').val());
     forgot_password_selected();
+    $('#email').val($('#session_email').val());
+    $('#email').focus();
+    
   });
 
 
-  function open_modal(target){
-    $form_modal.addClass('is-visible');	
+  function open_modal(target, modal){
+    modal = typeof modal !== 'undefined' ?  modal : '#modal-signin';
+    target = typeof target !== 'undefined' ?  target : 'login';
+
+    $(modal).addClass('is-visible');
+
     if (target == 'login') {
       login_selected();
     } else {
@@ -146,8 +152,19 @@ jQuery(document).ready(function($){
     });
   }
 
-});
 
+  /* Donation tracking form modal 
+   * This should go to another file?
+   */
+  $('.modal-track-open').on('click', function(event){
+    event.preventDefault();
+    open_modal('login', '#modal-track');
+  });
+
+
+
+
+});
 
 //credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
 jQuery.fn.putCursorAtEnd = function() {

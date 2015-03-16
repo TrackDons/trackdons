@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  before_action :set_new_donation, only: :index
 
   def root
     if logged_in?
