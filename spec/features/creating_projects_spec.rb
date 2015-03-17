@@ -12,7 +12,7 @@ RSpec.feature 'Creating projects' do
     click_link '+'
 
     fill_in 'Project', with: 'Rubular'
-    fill_in 'Description', with: 'Rubular is a regular expression compilar in real time'
+    fill_in 'project_description', with: 'Rubular is a regular expression compilar in real time'
     fill_in 'URL', with: 'http://rubular.com'
     fill_in 'Donation URL', with: 'http://rubular.com/donate'
     fill_in 'Twitter', with: 'http://twitter.com/rubular'

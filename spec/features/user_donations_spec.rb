@@ -65,9 +65,11 @@ RSpec.feature 'User donations' do
       click_link('Edit')
     end
 
-    fill_in 'Amount', :with => '25'
-    fill_in 'Date', :with => '2013-10-10'
-    click_button 'Update'
+    within(:css, '.edit_donation') do
+      fill_in 'Amount', :with => '25'
+      fill_in 'Date', :with => '2013-10-10'
+      click_button 'Update'
+    end
 
     expect(page).to have_css('h1', text: 'Wikiwadus')
 

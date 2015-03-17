@@ -15,11 +15,13 @@ RSpec.feature 'Create recurring donations' do
 
     click_link('Wikiwadus')
 
-    fill_in 'donation_date', :with => "2014-10-10"
-    fill_in 'donation_quantity', :with => "200.99"
-    select '$', from: 'donation_currency'
-    select '2 weeks', from: 'donation_recurring'
-    click_button 'TrackDon'
+    within(:css, '#modal-track') do
+      fill_in 'donation_date', :with => "2014-10-10"
+      fill_in 'donation_quantity', :with => "200.99"
+      select '$', from: 'donation_currency'
+      select '2 weeks', from: 'donation_recurring'
+      click_button 'TrackDon'
+    end
 
     expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
     expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
