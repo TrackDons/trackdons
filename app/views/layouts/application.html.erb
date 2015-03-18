@@ -89,6 +89,11 @@
   <%= render 'shared/modal_login' %>
 <% end %>
 
+<% if logged_in? %>
+  <%= render 'shared/modal_form_donation' %>
+<% end %>
+
+
 <%= "Locale: #{I18n.locale}" if Rails.env.development? %>
 <%# debug(request) if Rails.env.development? %>
 <%= debug(params) if Rails.env.development? %>

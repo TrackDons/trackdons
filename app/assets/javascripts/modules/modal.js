@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-  var $form_modal = $('.cd-user-modal'),
+  var $form_modal = $('#modal-signin'),
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup'),
       $form_forgot_password = $form_modal.find('#cd-reset-password'),
@@ -8,20 +8,22 @@ jQuery(document).ready(function($){
 
   $('.cd-signup').on('click', function(event){
     event.preventDefault();
-    open_modal('login');
+    open_modal('#modal-signin', 'signup');
   });
 
   $('.cd-signin').on('click', function(event){
     event.preventDefault();
-    open_modal('login');
+    open_modal('#modal-signin', 'login');
   });
 
-  if($('.cd-user-modal').data('error') !== undefined){
-    open_modal($('.cd-user-modal').data('error'));
+  if($('#modal-signin').data('error') !== undefined){
+    $('#modal-signin').data('error');
+    open_modal('#modal-signin');
   }
 
-  if($('.cd-user-modal').data('error') !== undefined){
-    open_modal($('.cd-user-modal').data('error'));
+  if($('#modal-track').data('error') !== undefined){
+    $('#modal-track').data('error');
+    open_modal('#modal-track');
   }
 
   if(window.location.hash == "#login"){
@@ -31,10 +33,14 @@ jQuery(document).ready(function($){
   if(window.location.hash == "#signup"){
     open_modal('signup');
   }
+  if(window.location.hash == "#signup"){
+    open_modal('signup');
+  }
+  
   //close modal
   $('.cd-user-modal').on('click', function(event){
-    if( $(event.target).is($form_modal) || $(event.target).is('.cd-close-form') ) {
-      $form_modal.removeClass('is-visible');
+    if( $(event.target).is('.cd-user-modal') || $(event.target).is('.cd-close-form') ) {
+      $('.cd-user-modal').removeClass('is-visible');
     }	
   });
 
@@ -50,9 +56,8 @@ jQuery(document).ready(function($){
   //close modal when clicking the esc keyboard button
   $(document).keyup(function(event){
     event.preventDefault();
-
     if(event.which=='27'){
-      $form_modal.removeClass('is-visible');
+      $('.cd-user-modal').removeClass('is-visible');
     }
   });
 
@@ -88,21 +93,24 @@ jQuery(document).ready(function($){
 
   $('.recover-password').on('click', function(event){
     event.preventDefault();
-    $('#password_resets_email').val($('#session_email').val());
     forgot_password_selected();
+    $('#email').val($('#session_email').val());
+    $('#email').focus();
+    
   });
 
 
-  function open_modal(target){
-    $form_modal.addClass('is-visible');	
-    if (target == 'login') {
+  function open_modal(modal, target){
+    modal = typeof modal !== 'undefined' ?  modal : '#modal-signin';
+    target = typeof target !== 'undefined' ?  target : 'login';
+
+    $(modal).addClass('is-visible');
+
+    if(($('#modal-signin').data('error') || target) == 'login') {
       login_selected();
-    } else {
-      if (target == 'signup') {
-        signup_selected();
-      } else {
-        forgot_password_selected();
-      }
+    }
+    if(($('#modal-signin').data('error') || target) == 'signup') {
+      signup_selected();
     }
   }
 
@@ -146,8 +154,19 @@ jQuery(document).ready(function($){
     });
   }
 
-});
 
+  /* Donation tracking form modal 
+   * This should go to another file?
+   */
+  $('.modal-track-open').on('click', function(event){
+    event.preventDefault();
+    open_modal('#modal-track');
+  });
+
+
+
+
+});
 
 //credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
 jQuery.fn.putCursorAtEnd = function() {

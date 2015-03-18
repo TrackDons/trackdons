@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsManagement
   before_action :set_locale
+  before_action :set_new_donation
   helper_method :current_user, :logged_in?, :current_user?, :login_path
 
   rescue_from OAuth::Unauthorized, with: :external_service_unauthorized
@@ -42,7 +43,8 @@ class ApplicationController < ActionController::Base
           cookies.delete(:donation) if cookies[:donation]
           redirect_to donation_path(@donation, share_links: true)
         else
-          flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
+          # flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
+          modal_error('donation', t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence))
           redirect_to(:back)
         end
       else

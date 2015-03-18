@@ -41,3 +41,4 @@
 //= require donations
 
 //= require components/donations
+//= require components/home-newcomers
