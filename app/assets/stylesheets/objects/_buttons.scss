@@ -21,12 +21,12 @@ a.button, .donation a.button, a.button:visited, .donation a.button:visited { tex
     background: darken($main-color, 3%);
   }
 }
-a.button.not_active {
+a.btn.not_active {
   background: darken($light_background, 10%);
   color: $main_color;
   border-bottom-color: $main_color;
 }
-a.button.not_active:hover {
+a.btn.not_active:hover {
   background: darken($light_background, 20%);
   color: darken($main_color, 10%);
 }
