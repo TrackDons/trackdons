@@ -8,26 +8,31 @@ jQuery(document).ready(function($){
 
   $('.cd-signup').on('click', function(event){
     event.preventDefault();
-    open_modal('login');
+    open_modal('#modal-signin', 'signup');
   });
 
   $('.cd-signin').on('click', function(event){
     event.preventDefault();
-    open_modal('login');
+    open_modal('#modal-signin', 'login');
   });
 
   if($('#modal-signin').data('error') !== undefined){
-    open_modal($('#modal-signin').data('error'));
+    $('#modal-signin').data('error');
+    open_modal('#modal-signin');
   }
 
   if($('#modal-track').data('error') !== undefined){
-    open_modal($('#modal-track').data('error'));
+    $('#modal-track').data('error');
+    open_modal('#modal-track');
   }
 
   if(window.location.hash == "#login"){
     open_modal('login');
   }
 
+  if(window.location.hash == "#signup"){
+    open_modal('signup');
+  }
   if(window.location.hash == "#signup"){
     open_modal('signup');
   }
@@ -95,20 +100,17 @@ jQuery(document).ready(function($){
   });
 
 
-  function open_modal(target, modal){
+  function open_modal(modal, target){
     modal = typeof modal !== 'undefined' ?  modal : '#modal-signin';
     target = typeof target !== 'undefined' ?  target : 'login';
 
     $(modal).addClass('is-visible');
 
-    if (target == 'login') {
+    if(($('#modal-signin').data('error') || target) == 'login') {
       login_selected();
-    } else {
-      if (target == 'signup') {
-        signup_selected();
-      } else {
-        forgot_password_selected();
-      }
+    }
+    if(($('#modal-signin').data('error') || target) == 'signup') {
+      signup_selected();
     }
   }
 
@@ -158,7 +160,7 @@ jQuery(document).ready(function($){
    */
   $('.modal-track-open').on('click', function(event){
     event.preventDefault();
-    open_modal('login', '#modal-track');
+    open_modal('#modal-track');
   });
 
 

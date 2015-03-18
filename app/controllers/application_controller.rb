@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
           redirect_to donation_path(@donation, share_links: true)
         else
           # flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
-          modal_error('login', t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence))
+          modal_error('donation', t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence))
           redirect_to(:back)
         end
       else
