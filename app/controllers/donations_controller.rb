@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-  before_filter :set_new_donation, only: :new
+
   before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :load_donation, only: [:edit, :update, :destroy]
 

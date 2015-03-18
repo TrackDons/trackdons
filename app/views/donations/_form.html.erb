@@ -6,20 +6,21 @@
       <div class="bb-donation mb2">
         <div class="justify-columns donations-holder">
 
-            <div class="form-group justify-item donation-project">
-              <%= f.fields_for(:project) do |project_form| %>
-                <div class="form-label uppercase">
-                  <%= project_form.label(:name, I18n.t('donation.project')) %>
-                </div>
-                <div class="form-fields">
-                  <% if @project %>
-                    <%= project_form.text_field :name, :class => "hundred percent field-text", :disabled => true %>
-                  <% else %>
-                    <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+          <div class="form-group justify-item donation-project">
+            <%= f.fields_for(:project) do |project_form| %>
+              <div class="form-label uppercase">
+                <%= project_form.label(:name, I18n.t('donation.project')) %>
+              </div>
+              <div class="form-fields">
+                <% if @project %>
+                  <%= project_form.text_field :name, :class => "hundred percent field-text", :disabled => true %>
+                <% else %>
+                  <%= project_form.text_field :name, :class => "hundred percent js-select2" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+         
 
           <div class="form-group justify-item">
             <div class="form-label uppercase">

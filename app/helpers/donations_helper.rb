@@ -25,7 +25,7 @@ module DonationsHelper
   end
 
   def donation_for_form
-    if @project
+    if @project && !@project.new_record?
       [@project, @project.donations.build]
     else
       if editing_donation?

@@ -1,19 +1,21 @@
-<div class="cd-user-modal" <%= %Q{data-error="#{flash[:modal_error]}"}.html_safe if flash[:modal_error] %>> <!-- this is the entire modal form, including the background -->
+
+
+<div id="modal-signin" class="cd-user-modal" <%= %Q{data-error="#{flash[:modal_error]}"}.html_safe if flash[:modal_error] %>> <!-- this is the entire modal form, including the background -->
   <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
     <div class="cd-user-login p4 m4">
 
+      <p class="mb0"><strong><%= t 'sessions.new.connect_with_twitter_or_facebook' %></strong></p>
+      <p class="mt0"><em><%= t 'sessions.new.well_never_publish' %></em></p>
+
+      <div class="social-login mt4 mb4 clearfix">
+        <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
+        <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>
+      </div>
+
+      <div class="separator"></div>
+        
       <div id="cd-login" >
         <%= modal_flash_message(:login) %>
-
-        <p class="mb0"><strong><%= t 'sessions.new.connect_with_twitter_or_facebook' %></strong></p>
-        <p class="mt0"><em><%= t 'sessions.new.well_never_publish' %></em></p>
-
-        <div class="social-login mt4 mb4 clearfix">
-          <%= link_to(t('.twitter'), '/auth/twitter', class: " btn float-left") %>
-          <%= link_to(t('.facebook'), '/auth/facebook', class: " btn float-right") %>
-        </div>
-
-        <div class="separator"></div>
 
         <p><%= t 'sessions.new.or_choose_tradition' %></p>
 

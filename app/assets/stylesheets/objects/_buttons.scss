@@ -34,3 +34,17 @@ a.button.not_active:hover {
 .btn-secondary {
   opacity: .5;
 }
+
+.btn-soft {
+  background: transparent;
+  border-bottom: none;
+  border: 1px solid lighten($main-color, 10%);
+  color: $main-color;
+  opacity: .5;
+
+  &:hover {
+    opacity: 1;
+    color: #FFF;
+    border: none;
+  }
+}

@@ -258,6 +258,9 @@ xsigin/signup popup
       @include transform(translateY(0));
     }
   }
+  .alert {
+    text-align: center;
+  }
 }
 
 
@@ -632,5 +635,11 @@ xsigin/signup popup
 .separator {
   border: 1px solid $light_background;
   margin: 3em;
+}
+
+/* Modal: Form track donation */
+#modal-track .cd-user-modal-container {
+  text-align: left;
+  max-width: 825px;
 }
 
