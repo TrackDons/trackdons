@@ -23,3 +23,74 @@
 .donation-details {
   display: none;
 }
+
+.donation {
+  position: relative;
+  border: none;
+  padding: 1em;
+  margin: -1em -1em 1em -1em;
+
+  .line {
+    position: absolute;
+    left: 30px;
+    top: 46px;
+    width: 2px;
+    background: $light_background;
+    height: 100%;
+
+  }
+  .gravatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 13px;
+    float: left;
+    border-radius: 6px;
+  }
+  .donation_comment, .donation_tools {
+    margin-left: 42px;
+    font-size: .8em;
+  }
+  h3 { 
+    border: none;
+    color: $secondary_color;
+    font-size: 1em;
+    color: #666; 
+    margin: 0 10px 10px 0;
+    border: none;
+
+    .date {
+      opacity: .5;
+      font-weight: normal;
+    }
+  }
+  p.donation_date { color: #AFACA4; }
+
+}
+.donation_complete {
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.1em; 
+    font-weight: normal;
+  }
+  .donation {
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+  .form_content {
+    padding-left: 43px;  
+    .field-textarea {
+      height: 100px;
+    }
+  }
+  
+}
+.donation:hover {
+  background: $light_background;
+  border-radius: 6px;
+}
+
+/*#project */.donation #donation_do_widget {
+  display: none;
+}
