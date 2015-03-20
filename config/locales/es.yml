@@ -150,11 +150,9 @@ es:
       cancel: Cancelar
       edit_your_donation: Edita tu donación al proyecto %{name}
       quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
-      daily: Diario
-      weekly: Semanal
-      monthly: Mensual
-      weeks: "%{n} semanas"
+      monthly: Cada mes
       months: "%{n} meses"
+      yearly: Cada año
     create:
       error_creating_donation: "No se pudo crear la donación: %{errors}"
   how_much_question: '¿Cuánto?'
@@ -166,7 +164,7 @@ es:
   donation: 
     project: 'Proyecto'
     amount: 'Cantidad'
-    recurring: 'Recurring?'
+    recurring: '¿Recurrente?'
     date: 'Fecha'
     recurring_date: 'Fecha comienzo'
     pick_date: 'Elije una fecha'
