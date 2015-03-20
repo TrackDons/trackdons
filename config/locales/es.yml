@@ -164,7 +164,7 @@ es:
   donation: 
     project: 'Proyecto'
     amount: 'Cantidad'
-    recurring: 'Recurring?'
+    recurring: 'Recurrente?'
     date: 'Fecha'
     recurring_date: 'Fecha comienzo'
     pick_date: 'Elije una fecha'
