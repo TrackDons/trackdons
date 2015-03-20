@@ -5,20 +5,14 @@
   <div class="line"></div>
 
   <h3>
-    <% if donation.private? && (!logged_in? || donation.user != current_user) %>
-      <%= t('.a_donation') %>
-    <% else %>
-      <strong><%= donation_quantity_currency(donation) %></strong>
+    <% unless in_users_page? %> 
+      <%= link_to donation.user.name, donation.user %>
     <% end %>
+
+    <%= t('.donated_to') %>
 
     <% unless in_projects_page? %>
-      <%= t('.to') %>
       <strong><%= link_to donation.project.name, project_path(donation.project) %></strong>
-    <% end %>
-
-    <% unless in_users_page? %> 
-      <%= t('.by') %>
-      <%= link_to donation.user.name, donation.user %>
     <% end %>
 
     <% unless in_donations_page? %> 
