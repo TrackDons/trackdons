@@ -275,7 +275,6 @@ h2 { font-size: 24px; }
 #project .meta { width: 42%; float: left; padding: 2% 4%; font-size: 12px; }
 #project .actions { width: 42%; float: right; padding: 0 4%; }
 #project h1 { font-size: 32px; margin: 10px 0;}
-#project .description { margin: 0 0 40px 0; font-size: 12px }
 #project .meta ul { margin: 0; padding: 0; ;}
 #project .meta li { list-style-type: none; margin: 0 0 10px 0;}
 #project .actions div { margin: 0 0 10px 0;}
@@ -341,9 +340,13 @@ body.projects_index {
   }
 
   .description {
-    font-size: .9em;
+    font-size: .8em;
     line-height: 1.2em;
-    margin: 2em 0 2em 0;
+    margin: 0 0 2em 0;
+
+    p {
+      margin-top: 0;
+    }
   }
 
   h2 {
@@ -412,7 +415,7 @@ body.projects_index {
     border-radius: 6px;
   }
   .donation_comment, .donation_tools {
-    margin: 0 0 0 42px;
+    margin-left: 42px;
     font-size: .8em;
   }
   h3 { 
@@ -429,6 +432,27 @@ body.projects_index {
     }
   }
   p.donation_date { color: #AFACA4; }
+
+}
+.donation_complete {
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.1em; 
+    font-weight: normal;
+  }
+  .donation {
+    margin-top: 1em;
+    margin-bottom: 0;
+  }
+  .form_content {
+    padding-left: 43px;  
+    .field-textarea {
+      height: 100px;
+    }
+  }
+  
 }
 .donation:hover {
   background: $light_background;

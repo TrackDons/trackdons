@@ -119,7 +119,7 @@ es:
       user_donated_quantity_to_proyecto: '%{name} donó %{donación} a %{project}'
       share_email_subject: 'Has donado últimamente?'
       share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{project}: %{url}'
-      share_tweet: 'Has colaborado con algún proyecto flipante hoy? Mi última donación en @trackdons: %{url}'
+      share_tweet: 'He registrado una donación a %{project}: %{url} Piensa en donar!'
       donation_date: 'Fecha de donación: %{date}'
       next: 'Más:'
       project_page: 'La página de %{project}'
@@ -131,6 +131,7 @@ es:
       great_donation_tracked: Bien, tu donación está registrada. Esto es solo el principio.
       be_an_active_promoter: Sé un promotor activo de la donación que has hecho. 
       its_the_best_way: Es la mejor forma de convencer a tus amigos. 
+      convince_your_friends_explain: 'Convence a tus amigos para donar: explica por qué lo has hecho'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
@@ -154,8 +155,12 @@ es:
       monthly: Cada mes
       months: "%{n} meses"
       yearly: Cada año
+      i_donated_because: He donado a este proyecto porque...
     create:
       error_creating_donation: "No se pudo crear la donación: %{errors}"
+    complete: 
+      great_just_one_thing: 'Genial! Solo una cosita más: '
+      tell_why_you_have_donated: 'Explica por qué has donado, eso tendrá el mayor impacto en tus amigos y reclutarás a más donantes para el projecto.'
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
   i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'
