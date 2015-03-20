@@ -116,11 +116,9 @@ en:
       cancel: Cancel
       edit_your_donation: Edit your donation to the project %{name}
       quantity_privacy_hint: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!"
-      daily: Daily
-      weekly: Weekly
       monthly: Monthly
-      weeks: "%{n} weeks"
       months: "%{n} months"
+      yearly: Yearly
     create:
       error_creating_donation: "Donation couldn't be created: %{errors}"
 
