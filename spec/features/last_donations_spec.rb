@@ -15,9 +15,8 @@ RSpec.feature 'Latest donations' do
   scenario 'I can see the latest donations as an anonymous user' do
     visit donations_page
 
-    expect(page).to have_content 'A donation to Wikiwadus by Yorch'
-    expect(page).to have_content '30€ to Wikiwadus by Bruce'
-    expect(page).to have_content 'A donation to Wikiwadus by Bruce'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
+    expect(page).to have_content 'Bruce donated to Wikiwadus'
   end
 
   scenario 'I can see the latest donations as a logged user' do
@@ -25,7 +24,7 @@ RSpec.feature 'Latest donations' do
 
     visit donations_page
 
-    expect(page).to have_content '20€ to Wikiwadus by Yorch'
-    expect(page).to have_content '30€ to Wikiwadus by Bruce'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
+    expect(page).to have_content 'Bruce donated to Wikiwadus'
   end
 end

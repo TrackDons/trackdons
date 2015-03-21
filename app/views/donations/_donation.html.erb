@@ -5,22 +5,12 @@
   <div class="line"></div>
 
   <h3>
-    <% if donation.private? && (!logged_in? || donation.user != current_user) %>
-      <%= t('.a_donation') %>
-    <% else %>
-      <strong><%= donation_quantity_currency(donation) %></strong>
-    <% end %>
+    <%= link_to_unless_current donation.user.name, donation.user %>
 
-    <% unless in_projects_page? %>
-      <%= t('.to') %>
-      <strong><%= link_to donation.project.name, project_path(donation.project) %></strong>
-    <% end %>
+    <%= t('.donated_to') %>
 
-    <% unless in_users_page? %> 
-      <%= t('.by') %>
-      <%= link_to donation.user.name, donation.user %>
-    <% end %>
-
+    <strong><%= link_to_unless_current donation.project.name, project_path(donation.project) %></strong>
+    
     <% unless in_donations_page? %> 
       <%= link_to '#', donation_path(donation) %>
     <% end %>
@@ -36,14 +26,20 @@
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 
-  <% if donation.comment.present? %>
-    <div class="donation_comment">
+  <% if donation.comment.present? & !in_complete_donation_page? %>
+    <div class="donation_comment mb2">
       <%= markdown(donation.comment) %>
     </div>
   <% end %>
 
-  <% if current_user?(donation.user) %>
-    <div class="donation_tools">
+  <% if (donation.user == current_user) & !donation.comment.present? & !in_complete_donation_page? %>
+    <div class="donation_comment alert p2">
+      <i><%= link_to t('donations.show.convince_your_friends_explain'), donation_complete_path(donation) %></i>
+    </div>
+  <% end %>
+
+  <% if current_user?(donation.user) & !in_complete_donation_page? %>
+    <div class="donation_tools mb2">
       <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('sure')}) %>
     </div>

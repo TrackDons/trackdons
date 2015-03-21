@@ -23,8 +23,8 @@ RSpec.feature 'Create recurring donations' do
       click_button 'TrackDon'
     end
 
-    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
-    expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
+    expect(page).to have_content 'Great! Just one thing before you are done:'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
 
     # TODO: once we redirect to a nice page that shows recurring donation information
     #       we'll be able to get rid of this check

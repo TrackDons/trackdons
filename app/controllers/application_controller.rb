@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
         @donation = current_user.donations.build(donation_params.merge(project: project))
         if @donation.save
           cookies.delete(:donation) if cookies[:donation]
-          redirect_to donation_path(@donation, share_links: true)
+          redirect_to donation_complete_path(@donation, share_links: true)
         else
           # flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
           modal_error('donation', t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence))
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
           # TODO: we redirect to the last donation created in the recurring donation
           #       We could probably show information about the recurring donation
           donation = recurring_donation.donations.sorted.last
-          redirect_to donation_path(donation, share_links: true)
+          redirect_to donation_complete_path(donation, share_links: true)
         else
           @donation = Donation.new(attributes: recurring_donation.attributes.except('frequency_period', 'frequency_units', 'finished_at'))
           flash[:error] = t('.error_creating_donation', errors: recurring_donation.errors.full_messages.to_sentence)

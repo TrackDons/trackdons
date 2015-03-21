@@ -1,7 +1,7 @@
 class DonationsController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :load_donation, only: [:edit, :update, :destroy]
+  before_action :load_donation, only: [:edit, :complete, :update, :destroy]
 
   def index
     if params.has_key?(:project_id)
@@ -14,6 +14,9 @@ class DonationsController < ApplicationController
   def show
     @donation = Donation.find(params[:id])
   end
+
+  def complete
+  end 
 
   def create
     if logged_in?

@@ -1,0 +1,28 @@
+<%= form_for(donation_for_form) do |f| %>
+  
+  <section class="content_column donation_complete">
+
+    <h1>Great! Just one thing before you are done:</h1>
+
+    <h2><strong>Tell why you have donated</strong>, that will make the most impact in your friends and recruit more donors for the project.</h2>
+
+    <%= render @donation %>
+
+    <div class="form_content">
+    
+      <div class="form-group justify-item hundred percent">
+        <div class="form-label uppercase">
+          <%= f.label(:comment, t('donations.form.i_donated_because')) %>
+        </div>
+        <div class="form-fields">
+          <%= f.text_area :comment, :placeholder => t('donations.form.i_donated_because'), :class => "field-textarea hundred percent mb2" %>        
+        </div>
+      </div>
+
+      <%= f.submit(t('projects.show.trackdon'), class: 'big mb4' ) %>
+
+    </div>
+
+  </section>
+
+<% end %>

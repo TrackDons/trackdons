@@ -85,6 +85,17 @@
 
     </div>
 
+    <% if !new_donation? %>
+    <div class="form-group justify-item hundred percent">
+      <div class="form-label uppercase">
+        <%= f.label(:comment, t('donations.form.i_donated_because')) %>
+      </div>
+      <div class="form-fields">
+        <%= f.text_area :comment, :placeholder => t('donations.form.i_donated_because'), :class => "field-textarea hundred percent mb2" %>        
+      </div>
+    </div>
+    <% end %>
+
     <% # Temporary disabled %>
     <% if false && !new_donation? %>
       <div id="add-donation" class="js-add-donation s11 mb3">
