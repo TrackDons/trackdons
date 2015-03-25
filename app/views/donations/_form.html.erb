@@ -44,16 +44,12 @@
               <div class="field-select field-group-item">
                 <select class="js-donation-reurring" name="donation[recurring]" value="<%= f.object.recurring %>" id="donation_recurring">
                   <option value="no" selected="selected">No</option>
-                  <option value="daily"><%= t('.daily') %></option>
-                  <option value="weekly"><%= t('.weekly') %></option>
-                  <option value="2 weeks"><%= t('.weeks', n: 2) %></option>
-                  <option value="3 weeks"><%= t('.weeks', n: 3) %></option>
                   <option value="monthly"><%= t('.monthly') %></option>
                   <option value="2 months"><%= t('.months', n: 2) %></option>
                   <option value="3 months"><%= t('.months', n: 3) %></option>
                   <option value="4 months"><%= t('.months', n: 4) %></option>
                   <option value="6 months"><%= t('.months', n: 6) %></option>
-                  <option value="12 months"><%= t('.months', n: 12) %></option>
+                  <option value="1 year"><%= t('.yearly') %></option>
                 </select>
               </div>
             </div>
@@ -89,6 +85,17 @@
       </div>
 
     </div>
+
+    <% if !new_donation? %>
+    <div class="form-group justify-item hundred percent">
+      <div class="form-label uppercase">
+        <%= f.label(:comment, t('donations.form.i_donated_because')) %>
+      </div>
+      <div class="form-fields">
+        <%= f.text_area :comment, :placeholder => t('donations.form.i_donated_because'), :class => "field-textarea hundred percent mb2" %>        
+      </div>
+    </div>
+    <% end %>
 
     <% # Temporary disabled %>
     <% if false && !new_donation? %>

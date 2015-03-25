@@ -276,6 +276,7 @@ h2 { font-size: 24px; }
 #project .meta { width: 42%; float: left; padding: 2% 4%; font-size: 12px; }
 #project .actions { width: 42%; float: right; padding: 0 4%; }
 #project .description { margin: 0 0 40px 0; font-size: 12px }
+#project h1 { font-size: 32px; margin: 10px 0;}
 #project .meta ul { margin: 0; padding: 0; ;}
 #project .meta li { list-style-type: none; margin: 0 0 10px 0;}
 #project .actions div { margin: 0 0 10px 0;}
@@ -358,9 +359,13 @@ body.projects_index {
   }
 
   .description {
-    font-size: .9em;
+    font-size: .8em;
     line-height: 1.2em;
-    margin: 2em 0 2em 0;
+    margin: 0 0 2em 0;
+
+    p {
+      margin-top: 0;
+    }
   }
 
   h2 {
@@ -406,78 +411,6 @@ body.projects_index {
 #donation_do_widget .donation_do { display: inline-block; }
 #donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
 
-.donation {
-  position: relative;
-  border: none;
-  padding: 1em;
-  margin: -1em -1em 1em -1em;
-
-  .line {
-    position: absolute;
-    left: 30px;
-    top: 46px;
-    width: 2px;
-    background: $light_background;
-    height: 100%;
-
-  }
-  .gravatar {
-    width: 30px;
-    height: 30px;
-    margin-right: 13px;
-    float: left;
-    border-radius: 6px;
-  }
-  .donation_comment, .donation_tools {
-    margin: 0 0 0 42px;
-    font-size: .8em;
-  }
-  h3 { 
-    border: none;
-    color: $secondary_color;
-    font-size: 1em;
-    color: #666; 
-    margin: 0 10px 10px 43px;
-    border: none;
-
-    .date {
-      opacity: .5;
-      font-weight: normal;
-    }
-  }
-  p.donation_date { color: #AFACA4; }
-}
-.donation:hover {
-  background: $light_background;
-  border-radius: 6px;
-}
-
-/*#project */.donation #donation_do_widget {
-  display: none;
-}
-/*.donation { 
-  border-top-width: 1px; 
-  border-top-style: solid; 
-  padding-top: 10px; 
-  margin-bottom: 35px; 
-  position: relative; 
-  clear: both;
-
-  small { 
-    display: block; 
-    margin-bottom: 15px; 
-  }
-  .gravatar { 
-    float: left; 
-    margin-right: 9px; 
-    width: 45px; 
-    border-radius: 6px;
-  }
-  a, a:visited { 
-    color: $main-color 
-  }
-  
-}*/
 small { font-size: 11px; }
 hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; width: 100%; }
 

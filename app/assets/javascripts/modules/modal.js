@@ -33,8 +33,8 @@ jQuery(document).ready(function($){
   if(window.location.hash == "#signup"){
     open_modal('signup');
   }
-  if(window.location.hash == "#signup"){
-    open_modal('signup');
+  if(window.location.hash == "#modal-track"){
+    open_modal('#modal-track');
   }
   
   //close modal

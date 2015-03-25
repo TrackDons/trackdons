@@ -27,4 +27,12 @@
       });
     }
   });
+
+  $('#project_countries').select2();
+
+  $('#unfollow_button').hover((function() {
+    $(this).html($(this).data('opposite-action'));
+  }), function() {
+    $(this).html($(this).data('current-action'));
+  });
 });

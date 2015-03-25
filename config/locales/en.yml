@@ -44,7 +44,8 @@ en:
   home: 
     read_more_about_this_project: "Read more about this project"
     have_you_donated_sometime: Have you ever donated to an NGO or project?
-    yes_of_course: Yes, of course
+    not_yet: Not yet
+    yes_of_course: Yes
     so_its_about_time: "So its about time, isn't it?"
     so_its_about_time_explanation: |
       We invite you to contribute with a small (or big) donation to one of the many projects maintained thanks to the contributions of people like you and me. There are all kinds of projects, for sure you will find some that interests you. 
@@ -85,7 +86,7 @@ en:
       user_donated_quantity_to_project: '%{name} donated %{donation} to %{project}'
       share_email_subject: 'Have you donated lately?'
       share_email_body: 'With TrackDons you can keep track of all your donations and encourage others to donate. Checkout my latest donation to %{project} here: %{url}'
-      share_tweet: 'Have you helped a great project today? Just tracked my latest donation with @trackdons: %{url}'
+      share_tweet: 'I have tracked a donation to %{project}: %{url}. Think about donating!'
       donation_date: 'Donation Date: %{date}'
       next: 'Next:'
       project_page: '%{project} project page'
@@ -97,6 +98,7 @@ en:
       great_donation_tracked: Great, your donation is tracked. This is just the beginning.
       be_an_active_promoter: Be an active promoter of the donation you have done. 
       its_the_best_way: Its the best way to convince your friends to donate.
+      convince_your_friends_explain: 'Convince your friends to donate: explain why you did it'
     donation_do_widget:
       link_title: 'Track a Donation for this project'
     donation:
@@ -108,6 +110,7 @@ en:
       delete_title: 'Delete donation'
       sure: 'Are you sure?'
       a_donation: A donation
+      donated_to: donated to
       private_donation_not_visible_explanation: "This donation is private, so the quantity will only be shown to the donation's author"
       private_donation_not_visible_explanation_in_profile: "This user has private donations, so this total does not include every donation"
       private_donation_not_visible_explanation_in_profile_for_self: "You have private donations, so the total won't show up for other users, only for you"
@@ -116,14 +119,15 @@ en:
       cancel: Cancel
       edit_your_donation: Edit your donation to the project %{name}
       quantity_privacy_hint: "Don't be shy sharing the quantity. Everyone donates what they can / feels is right. So even a penny would be good. On the other hand, it would be fun to study how individual behaviours influence others... for good or for bad!"
-      daily: Daily
-      weekly: Weekly
       monthly: Monthly
-      weeks: "%{n} weeks"
       months: "%{n} months"
+      yearly: Yearly
+      i_donated_because: I donated to this project because...
     create:
       error_creating_donation: "Donation couldn't be created: %{errors}"
-
+    complete: 
+      great_just_one_thing: 'Great! Just one thing before you are done:'
+      tell_why_you_have_donated: 'Tell why you have donated, that will make the most impact in your friends and recruit more donors for the project.'
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'

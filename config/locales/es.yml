@@ -83,7 +83,8 @@ es:
   home: 
     read_more_about_this_project: "Más sobre este proyecto"
     have_you_donated_sometime: ¿Has donado alguna vez a una ONG o un proyecto?
-    yes_of_course: Si, claro
+    not_yet: Todavía no
+    yes_of_course: Si
     so_its_about_time: Pues ya va siendo hora, ¿o qué?
     so_its_about_time_explanation: |
       Te animamos a que contribuyas con una pequeña (o gran) donación a uno de los muchos proyectos que se mantienen gracias a las contribuciones de personas como tú. Hay proyectos de todo tipo, seguro que encuentras alguno que haga algo que te parezca interesante.
@@ -119,7 +120,7 @@ es:
       user_donated_quantity_to_proyecto: '%{name} donó %{donación} a %{project}'
       share_email_subject: 'Has donado últimamente?'
       share_email_body: 'Con TrackDons puedes llevar la cuenta de todas tus donaciones y animar a otros a donar. Por ejemplo, aquí puedes ver mi última donación a %{project}: %{url}'
-      share_tweet: 'Has colaborado con algún proyecto flipante hoy? Mi última donación en @trackdons: %{url}'
+      share_tweet: 'He registrado una donación a %{project}: %{url} Piensa en donar!'
       donation_date: 'Fecha de donación: %{date}'
       next: 'Más:'
       project_page: 'La página de %{project}'
@@ -131,6 +132,7 @@ es:
       great_donation_tracked: Bien, tu donación está registrada. Esto es solo el principio.
       be_an_active_promoter: Sé un promotor activo de la donación que has hecho. 
       its_the_best_way: Es la mejor forma de convencer a tus amigos. 
+      convince_your_friends_explain: 'Convence a tus amigos para donar: explica por qué lo has hecho'
     donation_do_widget:
       link_title: 'Anota tus donaciones con TrackDons'
     donation:
@@ -142,6 +144,7 @@ es:
       delete_title: 'Borrar donación'
       sure: '¿Estás seguro?'
       a_donation: Una donación
+      donated_to: ha donado a
       private_donation_not_visible_explanation: Esta donación es privada, de modo que la cantidad solo será visible para el autor
       private_donation_not_visible_explanation_in_profile: Este usuario tiene donaciones privadas, por lo que el total no incluye todas
       private_donation_not_visible_explanation_in_profile_for_self: Tienes donaciones privadas, así que el total solo lo verás tu, pero no los otros usuarios
@@ -150,13 +153,15 @@ es:
       cancel: Cancelar
       edit_your_donation: Edita tu donación al proyecto %{name}
       quantity_privacy_hint: "No seas tímido compartiendo la cantidad. Todo el mundo dona lo que quiere o siente que es correcto. Incluso un céntimo sería bueno. Por otro lado sería divertido estudiar cómo el compartamiento de uno afecta a los demás... ¡para bueno o para malo!"
-      daily: Diario
-      weekly: Semanal
-      monthly: Mensual
-      weeks: "%{n} semanas"
+      monthly: Cada mes
       months: "%{n} meses"
+      yearly: Cada año
+      i_donated_because: He donado a este proyecto porque...
     create:
       error_creating_donation: "No se pudo crear la donación: %{errors}"
+    complete: 
+      great_just_one_thing: 'Genial! Solo una cosita más: '
+      tell_why_you_have_donated: 'Explica por qué has donado, eso tendrá el mayor impacto en tus amigos y reclutarás a más donantes para el projecto.'
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
   i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'
@@ -166,7 +171,7 @@ es:
   donation: 
     project: 'Proyecto'
     amount: 'Cantidad'
-    recurring: 'Recurring?'
+    recurring: '¿Recurrente?'
     date: 'Fecha'
     recurring_date: 'Fecha comienzo'
     pick_date: 'Elije una fecha'

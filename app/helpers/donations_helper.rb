@@ -16,6 +16,10 @@ module DonationsHelper
     controller_name == 'donations' && action_name == 'show'
   end
 
+  def in_complete_donation_page?
+    controller_name == 'donations' && action_name == 'complete'
+  end
+
   def new_donation?
     @donation.new_record?
   end

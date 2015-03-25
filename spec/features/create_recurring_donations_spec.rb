@@ -16,15 +16,15 @@ RSpec.feature 'Create recurring donations' do
     click_link('Wikiwadus')
 
     within(:css, '#modal-track') do
-      fill_in 'donation_date', :with => "2014-10-10"
+      fill_in 'donation_date', :with => "2014-09-10"
       fill_in 'donation_quantity', :with => "200.99"
       select '$', from: 'donation_currency'
-      select '2 weeks', from: 'donation_recurring'
+      select '3 months', from: 'donation_recurring'
       click_button 'TrackDon'
     end
 
-    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
-    expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
+    expect(page).to have_content 'Great! Just one thing before you are done:'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
 
     # TODO: once we redirect to a nice page that shows recurring donation information
     #       we'll be able to get rid of this check

@@ -20,8 +20,8 @@ RSpec.feature 'Sharing donations. When I create a donation' do
       click_button 'TrackDon'
     end
 
-    expect(page).to have_content 'Great, your donation is tracked. This is just the beginning.'
-    expect(page).to have_content '$200.99 to Wikiwadus by Yorch'
+    expect(page).to have_content 'Great! Just one thing before you are done:'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
   end
 
   scenario 'I can share a link to my donation via email, twitter or facebook' do
@@ -39,6 +39,8 @@ RSpec.feature 'Sharing donations. When I create a donation' do
 
     tracked_don = Donation.last
 
+    visit donation_page(tracked_don)
+    
     expect(find_link('Share by email')[:href]).to match(/^mailto\:\?subject=.*&body=.*donations%2F#{tracked_don.id}/)
     expect(find_link('Share in Twitter')[:href]).to match(/https\:\/\/twitter\.com\/home\?status\=.*donations%2F#{tracked_don.id}/)
     expect(find_link('Share in Facebook')[:href]).to match(/http\:\/\/www\.facebook\.com\/sharer\/sharer\.php\?u\=.*donations%2F#{tracked_don.id}/)
@@ -50,7 +52,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     visit donation_page(donation)
 
     expect(page).not_to have_content('Hooray!')
-    expect(page).to have_content '200€ to Wikiwadus by Yorch'
+    expect(page).to have_content 'Yorch donated to Wikiwadus'
   end
 
   scenario 'Users can see related links' do

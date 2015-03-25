@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
   before_validation :set_currency
   before_save { self.email = email.downcase.strip }
 
+  # def self.name 
+  #   if current_user?(self)
+  #     self.name = 'You'
+  #   end
+  # end
+  
   # Returns the hash digest of the given string.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
