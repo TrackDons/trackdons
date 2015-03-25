@@ -72,6 +72,7 @@
 
  @import "layout/donations";
  @import "layout/home-newcomers";
+ @import "layout/user-profile";
 
 /* 
  * 6. Vendors
@@ -274,13 +275,24 @@ h2 { font-size: 24px; }
 #project { overflow: hidden; }
 #project .meta { width: 42%; float: left; padding: 2% 4%; font-size: 12px; }
 #project .actions { width: 42%; float: right; padding: 0 4%; }
+#project .description { margin: 0 0 40px 0; font-size: 12px }
 #project h1 { font-size: 32px; margin: 10px 0;}
 #project .meta ul { margin: 0; padding: 0; ;}
 #project .meta li { list-style-type: none; margin: 0 0 10px 0;}
 #project .actions div { margin: 0 0 10px 0;}
 #project .actions p { margin: 0;}
-#project .links { margin: 0 0 20px 0;}
-#project .links div { display: inline-block; padding: 0 10px 0 0;}
+
+.links { margin: 0 0 20px 0;}
+.links div { display: inline-block; padding: 0 10px 0 0;}
+.links {
+  display: inline-block;
+
+  div {
+    display: inline-block;
+    padding-right: 1em;
+  }
+}
+
 .project_main { clear: both; overflow: auto; }
 
 .project a { width: 120px; margin: 0 10px 10px 0; float: left; padding: 5px; height: 60px; text-align: bottom; border: 1px solid #CDD195; }
@@ -305,21 +317,19 @@ body.projects_index {
     position: relative;
     padding-right: 300px;
     padding-top: .5em;
+    @include screen(768) {
+      padding-right: 0;
+    }
 
     h1 {
       font-size: 1.6em;
       display: inline;
       padding-right: .5em;
-      
-    }
-
-    .links {
-      display: inline-block;
-
-      div {
-        display: inline-block;
-        padding-right: 1em;
+      @include screen(768) {
+        font-size: 1.3em;
+        padding: 0;
       }
+      
     }
 
     .action_buttons {
@@ -330,6 +340,15 @@ body.projects_index {
 
       a {
         margin-left: 1em;
+        @include screen(768) {
+          width: 100%;
+          font-size: 1.3em;
+          margin: 0 0 1em 0;
+        }
+      }
+
+      @include screen(768) {
+        position: relative;
       }
     }
 
@@ -392,30 +411,6 @@ body.projects_index {
 #donation_do_widget .donation_do { display: inline-block; }
 #donation_do_widget .button { padding: 4px 10px; font-size: 12px; margin: 0; }
 
-
-/*.donation { 
-  border-top-width: 1px; 
-  border-top-style: solid; 
-  padding-top: 10px; 
-  margin-bottom: 35px; 
-  position: relative; 
-  clear: both;
-
-  small { 
-    display: block; 
-    margin-bottom: 15px; 
-  }
-  .gravatar { 
-    float: left; 
-    margin-right: 9px; 
-    width: 45px; 
-    border-radius: 6px;
-  }
-  a, a:visited { 
-    color: $main-color 
-  }
-  
-}*/
 small { font-size: 11px; }
 hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; width: 100%; }
 
@@ -562,39 +557,6 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
 .long_text { width: 500px; font-size: 14px; }
 .long_text p, .long_text ul, .long_text li { line-height: 22px; }
 
-#user_donations {
-  position: relative;
-  #donations_chart { 
-    position: absolute; 
-    top: 6px; 
-    right: 20px;
-  }
-}
-.user_page {
-
-  header { padding: 20px; position: relative;}
-  header h1 { font-size: 28px; margin: 0 0 0 72px; }
-  header img { vertical-align: middle; position: absolute; top: 0; left: 0; }
-
-  h2 {
-    color: $main-color;
-    border-bottom: 2px solid $main-color;
-    border-top: none;
-    padding: 0 0 .15em 0;
-    font-size: 1.1em;
-  }
-    
-}
-#donations_last_month { position: absolute; top: 25px; left: 450px; }
-#donations_last_month small { display: block}
-#donations_overall { position: absolute; top: 25px; left: 600px; }
-#donations_last_month, #donations_overall { font-size: 14px; }
-#user_nav { 
-  margin: 20px 0;
-  overflow: hidden;
-}
-#edit_your_profile { float: right; }
-
 .ui-autocomplete { border: 1px solid red; }
 
 #first_donation_pending { padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
@@ -665,14 +627,14 @@ iPad 3
   #project .meta { margin-bottom: 5%; }
   #project .actions { padding: 0; }
   #project .meta, #project .actions { float: none; width: auto; }
-  #track_donation {
-    width: 540px;
-    padding: 0; 
-  }
-  #track_donation.content_full {
-    width: 100%;
+  // #track_donation {
+  //   width: 540px;
+  //   padding: 0; 
+  // }
+  // #track_donation.content_full {
+  //   width: 100%;
      
-  }
+  // }
   .main_form {
 
   }

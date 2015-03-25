@@ -16,22 +16,35 @@
   height: 100%;
   text-align: center;
   @include linear-gradient($caqui, $light_background);
-  
+  @include screen(768) { 
+    top: 0;
+  }
+
   .slide {
     padding: 0 3em;
     position: relative;
     @include vertical-align;
+    @include screen(768) { 
+      padding: 0 1em;
+    }
 
     .question {
       font-size: 2.2em;
       line-height: 1.4em;
       font-weight: bold;
       margin: 0 0 1em 0;
+      @include screen(768) { 
+        font-size: 2em;
+      }
     }
     .answer, .content_column {
       width: 50%;
       margin: auto;
       margin-bottom: 3em;
+      @include screen(768) { 
+        width: 95%;
+        font-size: .85em;
+      }
     }
   }
 
@@ -40,4 +53,5 @@
     top: 1em;
     right: 1em;
   }
+
 }

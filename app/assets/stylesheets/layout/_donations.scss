@@ -12,6 +12,14 @@
   width: 100%;
 }
 
+.donation-project {
+  width: 100%;
+  
+  @include min-screen(740) { 
+    width: 40%; 
+  }
+}
+
 .donation-amount {
   width: 80px;
 }

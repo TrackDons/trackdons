@@ -1,23 +1,33 @@
 <header>
+  
   <h1>
-    <%= gravatar_for(@user, size: 72) %> <%= @user.name %>
+    <%= gravatar_for(@user, size: 72) %> 
+    <%= @user.name %>
   </h1>
-
-  <div id="donations_last_month">
-    <%= money @user.total_donations_last_month(current_user) %> <%= t('.donated') %>
-    <small><%= t('.in_the_last_month') %></small>
+  <div class="links">
+    <div class="twitter">
+      <%= link_to "@" + @user.twitter_login, 'http://twitter.com/' + @user.twitter_login if @user.twitter_login.present? %>
+    </div>
   </div>
 
-  <div id="donations_overall">
-    <%= money @user.total_donations(current_user) %> <%= t('.in_total') %>
+  <div class="counters">
+  
+    <div class="has_donated">
+      <span><%= t 'users.header.has_donated_to' %></span>
+      <div class="value">
+        <%= @user.projects.distinct.count %>
+        <%= t 'Projects' %>
+      </div>
+    </div>
 
-    <% if @user.has_private_donations? %>
-      <% if current_user?(@user) %>
-        <i class="fa fa-lock tipsit" title="<%= t('donations.donation.private_donation_not_visible_explanation_in_profile_for_self') %>"></i>
-      <% else %>
-        <i class="fa fa-lock tipsit" title="<%= t('donations.donation.private_donation_not_visible_explanation_in_profile') %>"></i>
-      <% end %>
-    <% end %>
+    <div class="thinking_on_donating">
+      <span><%= t 'users.header.thinking_on_donating_to' %></span>
+      <div class="value">
+        <%= @user.all_following.count %>
+        <%= t 'Projects' %>
+      </div>
+    </div>
+
   </div>
 
 </header>

@@ -293,6 +293,8 @@ es:
       donated: donado
       in_the_last_month: en el último mes
       in_total: en total
+      has_donated_to: Ha donado a
+      thinking_on_donating_to: Pensando en donar a
     show:
       edit_your_profile: Edita tu perfil
       track_your_first_donation: Registra tu primera donación

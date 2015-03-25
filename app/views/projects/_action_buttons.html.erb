@@ -3,7 +3,7 @@
     <%= link_to t('.following'), unfollow_project_path(@project),
           :remote => true,
           :method => :patch,
-          :class => "button active",
+          :class => "btn active",
           :id => 'unfollow_button',
           :data => {
             :current_action => t('.following'),
@@ -13,15 +13,15 @@
     <%= link_to t('.thinking_on_donating'), follow_project_path(@project),
           :remote => true,
           :method => :patch,
-          :class => "button not_active tipsit",
+          :class => "btn not_active tipsit",
           :id => 'follow_button',
           title: t('.follow_explanation') %>
   <% end %>
 <% else %>
   <%= link_to t('.follow'), login_path,
-          :class => "button not_active tipsit cd-signin",
+          :class => "btn not_active tipsit cd-signin ",
           :id => 'follow_button',
           title: t('.follow_explanation') %>
 <% end %>
 
-<%= link_to t('.trackdon'), '#track_donation', :class => 'button' %>
+<%= link_to t('.trackdon'), '#track_donation', :class => 'btn modal-track-open' %>

@@ -4,6 +4,6 @@
   <li><%= link_to t('users.invite'), invite_path %></li>
   <li><%= link_to t('.log_out'), logout_path, method: "delete" %></li>
 <% else %>
-  <li class="cd-signup"><%= link_to t('.track_your_first_donation'), '#0', :class => 'cd-signup' %></li>
-  <li class="cd-signin"><%= link_to t('.login'), '#0', :class => 'cd-signin' %></li>
+  <li class="cd-signup sb-close"><%= link_to t('.track_your_first_donation'), '#0', :class => 'cd-signup' %></li>
+  <li class="cd-signin sb-close"><%= link_to t('.login'), '#0', :class => 'cd-signin' %></li>
 <% end %>

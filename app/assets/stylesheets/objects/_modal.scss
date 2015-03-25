@@ -264,8 +264,6 @@ xsigin/signup popup
   }
 }
 
-
-
 .cd-user-modal-container {
   position: relative;
   width: 90%;
@@ -546,11 +544,20 @@ xsigin/signup popup
 
 
 /* TrackDons styles */
-
-.cd-user-login {
+.cd-user-modal-content {
+  padding: 30px;
+  margin: 30px;
   text-align: center;
   font-size: .9em;
+  
+  @include screen(768) { 
+    padding: 10px 30px;
+    margin: 0;
+  }
+}
 
+.cd-user-login {
+  
   .btn {
     width: 48%; 
     font-size: .9em;
@@ -560,6 +567,9 @@ xsigin/signup popup
     width: 316px; 
     margin-left: auto; 
     margin-right: auto; 
+    @include screen(768) {
+      width: auto;
+    }
     
     .fa:before {
       margin-right: 10px;
@@ -570,6 +580,10 @@ xsigin/signup popup
     font-size: 1em;
     width: 316px; 
     margin: auto;
+    @include screen(768) {
+      width: auto;
+    }
+    overflow: hidden;
 
     .btn {
       padding-left: .5em;
@@ -577,6 +591,9 @@ xsigin/signup popup
     }
     .input-text {
       width: 271px;
+      @include screen(768) {
+        width: 220px;
+      }
       position: absolute;
       top: 0; 
       left: 30px; 

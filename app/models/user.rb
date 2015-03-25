@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :external_service, :invitation_token
 
   hstore_accessor :credentials, twitter_id:     :string,
+                                twitter_login:  :string,
                                 twitter_token:  :string,
                                 twitter_secret: :string,
                                 facebook_id:    :string,
