@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'User donations' do
   background do
     @project = create_project(:name => 'Wikiwadus')
+    @project_to_follow = create_project(:name => 'ACNURWadus')
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
 
     create_donation project: @project, quantity: 20.12, date: Date.today, user: @user, comment: 'This is my comment'
@@ -23,12 +24,12 @@ RSpec.feature 'User donations' do
     expect(page).to have_content('Has donated to 1 Projects')
   end
 
-  # scenario 'I see the total number of projects I want to donate to' do
-  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
-  #   login_as "yorch@example.com", "wadusm4n"
+  scenario 'I see the total number of projects I want to donate to' do
+    @user.follow(@project_to_follow)
+    login_as "yorch@example.com", "wadusm4n"
 
-  #   expect(page).to have_content('Has donated to 2 projects')
-  # end
+    expect(page).to have_content('Thinking on donating to 1 Projects')
+  end
 
 
   # For when we have a private profile view
