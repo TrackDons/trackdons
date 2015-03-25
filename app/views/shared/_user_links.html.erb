@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <li><%= link_to t('.hello', name: current_user.name), current_user %></li>
-  <li><%= link_to t('track_donation'), track_donation_path, class: 'modal-track-open' %></li>
+  <li><%= link_to t('track_donation'), root_path+'#modal-track' %></li>
   <li><%= link_to t('users.invite'), invite_path %></li>
   <li><%= link_to t('.log_out'), logout_path, method: "delete" %></li>
 <% else %>
