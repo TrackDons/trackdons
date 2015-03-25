@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
 
   def self.search(query)
     if query.present?
-      where(["lower(name) like ?", "%#{query}%"])
+      where(["lower(name) like ?", "%#{query}%".downcase])
     else
       self
     end
