@@ -8,37 +8,54 @@ RSpec.feature 'User donations' do
     create_donation project: @project, quantity: 20.12, date: Date.today, user: @user, comment: 'This is my comment'
   end
 
-  scenario 'I see the total amount of donations' do
+  # scenario 'I see the total amount of donations' do
+  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
+  #   login_as "yorch@example.com", "wadusm4n"
+
+  #   expect(page).to have_content('20.12€ donated in the last month')
+  #   expect(page).to have_content('30.62€ in total')
+  # end
+
+  scenario 'I see the total number of donations' do
     create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
     login_as "yorch@example.com", "wadusm4n"
 
-    expect(page).to have_content('20.12€ donated in the last month')
-    expect(page).to have_content('30.62€ in total')
+    expect(page).to have_content('Has donated to 1 Projects')
   end
 
-  scenario "I see the total amount of donations don't include private donations when viewed by other user" do
-    other_user = create_user(name: 'Bruce', email: "bruce@example.com")
+  # scenario 'I see the total number of projects I want to donate to' do
+  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
+  #   login_as "yorch@example.com", "wadusm4n"
 
-    create_donation project: @project, quantity: 20.12, date: Date.today,  user: other_user, comment: 'This is my comment'
-    create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: other_user
-    create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: other_user, quantity_privacy: true
+  #   expect(page).to have_content('Has donated to 2 projects')
+  # end
 
-    login_as "yorch@example.com", "wadusm4n"
-    visit user_page(other_user)
 
-    expect(page).to have_content('20.12€ donated in the last month')
-    expect(page).to have_content('30.62€ in total')
-  end
+  # For when we have a private profile view
+  #
+  # scenario "I see the total amount of donations don't include private donations when viewed by other user" do
+  #   other_user = create_user(name: 'Bruce', email: "bruce@example.com")
 
-  scenario 'I see the total amount of donations including private donations' do
-    create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
-    create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: @user, quantity_privacy: true
+  #   create_donation project: @project, quantity: 20.12, date: Date.today,  user: other_user, comment: 'This is my comment'
+  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: other_user
+  #   create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: other_user, quantity_privacy: true
 
-    login_as "yorch@example.com", "wadusm4n"
+  #   login_as "yorch@example.com", "wadusm4n"
+  #   visit user_page(other_user)
 
-    expect(page).to have_content('30.12€ donated in the last month')
-    expect(page).to have_content('40.62€ in total')
-  end
+  #   expect(page).to have_content('20.12€ donated in the last month')
+  #   expect(page).to have_content('30.62€ in total')
+  # end
+
+  # scenario 'I see the total amount of donations including private donations' do
+  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
+  #   create_donation project: @project, quantity: 10,    date: 2.days.ago,  user: @user, quantity_privacy: true
+
+  #   login_as "yorch@example.com", "wadusm4n"
+
+  #   expect(page).to have_content('30.12€ donated in the last month')
+  #   expect(page).to have_content('40.62€ in total')
+  # end
 
   scenario 'I can delete a donation of mine' do
     other_user = create_user(name: 'Bruce', email: "bruce@example.com")
@@ -75,8 +92,8 @@ RSpec.feature 'User donations' do
 
     visit user_page(@user)
 
-    expect(page).to have_content('0€ donated in the last month')
-    expect(page).to have_content('25€ in total')
+    expect(page).to have_content('Oct 10 2013')
+    # expect(page).to have_content('25€ in total')
   end
 
 end
