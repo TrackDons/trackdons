@@ -65,6 +65,10 @@ class RecurringDonation < ActiveRecord::Base
     end
   end
 
+  def private?
+    quantity_privacy?
+  end
+
   private
 
   def donation_date_in_offset(offset)

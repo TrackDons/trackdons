@@ -4,10 +4,12 @@ class DonationsController < ApplicationController
   before_action :load_donation, only: [:edit, :complete, :update, :destroy]
 
   def index
+    # TODO: I think this condition is never accessed
     if params.has_key?(:project_id)
-      @donations = Project.friendly.find(params[:project_id]).donations.sorted.includes(:project, :user)
+      project = Project.friendly.find(params[:project_id])
+      @donations = DonationCollection.all(project: project)
     else
-      @donations = Donation.sorted.includes(:project, :user)
+      @donations = DonationCollection.all
     end
   end
 
