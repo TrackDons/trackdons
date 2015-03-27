@@ -4,6 +4,8 @@
 
   <h1><%= title t('metas.donations.home.title') %></h1>
 
-  <%= render @donations %>
+  <% @donations.each do |donation| %>
+    <%= render partial: 'donation', locals: {donation: donation} %>
+  <% end %>
 
 </section>
