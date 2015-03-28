@@ -2,35 +2,43 @@ require 'rails_helper'
 
 RSpec.feature 'User donations' do
   background do
-    @project = create_project(:name => 'Wikiwadus')
-    @project_to_follow = create_project(:name => 'ACNURWadus')
+    Timecop.freeze Time.parse('2015-4-1')
+
+    @project = create_project(name: 'Wikiwadus')
+    @project_to_follow = create_project(name: 'ACNURWadus')
+    @gnome_project = create_project(name: 'Gnome')
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
 
     create_donation project: @project, quantity: 20.12, date: Date.today, user: @user, comment: 'This is my comment'
+    create_recurring_donation project: @gnome_project, quantity: 20, date: Date.parse('2014-01-01'),
+                              user: @user, quantity_privacy: true, frequency_units: 1, frequency_period: 'year'
+
   end
 
-  # scenario 'I see the total amount of donations' do
-  #   create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
-  #   login_as "yorch@example.com", "wadusm4n"
+  scenario 'User donations are listed' do
+    visit user_page(@user)
 
-  #   expect(page).to have_content('20.12€ donated in the last month')
-  #   expect(page).to have_content('30.62€ in total')
-  # end
+    expect(page).to have_content('Has donated to 2 projects')
 
+    expect(page).to have_content('Yorch donated to Wikiwadus # Apr 01 2015')
+    expect(page).to have_content('Yorch donated to Gnome # Jan 01 2014 Recurring donation, started about 1 year ago')
+  end
+
+  # FIXME
   scenario 'I see the total number of donations' do
     create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
     login_as "yorch@example.com", "wadusm4n"
 
-    expect(page).to have_content('Has donated to 1 Projects')
+    expect(page).to have_content('Has donated to 2 projects')
   end
 
+  # FIXME
   scenario 'I see the total number of projects I want to donate to' do
     @user.follow(@project_to_follow)
     login_as "yorch@example.com", "wadusm4n"
 
-    expect(page).to have_content('Thinking on donating to 1 Projects')
+    expect(page).to have_content('Thinking on donating to 1 project')
   end
-
 
   # For when we have a private profile view
   #
@@ -71,7 +79,6 @@ RSpec.feature 'User donations' do
     click_link('Delete')
 
     expect(page).to_not have_content('A donation by Bruce')
-    #expect(page).to have_content('0€ in total')
   end
 
   scenario 'I can edit a donation of mine' do
@@ -94,7 +101,6 @@ RSpec.feature 'User donations' do
     visit user_page(@user)
 
     expect(page).to have_content('Oct 10 2013')
-    # expect(page).to have_content('25€ in total')
   end
 
 end

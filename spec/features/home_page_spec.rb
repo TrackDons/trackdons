@@ -12,14 +12,12 @@ RSpec.feature 'Home page' do
     expect(page).to have_content('Track your first donation')
   end
 
-  # scenario 'As a logged user I should be able to see the name of the project and a form to donate' do
-  #   login_as "yorch@example.com", "wadusm4n"
+   scenario 'As a logged user I should be able to see the name of the project and a form to donate' do
+     login_as "yorch@example.com", "wadusm4n"
 
-  #   visit home_page
+     visit home_page
 
-  #   expect(page).to have_content('Hello Yorch')
-  #   expect(page).to have_css('h1', text: 'TrackDons')
-  #   expect(page).to have_css('#donation_project_attributes_name')
-  # end
-
+     # User is redirected to last donations page
+     expect(page).to have_css('h1', text: 'Last donations')
+   end
 end

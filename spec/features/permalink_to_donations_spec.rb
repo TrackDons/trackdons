@@ -40,7 +40,7 @@ RSpec.feature 'Sharing donations. When I create a donation' do
     tracked_don = Donation.last
 
     visit donation_page(tracked_don)
-    
+
     expect(find_link('Share by email')[:href]).to match(/^mailto\:\?subject=.*&body=.*donations%2F#{tracked_don.id}/)
     expect(find_link('Share in Twitter')[:href]).to match(/https\:\/\/twitter\.com\/home\?status\=.*donations%2F#{tracked_don.id}/)
     expect(find_link('Share in Facebook')[:href]).to match(/http\:\/\/www\.facebook\.com\/sharer\/sharer\.php\?u\=.*donations%2F#{tracked_don.id}/)

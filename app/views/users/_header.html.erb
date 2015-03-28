@@ -15,16 +15,14 @@
     <div class="has_donated">
       <span><%= t 'users.header.has_donated_to' %></span>
       <div class="value">
-        <%= @user.projects.distinct.count %>
-        <%= t 'Projects' %>
+        <%= t '.project', count: @user.projects.distinct.count %>
       </div>
     </div>
 
     <div class="thinking_on_donating">
       <span><%= t 'users.header.thinking_on_donating_to' %></span>
       <div class="value">
-        <%= @user.all_following.count %>
-        <%= t 'Projects' %>
+        <%= t '.project', count: @user.all_following.count %>
       </div>
     </div>
 
