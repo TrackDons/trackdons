@@ -22,11 +22,11 @@ cd trackdons
 bundle install
 rake db:setup
 cp config/secrets.yml.example config/secrets.yml
+cp config/database.yml.example config/database.yml
 rails server
 ```
 
 Then navigate to: http://localhost:3000
-
 
 ### To work on a new feature / bug / improvement
 
