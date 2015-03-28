@@ -265,6 +265,9 @@ en:
       in_total: in total
       has_donated_to: Has donated to
       thinking_on_donating_to: Thinking on donating to
+      project:
+        one: '%{count} project'
+        other: '%{count} projects'
     show:
       edit_your_profile: Edit your profile
       track_your_first_donation: Track your first donation
