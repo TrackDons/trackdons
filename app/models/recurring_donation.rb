@@ -41,6 +41,12 @@ class RecurringDonation < ActiveRecord::Base
     end
   end
 
+  def update_donations
+    donations.each do |donation|
+      donation.update_attributes(self.attributes.slice(:quantity, :currency, :date, :quantity_privacy)
+    end
+  end
+
   def next_donation_date
     return if finished_at.present?
 
@@ -67,6 +73,14 @@ class RecurringDonation < ActiveRecord::Base
 
   def private?
     quantity_privacy?
+  end
+
+  def recurring
+    if new_record?
+      @recurring
+    else
+      "#{frequency_units} #{frequency_period}"
+    end
   end
 
   private
