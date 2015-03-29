@@ -48,4 +48,16 @@ module DonationsHelper
       t('.update_donation')
     end
   end
+
+  def recurring_options_for_select
+    [
+      ['No', 'no'],
+      [t('.monthly'), 'monthly'],
+      [t('.months', n: 2), '2 months'],
+      [t('.months', n: 3), '3 months'],
+      [t('.months', n: 4), '4 months'],
+      [t('.months', n: 6), '6 months'],
+      [t('.yearly'), '1 year']
+    ]
+  end
 end

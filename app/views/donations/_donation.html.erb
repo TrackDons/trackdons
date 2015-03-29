@@ -45,7 +45,7 @@
 
   <% if current_user?(donation.user) && !in_complete_donation_page? %>
     <div class="donation_tools mb2">
-      <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
+      <%= link_to(t('.edit'), edit_donation_or_recurring_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('sure')}) %>
     </div>
   <% end %>

@@ -42,15 +42,7 @@
             </div>
             <div class="form-fields">
               <div class="field-select field-group-item">
-                <select class="js-donation-reurring" name="donation[recurring]" value="<%= f.object.recurring %>" id="donation_recurring">
-                  <option value="no" selected="selected">No</option>
-                  <option value="monthly"><%= t('.monthly') %></option>
-                  <option value="2 months"><%= t('.months', n: 2) %></option>
-                  <option value="3 months"><%= t('.months', n: 3) %></option>
-                  <option value="4 months"><%= t('.months', n: 4) %></option>
-                  <option value="6 months"><%= t('.months', n: 6) %></option>
-                  <option value="1 year"><%= t('.yearly') %></option>
-                </select>
+                <%= f.select :recurring, options_for_select(recurring_options_for_select, f.object.recurring), {}, {class: 'js-donation-recurring', id: 'donation_recurring'} %>
               </div>
             </div>
           </div>
@@ -86,7 +78,7 @@
 
     </div>
 
-    <% if !new_donation? %>
+    <% if !new_donation? && f.object.respond_to?(:comment) %>
     <div class="form-group justify-item hundred percent">
       <div class="form-label uppercase">
         <%= f.label(:comment, t('donations.form.i_donated_because')) %>
