@@ -49,10 +49,6 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def edit_donation_or_recurring_donation_path(donation)
-    donation.is_a?(Donation) ? edit_donation_path(donation) : edit_recurring_donation_path(donation)
-  end
-
   private
 
   def language_name_for(locale)

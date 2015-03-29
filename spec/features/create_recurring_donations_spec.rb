@@ -29,6 +29,6 @@ RSpec.feature 'Create recurring donations' do
     # TODO: once we redirect to a nice page that shows recurring donation information
     #       we'll be able to get rid of this check
     donation = Donation.last
-    expect(donation.recurring_donation).to be_present
+    expect(donation).to be_recurring
   end
 end

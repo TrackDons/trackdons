@@ -12,17 +12,12 @@ es:
           attributes:
             date:
               invalid: "tiene que ser hoy o anterior a hoy"
-        recurring_donation:
-          attributes:
-            date:
-              invalid: "tiene que ser hoy o anterior a hoy"
     models:
       user: Usuario
       invitation: Invitación
       category: Categoría
       donation: Donación
       project: Proyecto
-      recurring_donation: Donación recurrente
     attributes:
       user:
         name: Nombre
@@ -47,12 +42,6 @@ es:
         currency: Moneda
         user_id: Usuario
         comment: Comentario
-      recurring_donation:
-        date: Fecha
-        project_id: Proyecto
-        quantity: Cantidad
-        currency: Moneda
-        user_id: Usuario
   language_name: 'Español'
   hello: "Hello world"
   # generics
@@ -107,9 +96,6 @@ es:
 
       Si aún así sigues sin verlo claro, que sepas que estamos pensando en ofrecer la posibilidad de que puedas tener un perfil privado que te ayude a gestionar tus donaciones de forma confidencial. Si estás interesado en algo así, [dános un toque](lets@trackdons.org) y puede que le demos prioridad ;)
   # donaciones
-  recurring_donations:
-    destroy:
-      destroy_success: 'Donación periódica eliminada correctamente'
   donations:
     destroy:
       destroy_success: 'Donación eliminada correctamente'

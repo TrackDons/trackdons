@@ -13,8 +13,8 @@ RSpec.feature 'Latest donations' do
     create_donation project: wikiwadus, quantity: 20, date: Date.parse('2015-01-01'), user: user, quantity_privacy: true
     create_donation project: wikiwadus, quantity: 30, date: Date.parse('2015-03-01'), user: other_user
     create_donation project: gnome, quantity: 10, date: Date.parse('2014-02-01'), user: other_user, quantity_privacy: true
-    create_recurring_donation project: gnome, quantity: 20, date: Date.parse('2014-01-01'),
-                              user: user, quantity_privacy: true, frequency_units: 1, frequency_period: 'year'
+    create_donation project: gnome, quantity: 20, date: Date.parse('2014-01-01'),
+                    user: user, quantity_privacy: true, frequency_units: 1, frequency_period: 'year'
   end
 
   scenario 'I can see the latest donations as an anonymous user' do
