@@ -73,6 +73,9 @@ en:
       If you keep without being sure about tracking donations publicly, know that we are thinking of the possibility of creating a all-private mode that will help to be organized. If you would use something like that, [ping us](mailto:lets@trackdons.org) and we might give it priority in our roadmap ;)
   
   # donations
+  recurring_donations:
+    destroy:
+      destroy_success: 'Recurring donation removed successfully'
   donations:
     destroy:
       destroy_success: 'Donation removed successfully'
