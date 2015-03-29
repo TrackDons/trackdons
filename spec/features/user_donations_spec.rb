@@ -10,8 +10,8 @@ RSpec.feature 'User donations' do
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
 
     create_donation project: @project, quantity: 20.12, date: Date.today, user: @user, comment: 'This is my comment'
-    create_recurring_donation project: @gnome_project, quantity: 20, date: Date.parse('2014-01-01'),
-                              user: @user, quantity_privacy: true, frequency_units: 1, frequency_period: 'year'
+    create_donation project: @gnome_project, quantity: 20, date: Date.parse('2014-01-01'),
+                    user: @user, quantity_privacy: true, frequency_units: 1, frequency_period: 'year'
 
   end
 

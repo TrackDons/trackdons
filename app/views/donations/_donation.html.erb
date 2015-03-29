@@ -22,30 +22,28 @@
       <% end %>
     </span>
 
-    <% if donation.is_a?(RecurringDonation) %>
+    <% if donation.recurring? %>
       <span><%= t('.recurring_donation_started', started: time_ago_in_words(donation.date)) %></span>
     <% end %>
   </h3>
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 
-  <% if donation.respond_to?(:comment) %>
-   <% if donation.comment.present? && !in_complete_donation_page? %>
-     <div class="donation_comment mb2">
-       <%= markdown(donation.comment) %>
-     </div>
-   <% end %>
+  <% if donation.comment.present? && !in_complete_donation_page? %>
+    <div class="donation_comment mb2">
+      <%= markdown(donation.comment) %>
+    </div>
+  <% end %>
 
-   <% if (donation.user == current_user) && !donation.comment.present? && !in_complete_donation_page? %>
-     <div class="donation_comment alert p2">
-       <i><%= link_to t('donations.show.convince_your_friends_explain'), donation_complete_path(donation) %></i>
-     </div>
-   <% end %>
- <% end %>
+  <% if (donation.user == current_user) && !donation.comment.present? && !in_complete_donation_page? %>
+    <div class="donation_comment alert p2">
+      <i><%= link_to t('donations.show.convince_your_friends_explain'), donation_complete_path(donation) %></i>
+    </div>
+  <% end %>
 
   <% if current_user?(donation.user) && !in_complete_donation_page? %>
     <div class="donation_tools mb2">
-      <%= link_to(t('.edit'), edit_donation_or_recurring_donation_path(donation), title: t('.edit_title')) %> ·
+      <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('sure')}) %>
     </div>
   <% end %>

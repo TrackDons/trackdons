@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @projects_following = @user.following_by_type('Project')
-    @donations = DonationCollection.all(user: @user)
+    @donations = @user.donations.includes(:project, :user).sorted
   end
 
   def create
