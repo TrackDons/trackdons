@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new]
 
     resources :donations
+    resources :recurring_donations
     get 'donations/:id/complete'  => 'donations#complete', as: :donation_complete
     # patch 'donations/comlete/:id'  => 'donations#update'
     

@@ -76,9 +76,15 @@ RSpec.feature 'User donations' do
 
     login_as "yorch@example.com", "wadusm4n"
 
-    click_link('Delete')
+    visit project_page(@project)
 
-    expect(page).to_not have_content('A donation by Bruce')
+    expect(page).to have_content('Yorch donated to Wikiwadus # Apr 01 2015')
+
+    within(:css, '.donation:eq(2)') do
+      click_link('Delete')
+    end
+
+    expect(page).to_not have_content('Yorch donated to Wikiwadus # Apr 01 2015')
   end
 
   scenario 'I can edit a donation of mine' do
