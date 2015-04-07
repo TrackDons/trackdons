@@ -30,15 +30,13 @@ Then navigate to: http://localhost:3000
 
 ### To work on a new feature / bug / improvement
 
-Create a branch and pull request.
+* [Fork the project](https://help.github.com/articles/fork-a-repo)
+* Clone down your fork
+* Create a feature branch for your work (`git checkout -b new-feature`)
+* Commit your changes (`git commit -am 'Description of the commits'`)
+* Push the branch up to your fork
+* Send a pull request for your branch
 
-* Have a local copy of the repo
-* Create a new branch for your work (git checkout -b new-feature)
-* Commit your changes (git commit -am 'Description of the commits')
-* Push to the branch (git push origin new-feature)
-* Create a new Pull Request
-
-
-### Libraries/gems being used 
+### Libraries/gems being used
 
 See Gemfile for complete reference
