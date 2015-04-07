@@ -1,4 +1,4 @@
-/* 
+/*
  * 1. Core
  * -------
  *
@@ -14,11 +14,11 @@
 @import "core/mixins";
 @import "core/reset";
 
-/* 
+/*
  * 2. Base
  * -------
  *
- * All base styles for the app will be under base folder. This includes fonts, regular styles for headings, 
+ * All base styles for the app will be under base folder. This includes fonts, regular styles for headings,
  * paragraphs, lists, links, etc.
  *
  */
@@ -29,7 +29,7 @@
 @import "base/lists";
 @import "base/label";
 
-/* 
+/*
  * 3. Helpers
  * ----------
  *
@@ -45,7 +45,7 @@
 @import "helpers/colors";
 @import "helpers/layout";
 
-/* 
+/*
  * 4. Objects
  * ----------
  *
@@ -61,11 +61,11 @@
 @import "objects/content";
 @import "objects/modal";
 
-/* 
+/*
  * 5. Layout
  * ---------
  *
- * Sometimes it happens you need to overwrite some components' behaviour. This should be an exception, and if you 
+ * Sometimes it happens you need to overwrite some components' behaviour. This should be an exception, and if you
  * find yourself overwriting any component twice, we are probably doing wrong.
  *
  */
@@ -74,7 +74,7 @@
  @import "layout/home-newcomers";
  @import "layout/user-profile";
 
-/* 
+/*
  * 6. Vendors
  * ----------
  *
@@ -87,13 +87,13 @@
 @import "vendor/tipsy";
 @import "vendor/pikaday";
 
-/* 
+/*
 
-Prefer components over page level styles, for large term maintenability reasons mostly. We want our front end to 
-feel like library code. We should start to break files like this into smaller more focused files like 
+Prefer components over page level styles, for large term maintenability reasons mostly. We want our front end to
+feel like library code. We should start to break files like this into smaller more focused files like
 form.scss, button.scss, tags.scss, dropdown.css, etc.
 
-And this is important, make a tatoo in your arm if you prefer, but follow this rule: 
+And this is important, make a tatoo in your arm if you prefer, but follow this rule:
 DON'T USE #ID FOR STYLING. DON'T. JUST DON'T.
 
 */
@@ -119,10 +119,11 @@ body .tipsy { font-size: 11px; }
 /* structure */
 #container { margin: 2em auto; width: 800px; border-width: 30px; border-style: solid; }
 #header { position: relative; padding: 11px 0 9px; min-height: 16px}
-  #nav_site { 
+  #nav_site {
     li { vertical-align: top; }
   }
   #nav_personal { position: absolute; top: 11px; right: 10px; text-align: left; }
+  #nav_personal > ul > li:nth-child(1) { width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: top; }
   /*#nav_mobile { display: none; }*/
   // #nav_mobile .hamburger { position: absolute; border: 1px solid red; top: 0; left: -50px; width: 31px; height: 31px; margin: 4px; background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHdpZHRoPSIzMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNCwxMGgyNGMxLjEwNCwwLDItMC44OTYsMi0ycy0wLjg5Ni0yLTItMkg0QzIuODk2LDYsMiw2Ljg5NiwyLDhTMi44OTYsMTAsNCwxMHogTTI4LDE0SDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDIgIHMwLjg5NiwyLDIsMmgyNGMxLjEwNCwwLDItMC44OTYsMi0yUzI5LjEwNCwxNCwyOCwxNHogTTI4LDIySDRjLTEuMTA0LDAtMiwwLjg5Ni0yLDJzMC44OTYsMiwyLDJoMjRjMS4xMDQsMCwyLTAuODk2LDItMiAgUzI5LjEwNCwyMiwyOCwyMnoiLz48L3N2Zz4='); }
   // .sb-slidebar.sb-active { width: 300px; }
@@ -131,19 +132,19 @@ body .tipsy { font-size: 11px; }
   #menu_icon span { text-indent: -9999px; display: inline-block; }
 
 .sb-slidebar {
-  
+
   ul {
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
   }
   ul.bottom {
     position: absolute;
-    bottom: 0; 
+    bottom: 0;
     width: 100%;
   }
-  li { 
-    margin: 5%; 
-    list-style-type: none; 
+  li {
+    margin: 5%;
+    list-style-type: none;
     display: block;
     background: $main_color;
 
@@ -151,8 +152,8 @@ body .tipsy { font-size: 11px; }
       font-weight: bold;
       text-decoration: none;
       display: block;
-      padding: 10px; 
-      color: #FFF;  
+      padding: 10px;
+      color: #FFF;
     }
   }
 
@@ -164,12 +165,12 @@ body .tipsy { font-size: 11px; }
 .content_full {  }
 
 /* forms */
-button, .button, input[type='submit'] { 
-/*  margin: 10px 0 20px 0; 
-  border: 0; 
-  padding: 10px 16px; 
-  font-size: 14px; 
-  display: inline-block; 
+button, .button, input[type='submit'] {
+/*  margin: 10px 0 20px 0;
+  border: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+  display: inline-block;
 */}
 form.simple_form { width: 400px; margin-bottom: 2em; }
 form.simple_form input, form.simple_form textarea { width: 94%; padding: 4px; font-size: 1em;}
@@ -236,34 +237,34 @@ h2 { font-size: 24px; }
 .hint { font-size: 12px; margin-bottom: 20px; }
 #i_want_to_explain_content { display: none; }
 #i_want_to_explain_content textarea { width: 97%; height: 100px; font-size: 13px; padding-top: 10px; margin: 10px 0;}
-#project_attributes { display:none; 
+#project_attributes { display:none;
   input, textarea { width: 96.5%; font-size: 13px; border: 1px dashed $main-color; font-weight:bold;}
   textarea { width:99%; padding-top: 10px; height: 100px; }
 }
 
 .track_don_quantity_B {
-  
-  input { 
-    width: 65px; 
+
+  input {
+    width: 65px;
     margin: 0;
   }
 
   .track_don_currency_selector {
-    background: $main_color; 
+    background: $main_color;
     display: inline-block;
-    vertical-align: top; 
-    margin: 0; 
+    vertical-align: top;
+    margin: 0;
 
     select {
-      background: none; 
-      vertical-align: top; 
-      height: 38px; 
-      margin: 4px 0 0 0; 
+      background: none;
+      vertical-align: top;
+      height: 38px;
+      margin: 4px 0 0 0;
       border: none;
       font-size: 18px;
       font-family: 'Raleway';
       color: #FFF;
-      
+
       option {
         white-space: pre;
       }
@@ -329,12 +330,12 @@ body.projects_index {
         font-size: 1.3em;
         padding: 0;
       }
-      
+
     }
 
     .action_buttons {
       position: absolute;
-      top: 1em; 
+      top: 1em;
       right: 0;
       font-size: .75em;
 
@@ -354,7 +355,7 @@ body.projects_index {
 
     .donations {
       color: $main_color;
-      
+
     }
   }
 
@@ -416,7 +417,7 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
 
 .big_banner {
   @extend .content_column;
-  background: #BAC271; 
+  background: #BAC271;
   margin-top: -40px;
   margin-bottom: 2em;
   padding-top: 2em;
@@ -429,60 +430,60 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
   }
 }
 
-#share_block { 
-  background-color: #D9DAAA; 
+#share_block {
+  background-color: #D9DAAA;
   padding: 20px;
   margin-bottom: 40px;
-  p { 
-    font-size: 18px; 
+  p {
+    font-size: 18px;
     margin-top: 0px;
   }
 }
 #share_buttons {
-  list-style-type: none; 
-  margin: 0; 
-  padding: 0; 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 
-  li { 
-    width: 29%; 
-    margin-right: 26px; 
+  li {
+    width: 29%;
+    margin-right: 26px;
     text-align: center;
     display: inline-block;
     font-size: .9em;
   }
-  li:last-child { 
-    margin-right: 0px; 
+  li:last-child {
+    margin-right: 0px;
   };
-  
+
 }
-#next { 
-  list-style-type: none; 
-  padding: 0px; 
-  margin: 15px 0px 0px; 
-  
-  li { 
-    display: inline-block; 
+#next {
+  list-style-type: none;
+  padding: 0px;
+  margin: 15px 0px 0px;
+
+  li {
+    display: inline-block;
     vertical-align: top;
-    width: 30%; 
-    margin-right: 26px; 
+    width: 30%;
+    margin-right: 26px;
 
     a {
       padding: 10px;
-      height: 65px; 
+      height: 65px;
       display: block;
       background-color: #D9DAAA;
-      color: $main-color; 
-      font-size: 18px; 
-      font-weight: bold; 
+      color: $main-color;
+      font-size: 18px;
+      font-weight: bold;
     }
   }
-  li:last-child { 
-    margin-right: 0px; 
+  li:last-child {
+    margin-right: 0px;
   };
 }
 
 .wide_content {
-  padding: 0 5%; 
+  padding: 0 5%;
   overflow: hidden;
 
   .sidebar, .main_column {
@@ -497,7 +498,7 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
     padding: .5em 0 0 0;
     margin: 0 0 1em 0;
   }
-  
+
   section.header {
     border-top: 5px solid $main_color;
     position: relative;
@@ -519,14 +520,14 @@ hr { height: 1px; border:0; background-color: #D9DAAA; margin: 60px 0px 15px; wi
     }
   }
   .sidebar {
-    float: left; 
+    float: left;
     width: 25%;
 
     ul, li {
-      font-size: .9em; 
-      line-height: 1.4em; 
-      margin: 0; 
-      padding: 0; 
+      font-size: .9em;
+      line-height: 1.4em;
+      margin: 0;
+      padding: 0;
       list-style-type: none;
     }
     li {
@@ -629,11 +630,11 @@ iPad 3
   #project .meta, #project .actions { float: none; width: auto; }
   // #track_donation {
   //   width: 540px;
-  //   padding: 0; 
+  //   padding: 0;
   // }
   // #track_donation.content_full {
   //   width: 100%;
-     
+
   // }
   .main_form {
 
@@ -641,13 +642,13 @@ iPad 3
   .donation h3 { font-size: 16px; }
   .track_don_project {
     width: 100%;
-  }  
+  }
   ul#share_buttons, ul#next {
-    li { 
-      width: auto; 
-      display: block; 
-      margin: 0 0 15px 0; 
-      height: auto; 
+    li {
+      width: auto;
+      display: block;
+      margin: 0 0 15px 0;
+      height: auto;
       text-align: center;
       a {
         height: auto;
@@ -657,8 +658,8 @@ iPad 3
 
   .wide_content {
     .main_column, .sidebar {
-      float: none; 
-      width: 100%; 
+      float: none;
+      width: 100%;
       clear: both;
       margin-bottom: 2em;
     }
@@ -677,7 +678,7 @@ iPad 3
       line-height: 1.6em;
     }
   }
-  
+
 }
 
 @media only screen  and (max-width : 540px) {

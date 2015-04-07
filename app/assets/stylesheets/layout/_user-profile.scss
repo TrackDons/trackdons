@@ -1,24 +1,29 @@
 .user_page {
 
-  header { 
+  header {
     position: relative;
     padding-left: 90px;
-    padding-bottom: 1em; 
-    @include min-screen(740) { 
+    padding-bottom: 1em;
+    @include min-screen(740) {
       height: 72px;
       padding-bottom: 0;
     }
   }
-  header h1 { 
-    font-size: 1.6em; 
-    margin: 0 0 .15em 0; 
+  header h1 {
+    font-size: 1.6em;
+    margin: 0 0 .15em 0;
     padding: .35em 0 0 0;
+    width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
   }
-  header img { 
-    vertical-align: middle; 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
+  header img {
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   h2 {
@@ -42,38 +47,38 @@
       font-weight: bold;
     }
     .value h2 {
-      font-size: 2.2em; 
+      font-size: 2.2em;
       margin: 0;
       display: inline-block;
     }
     .has_donated {
-      
+
     }
     .thinking_on_donating {
-      
+
     }
-    @include min-screen(740) { 
+    @include min-screen(740) {
       .has_donated {
         position: absolute;
-        top: 15px; 
-        right: 165px; 
+        top: 15px;
+        right: 165px;
         width: 150px;
       }
       .thinking_on_donating {
         position: absolute;
-        top: 15px; 
-        right: 0; 
+        top: 15px;
+        right: 0;
         width: 175px;
       }
     }
-  }   
+  }
 }
 
 #user_donations {
   position: relative;
-  #donations_chart { 
-    position: absolute; 
-    top: 6px; 
+  #donations_chart {
+    position: absolute;
+    top: 6px;
     right: 20px;
   }
 }
@@ -82,7 +87,7 @@
 #donations_last_month small { display: block}
 #donations_overall { position: absolute; top: 25px; left: 600px; }
 #donations_last_month, #donations_overall { font-size: 14px; }
-#user_nav { 
+#user_nav {
   margin: 20px 0;
   overflow: hidden;
 }
