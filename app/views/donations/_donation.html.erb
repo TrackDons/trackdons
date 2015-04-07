@@ -23,7 +23,7 @@
     </span>
 
     <% if donation.recurring? %>
-      <span><%= t('.recurring_donation_started', started: time_ago_in_words(donation.date)) %></span>
+      <i class="fa fa-refresh tipsit" title="<%= t('.recurring_donation_started', started: time_ago_in_words(donation.date)) %>"></i>
     <% end %>
   </h3>
 
