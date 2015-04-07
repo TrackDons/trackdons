@@ -21,7 +21,7 @@ RSpec.feature 'User donations' do
     expect(page).to have_content('Has donated to 2 projects')
 
     expect(page).to have_content('Yorch donated to Wikiwadus # Apr 01 2015')
-    expect(page).to have_content('Yorch donated to Gnome # Jan 01 2014 Recurring donation, started about 1 year ago')
+    expect(page).to have_content('Yorch donated to Gnome # Jan 01 2014')
   end
 
   # FIXME

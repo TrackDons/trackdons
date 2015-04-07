@@ -23,7 +23,7 @@ RSpec.feature 'Latest donations' do
     expect(page).to have_css('.donation:nth-child(2)', text: 'Bruce donated to Wikiwadus # Mar 01 2015')
     expect(page).to have_css('.donation:nth-child(3)', text: 'Yorch donated to Wikiwadus # Jan 01 2015')
     expect(page).to have_css('.donation:nth-child(4)', text: 'Bruce donated to Gnome # Feb 01 2014')
-    expect(page).to have_css('.donation:nth-child(5)', text: 'Yorch donated to Gnome # Jan 01 2014 Recurring donation, started about 1 year ago')
+    expect(page).to have_css('.donation:nth-child(5)', text: 'Yorch donated to Gnome # Jan 01 2014')
   end
 
   scenario 'I can see the latest donations as a logged user' do
@@ -34,6 +34,6 @@ RSpec.feature 'Latest donations' do
     expect(page).to have_css('.donation:nth-child(2)', text: 'Bruce donated to Wikiwadus # Mar 01 2015')
     expect(page).to have_css('.donation:nth-child(3)', text: 'Yorch donated to Wikiwadus # Jan 01 2015')
     expect(page).to have_css('.donation:nth-child(4)', text: 'Bruce donated to Gnome # Feb 01 2014')
-    expect(page).to have_css('.donation:nth-child(5)', text: 'Yorch donated to Gnome # Jan 01 2014 Recurring donation, started about 1 year ago')
+    expect(page).to have_css('.donation:nth-child(5)', text: 'Yorch donated to Gnome # Jan 01 2014')
   end
 end
