@@ -13,7 +13,7 @@
     font-size: 1.6em;
     margin: 0 0 .15em 0;
     padding: .35em 0 0 0;
-    width: 260px;
+    width: 330px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,14 +61,14 @@
       .has_donated {
         position: absolute;
         top: 15px;
-        right: 165px;
+        right: 135px;
         width: 150px;
       }
       .thinking_on_donating {
         position: absolute;
         top: 15px;
         right: 0;
-        width: 175px;
+        width: 150px;
       }
     }
   }
