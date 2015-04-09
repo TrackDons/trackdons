@@ -4,9 +4,18 @@ RSpec.feature 'Projects navigation' do
   background do
     health = create_category(name: 'Health')
 
-    create_project name: 'Cruz Roja', category: health, countries: ['US', 'ES']
-    create_project name: 'Médicos Sin Fronteras', category: health, countries: ['ES']
-    create_project name: 'Wikipedia', countries: ['ES']
+    @user = create_user(name: 'Marlo', email: "marlo@muchachada.nui")
+
+    @other_user = create_user(name: 'Claudio', email: "claudio@muchachada.nui")
+
+    @cruz_roja = create_project name: 'Cruz Roja', category: health, countries: ['US', 'ES']
+    @medicos = create_project name: 'Médicos Sin Fronteras', category: health, countries: ['ES']
+    @wikipedia = create_project name: 'Wikipedia', countries: ['ES']
+
+    create_donation project: @cruz_roja, quantity: 20, date: Date.today, user: @user, quantity_privacy: true
+    create_donation project: @cruz_roja, quantity: 30, date: Date.today, user: @other_user
+    create_donation project: @wikipedia, quantity: 10, date: Date.today, user: @other_user, quantity_privacy: true
+
   end
 
   scenario 'I should be able to filter by Alphabetic order' do
@@ -24,9 +33,15 @@ RSpec.feature 'Projects navigation' do
 
     click_link "Latest"
 
-    expect(page).to have_css(".project:nth-child(2) a", text: "Cruz Roja")
+    expect(page).to have_css(".project:nth-child(2) a", text: "Wikipedia")
     expect(page).to have_css(".project:nth-child(3) a", text: "Médicos Sin Fronteras")
-    expect(page).to have_css(".project:nth-child(4) a", text: "Wikipedia")
+    expect(page).to have_css(".project:nth-child(4) a", text: "Cruz Roja")
+
+    click_link "Popular"
+
+    expect(page).to have_css(".project:nth-child(2) a", text: "Cruz Roja")
+    expect(page).to have_css(".project:nth-child(3) a", text: "Wikipedia")
+    expect(page).to have_css(".project:nth-child(4) a", text: "Médicos Sin Fronteras")
   end
 
   scenario 'I should be able to filter by Category' do

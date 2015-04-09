@@ -31,7 +31,7 @@ module ProjectsHelper
     filters << [:country, country] if country
     filters.flatten!
 
-    extra_params.merge!({sort_by: params[:sort_by]}) if params[:sort_by]
+    extra_params.merge!({sort_by: params[:sort_by]}) if !extra_params[:sort_by] && params[:sort_by]
 
     url_params = {}
     url_params.merge!({filters: filters}) if filters.any?
