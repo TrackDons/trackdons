@@ -12,17 +12,12 @@ es:
           attributes:
             date:
               invalid: "tiene que ser hoy o anterior a hoy"
-        recurring_donation:
-          attributes:
-            date:
-              invalid: "tiene que ser hoy o anterior a hoy"
     models:
       user: Usuario
       invitation: Invitación
       category: Categoría
       donation: Donación
       project: Proyecto
-      recurring_donation: Donación recurrente
     attributes:
       user:
         name: Nombre
@@ -47,12 +42,6 @@ es:
         currency: Moneda
         user_id: Usuario
         comment: Comentario
-      recurring_donation:
-        date: Fecha
-        project_id: Proyecto
-        quantity: Cantidad
-        currency: Moneda
-        user_id: Usuario
   language_name: 'Español'
   hello: "Hello world"
   # generics
@@ -148,6 +137,7 @@ es:
       private_donation_not_visible_explanation: Esta donación es privada, de modo que la cantidad solo será visible para el autor
       private_donation_not_visible_explanation_in_profile: Este usuario tiene donaciones privadas, por lo que el total no incluye todas
       private_donation_not_visible_explanation_in_profile_for_self: Tienes donaciones privadas, así que el total solo lo verás tu, pero no los otros usuarios
+      recurring_donation_started: Donación periódica, empezada hace %{started}
     form:
       update_donation: Actualizar
       cancel: Cancelar
@@ -295,6 +285,9 @@ es:
       in_total: en total
       has_donated_to: Ha donado a
       thinking_on_donating_to: Pensando en donar a
+      project:
+        one: '%{count} proyecto'
+        other: '%{count} proyectos'
     show:
       edit_your_profile: Edita tu perfil
       track_your_first_donation: Registra tu primera donación

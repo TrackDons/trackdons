@@ -10,10 +10,6 @@ en:
           attributes:
             date:
               invalid: "must be today or previous to today"
-        recurring_donation:
-          attributes:
-            date:
-              invalid: "must be today or previous to today"
   language_name: "English"
   hello: "Hello world"
   # generics
@@ -114,6 +110,7 @@ en:
       private_donation_not_visible_explanation: "This donation is private, so the quantity will only be shown to the donation's author"
       private_donation_not_visible_explanation_in_profile: "This user has private donations, so this total does not include every donation"
       private_donation_not_visible_explanation_in_profile_for_self: "You have private donations, so the total won't show up for other users, only for you"
+      recurring_donation_started: Recurring donation, started %{started} ago
     form:
       update_donation: Update
       cancel: Cancel
@@ -264,6 +261,9 @@ en:
       in_total: in total
       has_donated_to: Has donated to
       thinking_on_donating_to: Thinking on donating to
+      project:
+        one: '%{count} project'
+        other: '%{count} projects'
     show:
       edit_your_profile: Edit your profile
       track_your_first_donation: Track your first donation

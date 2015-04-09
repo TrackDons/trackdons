@@ -34,7 +34,7 @@
     className: 'bb-donation mb3',
     
     events: {
-      'change .js-donation-reurring': 'changeRecurringSelect',
+      'change .js-donation-recurring': 'changeRecurringSelect',
       'select2-selecting .js-select2': 'toggleDetails'
     },
     

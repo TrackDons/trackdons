@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.friendly.includes(donations: [:user]).find(params[:id])
+    @donations = @project.donations.includes(:project, :user).sorted
   end
 
   def new

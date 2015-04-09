@@ -1,14 +1,10 @@
 class DonationsController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :load_donation, only: [:edit, :complete, :update, :destroy]
+  before_action :load_user_donation, only: [:edit, :complete, :update, :destroy]
 
   def index
-    if params.has_key?(:project_id)
-      @donations = Project.friendly.find(params[:project_id]).donations.sorted.includes(:project, :user)
-    else
-      @donations = Donation.sorted.includes(:project, :user)
-    end
+    @donations = Donation.includes(:project, :user).sorted
   end
 
   def show
@@ -16,7 +12,7 @@ class DonationsController < ApplicationController
   end
 
   def complete
-  end 
+  end
 
   def create
     if logged_in?
@@ -53,7 +49,7 @@ class DonationsController < ApplicationController
     cookies[:donation] = donation_params.to_json
   end
 
-  def load_donation
+  def load_user_donation
     @donation = current_user.donations.find(params[:id])
   end
 

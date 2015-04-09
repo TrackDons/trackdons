@@ -18,10 +18,12 @@ class Donation < ActiveRecord::Base
   validates :project_id, presence: true
   validates :user_id, presence: true
   validates :date, presence: true
+  validates :frequency_units, numericality: true, allow_blank: true
+  validates :frequency_period, inclusion: { in: %W{ month months year } }, allow_blank: true
 
   validate :date_is_not_in_the_future
 
-  before_validation :set_project, :clear_comment
+  before_validation :set_frequency, :set_project, :clear_comment
 
   def show_comment
     comment.present?
@@ -33,6 +35,18 @@ class Donation < ActiveRecord::Base
 
   def private?
     quantity_privacy?
+  end
+
+  def recurring
+    if new_record?
+      @recurring
+    else
+      "#{frequency_units} #{frequency_period}"
+    end
+  end
+
+  def recurring?
+    frequency_period.present?
   end
 
   private
@@ -48,6 +62,22 @@ class Donation < ActiveRecord::Base
         self.project = Project.create_with({
           description: self.project.description,
           url: self.project.url}).find_or_create_by(name: self.project.name)
+      end
+    end
+
+    def set_frequency
+      if self.recurring.present? && self.frequency_period.blank? && self.frequency_units.blank? &&
+        self.recurring != 'no'
+        case self.recurring
+        when 'monthly'
+          self.frequency_period = 'month'
+          self.frequency_units = 1
+        when 'yearly'
+          self.frequency_period = 'year'
+          self.frequency_units = 1
+        else
+          self.frequency_units, self.frequency_period = self.recurring.split(' ')
+        end
       end
     end
 

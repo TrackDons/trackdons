@@ -25,6 +25,7 @@ module Factories
     attrs[:currency]        ||= 'EUR'
     attrs[:date]            ||= Date.today - 7.days
     attrs[:quantity_privacy]||= false
+
     Donation.create!(attrs)
   end
 
@@ -36,16 +37,5 @@ module Factories
   def create_category(attrs = {})
     attrs[:name] ||= "Animals"
     Category.create!(attrs)
-  end
-
-  def create_recurring_donation(attrs = {})
-    attrs[:user]             ||= create_user
-    attrs[:project]          ||= create_project
-    attrs[:quantity]         ||= 10
-    attrs[:currency]         ||= 'EUR'
-    attrs[:date]             ||= Date.today - 7.days
-    attrs[:frequency_units]  ||= 1
-    attrs[:frequency_period] ||= 'year'
-    RecurringDonation.create!(attrs)
   end
 end

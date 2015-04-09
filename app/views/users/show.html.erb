@@ -1,7 +1,7 @@
 <% set_meta_tags :description => t("metas.users.user.description", :user => @user.name) %>
 <% set_meta_tags :title => t("metas.users.user.title", :user => @user.name) %>
 
-<% if current_user?(@user) && @user.donations.size == 0 %>
+<% if current_user?(@user) && @donations.size == 0 %>
   
   <section class="big_banner">
     
@@ -43,8 +43,9 @@
         $("#donations_chart").sparkline(<%= @user.chart_data(current_user) %>, { type: 'bar', barColor: '#565631', width: 100, barWidth: 9 });
       </script>
 
-      <%= render @user.donations.sorted %>
-
+      <% @donations.each do |donation| %>
+        <%= render partial: 'donations/donation', locals: {donation: donation} %>
+      <% end %>
     </div>
 
     <div id="user_projects" style="display: none">

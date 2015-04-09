@@ -10,35 +10,35 @@
     <%= t('.donated_to') %>
 
     <strong><%= link_to_unless_current donation.project.name, project_path(donation.project) %></strong>
-    
+
     <% unless in_donations_page? %> 
       <%= link_to '#', donation_path(donation) %>
     <% end %>
 
     <span class="date">
-      <%= l donation.date, format: :donation %>
-      <% if donation.private? %>
-        <i class="fa fa-lock tipsit" title="<%= t('.private_donation_not_visible_explanation') %>"></i>
-      <% end %>
+      <%= l donation.date, format: :donation %>      
     </span>
 
+    <% if donation.recurring? %>
+      <i class="fa fa-refresh tipsit" title="<%= t('.recurring_donation_started', started: time_ago_in_words(donation.date)) %>"></i>
+    <% end %>
   </h3>
 
   <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 
-  <% if donation.comment.present? & !in_complete_donation_page? %>
+  <% if donation.comment.present? && !in_complete_donation_page? %>
     <div class="donation_comment mb2">
       <%= markdown(donation.comment) %>
     </div>
   <% end %>
 
-  <% if (donation.user == current_user) & !donation.comment.present? & !in_complete_donation_page? %>
+  <% if (donation.user == current_user) && !donation.comment.present? && !in_complete_donation_page? %>
     <div class="donation_comment alert p2">
       <i><%= link_to t('donations.show.convince_your_friends_explain'), donation_complete_path(donation) %></i>
     </div>
   <% end %>
 
-  <% if current_user?(donation.user) & !in_complete_donation_page? %>
+  <% if current_user?(donation.user) && !in_complete_donation_page? %>
     <div class="donation_tools mb2">
       <%= link_to(t('.edit'), edit_donation_path(donation), title: t('.edit_title')) %> ·
       <%= link_to(t('.delete'), donation, method: :delete, title: t('.delete_title'), data: {confirm: t('sure')}) %>

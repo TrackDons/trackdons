@@ -44,7 +44,9 @@
       <%# t('.donations_last_week', count: @project.last_month_donations) %>
     </h2>
 
-    <%= render @project.donations.sorted %>
+    <% @donations.each do |donation| %>
+      <%= render partial: 'donations/donation', locals: {donation: donation} %>
+    <% end %>
 
   </section>
 
