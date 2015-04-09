@@ -1,4 +1,7 @@
 class MergeDonationsAndRecurringDonations < ActiveRecord::Migration
+  class RecurringDonation < ActiveRecord::Base
+  end
+
   def up
     add_column :donations, :frequency_units, :integer
     add_column :donations, :frequency_period, :string
