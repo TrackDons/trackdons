@@ -24,9 +24,9 @@ RSpec.feature 'Projects navigation' do
 
     click_link "Latest"
 
-    expect(page).to have_css(".project:nth-child(2) a", text: "Cruz Roja")
+    expect(page).to have_css(".project:nth-child(2) a", text: "Wikipedia")
     expect(page).to have_css(".project:nth-child(3) a", text: "Médicos Sin Fronteras")
-    expect(page).to have_css(".project:nth-child(4) a", text: "Wikipedia")
+    expect(page).to have_css(".project:nth-child(4) a", text: "Cruz Roja")
   end
 
   scenario 'I should be able to filter by Category' do
