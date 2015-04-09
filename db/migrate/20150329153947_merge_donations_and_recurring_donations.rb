@@ -1,5 +1,9 @@
 class MergeDonationsAndRecurringDonations < ActiveRecord::Migration
   class RecurringDonation < ActiveRecord::Base
+    belongs_to :project
+    belongs_to :user
+    has_many :donations
+    monetize :quantity_cents, as: :quantity, with_model_currency: :currency
   end
 
   def up
