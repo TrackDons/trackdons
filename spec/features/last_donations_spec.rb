@@ -31,9 +31,10 @@ RSpec.feature 'Latest donations' do
 
     visit donations_page
 
-    expect(page).to have_css('.donation:nth-child(2)', text: 'Bruce donated to Wikiwadus # Mar 01 2015')
-    expect(page).to have_css('.donation:nth-child(3)', text: 'Yorch donated to Wikiwadus # Jan 01 2015')
-    expect(page).to have_css('.donation:nth-child(4)', text: 'Bruce donated to Gnome # Feb 01 2014')
-    expect(page).to have_css('.donation:nth-child(5)', text: 'Yorch donated to Gnome # Jan 01 2014')
+    donations = page.all(:css, '.donation')
+    expect(donations[0].text).to start_with('Bruce donated to Wikiwadus # Mar 01 2015')
+    expect(donations[1].text).to start_with('Yorch donated to Wikiwadus # Jan 01 2015')
+    expect(donations[2].text).to start_with('Bruce donated to Gnome # Feb 01 2014')
+    expect(donations[3].text).to start_with('Yorch donated to Gnome # Jan 01 2014')
   end
 end

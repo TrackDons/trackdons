@@ -152,6 +152,19 @@ es:
     complete: 
       great_just_one_thing: 'Genial! Solo una cosita más: '
       tell_why_you_have_donated: 'Explica por qué has donado, eso tendrá el mayor impacto en tus amigos y reclutarás a más donantes para el projecto.'
+    connect_with_friends:
+      connect_with_facebook_and_twitter: "Conecta con Facebook y Twitter para ver la actividad de tus amigos"
+      never_publish: 'Nunca publicaremos nada sin tu permiso, ¡lo odiamos!'
+      facebook: Facebook
+      twitter: Twitter
+    index:
+      featured_donations: Donaciones destacadas
+      donations_everybody: 'Donaciones de todo el mundo:'
+    post_in_social_networks:
+      no_friends_activity: 'None of your friends have yet tracked any donation. Post about your donations in Twitter and Facebook so they get inspired!'
+      no_friends_activity: 'Ninguno de tus amigos ha guardado una donación aún. ¡Postea sobre tus donaciones en Facebook y Twitter para que se inspiren!'
+      twitter: Twitter
+      facebook: Facebook
   how_much_question: '¿Cuánto?'
   when_did_you_donate: '¿Cuándo donaste?'
   i_want_to_explain_why: 'Quiero explicar por qué he donado para animar a otros'

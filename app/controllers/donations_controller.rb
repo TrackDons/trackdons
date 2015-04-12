@@ -4,7 +4,8 @@ class DonationsController < ApplicationController
   before_action :load_user_donation, only: [:edit, :complete, :update, :destroy]
 
   def index
-    @donations = Donation.includes(:project, :user).sorted
+    @donations = fetch_donations.includes(:project, :user).sorted
+    @featured_donations = @donations.featured.limit(5)
   end
 
   def show
@@ -39,6 +40,19 @@ class DonationsController < ApplicationController
   end
 
   private
+
+  def fetch_donations
+    donations = Donation
+    @donations_from_everybody = true
+
+    if logged_in? && current_user.following_users_count > 0
+      friends_ids = current_user.following_users.pluck(:id)
+      donations = donations.from_users(friends_ids)
+      @donations_from_everybody = false
+    end
+
+    donations
+  end
 
   def donation_params
     params.require(:donation).permit(:quantity, :currency, :date, :comment, :quantity_privacy, :show_comment, :recurring,

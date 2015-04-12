@@ -24,7 +24,7 @@
     <% end %>
   </h3>
 
-  <%= render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
+  <%# render partial: 'donations/donation_do_widget', locals: {donation: donation} %>
 
   <% if donation.comment.present? && !in_complete_donation_page? %>
     <div class="donation_comment mb2">

@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   has_secure_password validations: false
 
   has_many :donations, dependent: :destroy
-  has_many :recurring_donations, dependent: :destroy
   has_many :projects, through: :donations
   has_many :invitations
 
@@ -76,10 +75,6 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
-  def has_private_donations?
-    donations.quantity_private.any?
-  end
-
   def generate_password_reset_token!
     generate_token(:password_reset_token)
     save!
@@ -87,6 +82,10 @@ class User < ActiveRecord::Base
 
   def invitation
     self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
+  end
+
+  def external_service_connected?
+    twitter_id.present? || facebook_id.present?
   end
 
   private

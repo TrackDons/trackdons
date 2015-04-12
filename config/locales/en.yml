@@ -125,6 +125,18 @@ en:
     complete: 
       great_just_one_thing: 'Great! Just one thing before you are done:'
       tell_why_you_have_donated: 'Tell why you have donated, that will make the most impact in your friends and recruit more donors for the project.'
+    connect_with_friends:
+      connect_with_facebook_and_twitter: "Connect with Facebook and Twitter to see your friend's activity"
+      never_publish: 'We never publish without your permission, we hate it!'
+      facebook: Facebook
+      twitter: Twitter
+    index:
+      donations_everybody: 'Donations from everybody:'
+      featured_donations: Featured donations
+    post_in_social_networks:
+      no_friends_activity: 'None of your friends have yet tracked any donation. Post about your donations in Twitter and Facebook so they get inspired!'
+      twitter: Twitter
+      facebook: Facebook
   # donations form
   how_much_question: 'How much?'
   when_did_you_donate: 'When did you donate?'
