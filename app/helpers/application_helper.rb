@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def track_donation_path
-    "#{root_path}#track_donation"
+    "#{root_path}#modal-track"
   end
 
   def markdown(text)
