@@ -19,6 +19,7 @@
       </div>
         
       <div id="cd-login" >
+        
         <%= modal_flash_message(:login) %>
 
         <p><%= t 'sessions.new.or_choose_tradition' %></p>
@@ -42,7 +43,7 @@
           </div>
 
           <div class="clearfix mt3 pb4">
-            <%= f.button t('sessions.new.create_account'), class: "btn btn-secondary float-left create-account", tabindex: 4 %>
+            <%= link_to t('sessions.new.create_account'), '', class: "btn btn-secondary float-left create-account", tabindex: 4 %>
             <%= f.submit t('sessions.new.login_action'), class: "btn btn-primary float-right", tabindex: 3 %>
           </div>
 
@@ -100,7 +101,7 @@
           <%= f.hidden_field :invitation_token, value: params[:invitation_token] %>
 
           <div class="clearfix mt3 pb4">
-            <%= f.button t('sessions.new.already_have_account'), class: "btn btn-secondary float-left login" %>
+            <%= link_to t('sessions.new.already_have_account'), '', class: "btn btn-secondary float-left login" %>
             <%= f.submit t('sessions.new.create_account'), class: "btn btn-primary float-right" %>
           </div>
         <% end %>
