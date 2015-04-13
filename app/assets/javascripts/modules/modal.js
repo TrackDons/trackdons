@@ -45,11 +45,13 @@ jQuery(document).ready(function($){
   });
 
   // Prevent Enter key to click on the first button of the form, which is the link to the
-  // other form
+  // other form only when the trackdon modal form is visible
   $(document).keydown(function(event){
     if(event.which=='13'){
-      event.preventDefault();
-      $('form:visible').submit();
+      if( $('form[id="new_donation"]').parents("#modal-track").hasClass('.is-visible') ){
+        event.preventDefault();
+        $('form:visible').submit();
+      }
     }
   });
 
