@@ -1,31 +1,39 @@
 <% set_meta_tags :description => t('metas.donations.home.description') %>
 
-<section class="content_column">
+<section class="donations wide_content">
 
-  <h1><%= title t('metas.donations.home.title') %></h1>
+  <div class="main_column left">
+  
+    <h1><%= title t('metas.donations.home.title') %></h1>
 
-  <% if logged_in? %>
-    <% if @donations_from_everybody %>
-      <% if current_user.external_service_connected? %>
-        <%= render 'post_in_social_networks' %>
-
-        <p><%= t('.donations_everybody') %></p>
-      <% else %>
-        <%= render 'connect_with_friends' %>
+    <% if logged_in? %>
+      <% if @donations_from_everybody %>
+        <% if current_user.external_service_connected? %>
+          <%= render 'post_in_social_networks' %>
+          <p><%= t('.donations_everybody') %></p>
+        <% else %>
+          <%= render 'connect_with_friends' %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <% @donations.each do |donation| %>
-    <%= render partial: 'donation', locals: {donation: donation} %>
-  <% end %>
-
-  <% if @featured_donations.any? %>
-    <h2><%= t('.featured_donations') %></h2>
-
-    <% @featured_donations.each do |donation| %>
+    <% @donations.each do |donation| %>
       <%= render partial: 'donation', locals: {donation: donation} %>
     <% end %>
-  <% end %>
+
+  </div>
+
+
+  <div class="sidebar right">
+
+    <% if @featured_donations.any? %>
+      <h2><%= t('.featured_donations') %></h2>
+
+      <% @featured_donations.each do |donation| %>
+        <%= render partial: 'donation', locals: {donation: donation} %>
+      <% end %>
+    <% end %>
+
+  </div>
 
 </section>

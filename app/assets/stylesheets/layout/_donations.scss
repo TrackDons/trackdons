@@ -1,4 +1,4 @@
-/*
+c/*
  *
  * Donation object
  * ---------------
@@ -63,7 +63,7 @@
     color: $secondary_color;
     font-size: 1em;
     color: #666; 
-    margin: 0 10px 10px 0;
+    margin: 0 10px 10px 40px;
     border: none;
 
     .date {
@@ -82,6 +82,8 @@
   h2 {
     font-size: 1.1em; 
     font-weight: normal;
+    color: $secondary_color;
+    border: none;
   }
   .donation {
     margin-top: 1em;

@@ -20,9 +20,9 @@ This object is the column holding the content of the page. There are a few flavo
   padding-right: 5%;
 
   @include min-screen(880) { 
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 710px; 
+    // padding-left: 20px;
+    // padding-right: 20px;
+    // width: 710px; 
   }
 }
 

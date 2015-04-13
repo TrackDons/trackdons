@@ -48,3 +48,8 @@ a.btn.not_active:hover {
     border: none;
   }
 }
+.notice-box {
+  border-radius: 4px;
+  background: $light_background;
+  font-size: .85em;
+}

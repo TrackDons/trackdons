@@ -60,6 +60,7 @@
 @import "objects/justify-columns";
 @import "objects/content";
 @import "objects/modal";
+@import "objects/headings";
 
 /*
  * 5. Layout
@@ -186,7 +187,7 @@ form.simple_form input[type='checkbox'] { width: auto; }
 form.simple_form textarea { height: 100px; }
 form.simple_form input[type='submit'] { width: 40%;}
 
-.alert { background: #EBE8CC; padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
+.alert { background: $light_background; padding-top: 1em; padding-bottom: 1em; margin-bottom: 2em; }
 .success, .info, .warning, .danger { }
 #main_content > .alert {
   padding-left: 5%;
@@ -206,8 +207,8 @@ td {
 #logo { position: absolute; top: 0; width: 100px; height: 100%; text-align: center; vertical-align: middle; font-weight: 700}
 #logo a { display: block; padding: 12px 8px; font-size: 13px; text-decoration: none; text-transform: uppercase; }
 h1.logo { background: $secondary-color; text-transform: uppercase; display: inline-block; padding: 8px 16px; color: #FFF; font-size: 24px; font-weight: normal; }
-h1 { font-size: 32px; }
-h2 { font-size: 24px; }
+// h1 { font-size: 32px; }
+// h2 { font-size: 24px; }
 #header { font-size: 14px;}
 #header ul { margin: 0; padding: 0; }
 #header ul li { list-style-type: none; display: inline-block; margin-right: 4px }
