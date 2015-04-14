@@ -84,8 +84,8 @@ class User < ActiveRecord::Base
     self.invitation_token.present? && Invitation.find_valid_token(self.invitation_token)
   end
 
-  def external_service_connected?
-    twitter_id.present? || facebook_id.present?
+  def all_external_services_connected?
+    twitter_id.present? && facebook_id.present?
   end
 
   private

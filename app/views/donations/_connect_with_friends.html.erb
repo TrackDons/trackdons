@@ -3,7 +3,12 @@
   <p><%= t('.never_publish') %></p>
 
   <div class="social-login mt2 mb3 clearfix">
-    <%= link_to(t('.twitter'), '/auth/twitter', class: "btn mr2") %>
-    <%= link_to(t('.facebook'), '/auth/facebook', class: "btn ") %>
+    <% if !@current_external_services.include?(:twitter) %>
+      <%= link_to(t('.twitter'), '/auth/twitter', class: "btn float-left") %>
+    <% end %>
+
+    <% if !@current_external_services.include?(:facebook) %>
+      <%= link_to(t('.facebook'), '/auth/facebook', class: "btn float-right") %>
+    <% end %>
   </div>
 </div>

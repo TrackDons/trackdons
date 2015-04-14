@@ -2,6 +2,7 @@ class DonationsController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :load_user_donation, only: [:edit, :complete, :update, :destroy]
+  before_action :set_current_external_services,  only: [:index]
 
   def index
     @donations = fetch_donations.includes(:project, :user).sorted

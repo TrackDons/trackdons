@@ -8,7 +8,7 @@
 
     <% if logged_in? %>
       <% if @donations_from_everybody %>
-        <% if current_user.external_service_connected? %>
+        <% if current_user.all_external_services_connected? %>
           <%= render 'post_in_social_networks' %>
           <p><%= t('.donations_everybody') %></p>
         <% else %>
@@ -20,9 +20,7 @@
     <% @donations.each do |donation| %>
       <%= render partial: 'donation', locals: {donation: donation} %>
     <% end %>
-
   </div>
-
 
   <div class="sidebar right">
 
