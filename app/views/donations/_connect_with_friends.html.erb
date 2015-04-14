@@ -2,13 +2,15 @@
   <p><%= t('.connect_with_facebook_and_twitter') %></p>
   <p><%= t('.never_publish') %></p>
 
+  <% css_classes = ['float-left', 'float-right'] %>
+
   <div class="social-login mt2 mb3 clearfix">
     <% if !@current_external_services.include?(:twitter) %>
-      <%= link_to(t('.twitter'), '/auth/twitter', class: "btn float-left") %>
+      <%= link_to(t('.twitter'), '/auth/twitter', class: "btn #{css_classes.shift}") %>
     <% end %>
 
     <% if !@current_external_services.include?(:facebook) %>
-      <%= link_to(t('.facebook'), '/auth/facebook', class: "btn float-right") %>
+      <%= link_to(t('.facebook'), '/auth/facebook', class: "btn #{css_classes.shift}") %>
     <% end %>
   </div>
 </div>
