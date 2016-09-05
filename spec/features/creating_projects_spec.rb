@@ -26,4 +26,10 @@ RSpec.feature 'Creating projects' do
     expect(page).to have_content('rubular.com')
     expect(page).to have_css('a', text: '@rubular')
   end
+
+  scenario "As an anonymous user I shouldn't be able to create new projects" do
+    visit projects_page
+    expect(page).to_not have_link('+')
+  end
+
 end

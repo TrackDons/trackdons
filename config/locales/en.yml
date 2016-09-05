@@ -160,6 +160,7 @@ en:
       alpha: Alpha
       popular: Popular
       create_a_new_project: There are no projects in the category %{category}. Be the first to create <a href="%{href}">one</a>!
+      no_projects: There are no projects in the category %{category}.
     new:
       existing_project_error: A project with this name already exists
     create:
