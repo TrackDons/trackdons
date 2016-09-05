@@ -186,6 +186,7 @@ es:
       alpha: Alfabético
       popular: Popularidad
       create_a_new_project: Todavía no hay proyectos en la categoría %{category}. Si sabes de algún proyecto que debería estar aquí,  <a href="%{href}">puedes crearlo</a>
+      no_projects: No hay proyectos en la categoría %{category}.
     new:
       existing_project_error: Ya existe un proyecto con este nombre
     create:

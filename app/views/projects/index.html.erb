@@ -7,7 +7,11 @@
 
     <section class="header">
 
-      <h1><%= title(projects_page_title) %> (<%= link_to '+', new_project_path %>)</h1>
+      <h1><%= title(projects_page_title) %>
+      <% if logged_in? %>
+        (<%= link_to '+', new_project_path %>)
+      <% end %>
+    </h1>
 
       <div class="filters">
         <% ProjectsController::ORDER_TYPES.each do |order| %>
@@ -20,7 +24,11 @@
     <% if @projects.any? %>
       <%= render @projects %>
     <% else %>
-      <%= t('.create_a_new_project', category: @category.try(:name), href: new_project_path).html_safe %>
+      <% if logged_in? %>
+        <%= t('.create_a_new_project', category: @category.try(:name), href: new_project_path).html_safe %>
+      <% else %>
+        <%= t('.no_projects', category: @category.try(:name)) %>
+      <% end %>
     <% end %>
 
   </div>

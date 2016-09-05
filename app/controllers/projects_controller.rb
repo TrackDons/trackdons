@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
 
+  before_action :logged_in_user, only: [:new, :create]
   before_action :load_categories,  only: [:index, :new, :create, :edit, :update]
   before_action :load_countries,  only: [:index]
   before_action :load_project,     only: [:edit, :update, :destroy, :follow, :unfollow]
-  
+
   ORDER_TYPES   = ['latest', 'alpha', 'popular']
   DEFAULT_ORDER = 'latest'
 
@@ -40,7 +41,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update_attributes(project_params)
-      flash[:success] = "Project updated" 
+      flash[:success] = "Project updated"
       redirect_to @project
     else
       render 'edit'
