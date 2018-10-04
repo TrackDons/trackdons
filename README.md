@@ -14,7 +14,7 @@ This is an open project, so any contribution is welcome. Take a look go the [Wik
 
 It assumes you have running:
 
-* ruby 2.x.x (it works from 2.0.0 to 2.1.5)
+* ruby 2.x.x (it works from 2.0.0 to 2.5.1)
 
 ```
 git clone git@github.com:TrackDons/trackdons.git

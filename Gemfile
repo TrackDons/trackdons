@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '4.2.1'
-gem 'pg'
+gem 'rails', '4.2.10'
+gem "pg", "~> 0.18" 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -23,15 +24,14 @@ gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+gem 'friendly_id'
 gem 'i18n_country_select'
-gem 'i18n-country-translations'
 gem 'redcarpet'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 gem 'money-rails'
-gem 'rollbar', '~> 1.3.0'
+gem 'rollbar'
 gem 'meta-tags'
-gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
+gem 'rails-i18n'
 gem 'dynamic_form'
 gem "i18n-js", ">= 3.0.0.rc8" 
 gem 'globalize', '~> 5.0.0'
