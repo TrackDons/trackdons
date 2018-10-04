@@ -18,26 +18,27 @@ RSpec.feature 'User donations' do
   scenario 'User donations are listed' do
     visit user_page(@user)
 
-    expect(page).to have_content('Has donated to 2 projects')
+    expect(page).to have_content('Has donated to')
+    expect(page).to have_content('2 projects')
 
     expect(page).to have_content('Yorch donated to Wikiwadus # Apr 01 2015')
     expect(page).to have_content('Yorch donated to Gnome # Jan 01 2014')
   end
 
-  # FIXME
   scenario 'I see the total number of donations' do
     create_donation project: @project, quantity: 10.50, date: 32.days.ago, user: @user
     login_as "yorch@example.com", "wadusm4n"
 
-    expect(page).to have_content('Has donated to 2 projects')
+    expect(page).to have_content('Has donated to')
+    expect(page).to have_content('2 projects')
   end
 
-  # FIXME
   scenario 'I see the total number of projects I want to donate to' do
     @user.follow(@project_to_follow)
     login_as "yorch@example.com", "wadusm4n"
 
-    expect(page).to have_content('Thinking on donating to 1 project')
+    expect(page).to have_content('Thinking on donating to')
+    expect(page).to have_content('1 project')
   end
 
   # For when we have a private profile view
