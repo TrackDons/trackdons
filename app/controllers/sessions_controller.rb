@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       return
     else
       modal_error('login', t('.invalid_data'))
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
     end
   end
 

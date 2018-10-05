@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
 
   has_many :donations
   has_many :users, through: :donations

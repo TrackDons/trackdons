@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -23,7 +23,6 @@ module Trackdons
     # config.i18n.default_locale = :de
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :es
-    config.active_record.raise_in_transactional_callbacks = true
 
     config.generators do |g|
       g.orm             :active_record

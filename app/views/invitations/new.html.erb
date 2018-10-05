@@ -3,9 +3,9 @@
   <h1><%= t('users.invite') %></h1>
 
   <% if current_user.available_invitations < 1 %>
-    <%= t('invitations.dont_have_enough_invitations') %>    
+    <%= t('invitations.dont_have_enough_invitations') %>
   <% else %>
-    
+
     <%= error_messages_for @invitation %>
 
     <p><%= t('invitations.pending_invites', :count => current_user.available_invitations) %></p>

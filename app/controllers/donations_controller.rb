@@ -35,7 +35,7 @@ class DonationsController < ApplicationController
     @donation.destroy
     flash[:success] = t('.destroy_success')
 
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private

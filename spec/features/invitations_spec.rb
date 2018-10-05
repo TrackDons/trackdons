@@ -18,7 +18,7 @@ RSpec.feature 'Inviting users' do
     click_button 'Invite'
 
     expect(page).to have_content('You have 5 invites available')
- 
+
     fill_in "Your friend's email", with: 'myfriend@example.com'
     click_button 'Invite'
 

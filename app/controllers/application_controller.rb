@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       else
         # flash[:error] = t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence)
         modal_error('donation', t('.error_creating_donation', errors: @donation.errors.full_messages.to_sentence))
-        redirect_to(:back)
+        redirect_back(fallback_location: root_path)
       end
     end
 

@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       save_pending_donations || redirect_to(@user)
     else
       modal_error('signup', t('.invalid_data'))
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated" 
+      flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'
