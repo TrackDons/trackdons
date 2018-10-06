@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '5.0.7'
+gem 'rails', '5.1.6'
 gem "pg", "~> 0.18" 
 
 # Use SCSS for stylesheets

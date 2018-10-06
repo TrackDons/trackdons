@@ -20,10 +20,10 @@ It assumes you have running:
 git clone git@github.com:TrackDons/trackdons.git
 cd trackdons
 bundle install
-rake db:setup
+bin/rails db:setup
 cp config/secrets.yml.example config/secrets.yml
 cp config/database.yml.example config/database.yml
-rails server
+bin/server
 ```
 
 Then navigate to: http://localhost:3000

@@ -22,6 +22,7 @@ class InvitationsController < ApplicationController
       flash[:success] = t('invitations.invitation_sent')
       redirect_to invite_path
     else
+      current_user.invitations.reload
       render 'new'
     end
   end

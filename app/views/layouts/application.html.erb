@@ -1,31 +1,30 @@
 <!doctype html>
-<html lang=en-us>
+<html lang="<%= I18n.locale %>">
 <head>
 	<meta charset=utf-8>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	
+
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <%= display_meta_tags :site => 'TrackDons', :reverse => true %>
-  
+
   <!-- <script type="text/javascript" src="http://localhost:4000/ahoy.js"></script>
   <script>
     ahoy.trackAll();
   </script> -->
-  
+
 	<style type="text/css">
 	@import url();
 	</style>
-	
+
 	<script>
   	I18n.defaultLocale = "<%= I18n.default_locale %>";
   	I18n.locale = "<%= I18n.locale %>";
 	</script>
-
 </head>
+
 <body class="<%= params[:controller] + ' ' + params[:controller] + '_' + params[:action]  %>">
 
 <div id="sb-site" class="sb-site-container">
@@ -46,28 +45,24 @@
           <%= render 'shared/user_links' %>
         </ul>
 			</section>
-      
+
 		</section>
 
 		<section id="main_content">
       <%= flash_message %>
-
 			<%= yield %>
-
 		</section>
-
-	</div> 
+	</div>
 
 	<section id="footer">
-		
+
 		<div class="language_selector">
 			<%= t('choose_your_language') %>:
       <%= I18n.available_locales.map { |locale|
             link_to_unless_current(language_name_for(locale), locale: locale)
 	        }.join(' · ').html_safe %>
-	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>	      
+	    <p class="contrib"><%= link_to t('want_to_contribute_your_own_language'), 'https://github.com/furilo/trackdons/wiki/Contribute-your-language' %></p>
 		</div>
-
 	</section>
 
 </div>
@@ -85,24 +80,18 @@
 	</ul>
 </div>
 
-<% unless logged_in? %>
+<% if logged_in? %>
+  <%= render 'shared/modal_form_donation' %>
+<% else %>
   <%= render 'shared/modal_login' %>
 <% end %>
 
-<% if logged_in? %>
-  <%= render 'shared/modal_form_donation' %>
+<% if Rails.env.production? %>
+  <a title="Web Analytics" href="http://clicky.com/100833841"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+  <script src="//static.getclicky.com/js" type="text/javascript"></script>
+  <script type="text/javascript">try{ clicky.init(100833841); }catch(e){}</script>
+  <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100833841ns.gif" /></p></noscript>
 <% end %>
-
-
-<%= "Locale: #{I18n.locale}" if Rails.env.development? %>
-<%# debug(request) if Rails.env.development? %>
-<%= debug(params) if Rails.env.development? %>
-<%= debug(cookies) if Rails.env.development? %>
-
-<a title="Web Analytics" href="http://clicky.com/100833841"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
-<script src="//static.getclicky.com/js" type="text/javascript"></script>
-<script type="text/javascript">try{ clicky.init(100833841); }catch(e){}</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100833841ns.gif" /></p></noscript>
 
 </body>
 </html>
