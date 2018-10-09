@@ -1,6 +1,4 @@
 class SandboxController < ApplicationController
-  skip_action :record_access
-
   def index
   end
 
