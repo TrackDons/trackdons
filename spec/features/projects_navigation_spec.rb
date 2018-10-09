@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Projects navigation' do
   background do
-    health = create_category(name: 'Health')
+    health = create_category(name_translations: {en: 'Health'})
 
     @user = create_user(name: 'Marlo', email: "marlo@muchachada.nui")
 

@@ -14,7 +14,6 @@ gem "jquery-rails"
 gem 'ejs'
 # gem "jquery-ui-rails"
 gem 'jquery-turbolinks'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem "i18n-js", ">= 3.0.0.rc8" 
 
@@ -29,7 +28,7 @@ gem 'rollbar'
 gem 'meta-tags'
 gem 'rails-i18n'
 gem 'dynamic_form'
-gem 'globalize', '~> 5.1'
+gem 'json_translate'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'hstore_accessor'

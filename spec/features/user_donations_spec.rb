@@ -81,9 +81,7 @@ RSpec.feature 'User donations' do
 
     expect(page).to have_content('Yorch donated to Wikiwadus # Apr 01 2015')
 
-    within(:css, '.donation:eq(2)') do
-      click_link('Delete')
-    end
+    click_link('Delete')
 
     expect(page).to_not have_content('Yorch donated to Wikiwadus # Apr 01 2015')
   end

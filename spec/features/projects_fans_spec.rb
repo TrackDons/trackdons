@@ -4,7 +4,7 @@ RSpec.feature 'Projects fans' do
   background do
     @user = create_user(name: 'Yorch', password: 'wadusm4n', email: "yorch@example.com")
 
-    health = create_category(name: 'Health')
+    health = create_category(name_translations: {en: 'Health'})
 
     create_project name: 'Cruz Roja', category: health, countries: ['US', 'ES']
   end

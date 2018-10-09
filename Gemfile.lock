@@ -87,10 +87,6 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    globalize (5.1.0)
-      activemodel (>= 4.2, < 5.2)
-      activerecord (>= 4.2, < 5.2)
-      request_store (~> 1.0)
     hashie (3.5.7)
     hstore_accessor (1.1.1)
       activerecord (>= 4.0.0)
@@ -129,6 +125,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (2.1.0)
+    json_translate (4.0.0)
+      activerecord (>= 4.2.0)
     jwt (1.5.6)
     koala (3.0.0)
       addressable
@@ -228,8 +226,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (3.4.0)
-    request_store (1.4.1)
-      rack (>= 1.4)
     rollbar (2.18.0)
       multi_json
     rspec-core (3.8.0)
@@ -321,7 +317,6 @@ DEPENDENCIES
   ejs
   email_spec
   friendly_id (~> 5.2, >= 5.2.4)
-  globalize (~> 5.1)
   hstore_accessor
   i18n-country-translations
   i18n-js (>= 3.0.0.rc8)
@@ -329,6 +324,7 @@ DEPENDENCIES
   jasmine
   jquery-rails
   jquery-turbolinks
+  json_translate
   koala
   launchy
   listen

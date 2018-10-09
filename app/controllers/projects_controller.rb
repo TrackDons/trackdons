@@ -97,8 +97,7 @@ class ProjectsController < ApplicationController
     end
 
     def load_categories
-      @categories = Category.includes(:translations).
-                      order('category_translations.name ASC')
+      @categories = Category.order(slug: :desc)
     end
 
     def load_countries

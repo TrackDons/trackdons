@@ -35,7 +35,7 @@ module Factories
   end
 
   def create_category(attrs = {})
-    attrs[:name] ||= "Animals"
+    attrs[:name_translations] ||= { en: "Animals" }
     Category.create!(attrs)
   end
 end

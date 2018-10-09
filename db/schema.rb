@@ -10,36 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004161339) do
+ActiveRecord::Schema.define(version: 20181009095440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name"
     t.text "description"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "category_translations", id: :serial, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.index ["category_id"], name: "index_category_translations_on_category_id"
-    t.index ["locale"], name: "index_category_translations_on_locale"
+    t.jsonb "name_translations"
   end
 
   create_table "donations", id: :serial, force: :cascade do |t|
     t.integer "quantity_cents"
-    t.string "currency"
+    t.string "currency", limit: 255
     t.date "date"
     t.text "comment"
-    t.string "tags"
+    t.string "tags", limit: 255
     t.boolean "quantity_privacy", default: false
     t.integer "project_id"
     t.integer "user_id"
@@ -67,10 +57,10 @@ ActiveRecord::Schema.define(version: 20181004161339) do
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
-    t.string "slug", null: false
+    t.string "slug", limit: 255, null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
-    t.string "scope"
+    t.string "scope", limit: 255
     t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
@@ -79,8 +69,8 @@ ActiveRecord::Schema.define(version: 20181004161339) do
   end
 
   create_table "invitations", id: :serial, force: :cascade do |t|
-    t.string "invitation_token"
-    t.string "invited_email"
+    t.string "invitation_token", limit: 255
+    t.string "invited_email", limit: 255
     t.boolean "used", default: false
     t.integer "user_id"
     t.datetime "created_at"
@@ -90,14 +80,14 @@ ActiveRecord::Schema.define(version: 20181004161339) do
   end
 
   create_table "projects", id: :serial, force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
     t.text "description"
-    t.string "url"
-    t.string "twitter"
-    t.string "donation_url"
+    t.string "url", limit: 255
+    t.string "twitter", limit: 255
+    t.string "donation_url", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "slug"
+    t.string "slug", limit: 255
     t.integer "donations_count", default: 0
     t.integer "category_id"
     t.string "countries", default: [], array: true
@@ -122,9 +112,9 @@ ActiveRecord::Schema.define(version: 20181004161339) do
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.integer "taggable_id"
-    t.string "taggable_type"
+    t.string "taggable_type", limit: 255
     t.integer "tagger_id"
-    t.string "tagger_type"
+    t.string "tagger_type", limit: 255
     t.string "context", limit: 128
     t.datetime "created_at"
     t.index ["context"], name: "index_taggings_on_context"
@@ -139,24 +129,24 @@ ActiveRecord::Schema.define(version: 20181004161339) do
   end
 
   create_table "tags", id: :serial, force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "email"
-    t.string "country"
-    t.string "password_digest"
-    t.string "remember_digest"
+    t.string "name", limit: 255
+    t.string "username", limit: 255
+    t.string "email", limit: 255
+    t.string "country", limit: 255
+    t.string "password_digest", limit: 255
+    t.string "remember_digest", limit: 255
     t.boolean "admin", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "currency"
-    t.integer "available_invitations", default: 5
+    t.string "currency", limit: 255
     t.integer "donations_count", default: 0
+    t.integer "available_invitations", default: 5
     t.string "password_reset_token"
     t.hstore "credentials"
     t.index ["email"], name: "index_users_on_email", unique: true
