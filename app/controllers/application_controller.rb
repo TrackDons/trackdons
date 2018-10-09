@@ -7,9 +7,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :current_user?, :login_path
 
   rescue_from OAuth::Unauthorized, with: :external_service_unauthorized
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ActionController::UnknownFormat, with: :render_404
+  rescue_from I18n::InvalidLocale, with: :render_404
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+    unless I18n.available_locales.include?(I18n.locale)
+      raise I18n::InvalidLocale
+    end
   end
 
   def default_url_options(options={})
@@ -22,6 +28,10 @@ class ApplicationController < ActionController::Base
 
   def signup_path(params)
     root_path(params.merge(anchor: 'signup'))
+  end
+
+  def render_404
+    render file: "public/404", status: 404, layout: false, handlers: [:erb], formats: [:html]
   end
 
   protected
