@@ -2,9 +2,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Core
-gem 'rails', '5.1.6'
+gem 'rails', '5.2.1'
 gem "pg", "~> 0.18" 
 gem 'bcrypt'
+gem "bootsnap"
 
 # Frontend
 gem "bourbon", "~> 4.3.4"

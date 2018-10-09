@@ -2,7 +2,7 @@ class Donation < ApplicationRecord
 
   belongs_to :project, counter_cache: true
   belongs_to :user, counter_cache: true
-  belongs_to :recurring_donation
+  belongs_to :recurring_donation, optional: true
 
   attr_accessor :recurring
 

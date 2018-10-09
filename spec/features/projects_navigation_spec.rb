@@ -15,7 +15,6 @@ RSpec.feature 'Projects navigation' do
     create_donation project: @cruz_roja, quantity: 20, date: Date.today, user: @user, quantity_privacy: true
     create_donation project: @cruz_roja, quantity: 30, date: Date.today, user: @other_user
     create_donation project: @wikipedia, quantity: 10, date: Date.today, user: @other_user, quantity_privacy: true
-
   end
 
   scenario 'I should be able to filter by Alphabetic order' do

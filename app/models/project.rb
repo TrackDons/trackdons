@@ -2,7 +2,7 @@ class Project < ApplicationRecord
 
   has_many :donations
   has_many :users, through: :donations
-  belongs_to :category
+  belongs_to :category, optional: true
 
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
