@@ -57,7 +57,6 @@ group :test do
 end
 
 group :development do
-  gem 'mina'
   gem "listen"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
