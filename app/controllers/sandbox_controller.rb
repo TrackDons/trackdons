@@ -1,8 +1,7 @@
 class SandboxController < ApplicationController
-  skip_filter :record_access
+  skip_action :record_access
 
   def index
-
   end
 
   def show
@@ -14,7 +13,7 @@ class SandboxController < ApplicationController
       else
         render "sandbox/#{params[:template]}"
       end
-      
+
     elsif lookup_context.exists?("sandbox/#{params[:template]}/index")
       render "sandbox/#{params[:template]}/index"
     else
