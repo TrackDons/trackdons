@@ -1,0 +1,3 @@
+#!/bin/bash -i
+bin/update
+bin/rails server

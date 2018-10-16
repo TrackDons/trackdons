@@ -1,53 +1,50 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '4.2.1'
-gem 'pg'
+# Core
+gem 'rails', '5.2.1'
+gem "pg", "~> 0.18" 
+gem 'bcrypt'
+gem "bootsnap"
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
+# Frontend
+gem "bourbon", "~> 4.3.4"
+gem 'sass-rails', '~> 5.0.0'
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# Use jquery as the JavaScript library
 gem "jquery-rails"
-
-# For frontend templating
 gem 'ejs'
-
-# It seems we are not using jquery-ui
 # gem "jquery-ui-rails"
 gem 'jquery-turbolinks'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem "i18n-js", ">= 3.0.0.rc8" 
 
-gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
+# Utilities
+gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 gem 'i18n_country_select'
 gem 'i18n-country-translations'
 gem 'redcarpet'
-gem 'bcrypt', '~> 3.1.7'
 gem 'money-rails'
-gem 'rollbar', '~> 1.3.0'
+gem 'rollbar'
 gem 'meta-tags'
-gem 'rails-i18n', git: 'git://github.com/ferblape/rails-i18n.git'
+gem 'rails-i18n'
 gem 'dynamic_form'
-gem "i18n-js", ">= 3.0.0.rc8" 
-gem 'globalize', '~> 5.0.0'
-gem "acts_as_follower"
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'json_translate'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'acts-as-taggable-on', '~> 6.0'
 gem 'hstore_accessor'
+
+# Social networks
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'omniauth-facebook'
 gem 'koala'
-gem 'bourbon'
 
 group :development, :test do
   gem 'spring'
-  gem 'byebug'
+  gem "byebug", platform: :mri
   gem 'jasmine'
+  gem "puma"
 end
 
 group :test do
@@ -60,7 +57,6 @@ group :test do
 end
 
 group :development do
-  gem 'mina'
-  gem 'web-console', '~> 2.0'
-  gem 'quiet_assets'
+  gem "listen"
+  gem "spring-watcher-listen", "~> 2.0.0"
 end

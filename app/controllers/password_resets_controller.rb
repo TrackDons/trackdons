@@ -11,7 +11,7 @@ class PasswordResetsController < ApplicationController
       modal_error('password_resets', t('.invalid_email'))
     end
 
-    redirect_to(:back)
+    redirect_back(fallback_location: root_path)
   end
 
   def edit

@@ -1,6 +1,6 @@
-class Invitation < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :invited_user, class_name: User
+class Invitation < ApplicationRecord
+  belongs_to :user, optional: true
+  belongs_to :invited_user, class_name: "User", optional: true
 
   before_validation :generate_invitation_token, :sanitize_email
 

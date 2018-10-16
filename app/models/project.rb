@@ -1,8 +1,8 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
 
   has_many :donations
   has_many :users, through: :donations
-  belongs_to :category
+  belongs_to :category, optional: true
 
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
@@ -12,7 +12,6 @@ class Project < ActiveRecord::Base
   validates :name, length: { minimum: 3 }, uniqueness: true
   validates :description, length: { minimum: 25 }
   validates :url, length: { minimum: 5 }
-  validate :valid_countries
 
   scope :alpha, -> { order(name: :asc) }
   scope :latest, -> { order(id: :desc) }
@@ -71,14 +70,6 @@ class Project < ActiveRecord::Base
   end
 
   private
-
-    def valid_countries
-      if self.countries.any?
-        if (self.countries - I18nCountrySelect::Countries::COUNTRY_CODES).any?
-          errors.add(:countries, I18n.t('activerecord.errors.models.project.attributes.countries.invalid'))
-        end
-      end
-    end
 
     def clean_twitter_account_value(twitter_account)
       if twitter_account =~ /\Ahttp/

@@ -1,11 +1,12 @@
 language: ruby
+cache: bundler
 addons:
-  postgresql: "9.3"
+  postgresql: "9.6"
 rvm:
-  - 2.1.5
-  - 2.1.2
+  - 2.5.1
 before_script:
   - "for i in config/*.example; do cp \"$i\" \"${i/.example}\"; done"
   - psql -c 'create database trackdons_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-
+after_success:
+  - "curl -XPOST -H \"Authorization: Token token=\"$DEPLOY_BOT_TOKEN $DEPLOY_URL"
