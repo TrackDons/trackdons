@@ -14,6 +14,8 @@ class Donation < ApplicationRecord
   scope :quantity_private, -> { where(quantity_privacy: true) }
   scope :sorted, -> { order(date: :desc) }
   scope :last_month, -> { where('date >= ?', 1.month.ago) }
+  scope :from_users, ->(users_ids) { where(user_id: users_ids) }
+  scope :featured, -> { where("char_length(comment) > 134 ") }
 
   validates :project_id, presence: true
   validates :user_id, presence: true

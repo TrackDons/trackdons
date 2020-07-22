@@ -59,8 +59,4 @@ class ExternalAuthenticationsController < ApplicationController
     @user = current_user
   end
 
-  def set_current_external_services
-    @current_external_services = ExternalServiceManager.new(current_user)
-  end
-
 end

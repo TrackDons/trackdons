@@ -44,17 +44,6 @@ jQuery(document).ready(function($){
     }	
   });
 
-  // Prevent Enter key to click on the first button of the form, which is the link to the
-  // other form only when the trackdon modal form is visible
-  $(document).keydown(function(event){
-    if(event.which=='13'){
-      if( $('form[id="new_donation"]').parents("#modal-track").hasClass('.is-visible') ){
-        event.preventDefault();
-        $('form:visible').submit();
-      }
-    }
-  });
-
   //close modal when clicking the esc keyboard button
   $(document).keyup(function(event){
     event.preventDefault();
